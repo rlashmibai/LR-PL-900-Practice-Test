@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>PL-900 Practice Test</title>
+  <meta name="description" content="Free PL-900 (Microsoft Power Platform Fundamentals) practice test with instant explanations and score history." />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0078d4" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>PL-900 Practice Test</h1>
+    <div class="user-chip" id="userChip"></div>
+  </header>
+
+  <div class="container">
+
+    <!-- Welcome / guest login -->
+    <section id="view-welcome" class="view active">
+      <div class="card">
+        <h2>Start practicing for PL-900</h2>
+        <p>No account or password needed — just enter your name and email so we can save your scores and let you pick up where you left off.</p>
+        <form id="welcomeForm">
+          <label for="nameInput">Name</label>
+          <input type="text" id="nameInput" placeholder="Your name" required />
+          <label for="emailInput">Email</label>
+          <input type="email" id="emailInput" placeholder="you@example.com" required />
+          <div class="btn-row">
+            <button type="submit" class="btn">Continue</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="view-dashboard" class="view">
+      <div class="card">
+        <h2 id="dashGreeting">Welcome!</h2>
+        <p>Take the full timed exam, or practice one topic at a time.</p>
+        <div class="btn-row">
+          <button id="startFullBtn" class="btn">Start Full Practice Test (60 min)</button>
+          <button id="logoutBtn" class="btn ghost">Switch user</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Practice by topic</h2>
+        <div id="sectionList" class="section-list"></div>
+      </div>
+
+      <div class="card">
+        <h2>Your past attempts</h2>
+        <p id="historyEmpty" style="color:var(--text-muted)">No attempts yet — take a test to see your history here.</p>
+        <table id="historyTable" style="display:none">
+          <thead><tr><th>Date</th><th>Test</th><th>Score</th><th>Result</th><th>Time</th></tr></thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Test taking -->
+    <section id="view-test" class="view">
+      <div class="test-toolbar">
+        <div id="questionMeta" class="question-meta"></div>
+        <div class="timer" id="timerDisplay">00:00</div>
+      </div>
+
+      <div class="nav-grid" id="navGrid"></div>
+
+      <div class="card">
+        <div class="question-text" id="questionText"></div>
+        <div id="questionBody"></div>
+        <div class="btn-row" style="justify-content:space-between; align-items:center;">
+          <span class="flag-toggle" id="flagToggle">🚩 Flag for review</span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button id="prevQBtn" class="btn secondary">← Previous</button>
+        <button id="nextQBtn" class="btn">Next →</button>
+        <button id="submitTestBtn" class="btn" style="display:none; background:var(--green);">Submit Test</button>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="view-results" class="view">
+      <div class="card score-hero">
+        <div class="pct" id="scorePct">0%</div>
+        <div id="scoreDetail" style="color:var(--text-muted); margin:6px 0;"></div>
+        <span class="badge" id="passBadge"></span>
+      </div>
+
+      <div class="card">
+        <h2>Score by topic</h2>
+        <table>
+          <thead><tr><th>Topic</th><th>Score</th></tr></thead>
+          <tbody id="sectionBreakdownBody"></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Review answers</h2>
+        <div id="reviewList"></div>
+      </div>
+
+      <div class="btn-row">
+        <button id="backToDashBtn" class="btn">Back to dashboard</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

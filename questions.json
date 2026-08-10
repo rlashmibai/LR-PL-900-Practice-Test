@@ -1,0 +1,166 @@
+[
+  {
+    "id": "q1",
+    "type": "single",
+    "section": "Business value of Power Platform",
+    "text": "Which Power Platform product is primarily used to build custom business applications with little to no code?",
+    "options": [
+      { "id": "a", "text": "Power BI" },
+      { "id": "b", "text": "Power Apps" },
+      { "id": "c", "text": "Power Automate" },
+      { "id": "d", "text": "Power Virtual Agents" }
+    ],
+    "correct": ["b"],
+    "explanation": "Power Apps is the low-code app development product in Power Platform, used to build canvas and model-driven business apps."
+  },
+  {
+    "id": "q2",
+    "type": "multi",
+    "section": "Business value of Power Platform",
+    "text": "Which TWO of the following are core Power Platform products? (Select all that apply)",
+    "options": [
+      { "id": "a", "text": "Power BI" },
+      { "id": "b", "text": "Power Automate" },
+      { "id": "c", "text": "Microsoft Excel" },
+      { "id": "d", "text": "Microsoft Teams" }
+    ],
+    "correct": ["a", "b"],
+    "explanation": "The core Power Platform products are Power BI, Power Apps, Power Automate, and Power Pages/Power Virtual Agents. Excel and Teams are Microsoft 365 tools, not Power Platform products."
+  },
+  {
+    "id": "q3",
+    "type": "truefalse",
+    "section": "Business value of Power Platform",
+    "text": "Dataverse can only be used by Power Apps, not by Power Automate or Power BI.",
+    "options": [
+      { "id": "true", "text": "True" },
+      { "id": "false", "text": "False" }
+    ],
+    "correct": ["false"],
+    "explanation": "Dataverse is a shared data platform used across Power Apps, Power Automate, Power BI, and Power Virtual Agents, not exclusive to any single product."
+  },
+  {
+    "id": "q4",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "Which type of Power Apps app is built starting from a blank canvas and a pixel-perfect layout?",
+    "options": [
+      { "id": "a", "text": "Model-driven app" },
+      { "id": "b", "text": "Canvas app" },
+      { "id": "c", "text": "Power Pages site" },
+      { "id": "d", "text": "Dataverse form" }
+    ],
+    "correct": ["b"],
+    "explanation": "Canvas apps start from a blank canvas, giving full control over layout and design. Model-driven apps are generated automatically from your data model."
+  },
+  {
+    "id": "q5",
+    "type": "ordering",
+    "section": "Power Apps basics",
+    "text": "Put these steps for building a basic canvas app in the correct order.",
+    "options": [
+      { "id": "a", "text": "Connect a data source" },
+      { "id": "b", "text": "Create a blank canvas app" },
+      { "id": "c", "text": "Add and configure screens/controls" },
+      { "id": "d", "text": "Publish and share the app" }
+    ],
+    "correct": ["b", "a", "c", "d"],
+    "explanation": "You start a blank app, connect the data it will use, build out the screens/controls, then publish and share it with users."
+  },
+  {
+    "id": "q6",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "What is the term for the event that starts a Power Automate cloud flow?",
+    "options": [
+      { "id": "a", "text": "Action" },
+      { "id": "b", "text": "Connector" },
+      { "id": "c", "text": "Trigger" },
+      { "id": "d", "text": "Condition" }
+    ],
+    "correct": ["c"],
+    "explanation": "A trigger is the event that starts a flow, such as a new item being created or a scheduled time being reached. Actions are the steps that run after the trigger fires."
+  },
+  {
+    "id": "q7",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "Which type of Power Automate flow runs automatically on a set schedule, such as every day at 9 AM?",
+    "options": [
+      { "id": "a", "text": "Instant cloud flow" },
+      { "id": "b", "text": "Scheduled cloud flow" },
+      { "id": "c", "text": "Automated cloud flow" },
+      { "id": "d", "text": "Desktop flow" }
+    ],
+    "correct": ["b"],
+    "explanation": "A scheduled cloud flow runs on a recurrence you define, like daily or weekly, rather than in response to an event or a manual trigger."
+  },
+  {
+    "id": "q8",
+    "type": "single",
+    "section": "Power BI basics",
+    "text": "Which Power BI component is used to author reports with visuals, and is installed on your desktop?",
+    "options": [
+      { "id": "a", "text": "Power BI Service" },
+      { "id": "b", "text": "Power BI Desktop" },
+      { "id": "c", "text": "Power BI Mobile" },
+      { "id": "d", "text": "Power BI Report Server" }
+    ],
+    "correct": ["b"],
+    "explanation": "Power BI Desktop is the free Windows application used to connect to data, build models, and author reports before publishing them to the Power BI Service."
+  },
+  {
+    "id": "q9",
+    "type": "multi",
+    "section": "Power BI basics",
+    "text": "Which TWO of these are valid ways to visualize data in a Power BI report? (Select all that apply)",
+    "options": [
+      { "id": "a", "text": "Bar chart" },
+      { "id": "b", "text": "Card visual" },
+      { "id": "c", "text": "SQL query" },
+      { "id": "d", "text": "Data gateway" }
+    ],
+    "correct": ["a", "b"],
+    "explanation": "Bar charts and card visuals are report visuals. A SQL query is a way to retrieve data, and a data gateway connects on-premises data to the cloud — neither is a visual."
+  },
+  {
+    "id": "q10",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "What is the primary purpose of Power Virtual Agents (now part of Copilot Studio)?",
+    "options": [
+      { "id": "a", "text": "Building conversational chatbots without writing code" },
+      { "id": "b", "text": "Creating Power BI dashboards" },
+      { "id": "c", "text": "Automating desktop tasks" },
+      { "id": "d", "text": "Designing Dataverse tables" }
+    ],
+    "correct": ["a"],
+    "explanation": "Power Virtual Agents / Copilot Studio lets you build chatbots using a guided, no-code graphical interface to define topics and conversation flow."
+  },
+  {
+    "id": "q11",
+    "type": "truefalse",
+    "section": "Admin & security",
+    "text": "Environments in Power Platform are used to separate apps, flows, and data for different purposes, such as development versus production.",
+    "options": [
+      { "id": "true", "text": "True" },
+      { "id": "false", "text": "False" }
+    ],
+    "correct": ["true"],
+    "explanation": "Environments act as containers to separate apps and data by purpose or audience, such as separating development, testing, and production."
+  },
+  {
+    "id": "q12",
+    "type": "single",
+    "section": "Admin & security",
+    "text": "Which Power Platform feature lets administrators control which connectors can be used together in a single app or flow?",
+    "options": [
+      { "id": "a", "text": "Data loss prevention (DLP) policies" },
+      { "id": "b", "text": "Security roles" },
+      { "id": "c", "text": "Solutions" },
+      { "id": "d", "text": "Environments" }
+    ],
+    "correct": ["a"],
+    "explanation": "Data loss prevention (DLP) policies classify connectors into groups (e.g., business vs. non-business) and control which can be combined, to prevent unsafe data mixing."
+  }
+]
