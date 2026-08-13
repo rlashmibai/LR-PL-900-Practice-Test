@@ -1121,7 +1121,7 @@
     "correct": [
       "a"
     ],
-    "explanation": ""
+    "explanation": "Table permissions define access to rows in Dataverse tables, no matter how or where they're accessed from Power Pages. Page permissions grant or deny access to individual pages on the site. Web roles tie users and permissions together to define what data and content a user can access. Local sign-in is forms-based sign-in, with credentials stored securely in the Dataverse contact record. External authentication delegates sign-in and password handling to an external identity provider such as Microsoft Entra External ID, Microsoft, Twitter, Facebook, and others."
   },
   {
     "id": "q44",
@@ -2703,5 +2703,2384 @@
       "a"
     ],
     "explanation": "When you describe your business requirements in natural language, Copilot analyzes the prompt and automatically generates: Dataverse tables Columns within the tables Relationships between the tables A starting data model for the application For example, if you enter: \"I need an app to manage employee leave requests. Employees submit requests, managers approve them, and HR tracks balances.\" Copilot may generate tables such as: Employees Leave Requests Leave Types It can also create relationships, such as: Employee (1) → (Many) Leave Requests This significantly reduces the time needed to design the application's data structure manually."
+  },
+  {
+    "id": "q101",
+    "type": "truefalse",
+    "section": "Power BI basics",
+    "text": "True or false: while working on a Power Platform project, a colleague mentions that in Power Platform, columns are also known as fields.",
+    "options": [
+      {
+        "id": "a",
+        "text": "TRUE"
+      },
+      {
+        "id": "b",
+        "text": "FALSE"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Why This Question Is Relevant for PL-900 Builds understanding of core Dataverse concepts such as tables, columns, and rows. Essential for data modeling within Power Platform applications. These terms are commonly used in Power Apps, Power BI, and Dataverse questions. Helps you interpret Microsoft terminology accurately during the exam. In Dataverse, a table is made up of rows and columns. Each row is a record, and each column is a field — sometimes also called an attribute. Fields define the type of data stored in a record, such as a customer’s name or email address. Understanding this terminology is important because Microsoft often uses “columns,” “fields,” and “attributes” interchangeably in exam questions. What are columns in Power Platform? Columns are also called fields. Within a table, each row represents a group of related data values. In a table, a Row is called a record whereas a Column is called a Field. The columns in a table is a field and is also referred to as an attribute. You can also think of it this way: an attribute is used to define the record and a record contains a set of attributes."
+  },
+  {
+    "id": "q102",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "True or false: to meet data residency requirements, Dataverse is deployed within specific geographic regions even though it's accessible globally.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, It is deployed geographically."
+      },
+      {
+        "id": "b",
+        "text": "No. It can be accessed globally."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Dataverse Overview Dataverse, formerly called the Common Data Service, is a cloud-based data storage and management service. It allows organizations to securely store and manage business data. Data stored in Dataverse can be used across Power Platform applications such as Power Apps and Power Automate. It provides a structured and scalable environment for creating, storing, and accessing data entities. Key Feature: Data Residency and Compliance Dataverse is globally accessible but deployed in specific regions for compliance. Organizations can choose the geographic region where their data is stored. This helps align with local data privacy and residency requirements. Example: Some countries require data to remain within their borders. Dataverse supports this by allowing deployment in those regions. Benefits Dataverse is designed for global use, meaning anyone can access its capabilities from anywhere. However, when an environment is created, it is tied to a specific geographic region. This regional deployment ensures compliance with local data residency laws, so customer data remains within the designated boundaries. In other words, Dataverse balances global accessibility with regional data storage requirements. Exam Tips Learn about Data Loss Prevention policies. Understand how data handling and residency work. Focus on why security and governance are critical in Power Platform. Resources<img src=\"images/b2-image1.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q103",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "Match each Power Apps tool to its correct definition. Tools: App Checker, Accessibility Checker. Definitions: one focuses on debugging and optimizing app functionality for smooth performance; the other ensures the app meets accessibility standards for all users.",
+    "options": [
+      {
+        "id": "a",
+        "text": "2 - A"
+      },
+      {
+        "id": "b",
+        "text": "1 - A"
+      },
+      {
+        "id": "c",
+        "text": "2 - B"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "App Checker Overview App Checker is a tool in Power Apps that helps debug and optimize app functionality. It ensures smooth performance by identifying errors and providing recommendations. It focuses mainly on two areas: formula errors and performance issues. Formula Errors Detects mistakes in formulas that can break app functionality. Highlights the exact part of the formula causing the issue. Suggests corrections to fix syntax problems. Example: If a formula like Filter(Orders, Status = \"Open\") is missing a parenthesis, App Checker will flag it and recommend adding the missing character. Performance Recommendations Identifies formulas or queries that may slow down the app. Provides suggestions to make them more efficient. Example: If a formula retrieves large datasets without delegation, App Checker will recommend using a delegable query to improve performance with data sources like SharePoint or Dataverse. Benefits Helps developers quickly debug issues. Improves app speed and reliability. Ensures a better user experience by optimizing functionality. Exam Tips Know that App Checker is used for debugging and performance optimization. Understand the difference between formula errors and performance recommendations. Remember that delegation is important for handling large datasets efficiently.   Accessibility Checker Overview The Accessibility Checker in Power Apps helps identify and fix issues that make apps difficult to use for people with disabilities. It ensures apps meet accessibility standards and are inclusive for all users. The tool checks for problems with screen readers, keyboard navigation, and color contrast. Missing Screen Reader Support Screen readers need descriptive labels to explain the purpose of buttons or controls. If a button lacks a proper label, the Accessibility Checker flags it. Example: A button labeled \"Submit\" should have an AccessibleLabel property like \"Submit form data\" so screen readers can give users more context. Keyboard Navigation Issues Some app controls may not be accessible using only a keyboard. The Accessibility Checker highlights these controls and suggests enabling keyboard focus. Example: A dropdown menu may need its TabIndex property adjusted so users can navigate it with keyboard shortcuts. Color Contrast Compliance Text and UI elements must meet recommended color contrast ratios for visibility. The Accessibility Checker flags items that don’t meet these standards. Example: Light gray text on a white background may need to be changed to a darker shade to improve readability. Benefits Ensures apps are inclusive and usable by everyone. Helps meet accessibility standards and compliance requirements. Improves overall user experience by making apps easier to navigate and understand. Exam Tips Know that Accessibility Checker focuses on inclusivity and compliance. Understand the three main areas it checks: screen reader support, keyboard navigation, and color contrast. Remember that accessibility is part of building user-friendly and compliant apps in Power Platform. References: Preview, test, and publish an app - Training | Microsoft Learn<img src=\"images/b2-image2.png\" alt=\"Reference diagram\"><img src=\"images/b2-image3.png\" alt=\"Reference diagram\"><img src=\"images/b2-image4.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q104",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "Charlotte wants to trigger a child flow from a Power Automate cloud flow but can't find that option in the actions menu. What's likely causing this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The flow has not been created in a solution"
+      },
+      {
+        "id": "b",
+        "text": "Child flows are only part of Power Automate Desktop"
+      },
+      {
+        "id": "c",
+        "text": "The correct security role has not been allocated"
+      },
+      {
+        "id": "d",
+        "text": "The correct license hasn‘t been applied"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Why Charlotte Cannot Trigger a Child Flow Child flows in Power Automate can only be triggered if both the parent and child flows are created inside a solution. If Charlotte cannot find the option to trigger a child flow, it is likely because the flow exists outside of a solution. What is a Solution in Power Platform A solution is a container used to package, manage, and distribute components such as apps, flows, tables, and more. It helps streamline development and deployment across different environments. Unmanaged Solutions – Used during development; components can be freely edited. Managed Solutions – Used for deployment; components are locked to prevent changes. Moving Existing Apps or Flows into a Solution Existing apps or flows can be imported or manually added into a solution using the Power Platform interface. Why Child Flows Require Solutions Child flows depend on the solution context to be triggered securely and correctly from parent flows. Without being inside a solution, the trigger option will not appear. Exporting Solutions Unmanaged exports – Editable in the new environment. Managed exports – Locked and typically used for production deployment. Solutions and Application Lifecycle Management (ALM) Solutions support version control. They make deployment easier and allow rollback options. Enable working across development, testing, and production environments. Licensing and Security Roles Solutions themselves do not directly affect licensing or security roles. However, some components inside solutions (like Dataverse tables or premium flows) may require specific licenses or roles. Solutions and Power Automate Desktop Solutions apply only to cloud flows. Power Automate Desktop flows are separate and do not support solution packaging. Exam Tips Understand the difference between managed and unmanaged solutions. Know why child flows require solutions. Remember that solutions are key for ALM, deployment, and compliance in Power Platform. References: Solutions in Power Apps - Power Apps | Microsoft Learn"
+  },
+  {
+    "id": "q105",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "True or false: environments can have different roles, security requirements, and target audiences, and each one is created in its own separate location.",
+    "options": [
+      {
+        "id": "a",
+        "text": "TRUE. Environments can have multiple roles."
+      },
+      {
+        "id": "b",
+        "text": "FALSE. Each environment can have only one role associated to it."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Environments Overview Environments in Power Platform act as containers for apps, flows, and data. They provide separate spaces for different purposes such as development, testing, and production. Each environment can have its own security settings, roles, and access controls. Roles and Security Multiple roles can be assigned to users within an environment. Security requirements vary depending on the environment’s purpose. This ensures proper governance and prevents unauthorized access. Connectors Connectors allow makers to connect apps and flows to external applications and APIs. Over 900 connectors are available from Microsoft and third-party providers. While connectors are important, environments are critical for managing apps, data, and security. Key Features of Environments Serve as secure containers for apps and flows. Every flow must be tied to an environment. A default environment is automatically available for every licensed user. Organizations can choose the geographic region where their environment is hosted. Data generated in one region cannot leave that region, ensuring compliance with local regulations. Benefits Helps organizations meet compliance and governance requirements. Improves productivity by providing structured spaces for app development and deployment. Ensures data security and proper lifecycle management. Exam Tips Understand the role of environments in creating and enforcing Data Loss Prevention (DLP) policies. Be prepared for scenario-based questions about environments and DLP.<img src=\"images/b2-image5.jpeg\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q106",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A manufacturing company wants an AI assistant that answers employee questions using company manuals, triggers maintenance requests, and is available inside Microsoft Teams. Which Power Platform service fits best?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Power Apps"
+      },
+      {
+        "id": "b",
+        "text": "Power Pages"
+      },
+      {
+        "id": "c",
+        "text": "Microsoft Copilot Studio"
+      },
+      {
+        "id": "d",
+        "text": "Power Automate"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Explanation Why C is correct:Copilot Studio enables organizations to build AI-powered agents that answer questions, use knowledge sources, perform actions through agent flows, and publish to channels such as Microsoft Teams. Why the others are incorrect: A. Power AppsBuilds business applications but doesn't provide conversational AI. B. Power PagesCreates external websites rather than AI agents. D. Power AutomateAutomates processes but doesn't provide a conversational interface."
+  },
+  {
+    "id": "q107",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "What's the actual point of building apps and using automation to help companies and businesses?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Connect multiple sources"
+      },
+      {
+        "id": "b",
+        "text": "Integrations of multiple apps"
+      },
+      {
+        "id": "c",
+        "text": "Both of them"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Building apps and using automation in Power Platform allows companies to connect data from different sources and integrate multiple applications into a single workflow. This reduces manual effort, improves accuracy, and enables faster decisionmaking. Key benefits include: Efficiency: Routine tasks are automated, freeing employees to focus on highervalue work. Productivity: Apps can be tailored to specific roles, making processes easier and faster. Data accuracy: Automation reduces human error and ensures consistent information. Customer engagement: Apps and flows improve responsiveness and create smoother experiences. Scalability: Solutions grow with the business, handling more data and users as needed. Innovation & cost savings: Companies can experiment with new ideas while reducing operational costs. Exam Tips Expect scenario-based questions on how automation and app development improve business operations. Reference Links: Describe how to build applications with Microsoft Power Apps - Training | Microsoft Learn What is Power Apps? - Power Apps | Microsoft Learn How to use Microsoft Power Apps - Beginner Tutorial - YouTube"
+  },
+  {
+    "id": "q108",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "Your team is discussing the building blocks of Power Automate. Which of these correctly describes one of its components?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Start with an event or trigger"
+      },
+      {
+        "id": "b",
+        "text": "Perform any number of actions"
+      },
+      {
+        "id": "c",
+        "text": "Can have conditional logic"
+      },
+      {
+        "id": "d",
+        "text": "Can trigger other workflows"
+      },
+      {
+        "id": "e",
+        "text": "All of these"
+      }
+    ],
+    "correct": [
+      "e"
+    ],
+    "explanation": "Power Automate Overview Microsoft Flow was rebranded as Power Automate. It is a workflow automation tool that enables businesses to create automated processes and workflows. Power Automate simplifies repetitive tasks, integrates systems, and accelerates operations. Key Features Event or Trigger: Every flow begins with a trigger, such as receiving a new email, creating a SharePoint item, or scheduling an event. Performing Actions: After the trigger, the flow executes actions like sending emails, updating databases, or posting to social media. Conditional Logic: Allows workflows to branch into different paths based on conditions. Triggering Other Workflows: Flows can initiate other flows, enabling advanced automation scenarios. Benefits Enhances productivity by reducing manual work. Improves efficiency with automated processes. Provides end-to-end solutions by integrating multiple systems and applications. Supports decision-making through conditional workflows. Exam Tips Expect scenario-based questions on Power Automate’s capabilities. Focus on understanding triggers, actions, conditional logic, and workflow automation. Remember that Power Automate is central to automating business processes in the Power Platform. Reference Links: Describe building automation with Microsoft Power Automate - Training | Microsoft Learn Describe the business value of Power Automate - Training | Microsoft Learn Recommended Videos: Microsoft Power Automate | Add data to Excel, get data from Excel, Conditions and Send Email | Guide - YouTube"
+  },
+  {
+    "id": "q109",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "Which of these are recognized as different types of triggers?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Instant"
+      },
+      {
+        "id": "b",
+        "text": "Scheduled"
+      },
+      {
+        "id": "c",
+        "text": "Automated"
+      },
+      {
+        "id": "d",
+        "text": "All of these"
+      }
+    ],
+    "correct": [
+      "d"
+    ],
+    "explanation": "Triggers Overview In the Power Platform, a trigger refers to an event or condition that initiates the execution of a workflow or automation process. Triggers are fundamental in services like Power Automate, Power Apps, and Copilot Studio Types of Triggers Instant triggers: Manually activated by a user, such as pressing a button in Power Automate. Scheduled triggers: Run at predefined times or intervals, such as daily reports or hourly data updates. Automated triggers: Initiated by an event, such as a new email arriving or a record being created in Dataverse. Use Cases of Triggers When an email arrives: A flow can trigger when a new email is received in your inbox. When a new item is created in SharePoint: A flow can start when a new item is added to a SharePoint list. When a file is modified in OneDrive: A flow can trigger when a file in OneDrive or SharePoint is updated. When a form is submitted: A trigger can initiate when a user submits a Microsoft Form or a web-based survey. Reference Links: Power Automate Tutorial - Different kinds of process triggers - YouTube Get started with triggers - Power Automate | Microsoft Learn (Choose the right trigger) Exam Tips: Expect questions on trigger types across Power Platform Products. Try to learn by asking the below questions for each topic: What they can do What they cannot do How they will do When they do How to use When to use By using these questions, you can gain a comprehensive understanding of various subjects."
+  },
+  {
+    "id": "q110",
+    "type": "multi",
+    "section": "Power Automate basics",
+    "text": "In Power Automate, actions are core building blocks within flows. Which of these statements correctly describe what actions do and are capable of? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Execute tasks – Actions perform operations such as sending emails, updating records, or creating files after a trigger occurs."
+      },
+      {
+        "id": "b",
+        "text": "B. Connect services – Actions integrate with external services like SharePoint, Outlook, or Dataverse to read, write, and manipulate data."
+      },
+      {
+        "id": "c",
+        "text": "C. Initiate flows – Actions are responsible for starting flows by detecting events such as receiving a message or updating a record."
+      },
+      {
+        "id": "d",
+        "text": "D. Enable conditional logic – Actions can be combined with conditions, loops, and branches to control execution paths within a flow."
+      },
+      {
+        "id": "e",
+        "text": "E. Define orchestration – Actions only determine the overall structure of a flow but do not execute specific tasks."
+      }
+    ],
+    "correct": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "A is correct because actions represent the operational steps that carry out tasks. B is correct since actions allow integration with external connectors and services. D is correct because actions can be nested within conditions, loops, and branches to create complex logic. C is incorrect because triggers, not actions, initiate flows. E is incorrect because orchestration is achieved through the combination of triggers, actions, and conditions, not actions alone."
+  },
+  {
+    "id": "q111",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "How does data protection actually work in Power Apps? Consider: 1) data in transit between user devices and Microsoft's data centers is secured; 2) Microsoft's data centers are encrypted; 3) public endpoints are secured using industry-standard TLS.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1 & 2"
+      },
+      {
+        "id": "b",
+        "text": "2 only"
+      },
+      {
+        "id": "c",
+        "text": "1, 2 & 3"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Data Security in Power Platform Your data is safe when it is being sent between your device and Microsoft's data centres. Microsoft encrypts data both in transit and at rest, ensuring compliance with security standards. What is TLS? TLS stands for Transport Layer Security. It is a cryptographic protocol designed to provide secure communications over a computer network. Why is the Protocol Used? TLS is widely used in applications such as email, instant messaging, and voice-over IP. Its most visible use is in securing HTTPS connections on the web. Use of TLS in Power Platform TLS is used to encrypt data in transit between Power Platform applications and services. It also secures communication between Power Platform and external systems. Advantages of Using TLS Establishes a security-enhanced browser-to-server connection. Ensures data confidentiality and integrity between desktops and data centres. TLS Versions API access in Power Platform is secured using TLS 1.2 or higher. This ensures encrypted communication between endpoints. Exam Tips Expect scenario-based questions on data security, encryption, and TLS protocols in Power Platform. Understand how Microsoft secures data both in transit and at rest. Be familiar with TLS 1.2 or higher as the required standard for API access."
+  },
+  {
+    "id": "q112",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "What's the main purpose of responsive design in Power Apps?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. To improve app performance on desktop devices"
+      },
+      {
+        "id": "b",
+        "text": "B. To allow apps to adapt seamlessly to various screen sizes and devices"
+      },
+      {
+        "id": "c",
+        "text": "C. To enhance the visual appeal of apps on mobile devices only"
+      },
+      {
+        "id": "d",
+        "text": "D. To ensure apps work only on tablets and phones"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Responsive Design in Power Apps What is Responsive Design? Responsive design is the practice of creating applications that automatically adjust their layout, size, and components based on the screen size and device being used. It ensures users have a consistent and functional experience whether they are on a mobile phone, tablet, laptop, or desktop computer. Why It Matters Consistency across devices: The app looks and behaves properly on any screen size. Improved usability: Controls like buttons, forms, and galleries remain accessible and well-aligned. Efficiency: Developers don’t need to build separate versions of the app for different devices. How Power Apps Supports Responsive Design Power Apps uses layout controls such as containers to: Automatically resize and stretch components as screen dimensions change. Align child elements vertically or horizontally. Maintain consistent positioning between controls. Adapt to screen orientation (portrait or landscape). Example Property listing app for real estate agents: On a phone: The app might show one listing per row. On a tablet: It could show two or three listings side by side. On a desktop: It might display a full grid with filters on the side. All of this happens automatically when responsive design principles are applied."
+  },
+  {
+    "id": "q113",
+    "type": "truefalse",
+    "section": "Power BI basics",
+    "text": "True or false: connectors are NOT the bridges that let you send information between your data source and your app or workflow.",
+    "options": [
+      {
+        "id": "a",
+        "text": "TRUE"
+      },
+      {
+        "id": "b",
+        "text": "FALSE"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Connectors Overview Connectors are software components that allow you to connect Power Apps, Power Automate, and Power BI to external data sources and services. They act as bridges between your data and Power Platform apps or workflows, enabling secure and efficient data exchange. Connectors are essential for building apps and automations that integrate with multiple systems. Types of Connectors Standard connectors: Prebuilt integrations with services like Microsoft 365, SharePoint, and SQL Server. Premium connectors: Advanced integrations that require additional licensing. Custom connectors: User-defined connectors for APIs not covered by built-in options. Key Capabilities Microsoft 365 connectors enable integration with Outlook, Excel, SharePoint, and other Microsoft services. Power Automate supports CSV file processing through connectors, enabling data import and export. Use Cases of Connectors Create a Power Automate flow to send a notification to a Slack channel when a new record is created in Dataverse. Build a Power App that allows users to view and update Salesforce data. Create a new task in your to-do list when you receive an Outlook email with a specific subject line. Automatically export data from Dataverse to a SharePoint list on a daily basis. Reference Links: Power Platform connectors overview | Microsoft Learn"
+  },
+  {
+    "id": "q114",
+    "type": "truefalse",
+    "section": "Power Automate basics",
+    "text": "Scenario: as a sales rep, you want to automatically send a follow-up email to any customer who hasn't responded to your first email within 3 days. True or false: Power Automate can build this workflow for you.",
+    "options": [
+      {
+        "id": "a",
+        "text": "TRUE"
+      },
+      {
+        "id": "b",
+        "text": "FALSE"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Power Automate Overview Power Automate is a low-code automation platform used to create workflows that connect to a variety of systems and applications. It can automate both simple tasks (like sending emails or copying files) and complex processes (such as approving invoices or processing orders). It is a valuable tool for businesses of all sizes aiming to improve efficiency and productivity. Key Features Drag-and-drop interface that makes it easy to connect actions and triggers. Library of pre-built actions that can be used to automate common tasks. Built-in debugger to troubleshoot automation workflows. Use Cases Sending emails: Automate email notifications based on specific criteria, such as when a new lead is created or a task is completed. Copying files: Copy files between locations or create new files based on templates. Approving invoices: Automate invoice approvals based on conditions like amount or vendor. Processing orders: Automatically update inventory levels, send shipping notifications, and generate invoices. Benefits Improves efficiency by reducing manual work. Enhances productivity with streamlined workflows. Provides flexibility to automate a wide variety of tasks. Supports users with limited technical experience through its intuitive interface. Reference Links: Official Microsoft Power Automate documentation - Power Automate | Microsoft Learn Recommended Youtube Video Power Automate Tutorial for Beginners - YouTube Microsoft Power Platform Fundamentals in 15 Minutes - YouTube"
+  },
+  {
+    "id": "q115",
+    "type": "single",
+    "section": "Admin & security",
+    "text": "Which of these act as guardrails that help stop users from unintentionally exposing organizational data?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dataverse"
+      },
+      {
+        "id": "b",
+        "text": "Connectors"
+      },
+      {
+        "id": "c",
+        "text": "DLP"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Data Loss Prevention (DLP) Policies in Power Platform What is DLP? Data Loss Prevention (DLP) policies act as guardrails to prevent users from unintentionally exposing organizational data. Administrators define which connectors are allowed and how data can be shared. These policies enforce security rules to prevent unauthorized data exposure. Scope of DLP Policies Tenant-level policies: Applied globally across the entire organization. Environment-level policies: Applied to specific environments for more granular control. Simple Use Cases of DLP Restrict data sharing with unauthorized external services. Identify and classify sensitive data. Prevent users from accessing sensitive data outside of business hours. Prevent users from exporting sensitive data to external devices. Monitor and audit user activity. Connector Classification Business Data Only: Allowed for business use. No Business Data Allowed: Restricted for non-sensitive use. Blocked: Completely restricted. Benefits of DLP Reduces the risk of data breaches by controlling how information is accessed and shared. Protects against insider threats by preventing unauthorized access or theft of sensitive data. Prevents data-related incidents caused by insiders through classification and monitoring. Detects unintentional or accidental actions that may cause data loss or leaks. Helps organizations comply with regulations such as the Data Protection Act (DP Bill) and GDPR by identifying sensitive data, encrypting it, and monitoring user activity. Recommended Youtube Links: Power Platform DLP Policies Explained in 10 Minutes - YouTube Exam Tips: The fundamentals are the focus of PL900. Expect scenario-based questions on DLP policies, connector classifications, and security enforcement. Understanding how DLP policies protect data will help you answer confidently."
+  },
+  {
+    "id": "q116",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "A company wants a new employee onboarding app. A business user just describes what's needed in plain language, and the platform generates the starting data model and app. Which capability is this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "AI-powered app creation"
+      },
+      {
+        "id": "b",
+        "text": "Solution Checker"
+      },
+      {
+        "id": "c",
+        "text": "Power Fx"
+      },
+      {
+        "id": "d",
+        "text": "Desktop flow recording"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Explanation Why A is correct:Power Apps can use AI to generate an application, including its initial data structure, from a natural language description. Why the others are incorrect: B. Solution Checker analyzes solutions; it doesn't build apps. C. Power Fx is the formula language, not the AI authoring experience. D. Desktop recording captures desktop actions for automation."
+  },
+  {
+    "id": "q117",
+    "type": "single",
+    "section": "General Power Platform",
+    "text": "An HR department wants an AI agent that can answer questions using employee policies stored in SharePoint and other internal documents. Which capability should be set up first?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Topics"
+      },
+      {
+        "id": "b",
+        "text": "B. Knowledge sources"
+      },
+      {
+        "id": "c",
+        "text": "C. Channels"
+      },
+      {
+        "id": "d",
+        "text": "D. Power Fx"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Explanation Why B is correct:Knowledge sources allow the agent to retrieve information from trusted documents and websites. Why the others are incorrect: A.Topics define conversations but don't provide information. C.Channels determine where the agent is published. D.Power Fx isn't used to retrieve knowledge."
+  },
+  {
+    "id": "q118",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "A company's agent successfully answers policy questions but can't reset passwords or create support tickets. What capability is it missing?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Knowledge Sources"
+      },
+      {
+        "id": "b",
+        "text": "B. Channels"
+      },
+      {
+        "id": "c",
+        "text": "C. Tools"
+      },
+      {
+        "id": "d",
+        "text": "D. Topics"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "A. Knowledge Sources : Wrong Knowledge Sources are used for Q&A. They allow the agent to pull information from documents, FAQs, or databases. Since the agent already answers policy questions correctly, Knowledge Sources are working fine. The missing piece is not here. B. Channels : Wrong Channels define where the agent is accessible (Teams, Website, Outlook, etc.). They control deployment and publishing, not whether the agent can perform actions. The agent’s inability to reset passwords or create tickets is unrelated to Channels. C. Tools : Correct Tools are what enable an agent to perform actions. Examples: Resetting a password via an integrated workflow. Creating a support ticket in ServiceNow. Sending an email notification. Since the agent cannot perform these tasks, it is missing the Tools capability. D. Topics : Wrong Topics handle conversation flow and intent recognition. They guide the agent to the right path based on user input. The agent is already recognizing intent (answering policy questions correctly), so Topics are not the missing capability."
+  },
+  {
+    "id": "q119",
+    "type": "single",
+    "section": "Power BI basics",
+    "text": "Which of these is a cloud-scale database used to store data for business applications like Power Automate and Power Apps?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dataverse"
+      },
+      {
+        "id": "b",
+        "text": "MySql"
+      },
+      {
+        "id": "c",
+        "text": "SQL database"
+      },
+      {
+        "id": "d",
+        "text": "Power Platform"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Microsoft Dataverse Overview Dataverse is a cloud-scale database used to store data for business applications such as Power Automate and Power Apps. It acts as an abstraction layer on top of Azure cloud data management services, simplifying the process of building business applications. Dataverse provides secure, scalable, and structured data storage tailored for Power Platform solutions. Other Options Explained Power Platform: A suite of low-code and no-code tools (Power Apps, Power Automate, Power BI, and Copilot Studio) designed to help organizations create custom business solutions, automate processes, analyze data, and build applications without extensive coding expertise. MySQL and SQL Database: Relational databases that store and organize data using the relational model. SQL (Structured Query Language) is used to manage and query data in these systems. While powerful, they are not the preferred native storage solution for Power Platform applications. Exam Tips Expect scenario-based questions on Dataverse, focusing on data modeling, security, and integration with Power Platform tools. Be prepared to distinguish Dataverse from other databases like SQL or MySQL. Understand that Dataverse is the preferred data storage solution for Power Platform applications. Pay attention to how Dataverse supports features such as role-based security, integration with Microsoft 365, and seamless use in Power Apps and Power Automate. References: What is Microsoft Dataverse? - Power Apps | Microsoft Learn Data storage and governance in Power Platform - Power Platform | Microsoft Learn Why choose Microsoft Dataverse? - Power Apps | Microsoft Learn Explore Microsoft Dataverse"
+  },
+  {
+    "id": "q120",
+    "type": "multi",
+    "section": "Power BI basics",
+    "text": "What are the three key things Power Platform helps you do with data to drive business value? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Analyse"
+      },
+      {
+        "id": "b",
+        "text": "Advance"
+      },
+      {
+        "id": "c",
+        "text": "Automate"
+      },
+      {
+        "id": "d",
+        "text": "Act"
+      }
+    ],
+    "correct": [
+      "a",
+      "c",
+      "d"
+    ],
+    "explanation": "Microsoft Power Platform Overview Core Capabilities Analyse: Gain insights from data using tools like Power BI. Act: Drive intelligent business processes through apps built in Power Apps. Automate: Streamline and automate business processes using Power Automate. Business Value Power Platform helps organizations make better decisions, improve efficiency, and reduce costs. It empowers users with low-code/no-code tools to create solutions without extensive technical expertise."
+  },
+  {
+    "id": "q121",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "Adeline wants to share an app with an external guest user who isn't part of her team or Microsoft 365 tenant. Is that actually possible?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Yes, but only if it does not contain premium connectors"
+      },
+      {
+        "id": "b",
+        "text": "Yes, the external user would need to be added as a Guest to Entra ID (formerly Azure Active Directory) and a license for PowerApps granted"
+      },
+      {
+        "id": "c",
+        "text": "No, canvas apps cannot be shared externally."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Sharing Canvas Apps with External Users Requirements The external user must be added as a Guest in the organization’s Microsoft Entra ID (formerly Azure Active Directory). The external user must be assigned a Power Apps license (either provided by the organization or through their own license). How It Works Once added to Entra ID as a guest and licensed, the external user can access the shared app just like internal users. Permissions and licensing must be properly configured to ensure secure access. This process enables organizations to collaborate with external partners, vendors, or clients while maintaining security. Key Points Guest access is managed through Microsoft Entra ID, ensuring secure identity and access management. Licensing is mandatory without a Power Apps license, the guest cannot use the app. External sharing is more restrictive than internal sharing, requiring both guest setup and licensing. Exam Tips Expect scenario-based questions about sharing apps with external users."
+  },
+  {
+    "id": "q122",
+    "type": "single",
+    "section": "Power BI basics",
+    "text": "Which of these is used to shape your data — letting you discover, model, validate, and report on it so it looks the way you want no matter how it's used?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Dataverse"
+      },
+      {
+        "id": "b",
+        "text": "Storage"
+      },
+      {
+        "id": "c",
+        "text": "Logic"
+      },
+      {
+        "id": "d",
+        "text": "Security"
+      },
+      {
+        "id": "e",
+        "text": "All of these"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Microsoft Dataverse Overview Dataverse is the correct answer when asked about the preferred data storage solution for Power Platform applications. It is a cloud-scale database that allows you to discover, model, validate, and report on data. Features such as role-based security and business rules ensure data is safe and consistent, no matter how it is accessed. Dataverse provides control so that data looks and behaves the way you want across different applications. Key Capabilities Centralized data storage: A unified, cloud-based repository to store and manage data efficiently. Security and access control: Role-based security ensures appropriate access while protecting sensitive data. Integration with Power Platform: Works seamlessly with Power Apps, Power Automate, Power BI, and Copilot Studio. Data validation and business rules: Enforce business logic with validation rules, calculated fields, and workflows. Scalability and performance: Supports large-scale data operations with high-speed processing and automation. Model-driven applications: Enables creation of structured, model-driven apps. Common Data Model compatibility: Uses standardized schemas for consistency and interoperability. Integration with external data sources: Supports connections to external databases, APIs, and connectors. AI and automation capabilities: Leverages AI-powered insights and automation tools to enhance productivity. Exam Tips Expect scenario-based questions on Dataverse, especially around data modeling, security, and integration. Be prepared to explain why Dataverse is the preferred storage solution compared to other databases. Understand how Dataverse supports role-based security, business rules, and integration with Power Platform tools. Focus on its compatibility with the Common Data Model and its ability to scale for enterprise-level applications.<img src=\"images/b2-image6.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q123",
+    "type": "truefalse",
+    "section": "Dataverse & connectors",
+    "text": "True or false: a table is a logical set of rows used to store data, and each row contains multiple columns holding individual pieces of information about that row.",
+    "options": [
+      {
+        "id": "a",
+        "text": "TRUE"
+      },
+      {
+        "id": "b",
+        "text": "FALSE"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "You need to have a fundamental knowledge of the relational database. A Dataverse database is a single instance of Microsoft Dataverse that stores data in a set of standard and custom data structures called tables. What is a Table? Tables store structured data: In Dataverse (formerly CDS), tables hold standard and custom data for apps and workflows. What are Rows? Rows = Records: Each row represents an individual data entry, defining a unique instance of an entity. What are Columns? Columns = Fields: Columns store specific attributes about the record, such as name, date, or status."
+  },
+  {
+    "id": "q124",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A customer service team wants to get an agent live in days rather than months. What's the main value Copilot Studio brings here?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Low-code development that accelerates agent creation"
+      },
+      {
+        "id": "b",
+        "text": "B. Automatic replacement of APIs"
+      },
+      {
+        "id": "c",
+        "text": "C. Elimination of governance requirements"
+      },
+      {
+        "id": "d",
+        "text": "D. Automatic deployment to all channels"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "A. Low-code development that accelerates agent creation - Correct Copilot Studio provides a low-code/no-code environment. This means business users and citizen developers can build agents quickly without needing advanced coding skills. Instead of months of traditional development, agents can be created and deployed in days. This is the primary value of Copilot Studio in this scenario. B. Automatic replacement of APIs - Wrong Copilot Studio integrates with APIs and external systems through Tools or MCP Servers. It does not automatically replace APIs - developers still configure integrations. This does not explain the speed of agent creation. C. Elimination of governance requirements - Wrong Governance is still required in Copilot Studio (security roles, Dataverse permissions, compliance). Copilot Studio does not eliminate governance; it works within Microsoft’s governance framework. D. Automatic deployment to all channels - Wrong Agents can be published to multiple Channels (Teams, Website, Outlook, etc.), but deployment is not automatic to all channels. You choose where to publish. This is a feature, but not the primary value for rapid deployment."
+  },
+  {
+    "id": "q125",
+    "type": "single",
+    "section": "Power BI basics",
+    "text": "How many Microsoft Dataverse databases can a single environment provision for its own use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "1"
+      },
+      {
+        "id": "b",
+        "text": "2"
+      },
+      {
+        "id": "c",
+        "text": "Many"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Environments are used to store, manage, and share your organization's business data, apps, and flows in Microsoft Power Platform. Each environment allows you to provision ONE Microsoft Dataverse database for use within that environment. This database serves as a central repository for storing and managing data that can be accessed by various applications and services within the Power Platform ecosystem, including Power Apps, Power Automate, and Power BI. The Dataverse database enables you to create tables, define relationships, and establish business logic to support your applications and processes. Exam Tips: This type of question is rarely asked on the PL-900 exam, but I included it because I wanted to provide more value and help you understand each topic comprehensively. References: Environments overview - Power Platform | Microsoft Learn Types of Environments - Power Platform | Microsoft Learn"
+  },
+  {
+    "id": "q126",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A business user types this prompt: \"Create an app to track employee equipment requests and approvals.\" What's the main benefit of generative AI in a scenario like this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Automatically creating an initial app and data model from natural language"
+      },
+      {
+        "id": "b",
+        "text": "B. Automatically publishing the app to production"
+      },
+      {
+        "id": "c",
+        "text": "C. Eliminating the need for testing"
+      },
+      {
+        "id": "d",
+        "text": "D. Replacing Dataverse"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "A business user enters the prompt: “Create an app to track employee equipment requests and approvals.” The user is not writing code or manually designing tables. The expectation is that generative AI will interpret the natural language and produce a working starting point. A. Automatically creating an initial app and data model from natural language - Correct Generative AI in the Power Platform allows users to describe requirements in plain language. Copilot then generates: Dataverse tables with fields like “Employee Name,” “Equipment Requested,” “Approval Status.” A canvas app connected to those tables. This is the primary benefit: rapid prototyping without coding. B. Automatically publishing the app to production - Wrong Copilot does not bypass governance or deployment steps. Publishing still requires manual review and approval. C. Eliminating the need for testing - Wrong Testing is always required to validate functionality, security, and compliance. Generative AI accelerates creation but does not remove testing responsibilities. D. Replacing Dataverse - Wrong Copilot relies on Dataverse to store and structure data. It does not replace Dataverse; instead, it automatically generates tables within it."
+  },
+  {
+    "id": "q127",
+    "type": "truefalse",
+    "section": "Admin & security",
+    "text": "True or false: you can only create one environment per account for managing solution development and data storage.",
+    "options": [
+      {
+        "id": "a",
+        "text": "TRUE"
+      },
+      {
+        "id": "b",
+        "text": "FALSE"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Environments in Power Platform What are Environments An environment is a container that holds resources such as apps, flows, connections, and Dataverse databases. Each environment has its own unique set of resources and configuration settings. You can create more than one environment per account to manage solution development and data storage. Why Multiple Environments Matter Flexibility: Organizations can create distinct environments for development, testing, production, and different business units. Isolation: Development and testing environments prevent accidental disruption to production users. Security: Sensitive data such as customer or financial information can be stored in separate environments to protect against unauthorized access. Regional setup: Environments can be created based on geographical location (e.g., Europe, Asia) to meet compliance and performance needs. Project-specific: Separate environments can be created for different projects, departments, or regions. Environment Limits Azure subscription impacts environment creation limits. Free subscriptions may restrict environment creation. Paid subscriptions allow for more environments. Region-based limits apply. Example: A free subscription may allow one environment in the United States region, while a paid subscription may allow up to 20 environments in the same region. Dataverse in Environments Each environment can have zero or only one instance of Microsoft Dataverse. Dataverse provides structured data storage and is tightly integrated with Power Platform apps and flows. Exam Tips Expect scenario-based questions about when to use multiple environments.<img src=\"images/b2-image7.png\" alt=\"Reference diagram\"><img src=\"images/b2-image8.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q128",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A company wants employees to use an agent inside Microsoft Teams, and customers to use that same agent on its website. Which statement about this is true?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. The same agent can be published to multiple channels."
+      },
+      {
+        "id": "b",
+        "text": "B. A separate agent must be created for each channel."
+      },
+      {
+        "id": "c",
+        "text": "C. The agent must use Dataverse to support multiple channels."
+      },
+      {
+        "id": "d",
+        "text": "D. Topics determine where the agent is published."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "The company wants employees to use the agent inside Microsoft Teams. Customers should use the same agent on the company’s website. The question is about whether one agent can serve both audiences or if separate agents are required. A. The same agent can be published to multiple channels - Correct In Copilot Studio, agents are designed to be channel-agnostic. Once built, the same agent can be published to multiple channels such as Teams, Websites, Outlook, or Facebook. This means the company does not need to duplicate effort - one agent can serve both employees and customers. B. A separate agent must be created for each channel - Wrong This would be inefficient and is not required. Copilot Studio allows a single agent to be reused across multiple channels. C. The agent must use Dataverse to support multiple channels - Wrong Dataverse is used for data storage and management, not for channel publishing. While Dataverse can enhance the agent’s capabilities, it is not a requirement for multi-channel deployment. D. Topics determine where the agent is published - Wrong Topics handle conversation flow and intent recognition. They do not control publishing. Channels determine where the agent is accessible."
+  },
+  {
+    "id": "q129",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "Which section of the Power Platform admin center lists every instance of Microsoft Dataverse?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Environment"
+      },
+      {
+        "id": "b",
+        "text": "Data Policies"
+      },
+      {
+        "id": "c",
+        "text": "Data Integration"
+      },
+      {
+        "id": "d",
+        "text": "Analystics"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Environments in Power Platform Admin Center Environments Section Lists all instances of Microsoft Dataverse across your tenant. Provides a unified view of environments regardless of type (development, test, production). From here, you can: View environment details such as name, type, status, and region. Create and manage environments. Access and manage resources like databases, tables, and flows. View and manage environment-level security. Export and import environments. Other Sections in Admin Center Data policies: Used to create and manage governance, security, and compliance policies for your tenant. Controls how data is accessed, shared, and protected. Data integration: Connects Dataverse to external sources (on-premises or cloud) for unified data views, improving analysis and reporting. Analytics: Provides insights into Power Platform usage, helping identify trends, troubleshoot issues, and optimize services. Key Takeaways Each environment can have zero or one Microsoft Dataverse database, which provides storage for apps and flows. Resources can be moved between environments. Users or groups assigned to environment roles do not automatically gain access to the environment’s Dataverse database; access must be granted separately. A single default environment is automatically created by Power Apps for each tenant and shared by all users.   The below picture shows how the Tenant and Environment look in the Power Platform.   Tenant vs Environment Tenant Highest-level organizational structure in Power Platform. Encompasses the entire organization’s usage of Power Platform services. Contains multiple environments serving different purposes or teams. Governed by tenant-level policies (security, compliance, DLP). Administered by global or IT administrators. Tenant-level actions impact all environments and apps. Environment A container within a tenant for app and data resources. Isolates apps, flows, and data for specific use cases, teams, or projects. Each environment has its own policies, settings, and permissions. Administered by environment admins. Environment-level actions only impact resources and users within that environment. Offers customization tailored to the needs of specific projects or teams.   Exam Tips Expect scenario-based questions distinguishing tenant-level vs environment-level responsibilities.<img src=\"images/b2-image9.png\" alt=\"Reference diagram\"><img src=\"images/b2-image10.png\" alt=\"Reference diagram\"><img src=\"images/b2-image11.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q130",
+    "type": "multi",
+    "section": "Power Apps basics",
+    "text": "A company wants to use generative AI to speed up solution development. Which THREE statements about this are true?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. AI can generate an initial app from natural language."
+      },
+      {
+        "id": "b",
+        "text": "B. AI can generate Dataverse tables and relationships."
+      },
+      {
+        "id": "c",
+        "text": "C. AI-generated solutions should be reviewed before deployment."
+      },
+      {
+        "id": "d",
+        "text": "D. AI-generated apps are automatically production ready."
+      },
+      {
+        "id": "e",
+        "text": "E. AI eliminates the need for testing."
+      }
+    ],
+    "correct": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "A. AI can generate an initial app from natural language Generative AI tools in platforms like Microsoft Power Apps can take a natural language description (e.g., “I need an app to track employee leave requests”) and automatically create a basic app structure. This accelerates solution development by reducing the need for manual setup and giving developers a starting point they can refine further. It’s not a finished product but a prototype or draft app that saves time. B. AI can generate Dataverse tables and relationships AI can interpret requirements and automatically create Dataverse tables, including columns, data types, and relationships between tables. For example, if you describe “an app to manage customers and orders,” AI can generate Customer and Order tables with a relationship between them. This reduces repetitive work and ensures the data model aligns with the app’s purpose. C. AI-generated solutions should be reviewed before deployment AI-generated apps and data models are not guaranteed to be perfect. They may contain errors, inefficiencies, or security gaps. Best practice is to review, test, and validate the solution before moving it into production. Human oversight ensures compliance with organizational standards, data governance, and performance expectations. Why D and E are incorrect D. AI-generated apps are automatically production ready → False. AI outputs are drafts or prototypes, not fully validated production solutions. E. AI eliminates the need for testing → False. Testing is still essential to ensure functionality, security, and performance. AI accelerates development but does not replace quality assurance."
+  },
+  {
+    "id": "q131",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "Which of these is used to build apps that let you actually take action on your data?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Power Automate"
+      },
+      {
+        "id": "b",
+        "text": "Power Apps"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Components of Microsoft Power Platform The Microsoft Power Platform is a suite of tools designed to empower organizations to analyze data, build solutions, automate processes, and create intelligent agents without requiring extensive coding expertise. Core Components Power Apps Build custom applications (canvas apps and model-driven apps). Connect to cloud-based and on-premises data sources using connectors. Enable users to take action on data across devices. Power Automate Automate workflows and repetitive tasks. Trigger actions based on events or conditions. Integrates with hundreds of services and applications. Copilot Studio Create AI-powered conversational agents Automate customer service and internal support scenarios. Integrates with apps and data to provide intelligent responses. Power Pages Build secure, low-code websites. Share data externally with customers, partners, or vendors. Integrates with Dataverse for structured data management. Dataverse Cloud-scale database for storing and managing business data. Provides role-based security, business rules, and integration with Power Platform apps. Supports standardized schemas via the Common Data Model. Connectors Provide integration with hundreds of services (Microsoft 365, Dynamics 365, Azure, third-party apps). Enable apps and flows to interact with external data sources. Data Connectors and Gateways Allow secure access to on-premises data sources. Ensure hybrid connectivity between cloud and local systems. Check the PL900 Study guide for latest topics to be very thorough:   References: Power Apps What is Power Apps? - Power Apps | Microsoft Learn Recommended Youtube Video: How to use Microsoft Power Apps - Beginner Tutorial - YouTube<img src=\"images/b2-image12.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q132",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A retail company wants to quickly test an idea for a store-inventory app. A business analyst describes the requirements in plain language, and Copilot produces a draft app with screens and a basic data model. What does this illustrate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Copilot eliminates the need for testing"
+      },
+      {
+        "id": "b",
+        "text": "B. Copilot can generate an initial app from natural language"
+      },
+      {
+        "id": "c",
+        "text": "C. Copilot automatically deploys apps to production"
+      },
+      {
+        "id": "d",
+        "text": "D. Copilot replaces Dataverse entirely"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Copilot can interpret natural language descriptions and generate a draft app. This accelerates prototyping but does not bypass testing or deployment steps. The app is a starting point, not a production-ready solution. Resources"
+  },
+  {
+    "id": "q133",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "What's a key value that Power Fx brings as a low-code solution?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. It requires extensive knowledge of traditional programming languages"
+      },
+      {
+        "id": "b",
+        "text": "B. It simplifies app development by using Excel-like formulas"
+      },
+      {
+        "id": "c",
+        "text": "C. It is only compatible with desktop applications"
+      },
+      {
+        "id": "d",
+        "text": "D. It eliminates the need for any user input during app creation"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Power FX in Power Platform Correct Answer B. It simplifies app development by using Excel-like formulas Explanation Power FX is Microsoft’s low-code programming language designed for the Power Platform. Its strength lies in simplicity and accessibility: Uses formulas similar to Microsoft Excel, which many users already know. Enables non-developers (citizen developers) to build apps without learning complex programming languages. Supports rapid development and customization of business applications, especially within Power Apps. Why Other Options Are Incorrect A. It requires extensive knowledge of traditional programming languages Incorrect because Power FX avoids traditional coding. It is intentionally low-code and approachable. C. It is only compatible with desktop applications Incorrect because Power FX is used in cloud-based tools like Power Apps, which run on web, mobile, and desktop platforms. D. It eliminates the need for any user input during app creation Incorrect because user input is still required to define app behavior, data connections, and interface design. Power FX simplifies but does not fully automate app creation. Exam Tips Expect scenario-based questions about how Power FX simplifies app development."
+  },
+  {
+    "id": "q134",
+    "type": "truefalse",
+    "section": "Power Apps basics",
+    "text": "True or false: designing and building a business app from a blank page in Power Apps, without writing code in a traditional programming language, is what's called a Canvas App.",
+    "options": [
+      {
+        "id": "a",
+        "text": "TRUE"
+      },
+      {
+        "id": "b",
+        "text": "FALSE"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Canvas Apps in Power Apps Definition Canvas apps allow you to design and build business applications from a blank canvas in Microsoft Power Apps. They do not require traditional programming languages. The app is designed by dragging and dropping elements onto the canvas, giving complete control over the layout. Key Characteristics Drag-and-drop interface makes them easier for non-technical users to create. Highly flexible and customizable to meet specific business needs. Not based on a pre-defined data model, which can make maintenance and troubleshooting more complex. Comparison with Model-driven Apps Canvas Apps: Flexible, user-driven design, ideal for custom layouts and specific scenarios. Model-driven Apps: Built on a structured data model, easier to maintain and scale, but require knowledge of data modeling. Example Scenarios Sales team: Use a canvas app to create a lead management app for tracking leads, managing opportunities, and closing deals. Marketing team: Use a model-driven app to build a CRM solution that manages customer data, sales pipelines, and marketing communications. Use Cases of Canvas Apps Project dashboards: Display key metrics, timelines, milestones, and resource allocation. Task management: Track and update tasks, priorities, and completion dates. Collaboration and communication: Enable discussion boards, chat, and notifications. Resource management: Assign team members based on availability and skills. Time tracking: Log hours spent on tasks for billing and reporting. Expense tracking: Record and submit project-related expenses. Risk and issue management: Log risks, assign owners, and track mitigation. Document repository: Store and organize contracts, deliverables, and project files. Approval workflows: Streamline approvals for changes or budgets. Project status reporting: Generate real-time dashboards and reports. Vendor and supplier collaboration: Coordinate procurement and delivery schedules. Feedback and surveys: Collect input from stakeholders and clients for continuous improvement. Exam Tips Expect scenario-based questions distinguishing canvas apps from model-driven apps.<img src=\"images/b2-image13.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q135",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "An IT team uses Copilot to generate an expense-reporting app, then notices missing validation rules and inconsistent naming before deployment. What should they do next?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Deploy immediately since Copilot apps are production-ready"
+      },
+      {
+        "id": "b",
+        "text": "B. Review and customize the AI-generated app before deployment"
+      },
+      {
+        "id": "c",
+        "text": "C. Delete the app and start over manually"
+      },
+      {
+        "id": "d",
+        "text": "D. Skip testing because Copilot ensures accuracy"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Copilot accelerates development but does not guarantee production readiness. Human oversight is required to ensure compliance, governance, and quality standards. Testing and customization are mandatory steps before deployment. Resources"
+  },
+  {
+    "id": "q136",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A company building on Power Platform needs a relational data store with security, governance, and tight integration with Power Platform services. Which data platform fits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Microsoft Dataverse"
+      },
+      {
+        "id": "b",
+        "text": "B. Microsoft Excel"
+      },
+      {
+        "id": "c",
+        "text": "C. SharePoint List"
+      },
+      {
+        "id": "d",
+        "text": "D. Azure SQL"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Microsoft Dataverse is the native data platform for Microsoft Power Platform and provides relational data storage, built-in security, compliance, business logic capabilities, and seamless integration with Power Apps, Power Automate, and Copilot Studio."
+  },
+  {
+    "id": "q137",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "What do you call an app that's built directly from data stored in Dataverse?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Canvas App"
+      },
+      {
+        "id": "b",
+        "text": "Model Driven App"
+      },
+      {
+        "id": "c",
+        "text": "Power Pages"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Model-driven Apps – Structured Apps Definition Model-driven apps are structured applications in Power Apps built using a component-focused approach. They rely on data models and business processes rather than free-form design. Unlike canvas apps, where the designer controls the layout, model-driven apps use predefined layouts determined by the components added. Dataverse (formerly Common Data Service) serves as the underlying data storage for model-driven apps. Exam Tips Expect scenario-based questions comparing canvas apps vs. model-driven apps.<img src=\"images/b2-image14.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q138",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A company building a customer service agent in Copilot Studio wants the conversation to restart if the agent fails to understand the user after several tries. Which capability handles that?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Knowledge Sources"
+      },
+      {
+        "id": "b",
+        "text": "B. Fallback or Escalation system topic"
+      },
+      {
+        "id": "c",
+        "text": "C. Generative Answers"
+      },
+      {
+        "id": "d",
+        "text": "D. Channels"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Copilot Studio includes system topics that handle specific situations, such as greetings, escalation, and unrecognized user input. The fallback or escalation topic can be configured to: Ask the user to rephrase the question. Redirect the user to another topic. Escalate to a human agent. Restart the conversation flow. This helps improve the user experience when the agent cannot determine the user's intent. Why the other options are incorrect A. Knowledge Sources Knowledge Sources provide information that the agent can use to answer questions. They do not control what happens when the user's input is not understood. C. Generative Answers Generative Answers help the agent answer questions from websites and documents. They do not manage conversation restart behavior. D. Channels Channels determine where the agent is published, such as Microsoft Teams or a website. They do not control conversation flow. Resources"
+  },
+  {
+    "id": "q139",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "How can data sources actually be used together with Power Apps canvas apps?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Power Apps can only use its internal data sources."
+      },
+      {
+        "id": "b",
+        "text": "Power Apps uses only external data sources and doesn't have an internal data source."
+      },
+      {
+        "id": "c",
+        "text": "Power Apps can use multiple internal and external data sources in the same app."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Multiple Data Sources in Power Apps Key Points to Remember Power Apps allows you to build comprehensive and dynamic apps that pull data from multiple sources. Supported sources include cloud services, databases, SharePoint, Excel, APIs, and more. This flexibility enhances app functionality by enabling interaction with diverse datasets. Power Apps supports over 300 prebuilt connectors and also allows you to build custom connectors if needed. Connections can be made to both cloud-based and on-premises data sources. How to Access Multiple Data Sources Open the Data Sources pane in the Power Apps Designer. Create a connection to each required data source. Once connected, you can use data from those sources directly in your app. Advantages of Using Multiple Data Sources Combine data: Merge information from different systems (e.g., CRM + database) into a single view. Enrich data: Add context by combining sources (e.g., social media + CRM for deeper customer insights). Automate tasks: Streamline processes by leveraging multiple sources (e.g., CRM + database for automated marketing emails). Exam Tips Expect scenario-based questions on data sources, connectors, and integration strategies."
+  },
+  {
+    "id": "q140",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "In Power Apps, if a team member needs to view and use an app but must not be able to change it, which permission level should you give them?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Co-Owner"
+      },
+      {
+        "id": "b",
+        "text": "Users"
+      },
+      {
+        "id": "c",
+        "text": "Owner"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "The correct answer is Users. Users must be explicitly assigned the 'User' permission in Power Apps; it is not automatically granted. These roles are different from those assigned at the environmental levels. (Environment Admin & Environment Maker role). Let's explore the capabilities and use cases of the Owner, Co-owner, and User roles in the Power Platform: Owner: Capabilities: Owners have full control over the resources within an environment, including apps, data, solutions, and settings. They can create, modify, and delete apps, data tables, connectors, and solutions. Owners can manage user access, sharing, and permissions for all resources. They have the authority to manage and configure environment settings, including security and data sources. Use Case: Owners are typically administrators or technical leads responsible for the overall management of projects or teams within an environment. They create and oversee the setup of environments, manage permissions, and ensure the proper functioning of apps and data. Co-owner: Capabilities: Co-owners share many of the same capabilities as Owners, such as creating, editing, and sharing apps and solutions. However, they cannot delete the environment itself or change its owner. Use Case: Co-owners are individuals who collaborate closely with Owners, assisting in the development and management of apps, solutions, and data tables. They play a key role in app development and maintenance without having the authority to make environment-level changes. User: Capabilities: Users with the User role can view and use the apps that are shared with them. They can interact with the app's functionality, enter data, and access information, but they cannot modify the app itself. Users can access and interact with apps but cannot modify configurations, solutions, or environments. Use Case: Users include employees, customers, partners, or stakeholders who need to access and utilize apps for specific tasks or information retrieval. This role ensures that those who require access to apps can use them without the risk of unintended changes. Summary: Owner: Full control over all resources, including creation, modification, and settings. Responsible for environment management. Co-owner: Similar capabilities to Owners, except cannot delete the environment or change its owner. Collaborates in app development and management. User: Limited to using shared apps, interacting with functionality, and accessing information without altering the app's design. Assigning roles appropriately ensures a well-organized and secure environment within the Power Platform, allowing users to collaborate effectively while maintaining control over data and app development.   Exam Tips: Expect questions distinguishing between Owner, Co-Owner, and User roles. Understanding how permissions are assigned in Power Apps will help you answer confidently.<img src=\"images/b2-image15.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q141",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "Your sales team badly needs a mobile app that shows rows from a SharePoint list, where each record needs to display several pieces of information at once. Which Power Apps tool would you reach for to build this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Create a gallery to display the sales rows."
+      },
+      {
+        "id": "b",
+        "text": "Create an input control to display the sales rows."
+      },
+      {
+        "id": "c",
+        "text": "Create a form to display the sales rows"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Gallery Control in Power Apps Correct Answer Create a gallery to display the sales rows. Explanation The Gallery control is designed to display tables of data from a data source such as SharePoint, Excel, or Dataverse. It provides a dynamic list or grid-like view of records, allowing you to show multiple pieces of information about each row. Galleries are highly customizable: you can include text, images, numbers, and other fields. For editing individual records, a Form control can be used alongside the Gallery. Features of Gallery Control Dynamic Data Display: Automatically shows records from a connected data source. Customizable Layout: Arrange fields, images, buttons, and controls within each item. Data Binding: Connects directly to SharePoint, Excel, Dataverse, or other sources. Multiple Data Fields: Display comprehensive information for each record. Interaction: Configure actions when users click or tap on items. Scrolling: Suitable for large datasets, allowing users to scroll through records. Sorting and Filtering: Implement options to refine and search records dynamically. Use Cases of Gallery Control Displaying Data Lists: Contacts, products, tasks, or records from databases. Detail Views: Navigate to detailed screens when an item is selected. Photo Albums and Image Galleries: Scrollable image collections with detail views. Newsfeeds and Updates: Chronological lists of posts or activity logs. Task Lists and Checklists: Track tasks and mark them as complete. Catalogues and Product Listings: Showcase items for e-commerce or browsing. Surveys and Questionnaires: Display questions and options for user responses. Directory and Contact Lists: Show contact details like name, email, and phone. Dynamic Filtering and Searching: Allow users to find records quickly. User Profiles: Display and navigate through user profile information. Custom Navigation: Create menus or buttons for app navigation. Interactive Dashboards: Combine with other controls for rich, interactive views. Exam Tips Galleries are central to Canvas Apps for displaying multiple records."
+  },
+  {
+    "id": "q142",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "You're building a Power App that scans barcodes and shows the scanned item's info on screen. Which control category does the barcode scanner fall under?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Galleries"
+      },
+      {
+        "id": "b",
+        "text": "Media"
+      },
+      {
+        "id": "c",
+        "text": "Form"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Barcode Scanner Control in Power Apps Correct Control For creating a Power App that can scan barcodes and display the scanned item’s information, you would use the Barcode scanner control from the Media controls category. How It Works The Barcode scanner control interacts with the device’s camera to capture barcode data. Once scanned, the barcode information can be passed into the app. Other controls (like galleries or forms) can then be used to display or edit the scanned item’s details. Types of Controls in Power Apps Gallery Displays lists of data items (e.g., products, contacts, tasks). Not designed for capturing input like barcode scanning. Useful for showing scanned item information after capture. Media Controls Designed to capture or display media such as images, audio, video, and barcodes. The Barcode scanner control is part of this category. Enables scanning of various barcode types and integrates with app logic to process results. Forms Used for data entry and editing. Includes input fields like text boxes, drop-downs, and buttons. A barcode scanner can feed data into a form, but forms themselves are not designed for media capture. Example Workflow User scans a product barcode using the Barcode scanner control. The scanned data is passed into the app. A Gallery control displays product details (name, price, stock). A Form control allows editing or updating product information. Exam Tips Barcode scanner = Media control. Galleries = display lists of records. Forms = data entry and editing. Expect scenario-based questions where you must identify the correct control for scanning, displaying, or editing data. References: Audio and Video Controls in Power Apps - Power Apps | Microsoft Learn Recommended Youtube Videos: Power Apps Gallery Design Ideas - YouTube"
+  },
+  {
+    "id": "q143",
+    "type": "single",
+    "section": "Admin & security",
+    "text": "A company is building a personal-finance mobile app (budgeting, expense tracking, investments) where users should only be able to do what's relevant to their role. Which Dataverse feature groups privileges and controls access to app features and data like this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Business Rules"
+      },
+      {
+        "id": "b",
+        "text": "B. Connectors"
+      },
+      {
+        "id": "c",
+        "text": "C. Security Roles"
+      },
+      {
+        "id": "d",
+        "text": "D. Power Automate Actions"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "The correct answer is Security Role. Security Role - Security roles and privileges - Power Platform | Microsoft Learn Definition: A security role refers to a predefined set of permissions and access rights granted to users or groups within an organization's information system. It determines what actions and resources a user or group can access. Use: Security roles are primarily used to manage and enforce the principle of least privilege, ensuring that users only have the permissions necessary for their job functions. This helps enhance security by limiting unauthorized access and reducing the potential for data breaches or misuse of resources. Types: Different roles can have varying levels of access, such as read-only, read-write, or administrative privileges."
+  },
+  {
+    "id": "q144",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "As a security admin for a Power Platform-using company, you need a role for users who create new resources — apps, connections, APIs, gateways, flows — but shouldn't have access to environment data. Which role fits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Environment Maker"
+      },
+      {
+        "id": "b",
+        "text": "System Administrator"
+      },
+      {
+        "id": "c",
+        "text": "System Customizer"
+      },
+      {
+        "id": "d",
+        "text": "Microsoft Dataverse User"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Environment Maker Role in Power Platform What Environment Maker Can Do Create new resources within an environment: Apps (canvas and model-driven) Connections Custom connectors Gateways Flows using Power Automate Share and distribute apps they build: With individual users With security groups With the entire organization Limitations Environment makers do not have permission to the environment’s data. Their role is focused on building and distributing apps, not on managing or securing the environment itself. Why Other Options Are Incorrect System Administrator Role: Grants full administrative control over the environment. Can add or remove users or groups from Environment Admin or Environment Maker roles. Can provision a Dataverse database for the environment. Can view and manage all resources created within the environment. Can set data loss prevention policies. Can manage environment settings. Exam Tips Environment Maker = build and share apps/resources, but no direct access to environment data. System Administrator = full control, including user management, Dataverse provisioning, and environment policies. Expect scenario-based questions distinguishing between Environment Maker and System Administrator roles.   References: Configure user security in an environment - Power Platform | Microsoft Learn Privileges required for customizing apps build on Dataverse - Power Apps | Microsoft Learn<img src=\"images/b2-image16.jpeg\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q145",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "Your enterprise has branch offices around the world — say, Toronto, Paris, Bogotá, and Madrid — and needs Dataverse environments and instances set up for each. What's the right approach?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Create one environment with four instances"
+      },
+      {
+        "id": "b",
+        "text": "Create two environments; each with two instances"
+      },
+      {
+        "id": "c",
+        "text": "Create four environments, each with one instance"
+      },
+      {
+        "id": "d",
+        "text": "Create four instances with no environments"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Microsoft Dataverse and Environments Key Points An environment can host only one Microsoft Dataverse instance. To use Dataverse, an environment is required. What is Microsoft Dataverse A cloud-based data platform managed and maintained by Microsoft. Structures data and business logic to support interconnected apps and processes. Available globally but deployed geographically to comply with data residency requirements. Requires an internet connection; it is not designed for stand-alone use on local servers. How Dataverse Differs from Traditional Databases More than just tables: integrates security, business logic, data, and storage in one place. Acts as a central data repository for business applications. Provides role-based security, auditing, and compliance features. Supports integration with Power Platform components (Power Apps, Power Automate, Copilot Studio, Power Pages). Exam Tips<img src=\"images/b2-image17.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q146",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "You're assigning roles and permissions in a system, and need one where users can configure things but don't get full access to all environment data unless it's explicitly granted. Which role is this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Environment Maker"
+      },
+      {
+        "id": "b",
+        "text": "System Administrator"
+      },
+      {
+        "id": "c",
+        "text": "System Customizer"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "System Customizer Role in Power Platform Responsibilities The System Customizer role is focused on customizing and configuring the behavior and appearance of Power Platform applications. Typical tasks include: Designing forms, views, and dashboards Creating and managing business rules Configuring tables, columns, relationships, and app components Customizing model-driven apps to align with business requirements Permissions A System Customizer: Can modify the user interface and user experience Can customize Dataverse components within a specific environment Can create and modify app components such as forms, views, charts, and business rules Primarily focuses on application customization rather than environment administration Data Access A System Customizer does not automatically have full access to all business data in Dataverse Data access depends on the security privileges assigned to the role Additional access may need to be explicitly granted Environment Maker The Environment Maker role is responsible for creating resources in an environment. Capabilities include: Building apps, flows, chatbots, and connections Creating custom connectors and gateways Sharing apps with users or groups Important limitation: Environment Makers do not automatically have access to Dataverse data Focus: Resource creation and app building, not advanced customization or governance System Administrator The System Administrator role has full administrative control over the environment. Capabilities include: Managing users and security roles Configuring environment settings Managing Dataverse databases Viewing and managing all data and resources Setting Data Loss Prevention (DLP) policies Focus: Administration, governance, and security management"
+  },
+  {
+    "id": "q147",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "Several teammates need to use, edit, and share a Power App together, but you want to make sure none of them can accidentally delete it or change who owns it. Which permission level fits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Co-Owner"
+      },
+      {
+        "id": "b",
+        "text": "Users"
+      },
+      {
+        "id": "c",
+        "text": "Owner"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "The correct answer is Co-Owner. Snippets of Security Roles in Power Apps: By default, the user receives the User permission. These roles are different from those assigned at the environmental levels. (Environment Admin & Environment Maker role). Capabilities and use cases of the Owner, Co-owner, and User roles in the Power Platform: Owner: Capabilities: Owners have full control over the resources within an environment, including apps, data, solutions, and settings. They can create, modify, and delete apps, data tables, connectors, and solutions. Owners can manage user access, sharing, and permissions for all resources. They have the authority to manage and configure environment settings, including security and data sources. Use Case: Owners are typically administrators or technical leads responsible for the overall management of projects or teams within an environment. They create and oversee the setup of environments, manage permissions, and ensure the proper functioning of apps and data. Co-owner: Capabilities: Co-owners share many of the same capabilities as Owners, such as creating, editing, and sharing apps and solutions. However, they cannot delete the environment itself or change its owner. Use Case: Co-owners are individuals who collaborate closely with Owners, assisting in the development and management of apps, solutions, and data tables. They play a key role in app development and maintenance without having the authority to make environment-level changes. User: Capabilities: Users with the User role can view and use the apps that are shared with them. They can interact with the app's functionality, enter data, and access information, but they cannot modify the app itself. Users can't manage apps, solutions, or environments. Use Case: Users include employees, customers, partners, or stakeholders who need to access and utilize apps for specific tasks or information retrieval. This role ensures that those who require access to apps can use them without the risk of unintended changes. Summary: Owner: Full control over all resources, including creation, modification, and settings. Responsible for environment management. Co-owner: Similar capabilities to Owners, except cannot delete the environment or change its owner. Collaborates in app development and management. User: Limited to using shared apps, interacting with functionality, and accessing information without altering the app's design. FAQ:"
+  },
+  {
+    "id": "q148",
+    "type": "single",
+    "section": "Power BI basics",
+    "text": "As a team lead responsible for sharing an important model-driven app with teammates and stakeholders, which statement accurately describes how that sharing process works?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Users just need to be added to a predefined security role"
+      },
+      {
+        "id": "b",
+        "text": "Model-driven apps do not need to be shared, they are accessible to anyone with the app link."
+      },
+      {
+        "id": "c",
+        "text": "Users need to be added to a predefined or custom security role and one or more security roles need to be associated with the app."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Security Roles in Power Platform Why Security Roles Are Needed Control who can access apps and what data they can see. Protect sensitive data from unauthorized access. Ensure users only have the permissions necessary for their job functions. Meet compliance and regulatory requirements. Requirement for Sharing Apps Users must have a security role that grants them the right to access the app. Without the appropriate role, even if the app is shared, the user cannot open or interact with it. Types of Security Roles Predefined Security Roles Provided out of the box by the system or application. Examples in Power BI: Administrator → full control over settings and resources. Viewer → can view reports and dashboards but cannot edit. Editor → can create and modify reports and dashboards. Custom Security Roles Created by administrators to meet specific organizational needs. Example: A custom role for users who can create and manage Power BI reports but cannot access underlying datasets. Allows fine-grained control tailored to business requirements. Exam Tips"
+  },
+  {
+    "id": "q149",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "What's the main purpose that an \"app\" serves within a model-driven app?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. To represent a specific type of data, such as contacts or accounts"
+      },
+      {
+        "id": "b",
+        "text": "B. To provide a collection of functionalities for accomplishing specific activities"
+      },
+      {
+        "id": "c",
+        "text": "C. To subdivide an app into dedicated features"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Exam Tips: Every line in the learning path might be a potential exam question-study everything closely! Phrase from Learning path: Apps: A collection of functionalities for accomplishing a specific type of activities, such as managing accounts and contacts. Many organizations have multiple apps available to their users. For example, a company might have a sales app for managing sales, and a service app for managing customer service requests.   References: Explore model-driven app features - Training | Microsoft Learn<img src=\"images/b2-image18.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q150",
+    "type": "single",
+    "section": "Dataverse & connectors",
+    "text": "Which connector would you use to hook your app up to a Gmail account?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Outlook connector"
+      },
+      {
+        "id": "b",
+        "text": "Office 365 connector"
+      },
+      {
+        "id": "c",
+        "text": "Gmail connector"
+      },
+      {
+        "id": "d",
+        "text": "There is no connector for G-Mail in Microsoft Power Platform"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Gmail Connector in Power Platform The Gmail connector is specifically designed to connect to Gmail accounts. It provides actions to send, receive, and manage emails directly within Gmail. Comparison with Other Connectors Outlook connector: Connects to Outlook accounts with similar email management actions, but tailored for Outlook. Office 365 connector: General-purpose connector for services like SharePoint, OneDrive, and Exchange. It does not provide the same Gmail-specific functionality as the Gmail connector. Best Choice For connecting an app to a Gmail account, the Gmail connector is the most appropriate option because it offers direct integration and full functionality for Gmail. Use Cases Integrate with project management tools: Connect Gmail with tools such as Asana, Trello, and Jira to streamline communication. Automate task notifications: Configure the Gmail connector to automatically notify team members of new tasks or updates to existing tasks. Exam Tip When asked which connector to use for Gmail integration, always choose the Gmail connector over Outlook or Office 365 connectors. The Gmail connector is purpose-built for Gmail, while the others serve different ecosystems. References: Gmail - Connectors | Microsoft Learn"
+  },
+  {
+    "id": "q151",
+    "type": "single",
+    "section": "General Power Platform",
+    "text": "In model-driven apps, how do rows and columns in a table relate to each other?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Rows represent individual entities, and columns store attributes of those entities"
+      },
+      {
+        "id": "b",
+        "text": "B. Rows store attributes, and columns represent individual entities"
+      },
+      {
+        "id": "c",
+        "text": "C. Rows and columns are used to navigate between work areas"
+      },
+      {
+        "id": "d",
+        "text": "D. Rows and columns are only used in the service app"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Rows represent individual entities (e.g., a person in the Contact table), and columns store attributes (e.g., first name, family name, email address) of those entities. Why the other options are incorrect: B. Rows store attributes, and columns represent individual entities This reverses the actual relationship. Rows are the entities (e.g., each person), and columns are the attributes (e.g., name, email). So this statement is factually incorrect. C. Rows and columns are used to navigate between work areas Navigation between work areas is done using the work-area menu, not rows and columns. Rows and columns are for data storage and structure, not navigation. D. Rows and columns are only used in the service app Rows and columns are used in all apps that include tables, not just the service app. Tables like Contact and Account appear in multiple apps and areas, making this statement false."
+  },
+  {
+    "id": "q152",
+    "type": "single",
+    "section": "Power Pages basics",
+    "text": "Which of these is a key difference between canvas apps and model-driven apps when it comes to app design considerations?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Canvas apps are Dataverse-driven, while Model-driven apps are not Dataverse-driven"
+      },
+      {
+        "id": "b",
+        "text": "B. Canvas apps focus on tasks or screens, while Model-driven apps focus on back-office processes"
+      },
+      {
+        "id": "c",
+        "text": "C. Canvas apps have responsive and consistent UI, while Model-driven apps have custom UI"
+      },
+      {
+        "id": "d",
+        "text": "D. Canvas apps are designed for data relationship navigation, while Model-driven apps focus on user personalization"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Canvas Apps vs Model-driven Apps 1. Purpose and Focus Canvas Apps Task-focused or screen-focused. Designed for specific user interactions and tailored experiences. Best for apps where the user interface (UI) needs to be highly customized. Model-driven Apps Process-focused or back-office-focused. Designed for managing workflows and business processes. Best for apps where data relationships and structured navigation are critical. 2. Data Source Canvas Apps Can connect to Dataverse or non-Dataverse sources (e.g., SharePoint, SQL, Excel, APIs). Flexible in integrating multiple connectors. Model-driven Apps Always Dataverse-driven. Relies on Dataverse tables, relationships, and metadata to define app structure. 3. User Interface (UI) Canvas Apps Custom UI: developers design the layout using drag-and-drop. Offers pixel-perfect control over placement, colors, and branding. Ideal for apps requiring personalization and embedding into other solutions. Model-driven Apps Responsive and consistent UI generated automatically. Standardized layouts across devices (desktop, tablet, mobile). Prioritizes usability and consistency over customization. 4. Navigation and Data Relationships Canvas Apps Focus on user personalization and embedding into specific workflows. Navigation is flexible and defined by the app maker. Model-driven Apps Designed for data relationship navigation. Automatically generates forms, views, and dashboards based on Dataverse schema. Ideal for scenarios where users need to move between related records. 5. Common Use Cases Canvas Apps Field service apps. Employee self-service portals. Custom dashboards. Mobile-first apps with tailored UI. Model-driven Apps Customer relationship management (CRM). Case management systems. Project tracking and resource allocation. Compliance and audit workflows. 6. Exam Pitfalls (Incorrect Options Explained) A is incorrect: Canvas apps can be Dataverse or non-Dataverse-driven, while Model-driven apps are always Dataverse-driven. C is incorrect: Canvas apps have custom UI, while Model-driven apps have responsive and consistent UI. D is incorrect: Model-driven apps are designed for data relationship navigation, while Canvas apps focus on user personalization and embedding. Exam Tip Canvas apps = flexibility, personalization, multiple data sources. Model-driven apps = structure, consistency, Dataverse-only, process-driven. Expect scenario-based questions where you must choose the right app type for a business need. References: Describe the differences between canvas apps and model-driven apps - Training | Microsoft Learn"
+  },
+  {
+    "id": "q153",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "What's a major benefit of using canvas apps in Power Apps?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. They are limited to data stored in Microsoft Dataverse."
+      },
+      {
+        "id": "b",
+        "text": "B. They enable designers to build apps using drag-and-drop controls and familiar formulas."
+      },
+      {
+        "id": "c",
+        "text": "C. They demand expert-level programming knowledge for development and deployment"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Canvas apps offer a flexible design experience where users can visually arrange elements and use Excel-style expressions to define logic. A is incorrect because Canvas apps can connect to a wide range of data sources, not just Dataverse. C is incorrect because Canvas apps are designed for low-code/no-code development, making them accessible to non-developers."
+  },
+  {
+    "id": "q154",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "Which of these scenarios is the best example of when you'd use a model-driven app?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Designing a custom app with drag-and-drop controls to track employee attendance using a non-Dataverse data source."
+      },
+      {
+        "id": "b",
+        "text": "B. Creating a responsive app for managing complex business processes with built-in data relationship navigation."
+      },
+      {
+        "id": "c",
+        "text": "C. Building a task-focused app with a personalized user interface for embedding into a website."
+      },
+      {
+        "id": "d",
+        "text": "D. Developing a screen-focused app that uses Excel-like expressions for logic and calculations."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Model-driven apps are ideal for managing complex business processes, leveraging Dataverse as the data source, and providing built-in navigation for data relationships. A is incorrect because Model-driven apps are Dataverse-driven and do not use drag-and-drop controls for design. C is incorrect because personalized UI and embedding are characteristics of Canvas apps. D is incorrect because Excel-like expressions are used in Canvas apps, not Model-driven apps."
+  },
+  {
+    "id": "q155",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "After you've finished designing a model-driven app, what's the crucial step to make sure users can actually get to it?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Save and publish the app"
+      },
+      {
+        "id": "b",
+        "text": "B. Assign appropriate security roles to users"
+      },
+      {
+        "id": "c",
+        "text": "C. Include relevant tables in the app"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Saving and Publishing Apps Final Step in Deployment Saving and publishing the app is the critical final step that makes it accessible to users. If the app is only saved but not published, it remains in draft mode and cannot be used by others. Publishing ensures the app is live and available in the environment. Why Other Options Are Wrong B: Controlling access and permissions is important for security, but it does not make the app visible. Even with correct permissions, the app must be published before users can access it. C: Designing the app is part of the creation process. This involves building forms, adding logic, and customizing the UI. However, design alone does not deploy the app. Publishing is required to move from design to usage. Exam Tip For PL-900, clearly distinguish between design, security, and deployment steps. Design = building and customizing the app. Security = assigning roles and permissions. Deployment = publishing the app so it becomes live and usable. Publishing is the step that transitions the app from draft to production use."
+  },
+  {
+    "id": "q156",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "A real estate company needs an app for field agents to capture property details, take photos, and schedule open houses. Which type of app suits this best?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Canvas app"
+      },
+      {
+        "id": "b",
+        "text": "B. Model-driven app"
+      },
+      {
+        "id": "c",
+        "text": "C. Both canvas and model-driven apps"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Canvas apps are ideal for scenarios requiring a highly customized user interface and integration with device capabilities, such as capturing photos and scheduling tasks. B is incorrect because Model-driven apps are better suited for managing structured business processes and data relationships, not for task-focused, UI-intensive needs. C is incorrect because this scenario specifically benefits from the flexibility and device integration offered by Canvas apps. Exam Tips: For scenario-based questions, focus on the purpose of the app, the type of user, and the required functionality: If the app needs custom UI, device integration (camera, GPS), or is task/screen-focused, it's likely a Canvas app. If the app is process-driven, uses Dataverse, and needs standardized UI with data relationships, it's likely a Model-driven app. Read carefully for clues like “custom interface,” “field agents,” or “device features” — these often point to Canvas apps. Practice matching real-world use cases to app types. Microsoft loves testing your ability to apply concepts to business scenarios."
+  },
+  {
+    "id": "q157",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A company wants to add a virtual assistant to its customer-support website, which is built on Power Pages. Which statement about this is correct?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Copilot Studio agents cannot be embedded in Power Pages."
+      },
+      {
+        "id": "b",
+        "text": "B. Copilot Studio agents can be integrated with Power Pages to provide conversational experiences."
+      },
+      {
+        "id": "c",
+        "text": "C. Power Pages only supports agents created in Azure AI Foundry."
+      },
+      {
+        "id": "d",
+        "text": "D. Power Pages requires a separate chatbot product and cannot use Copilot Studio."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Copilot Studio agents can be published to multiple channels, including websites built with Power Pages. This allows organizations to: Provide self-service support experiences. Answer customer questions. Automate common tasks. Reduce the need for live support agents. The integration is native and does not require a separate chatbot platform. Why the other options are incorrect A. Copilot Studio agents cannot be embedded in Power Pages. This statement is incorrect because Power Pages supports Copilot Studio integration. C. Power Pages only supports agents created in Azure AI Foundry. Power Pages supports Copilot Studio agents directly. D. Power Pages requires a separate chatbot product and cannot use Copilot Studio. No separate chatbot product is required. Resources"
+  },
+  {
+    "id": "q158",
+    "type": "multi",
+    "section": "Power Automate basics",
+    "text": "When you manually trigger a flow, what options are actually available to you?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Text"
+      },
+      {
+        "id": "b",
+        "text": "Yes/No"
+      },
+      {
+        "id": "c",
+        "text": "File/Email"
+      },
+      {
+        "id": "d",
+        "text": "Number"
+      },
+      {
+        "id": "e",
+        "text": "Date"
+      }
+    ],
+    "correct": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+    ],
+    "explanation": "How They Work in Power Automate These inputs are added to the Power Apps interface. When a user triggers a button in Power Apps, the flow collects the input values and uses them in actions within Power Automate. Example: A user enters their name (Text Input), selects a date (Date Input), and uploads a file (File Input). The flow can then send an email with the name, schedule a task for the date, and attach the file. When creating a Power Automate flow using Power Apps, you can include various types of input fields to collect information from users when they initiate the flow. Some common types of input fields that you can use: Text Input: Users can enter text or characters. This is useful for capturing names, descriptions, comments, and other textual information. Number Input: Users can enter numerical values. This can be used for quantities, amounts, IDs, and other numeric data. Email Input: Users can provide email addresses. This is valuable for sending notifications or emails as part of the flow. Date and Time Input: Users can select dates and times from a calendar or input them manually. Useful for capturing specific dates, deadlines, or scheduling information. File Input: Users can upload files. Useful for collecting documents, images, or any type of files as input. Boolean (Yes/No) Input: Users can indicate a true or false value, often represented as a checkbox. This is suitable for simple yes/no or on/off decisions. These input fields can be added to the Power Apps interface when configuring a button trigger that initiates a Power Automate flow. Reference Sites: Six types of user inputs - Training | Microsoft Learn"
+  },
+  {
+    "id": "q159",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "What's a key advantage of using Dataverse as the data source when building Power Apps?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. You must manually create a connection to Dataverse before accessing data"
+      },
+      {
+        "id": "b",
+        "text": "B. API calls are required to retrieve data from Dataverse tables"
+      },
+      {
+        "id": "c",
+        "text": "C. Dataverse automatically creates relationships between tables for seamless data access"
+      },
+      {
+        "id": "d",
+        "text": "D. Dataverse can only store small amounts of data and cannot be expanded"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Dataverse automatically creates relationships between tables, allowing apps to pull data from multiple tables efficiently without costly lookups. A is incorrect because Power Apps does not require manual connection setup for Dataverse. B is incorrect because data retrieval from Dataverse does not require API calls. D is incorrect because Dataverse can store large amounts of data and can be expanded with additional licensing. Exam Tip: Understand how Dataverse simplifies data access, supports scalability, and integrates natively with Power Apps. Look for keywords like “automatic relationships,” “no API calls,” and “environment-based access” in exam scenarios. References: Connect to data sources by using connectors - Training | Microsoft Learn"
+  },
+  {
+    "id": "q160",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "You need to build a low-code app that includes online forms for collecting and showing information from users. What should you use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Power Apps"
+      },
+      {
+        "id": "b",
+        "text": "Power Automate"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Power Apps Enables rapid development of interactive applications in a low-code environment. Provides online form-building capabilities, allowing users to collect and manage data efficiently. Ideal for creating custom apps tailored to specific business needs. Power Automate Focuses on automating workflows and processes. Does not provide direct form-building capabilities. Best used to connect apps and services, trigger actions, and reduce manual tasks.   References: Introduction to Power Apps - Training | Microsoft Learn What is Power Apps? - Power Apps | Microsoft Learn<img src=\"images/b2-image19.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q161",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "You need to set up an approval process for sales quotes. Which Power Platform component would you use for that?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Power Apps"
+      },
+      {
+        "id": "b",
+        "text": "Power Automate"
+      },
+      {
+        "id": "c",
+        "text": "Power Pages"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "This item tests the candidate’s knowledge of selecting the right Microsoft Power Platform component when a process is involved. Power Automate is the key tool for creating automated approval workflows, ensuring business process efficiency. Power Apps helps design interactive applications, but it does not handle approval workflows directly. Power Pages allows external users to interact with data, but workflow automation requires Power Automate. References: What is Microsoft Power Platform? - Training | Microsoft Learn Get started with Power Automate approvals - Power Automate | Microsoft Learn"
+  },
+  {
+    "id": "q162",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "Which type of flow lets you use Robotic Process Automation?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Cloud flows"
+      },
+      {
+        "id": "b",
+        "text": "Desktop flows"
+      },
+      {
+        "id": "c",
+        "text": "Business process flows"
+      },
+      {
+        "id": "d",
+        "text": "Power Automate"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Robotic Process Automation (RPA) in Power Automate is specifically supported through Desktop flows. These flows are designed to automate tasks on your computer by mimicking human interactions with software—like clicking buttons, entering data, or extracting information. Desktop flows are built using Power Automate Desktop, and they can also be triggered from cloud flows to create hybrid automation—where cloud flows handle scalable backend logic and desktop flows manage local app automation. Use cases of Desktop Flow: 1. Invoice Processing Automation Extract data from scanned invoices using OCR and auto-populate fields in accounting software—cutting down manual entry time dramatically. 2. Legacy Application Integration Automate interactions (clicks, keystrokes) with outdated systems that don’t support modern APIs, keeping workflows smooth without costly updates. 3. Data Extraction Scrape information from a website and save it to Excel—ideal for financial data, product listings, or market research. 4. IT Helpdesk Automation Automatically reset passwords by accessing local management tools and logging results into a ticketing system like ServiceNow. 5. Automated Report Distribution Pull data from emails and Excel, compile it into a formatted report, and email it to managers at scheduled intervals."
+  },
+  {
+    "id": "q163",
+    "type": "single",
+    "section": "Admin & security",
+    "text": "A company on Power Platform needs to prevent corporate data from leaking outside the organization. What should they do?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Access Control Management"
+      },
+      {
+        "id": "b",
+        "text": "Auditing"
+      },
+      {
+        "id": "c",
+        "text": "Create data policies."
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Data policies control interactions between apps and external data sources, reducing leakage risks. Microsoft Entra ID conditional access ensures secure access, but it does not directly prevent external data exposure. Power Platform Center of Excellence (CoE) enables monitoring of apps, flows, and data policies, but it does not prevent data leakage alone. Auditing in Microsoft Dataverse tracks data changes but does not prevent unauthorized transfers. References: Data loss prevention, compliance, privacy, and accessibility - Training | Microsoft Learn Data loss prevention policies - Power Platform | Microsoft Learn Plan to deploy ExpressRoute with Microsoft Power Platform - Power Platform | Microsoft Learn Set up Azure AD Conditional Access - Microsoft Power Platform - Power Platform | Microsoft Learn"
+  },
+  {
+    "id": "q164",
+    "type": "single",
+    "section": "Admin & security",
+    "text": "A company has three branch offices — New York, Paris, and Madrid — and needs to set up Dataverse environments and instances for them. What's the right approach?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Create three environments, each with one instance."
+      },
+      {
+        "id": "b",
+        "text": "Create one environment, with three instances."
+      },
+      {
+        "id": "c",
+        "text": "Create three environments with one instance in total."
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "A Dataverse environment can host only one instance; multiple environments ensure data separation across branch offices. Isolating environments prevents data conflicts and allows for custom workflows per location. Centralized but separate environments enhance security, while still enabling collaboration within Microsoft Power Platform. References: Environments in Dataverse - Training | Microsoft Learn Environments overview - Power Platform | Microsoft Learn"
+  },
+  {
+    "id": "q165",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "Your organization wants a copilot to capture a user's email address and store it as text, using a feature that automatically extracts and validates common data formats from what the user types. What should you use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A) Action"
+      },
+      {
+        "id": "b",
+        "text": "B) Condition"
+      },
+      {
+        "id": "c",
+        "text": "C) Entity"
+      },
+      {
+        "id": "d",
+        "text": "D) Trigger phrase"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Entities represent a specific type of real-world subject (like email, date, or phone number). Copilot Studio uses them to recognize, extract, and save critical information from user responses.   Resources<img src=\"images/b2-image20.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q166",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "You're designing a copilot's conversation path: if a customer picks \"Premium Support,\" you want to send them down one set of troubleshooting steps, and down a different path if they pick \"Standard Support.\" Which node type would you add to the topic canvas for this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A) Call an action"
+      },
+      {
+        "id": "b",
+        "text": "B) Condition"
+      },
+      {
+        "id": "c",
+        "text": "C) Variable"
+      },
+      {
+        "id": "d",
+        "text": "D) Message"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Conditions create branching paths (if/then statements) within a topic based on a variable value or a user choice. For example, you might have a number variable and want three branches for the following cases: If the number is less than 10 Else if the number is greater than 50 Else—that is, when the number is between 10 and 50     Resources<img src=\"images/b2-image21.png\" alt=\"Reference diagram\"><img src=\"images/b2-image22.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q167",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A company's agent answers questions correctly but can't actually perform any actions. What best explains why?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. The agent has no channels configured."
+      },
+      {
+        "id": "b",
+        "text": "B. The agent does not have tools configured."
+      },
+      {
+        "id": "c",
+        "text": "C. The agent has no topics."
+      },
+      {
+        "id": "d",
+        "text": "D. The agent requires Dataverse tables."
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Agents in Power Platform (Copilot Studio) can do two broad things: Answer questions - using topics, knowledge bases, or natural language understanding. Perform actions - by connecting to external systems or services through tools (such as Power Automate flows, Dataverse operations, or APIs). In this scenario, the agent is able to answer questions correctly, which means it has topics or knowledge configured. However, it cannot perform business actions like creating records, sending emails, or triggering workflows. The reason is that tools are not configured. Tools are what enable the agent to go beyond answering and actually execute tasks. Without them, the agent is limited to conversational responses.   Resources<img src=\"images/b2-image23.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q168",
+    "type": "multi",
+    "section": "Power Automate basics",
+    "text": "You're planning to use the Microsoft Teams connector in a Power Automate cloud flow. Which TWO components does the connector define? (Each correct answer is a complete solution on its own.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Postman collection"
+      },
+      {
+        "id": "b",
+        "text": "Actions"
+      },
+      {
+        "id": "c",
+        "text": "Triggers"
+      },
+      {
+        "id": "d",
+        "text": "Credentials"
+      }
+    ],
+    "correct": [
+      "b",
+      "c"
+    ],
+    "explanation": "Connectors in Power Automate define actions that can be performed within a service. Connectors also define triggers—events that initiate automated workflows. Credentials must be supplied when using a connector, but they are not part of its core definition. Postman collections are useful for building custom connectors but do not define standard components of Microsoft Teams connectors. References: Data Connectors - Training | Microsoft Learn Power Platform connectors overview | Microsoft Learn"
+  },
+  {
+    "id": "q169",
+    "type": "single",
+    "section": "Power BI basics",
+    "text": "What's the main role Microsoft Dataverse plays within the Power Platform?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. To automate workflows between services"
+      },
+      {
+        "id": "b",
+        "text": "B. To visualize data from multiple sources"
+      },
+      {
+        "id": "c",
+        "text": "C. To store and manage structured business data securely"
+      },
+      {
+        "id": "d",
+        "text": "D. To create responsive websites"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Correct Answer: C. To store and manage structured business data securely Why the other options are incorrect: A. To automate workflows – This is the role of Power Automate. B. To visualize data – This is the function of Power BI. D. To create responsive websites – This is done using Power Pages. PL-900 exam tip: Dataverse is the central data platform for Power Platform apps. It stores data in tables and supports relationships, business rules, and security roles."
+  },
+  {
+    "id": "q170",
+    "type": "single",
+    "section": "Admin & security",
+    "text": "Which role lets a user create apps, flows, and connections in an environment, without giving them default access to Dataverse data?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. System Administrator"
+      },
+      {
+        "id": "b",
+        "text": "B. Environment Maker"
+      },
+      {
+        "id": "c",
+        "text": "C. System Customizer"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Correct Answer: B. Environment Maker Why the other options are incorrect: A. System Administrator - Has full access to data and resources. C. System Customizer  - Can modify components but has limited data access. D. Environment Administrator - Manages environment settings but not app creation."
+  },
+  {
+    "id": "q171",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "Which Power Platform tool lets you build secure, data-connected websites with low-code design?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Power BI"
+      },
+      {
+        "id": "b",
+        "text": "B. Power Automate"
+      },
+      {
+        "id": "c",
+        "text": "C. Power Pages"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Power Pages is a Power Platform tool that enables users to create secure, data-connected websites with low-code design. It provides a user-friendly interface for building websites without the need for extensive coding knowledge. PL-900 exam tip: Power Pages is ideal for building secure, external-facing websites that connect to Dataverse and other data sources. Keep in Mind: Power Apps - built applications Power Automate - automate workflows Power Pages - built websites<img src=\"images/b2-image12.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q172",
+    "type": "single",
+    "section": "General Power Platform",
+    "text": "A compliance team needs every single stakeholder to approve a contract before it's finalized — if even one rejects it, the whole process should stop. Which approval action fits?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. First to respond"
+      },
+      {
+        "id": "b",
+        "text": "B. Everyone must approve"
+      },
+      {
+        "id": "c",
+        "text": "C. Wait for all responses"
+      },
+      {
+        "id": "d",
+        "text": "D. Custom responses"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Correct Answer: B. Everyone must approve Why correct: This ensures unanimous agreement; one rejection stops the process. Why others are wrong:"
+  },
+  {
+    "id": "q173",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "An IT team wants approvers to be able to respond with more than just \"Approve\" or \"Reject\" — say, \"Request More Information.\" Which approval action should they set up?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Custom responses"
+      },
+      {
+        "id": "b",
+        "text": "B. Everyone must approve"
+      },
+      {
+        "id": "c",
+        "text": "C. First to respond"
+      },
+      {
+        "id": "d",
+        "text": "D. Wait for all responses"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Correct Answer: A. Custom responses Why correct: Allows defining tailored options like “Request More Information.” Why others are wrong: B: Everyone must approve only enforces unanimous approval. C: First to respond ends after one action, not suitable for nuanced feedback. D: Wait for all responses gathers input but only from standard approve/reject options. References: Describe Power Automate use cases for approvals - Training | Microsoft Learn"
+  },
+  {
+    "id": "q174",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "Match each workflow requirement to the right Power Automate approval action. Requirements: needing unanimous agreement; time-sensitive decisions; needing detailed feedback; gathering input from everyone. Actions: A. First to respond, B. Custom responses, C. Wait for all responses, D. Everyone must approve.",
+    "options": [
+      {
+        "id": "a",
+        "text": "1 → D (Everyone must approve)"
+      },
+      {
+        "id": "b",
+        "text": "2 → A (First to respond)"
+      },
+      {
+        "id": "c",
+        "text": "3 → B (Custom responses)"
+      },
+      {
+        "id": "d",
+        "text": "4 → C (Wait for all responses)"
+      },
+      {
+        "id": "e",
+        "text": "4 → A (First to respond)"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Explanation Everyone must approve: Ensures unanimous agreement; one rejection stops the process. First to respond: Ends as soon as one approver acts, ideal for speed. Custom responses: Allows tailored options beyond Approve/Reject for nuanced feedback. Wait for all responses: Collects input from all approvers, outcome based on majority or predefined rules. Describe Power Automate use cases for approvals - Training | Microsoft Learn"
+  },
+  {
+    "id": "q175",
+    "type": "multi",
+    "section": "Power Automate basics",
+    "text": "Which of these are valid ways an approver can respond to an approval request in Power Automate? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Outlook email notifications"
+      },
+      {
+        "id": "b",
+        "text": "B. Microsoft Teams interface"
+      },
+      {
+        "id": "c",
+        "text": "C. Power Automate mobile app"
+      },
+      {
+        "id": "d",
+        "text": "D. SharePoint approval lists/libraries"
+      },
+      {
+        "id": "e",
+        "text": "E. Microsoft Forms submissions"
+      },
+      {
+        "id": "f",
+        "text": "F. Visual Studio Code editor"
+      }
+    ],
+    "correct": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+    ],
+    "explanation": "Responding via Outlook Once an approval request is triggered, approvers receive a detailed email notification outlining all the relevant information about the request. From this email, they can: Review the request to understand its context and requirements. Approve or reject the request instantly by clicking the appropriate button embedded in the email. Add comments to share other insights, feedback, or context regarding their decision. This approach is convenient for individuals who rely heavily on their email inbox for daily tasks, allowing them to handle approvals without switching platforms. Responding in Microsoft Teams For organizations that use Microsoft Teams as a central hub for collaboration, approval requests can seamlessly integrate into Teams channels or chats. When notified within Teams, approvers can: View the request details directly in the Teams interface. Approve or reject the request without leaving the platform. Add comments to explain their decision or provide further input. This method is perfect for Teams users, keeping approvals within their workflow to reduce disruptions and improve communication. Responding via the Power Automate app For those employees who need to manage approvals while on the move, the Power Automate mobile app offers a highly convenient solution. Through the app, approvers can: Access a comprehensive list of all pending approval requests. Review the details of each request to make informed decisions. Approve or reject requests with just a tap, ensuring quick responses. Add comments if extra context or clarification is necessary. This option is perfect for users who are frequently away from their desks but still need to stay connected and responsive to approval workflows. By offering multiple ways to respond—whether through email, Microsoft Teams, or the Power Automate app—the approval process becomes more flexible, efficient, and tailored to the diverse needs of today’s workforce. Responding via SharePoint For organizations that utilize SharePoint as a central hub for document management and workflows, approval requests can be accessed and managed directly within the platform. When notified of an approval request in SharePoint, approvers can: Locate the request by navigating to the designated approval list or library where the request is stored. Review the details of the request, including any attached files or supporting information. Approve or reject the request using the built-in approval options available in the SharePoint interface. Add comments to provide feedback or clarify their decision. This method is useful for teams that rely on SharePoint for collaborative work and document tracking, as it keeps the approval process integrated with their existing workflows and resources. Responding via Microsoft Forms In some workflows, approval requests may be routed through Microsoft Forms, providing a structured and user-friendly way to gather responses. When using Forms to respond to an approval request, approvers can: Access the form via a link provided in the notification email or shared directly with them. Review the request details presented within the form, including any relevant context or attached information. Submit their decision by selecting the appropriate option (for example, Approve or Reject) within the form. Add comments in designated fields to provide more feedback or context for their response. This method is effective for workflows that require standardized input or when approvals are part of a broader data collection process. It ensures consistency while remaining simple and accessible for approvers."
+  },
+  {
+    "id": "q176",
+    "type": "multi",
+    "section": "Power Automate basics",
+    "text": "Which of these are valid categories of desktop flow actions in Power Automate? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "File, Folder, and System Actions"
+      },
+      {
+        "id": "b",
+        "text": "Web and UI Automation Actions"
+      },
+      {
+        "id": "c",
+        "text": "Excel and Data Processing Actions"
+      },
+      {
+        "id": "d",
+        "text": "Email and Communication Actions"
+      },
+      {
+        "id": "e",
+        "text": "Logic and Data Handling Actions"
+      },
+      {
+        "id": "f",
+        "text": "Scripting and Custom Code Actions"
+      }
+    ],
+    "correct": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f"
+    ],
+    "explanation": "Based on your specific needs, there are many different types of actions. Let’s examine some of the more common categories of desktop flow actions: File and folder actions: You would use these actions to automate file system operations, such as Creating folders, Copying, Deleting, and Moving files. Web automation actions: These actions automate browser tasks without backend API access, like launching a browser, clicking links, and extracting web page data. UI automation actions: Used to interact with desktop applications through their user interface, such as clicking a UI element, or populating a text field. Excel actions: These actions are used to automate Excel data processing. They include tasks such as launching the Excel application, reading data from a worksheet, or writing data to a cell. Email actions: These actions are used to automate email communication and processing such as sending and receiving emails from Outlook. System actions: These actions are used to control system-level operations. They include tasks such as launching applications, shutting down or restarting a PC, or displaying messages. Conditionals and loops: These actions are used to add logic and repetition to desktop flows, such as If statements, and for each loop. Variables and data manipulation: These actions are used to store and manipulate data during flow execution, such as setting variables, and text operations. Scripting and custom code: These actions are used to extend the functionality of a desktop flow with custom scripts such as running Python scripts, and JavaScript code. References: Describe actions for Power Automate desktop flows - Training | Microsoft Learn"
+  },
+  {
+    "id": "q177",
+    "type": "multi",
+    "section": "Power Automate basics",
+    "text": "Which of these are genuine capabilities of the Power Automate mobile app? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Access and monitor workflows"
+      },
+      {
+        "id": "b",
+        "text": "B. Manage approvals (review, approve/reject, add comments)"
+      },
+      {
+        "id": "c",
+        "text": "C. Create and edit flows on the go"
+      },
+      {
+        "id": "d",
+        "text": "D. Notifications and alerts for updates/errors"
+      },
+      {
+        "id": "e",
+        "text": "E. Analytics and performance tracking"
+      },
+      {
+        "id": "f",
+        "text": "F. Environment switching and app integration"
+      }
+    ],
+    "correct": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f"
+    ],
+    "explanation": "Describe the Power Automate apps - Training | Microsoft Learn<img src=\"images/b2-image24.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q178",
+    "type": "single",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "You already have a flow that emails someone when a form is submitted, and now want to also save the form responses to an Excel spreadsheet. Which Copilot capability would help you expand the flow this way?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Create new flows"
+      },
+      {
+        "id": "b",
+        "text": "B. Enhance existing flows"
+      },
+      {
+        "id": "c",
+        "text": "C. Notifications and alerts"
+      },
+      {
+        "id": "d",
+        "text": "D. Environment switching"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Correct Answer: B. Enhance existing flows Why correct: Copilot can refine or expand existing flows by adding new steps based on user intent. Why others are wrong:"
+  },
+  {
+    "id": "q179",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "An organization is losing customers due to slow response times. How could process mining in Power Automate help tackle this?",
+    "options": [
+      {
+        "id": "a",
+        "text": "By integrating CRM systems for better customer data management"
+      },
+      {
+        "id": "b",
+        "text": "By analyzing customer service processes to identify delays and inefficiencies"
+      },
+      {
+        "id": "c",
+        "text": "By automating customer follow-up emails"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Analyzing customer service processes to identify delays and inefficiencies is the correct choice because process mining in Power Automate allows organizations to visually map out their processes, identify bottlenecks, and optimize workflows. By pinpointing where delays occur in customer service processes, the organization can make necessary improvements to reduce response times and ultimately decrease customer churn."
+  },
+  {
+    "id": "q180",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "Which process-mining feature in Power Automate is most useful for spotting bottlenecks in a business process?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Integrating with external databases for data storage"
+      },
+      {
+        "id": "b",
+        "text": "Providing automated suggestions for process improvements"
+      },
+      {
+        "id": "c",
+        "text": "Generating process maps with visual representations of task flows"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "Generating process maps with visual representations of task flows is the most useful feature for identifying bottlenecks in a business process. Visual process maps allow users to see the flow of tasks, identify areas of congestion or delay, and pinpoint where bottlenecks are occurring. This visual representation helps in understanding the process flow and making informed decisions for process optimization. Visualize processes: Process mining generates process maps that show the exact flow of tasks, including variations and deviations. For example, you can see how a purchase order moves through different departments and identify where delays occur. Customize reports: You can create tailored reports to focus on specific metrics, such as processing times or error rates, helping you track performance in key areas. Compare workflows: Process mining allows you to compare different versions of a workflow to identify which one is more efficient. For instance, you could compare how two teams handle customer support tickets and adopt the best practices from the more efficient team. Monitor Key Performance Indicators (KPIs): With built-in dashboards, you can track KPIs like cycle time, throughput, or compliance rates, ensuring your processes align with business goals. Describe process mining - Training | Microsoft Learn"
+  },
+  {
+    "id": "q181",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "A small business wants to automate getting notified whenever a new customer fills out a form on their website. What components should their Power Automate flow include?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Triggers and loops"
+      },
+      {
+        "id": "b",
+        "text": "B. Triggers, actions, and connectors"
+      },
+      {
+        "id": "c",
+        "text": "C. Actions and loops"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "A trigger starts the flow (form submission), connectors link to services, and actions send notifications. A and C miss key components. Words from Learning path: Power Automate provides several core components to handle any type of automation needs. This learning unit introduces key concepts like triggers, actions, and connectors, helping you understand how to initiate and manage flows effectively. Triggers, actions, and connectors work together to automate tasks across different systems. Let's look at them more closely: Triggers: Initiate a flow based on specific events, such as receiving an email or adding a file to SharePoint. Actions: Define the tasks the flow performs after being triggered, such as sending a notification, saving a file, or updating a record. Connectors: Act as bridges between Power Automate and external applications, enabling triggers and actions to interact with tools like Outlook, SharePoint, Teams, Salesforce, and more. For example, a flow could use the Outlook connector to trigger when a new email arrives, then use the OneDrive connector to save the attachment and the Teams connector to notify your team. Describe how Power Automate cloud flows use connector triggers and actions - Training | Microsoft Learn"
+  },
+  {
+    "id": "q182",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "As a Power Platform developer, your manager asks: which scenario is the best fit for using a cloud flow template in Power Automate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. When you need to write custom code for a unique automation task"
+      },
+      {
+        "id": "b",
+        "text": "B. When you need a quick start with a prebuilt flow that can be customized"
+      },
+      {
+        "id": "c",
+        "text": "C. When integrating legacy desktop applications with cloud services"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Templates are for quick starts with customization. A requires custom coding, not templates. C is more about desktop flows, not cloud templates. Benefits of using cloud flow templates Cloud flow templates offer several advantages that make them an excellent starting point for automating tasks efficiently: Save time with prebuilt solutions: Cloud flow templates save time by providing prebuilt workflows. For example, if you need to automatically save email attachments to OneDrive, you can select a prebuilt template that handles this task with minimal setup. User-friendly and accessible: These templates feature intuitive interfaces that guide you through the setup process step by step. Even if you’re new to automation, you can easily follow the instructions to customize a template for your specific needs. For instance, a template might prompt you to specify which email sender triggers an action or where files should be saved. Seamless integration with popular applications: Cloud flow templates work effortlessly with widely used tools like Microsoft 365, Slack, SharePoint, and Dataverse. This compatibility allows you to connect different systems and streamline workflows across your organization. For example, you can use a template to send a Slack notification whenever your manager emails you in Microsoft Outlook, ensuring timely communication without manually checking your inbox. Describe use cases for cloud flow templates - Training | Microsoft Learn<img src=\"images/b2-image25.jpeg\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q183",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "A retail company building an inventory-management app in Power Apps wants to pull in data from both Salesforce and SQL Server. Which Power Apps feature should they use for that integration?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Power Apps triggers"
+      },
+      {
+        "id": "b",
+        "text": "B. Power Apps connectors"
+      },
+      {
+        "id": "c",
+        "text": "C. Power Apps Dataflows"
+      }
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "Power Apps connectors enable apps to connect to external services and data sources such as Salesforce, SQL Server, SharePoint, and Microsoft Dataverse. Connectors provide seamless integration and allow apps to read, create, update, and delete data across systems. In Microsoft Power Apps, Connectors are used to connect applications with external data sources and services such as: Salesforce SQL Server SharePoint Microsoft Dataverse Excel Outlook Teams Third-party systems Power Apps provides: Standard connectors → Included with many Microsoft services Premium connectors → Used for services like Salesforce and SQL Server Custom connectors → Created for unsupported APIs or systems Using connectors allows the inventory management app to: Retrieve inventory data from SQL Server Sync customer or sales information from Salesforce Update records in real time Centralize data access inside one application This creates a seamless user experience across different business systems. References: Demonstrate the Capabilities of Microsoft Power Apps - Training | Microsoft Learn"
+  },
+  {
+    "id": "q184",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "Which app type best suits a scenario that needs a task-specific solution with a custom user interface?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Canvas app"
+      },
+      {
+        "id": "b",
+        "text": "B. Model-driven app"
+      },
+      {
+        "id": "c",
+        "text": "C. Portal app"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Canvas apps are UI-first and ideal for task-specific solutions. B is data-first, not UI-first. C is for external users.   Hence, A Canvas app is the best choice for a scenario where the application needs to support task-specific solutions with a custom user interface. Canvas apps allow for a highly customizable user interface design, making them ideal for creating apps tailored to specific tasks and user needs.<img src=\"images/b2-image26.png\" alt=\"Reference diagram\">"
+  },
+  {
+    "id": "q185",
+    "type": "single",
+    "section": "Power Apps basics",
+    "text": "Your organization uses Dataverse for data management and wants an app to automate inventory tracking and reporting. Which type of Power Apps app would you recommend?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Model-driven app"
+      },
+      {
+        "id": "b",
+        "text": "B. Power BI application"
+      },
+      {
+        "id": "c",
+        "text": "C. Canvas app"
+      }
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "Model-driven apps are tightly integrated with Dataverse and ideal for inventory tracking/reporting. B is for analytics, not app workflows. C could work but lacks built-in reporting features."
+  },
+  {
+    "id": "q186",
+    "type": "multi",
+    "section": "Admin & security",
+    "text": "You're setting up a new Dataverse environment for a multinational company, and the IT team wants to stay compliant with data-residency laws while still allowing global access. Which of these statements are correct? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Dataverse environments are deployed in specific geographic regions to meet compliance requirements."
+      },
+      {
+        "id": "b",
+        "text": "B. Users worldwide can access Dataverse, regardless of the region where the environment is deployed."
+      },
+      {
+        "id": "c",
+        "text": "C. Data residency compliance requires creating separate environments for each country."
+      },
+      {
+        "id": "d",
+        "text": "D. Encryption is applied to data both in transit and at rest within Microsoft data centers."
+      }
+    ],
+    "correct": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "Explanation: A. True → Dataverse environments are deployed in specific geographic regions to meet compliance requirements. This ensures data residency laws are respected. B. True → Even though the environment is tied to a region, users worldwide can still access it. The region affects where data is stored, not who can connect. C. False → You don’t need separate environments for each country. You only need to choose a compliant region when creating the environment. D. True → Microsoft encrypts data both in transit and at rest, adding another layer of protection. Instructor Tip: Think of Dataverse as “globally accessible, regionally stored.”"
+  },
+  {
+    "id": "q187",
+    "type": "multi",
+    "section": "Power Automate basics",
+    "text": "A sales manager wants a flow that automatically sends a follow-up email 3 days after a customer inquiry if there's been no response. Which components are needed to build this? (Select all that apply)",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. An automated trigger that starts when a new inquiry is received."
+      },
+      {
+        "id": "b",
+        "text": "B. A scheduled trigger that runs every 3 days."
+      },
+      {
+        "id": "c",
+        "text": "C. A delay action to wait 3 days before checking for a response."
+      },
+      {
+        "id": "d",
+        "text": "D. A condition to verify whether the customer has replied."
+      },
+      {
+        "id": "e",
+        "text": "E. A manual instant trigger to send followups when the manager clicks a button."
+      }
+    ],
+    "correct": [
+      "a",
+      "c",
+      "d"
+    ],
+    "explanation": "A. True → The flow starts with an automated trigger when a new inquiry is received (e.g., a record created in Dataverse or an email received). B. False → A scheduled trigger runs at fixed times, but here we need the flow to start when an inquiry arrives, not on a schedule. C. True → A delay action waits 3 days before continuing the flow. D. True → A condition checks if the customer has responded. If not, the followup email is sent. E. False → An instant trigger would require manual action, which defeats the purpose of automation. Exam Tips: Automated trigger + delay + condition = classic followup automation pattern."
+  },
+  {
+    "id": "q188",
+    "type": "single",
+    "section": "General Power Platform",
+    "text": "How can you configure a Power Automate flow so that a separate part of it runs specifically when a previous step fails?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A condition can be added to check if the step before hasn‘t run and start the separate process"
+      },
+      {
+        "id": "b",
+        "text": "Azure Logic Apps must be used for this"
+      },
+      {
+        "id": "c",
+        "text": "In the flow designer, a parallel branch can be added and configured to run on failure of the previous step."
+      },
+      {
+        "id": "d",
+        "text": "A child flow can be configured to run"
+      }
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "In the flow designer of Power Automate, a parallel branch can be added and configured to run on the failure of the previous step. This allows for the creation of a separate path in the flow that is triggered specifically when a failure occurs."
+  },
+  {
+    "id": "q189",
+    "type": "multi",
+    "section": "Power Virtual Agents & Copilot Studio",
+    "text": "A company is getting ready to deploy a new Copilot Studio agent to production. Which THREE activities are recommended before doing so?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A. Test the agent before publishing."
+      },
+      {
+        "id": "b",
+        "text": "B. Review the generated topics and responses."
+      },
+      {
+        "id": "c",
+        "text": "C. Monitor usage and adoption after deployment."
+      },
+      {
+        "id": "d",
+        "text": "D. Publish immediately because AI-generated agents are production ready."
+      },
+      {
+        "id": "e",
+        "text": "E. Disable analytics to improve performance."
+      }
+    ],
+    "correct": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "A. Test the agent before publishing Testing ensures the agent behaves as expected, answers correctly, and triggers actions properly. Without testing, errors or gaps in conversation flow could reach end users, reducing trust and adoption. This is a critical step in validating the agent’s readiness for production. B. Review the generated topics and responses Copilot can generate topics automatically, but these need human review. Reviewing ensures accuracy, alignment with business rules, and compliance with organizational standards. It also helps refine tone, phrasing, and consistency in responses. C. Monitor usage and adoption after deployment Once deployed, monitoring helps track how users interact with the agent. Analytics reveal adoption rates, common queries, and areas where the agent may need improvement. Continuous monitoring ensures the agent evolves with business needs. Why the Other Options Are Incorrect D. Publish immediately because AI-generated agents are production ready False. AI-generated agents are drafts and require testing, review, and validation before production. Skipping these steps risks errors and poor user experience. E. Disable analytics to improve performance False. Analytics are essential for monitoring usage and improving the agent. Disabling analytics removes visibility into adoption and effectiveness, which is counterproductive."
   }
 ]
