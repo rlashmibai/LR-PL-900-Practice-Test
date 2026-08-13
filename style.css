@@ -197,6 +197,9 @@ th { color: var(--text-muted); font-weight: 600; }
 #checkAnswerArea { margin: 4px 0 10px; }
 #checkAnswerArea .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
+#questionBody input[type="text"].correct-input { border-color: var(--green); background: #dff6dd; }
+#questionBody input[type="text"].incorrect-input { border-color: var(--red); background: #fde7e9; }
+
 .flag-toggle { font-size: 0.85rem; cursor: pointer; user-select: none; color: var(--text-muted); }
 .flag-toggle.active { color: var(--amber); font-weight: 600; }
 

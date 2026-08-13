@@ -161,6 +161,9 @@ function isAnswerCorrect(q, given) {
   if (q.type === "ordering") {
     return given.length === q.correct.length && given.every((v, i) => v === q.correct[i]);
   }
+  if (q.type === "fillblank") {
+    return given[0].trim().toLowerCase() === q.correct[0].trim().toLowerCase();
+  }
   const a = [...given].sort();
   const b = [...q.correct].sort();
   return a.length === b.length && a.every((v, i) => v === b[i]);
@@ -337,6 +340,29 @@ function renderQuestion() {
       }
       body.appendChild(div);
     });
+  } else if (q.type === "fillblank") {
+    if (q.clue) {
+      const clue = document.createElement("div");
+      clue.className = "question-meta";
+      clue.style.marginBottom = "8px";
+      clue.textContent = `Clue: ${q.clue}`;
+      body.appendChild(clue);
+    }
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Type your answer";
+    input.value = selected[0] || "";
+    input.disabled = locked;
+    if (locked) {
+      input.classList.add(isAnswerCorrect(q, selected) ? "correct-input" : "incorrect-input");
+    }
+    input.addEventListener("input", () => {
+      session.answers[q.id] = [input.value];
+      updateNavGrid();
+      const checkBtn = document.querySelector("#checkAnswerArea button");
+      if (checkBtn) checkBtn.disabled = input.value.trim().length === 0;
+    });
+    body.appendChild(input);
   } else if (q.type === "ordering") {
     const hint = document.createElement("div");
     hint.className = "question-meta";
@@ -401,10 +427,10 @@ function renderQuestion() {
       checkArea.appendChild(btn);
     } else {
       const correct = isAnswerCorrect(q, session.answers[q.id]);
-      const correctText = q.options
-        .filter((o) => q.correct.includes(o.id))
-        .map((o) => o.text)
-        .join(", ");
+      const correctText =
+        q.type === "fillblank"
+          ? q.correct[0]
+          : q.options.filter((o) => q.correct.includes(o.id)).map((o) => o.text).join(", ");
       const div = document.createElement("div");
       div.className = "explanation";
       div.innerHTML = `
@@ -514,14 +540,13 @@ function renderResults(reviewItems, attempt) {
     const div = document.createElement("div");
     div.className = "review-item";
     const givenText =
-      q.options
-        .filter((o) => r.given.includes(o.id))
-        .map((o) => o.text)
-        .join(", ") || "(no answer)";
-    const correctText = q.options
-      .filter((o) => q.correct.includes(o.id))
-      .map((o) => o.text)
-      .join(", ");
+      q.type === "fillblank"
+        ? r.given[0] || "(no answer)"
+        : q.options.filter((o) => r.given.includes(o.id)).map((o) => o.text).join(", ") || "(no answer)";
+    const correctText =
+      q.type === "fillblank"
+        ? q.correct[0]
+        : q.options.filter((o) => q.correct.includes(o.id)).map((o) => o.text).join(", ");
     div.innerHTML = `
       <div class="question-meta">Question ${i + 1} · ${q.section}</div>
       <div class="question-text" style="font-size:0.98rem;">${q.text}</div>
