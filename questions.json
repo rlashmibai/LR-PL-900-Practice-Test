@@ -31,7 +31,7 @@
     "id": "q2",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Your company wants to quickly build a new business application. The solution must provide: Built-in business logic (rules and workflows) Role-based security controls Seamless integration with Microsoft 365 services Which platform should you use to jumpstart application development?",
+    "text": "Your organization needs to get a new business application off the ground quickly. The solution has to come with built-in business rules and workflow logic, role-based security, and tight integration with Microsoft 365. Which platform gives you the fastest head start?",
     "options": [
       {
         "id": "a",
@@ -59,7 +59,7 @@
     "id": "q3",
     "type": "single",
     "section": "Power BI basics",
-    "text": "Match the Power Platform applications on the left with their corresponding complex use case scenarios on the right: Options on the Left: Power Apps Power Automate Power BI Options on the Right: A. Analyzing real-time data from IoT sensors to optimize manufacturing processes. B. Developing a custom procurement and purchase order management system for a multinational corporation. C. Program the processing of customer support tickets, including sentiment analysis and routing to appropriate teams.",
+    "text": "Match each Power Platform app to the complex scenario it's best suited for. Apps: Power Apps, Power Automate, Power BI. Scenarios: A. Analyzing live data streaming in from IoT sensors to fine-tune a manufacturing process. B. Building a custom procurement and purchase-order system for a large multinational company. C. Automating how customer support tickets get processed, including sentiment analysis and routing to the right team.",
     "options": [
       {
         "id": "a",
@@ -83,7 +83,7 @@
     "id": "q4",
     "type": "multi",
     "section": "Power Pages basics",
-    "text": "Person A: Our team is considering using Power Pages for a new project. Person B: What are some advantages of Power Pages being built on Microsoft Dataverse?",
+    "text": "Colleague A mentions the team is thinking about using Power Pages for an upcoming project. Colleague B asks what benefits come from Power Pages being built on top of Microsoft Dataverse.",
     "options": [
       {
         "id": "a",
@@ -114,7 +114,7 @@
     "id": "q5",
     "type": "single",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "A company receives hundreds of invoices every day through email. They want to automatically extract invoice information and send an approval request if the amount exceeds $10,000. Which Power Platform service should be used?",
+    "text": "A business receives hundreds of invoice emails every day and wants to automatically pull out the invoice details, then trigger an approval request whenever the amount is over $10,000. Which Power Platform service handles this best?",
     "options": [
       {
         "id": "a",
@@ -138,7 +138,7 @@
     "id": "q6",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Imagine you've set up an instant flow using a Power Apps trigger, and this flow is designed to send email notifications to your team members when you finish a task. What action or event would initiate the execution of this flow? How can you trigger the flow to run?",
+    "text": "Say you've built an instant flow that uses a Power Apps trigger, meant to notify your teammates by email whenever you mark a task as done. What actually kicks that flow off — how do you get it to run?",
     "options": [
       {
         "id": "a",
@@ -162,7 +162,7 @@
     "id": "q7",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "A company uses an old desktop accounting application that has no APIs or connectors. They need to automate data entry into this application. Which Power Automate capability should they use?",
+    "text": "A business is still running an old desktop accounting program that has no APIs and no connectors available. They need to automate entering data into it. Which Power Automate capability fits?",
     "options": [
       {
         "id": "a",
@@ -190,7 +190,7 @@
     "id": "q8",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Priya: I heard that Power Automate uses something called solutions to organize components. Arjun: In the context of Power Automate, what is a solution?",
+    "text": "Priya mentions that Power Automate organizes components using something called solutions. Arjun asks: what exactly is a solution in Power Automate?",
     "options": [
       {
         "id": "a",
@@ -218,7 +218,7 @@
     "id": "q9",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Scenario: You are planning to use a flow template to automate a common business process within your organization. What is a necessary requirement to use a flow template?",
+    "text": "Scenario: you want to use a flow template to automate a common business process for your organization. What do you need in order to actually use that template?",
     "options": [
       {
         "id": "a",
@@ -246,7 +246,7 @@
     "id": "q10",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Imagine you are designing a Power Automate workflow for Woodgrove Bank and want to explain automated triggers. In this scenario, based on your understanding, which choice is an example of using an automated trigger?",
+    "text": "You're designing a Power Automate workflow for Woodgrove Bank and need to explain automated triggers to the team. Based on that, which of these is actually an example of an automated trigger?",
     "options": [
       {
         "id": "a",
@@ -274,7 +274,7 @@
     "id": "q11",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "__________________ is a secure, enterprise-grade, low-code software as a service (SaaS) platform for creating, hosting, and administering modern external-facing business sites.",
+    "text": "Fill in the blank: this is a secure, enterprise-grade, low-code SaaS platform built for creating, hosting, and managing modern external-facing business websites.",
     "options": [
       {
         "id": "a",
@@ -298,7 +298,7 @@
     "id": "q12",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Match each Power Platform role with its corresponding capability. Roles: A. Power Platform Admin B. Environment Admin C. Power Apps Maker D. Power Automate Maker Capabilities: Create and manage environments Configure security roles and permissions Create and publish apps Create and run flows Configure integration with Azure services",
+    "text": "Match each Power Platform role to the capability it's responsible for. Roles: A. Power Platform Admin, B. Environment Admin, C. Power Apps Maker, D. Power Automate Maker. Capabilities: create and manage environments; configure security roles and permissions; create and publish apps; create and run flows; configure integration with Azure services.",
     "options": [
       {
         "id": "a",
@@ -330,7 +330,7 @@
     "id": "q13",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "_____________ are the connectors that you create and maintain them for unique or less common apps.",
+    "text": "Fill in the blank: these are the connectors you build and maintain yourself, for apps or systems that aren't common enough to have a ready-made connector.",
     "options": [
       {
         "id": "a",
@@ -354,7 +354,7 @@
     "id": "q14",
     "type": "multi",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "A company is building a customer service agent in Copilot Studio. The project team is discussing what is true about Tools in Copilot Studio. Which THREE statements about tools in Copilot Studio are true?",
+    "text": "A team building a customer service agent in Copilot Studio is debating what's actually true about Tools in Copilot Studio. Which THREE of these statements are correct?",
     "options": [
       {
         "id": "a",
@@ -388,7 +388,7 @@
     "id": "q15",
     "type": "multi",
     "section": "Power Automate basics",
-    "text": "A company uses Microsoft Teams for collaboration and wants to streamline its expense reimbursement process. The requirements are: Employees submit expense requests through a Microsoft Form. Managers must approve or reject the requests. Once a decision is made, the employee's team should automatically receive a status update in a Teams channel. Which TWO Power Automate capabilities should be used to meet these requirements?",
+    "text": "A company uses Microsoft Teams for collaboration and wants to streamline expense reimbursements: employees submit requests via a Microsoft Form, managers approve or reject them, and once a decision is made the employee's team should get an automatic status update in a Teams channel. Which TWO Power Automate capabilities make this happen?",
     "options": [
       {
         "id": "a",
@@ -413,7 +413,7 @@
     "id": "q16",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "Imagine you're tasked with developing a mobile app for your company, and you want to have full creative control over the user interface and design. In this scenario: What type of Power Apps app would be the most suitable choice to meet your requirement of having complete control over the user experience and design?",
+    "text": "Say you're building a mobile app for your company and you want full creative control over the look, feel, and layout. Which type of Power Apps app gives you that level of control?",
     "options": [
       {
         "id": "a",
@@ -437,7 +437,7 @@
     "id": "q17",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "Match the following administrative tasks with the appropriate location for performing them: Options on the Left: Managing user licenses and subscriptions Configuring data loss prevention policies Creating and managing custom connectors Monitoring Power Platform usage and analytics Options on the Right: A. Microsoft Power Platform admin center B. Microsoft 365 admin center Managing user licenses and subscriptions - B. Microsoft 365 admin center Configuring data loss prevention policies - B. Microsoft 365 admin center Creating and managing custom connectors - B. Microsoft 365 admin center",
+    "text": "Match each admin task to the correct place to perform it — Microsoft 365 admin center or Power Platform admin center: managing user licenses and subscriptions; configuring data loss prevention policies; creating and managing custom connectors; monitoring Power Platform usage and analytics.",
     "options": [
       {
         "id": "a",
@@ -473,7 +473,7 @@
     "id": "q18",
     "type": "single",
     "section": "Admin & security",
-    "text": "Match the types of policies on the left with their corresponding descriptions or characteristics on the right: Options on the Left: A. Environment-level policies B. Tenant-level policies Options on the Right: Policies are applied at the organization level, affecting all users and devices in the tenant. Policies that can be configured for specific environments within an organization.",
+    "text": "Match each policy type to its description: A. Environment-level policies, B. Tenant-level policies. Descriptions: policies applied at the organization level, affecting every user and device in the tenant; policies that can be configured for individual environments within an organization.",
     "options": [
       {
         "id": "a",
@@ -497,7 +497,7 @@
     "id": "q19",
     "type": "single",
     "section": "Admin & security",
-    "text": "For the following statements, select the correct combination of Yes and No‘s from the answers. 1. Managed solutions can be used to Group Multiple Power Platform components together during solution development. 2. Managed solutions must be used to distribute a Power Platform Application on the App source. 3. Managed solutions protect Power Platform components from editing when components are exported to another environment. 1. Yes 2. No",
+    "text": "For each statement about managed solutions, decide Yes or No: 1) Managed solutions can be used to group multiple Power Platform components together during solution development. 2) Managed solutions must be used to distribute a Power Platform application on AppSource. 3) Managed solutions prevent components from being edited once they're exported to another environment.",
     "options": [
       {
         "id": "a",
@@ -529,7 +529,7 @@
     "id": "q20",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "A user asks an agent: \"Create an incident in ServiceNow and assign it to the Infrastructure team.\" What happens first?",
+    "text": "A user asks an agent: \"Create an incident in ServiceNow and assign it to the Infrastructure team.\" What's the first thing that happens?",
     "options": [
       {
         "id": "a",
@@ -557,7 +557,7 @@
     "id": "q21",
     "type": "single",
     "section": "Power BI basics",
-    "text": "Match the Power Platform connectors on the left with their typical use cases or data sources on the right. Options on the Left: SharePoint Salesforce SQL Server Twitter Options on the Right: A. Customer Relationship Management (CRM) data and sales management. B. Document storage, collaboration, and management. C. Social media data, real-time tweets, and engagement analytics. D. Relational database management system for structured data.",
+    "text": "Match each Power Platform connector to the data source or use case it's typically associated with. Connectors: SharePoint, Salesforce, SQL Server, Twitter. Use cases: A. CRM data and sales management. B. Document storage, collaboration, and management. C. Social media data, live tweets, and engagement analytics. D. A relational database engine for structured data.",
     "options": [
       {
         "id": "a",
@@ -589,7 +589,7 @@
     "id": "q22",
     "type": "single",
     "section": "General Power Platform",
-    "text": "Scenario: A mid-sized organization is planning to implement Power Platform for various business processes. They have a limited budget and want to ensure cost-effective utilization of the platform. What approach should they consider to optimize costs while maintaining functionality?",
+    "text": "Scenario: a mid-sized organization rolling out Power Platform has a tight budget and wants to keep costs down without losing functionality. What approach should they take?",
     "options": [
       {
         "id": "a",
@@ -617,7 +617,7 @@
     "id": "q23",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "Match the following Power Platform environment types with their respective characteristics: Environment Types: A. Production B. Default C. Sandbox D. Trial E. Developer F. Microsoft Dataverse for Teams Characteristics: The primary environment for deploying live, production-ready solutions with higher SLAs. The environment that comes by default with every Power Platform tenant for ad-hoc development. A safe environment for development and testing without affecting production. A time-limited environment for free trials of Power Platform services. A custom environment created for dedicated development purposes. An environment integrated with Microsoft Teams for building apps and automation. Match the options from the left with the appropriate characteristics on the right (e.g., 1-A, 2-B, 3-C, 4-D, 5-E, 6-F).",
+    "text": "Match each Power Platform environment type to its description. Types: A. Production, B. Default, C. Sandbox, D. Trial, E. Developer, F. Microsoft Dataverse for Teams. Descriptions: the main environment for live, production-ready solutions with stronger SLAs; the environment every tenant gets automatically for ad-hoc work; a safe space for developing and testing without touching production; a time-limited environment for trying Power Platform for free; a dedicated environment for individual development; an environment tied to Microsoft Teams for building apps and automation there.",
     "options": [
       {
         "id": "a",
@@ -637,7 +637,7 @@
     "id": "q24",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Scenario: A company is looking to enhance its workflow automation capabilities by leveraging the Power Automate apps. They want to ensure their employees can access these apps effectively. Question: Which Power Automate app would be most suitable for employees who are frequently on the move, visiting clients, and need to initiate workflows from their mobile devices?",
+    "text": "Scenario: a company wants to improve workflow automation for employees and wants to know which Power Automate app best serves staff who are constantly out visiting clients and need to kick off workflows from their phones.",
     "options": [
       {
         "id": "a",
@@ -657,7 +657,7 @@
     "id": "q25",
     "type": "truefalse",
     "section": "Power Apps basics",
-    "text": "Model-driven apps require an internet connection to function effectively, as they rely on cloud-based data storage and services. Users must be connected to access and update data in these apps. Is this statement true or false?",
+    "text": "True or false: model-driven apps need an internet connection to work properly, since they depend on cloud-based data storage and services, meaning users must be online to view or update data.",
     "options": [
       {
         "id": "a",
@@ -677,7 +677,7 @@
     "id": "q26",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "A company wants an agent to trigger a process that creates a purchase order and sends an approval email. Which tool is the best fit?",
+    "text": "A company wants an agent to kick off a process that creates a purchase order and sends an approval email. Which capability is the best fit for this?",
     "options": [
       {
         "id": "a",
@@ -705,7 +705,7 @@
     "id": "q27",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "You created two new entities in your CDS environment while customizing a canvas app. Before going on leave, which solution should you export to ensure another developer can continue working on the app and you can resume with the updates when you return?",
+    "text": "You've added two new entities to your CDS environment while customizing a canvas app. Before going on leave, which type of solution should you export so a colleague can pick up the work and you can continue where you left off when you're back?",
     "options": [
       {
         "id": "a",
@@ -729,7 +729,7 @@
     "id": "q28",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "You have customized a model by using the guided experience. What is the final step that you must take before you can use it?",
+    "text": "You've customized a model using the guided experience. What's the last step you need to take before you can actually use it?",
     "options": [
       {
         "id": "a",
@@ -757,7 +757,7 @@
     "id": "q29",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "Your organization is building a Power Platform solution with multiple components (apps, workflows, entities). You need to deploy these components to different environments while controlling updates and preventing accidental changes. Question: Should you use a managed or unmanaged solution for this?",
+    "text": "Your organization is building a Power Platform solution made up of several components (apps, workflows, tables/entities) and needs to deploy them across environments while controlling updates and avoiding accidental changes. Should you use a managed or unmanaged solution here?",
     "options": [
       {
         "id": "a",
@@ -781,7 +781,7 @@
     "id": "q30",
     "type": "single",
     "section": "General Power Platform",
-    "text": "What is not true about “saving“ your application?",
+    "text": "Which of these statements is NOT true about saving your application?",
     "options": [
       {
         "id": "a",
@@ -809,7 +809,7 @@
     "id": "q31",
     "type": "single",
     "section": "Admin & security",
-    "text": "There are a number of forms in a model driven app which should only be available to the Sales Team. How can this be achieved?",
+    "text": "A model-driven app has several forms that should only be visible to the Sales team. How would you accomplish that?",
     "options": [
       {
         "id": "a",
@@ -837,7 +837,7 @@
     "id": "q32",
     "type": "fillblank",
     "section": "Power Pages basics",
-    "text": "Power Pages allow users to interact with data stored in __ without needing a license.",
+    "text": "Complete the sentence: through Power Pages, users can interact with data stored in __ without needing a license.",
     "clue": "",
     "correct": [
       "Dataverse"
@@ -848,8 +848,8 @@
     "id": "q33",
     "type": "fillblank",
     "section": "Power Apps basics",
-    "text": "Power Apps allows users to create low code__ applications without writing extensive code.",
-    "clue": "These are apps you can build mostly by dragging, dropping, and configuring components instead of writing long programs.”",
+    "text": "Complete the sentence: Power Apps lets users build low-code, __ applications without writing extensive code.",
+    "clue": "Think of these as apps assembled mostly by dragging, dropping, and configuring building blocks rather than writing lengthy code.",
     "correct": [
       "no code"
     ],
@@ -859,7 +859,7 @@
     "id": "q34",
     "type": "single",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "A business owner wants to create a website for their bakery using Copilot. What should they do first?",
+    "text": "A bakery owner wants to build a website for their business using Copilot. What's the first thing they should do?",
     "options": [
       {
         "id": "a",
@@ -883,7 +883,7 @@
     "id": "q35",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "Shaun has created a Canvas App. He wants to bring in data from a SQL database and store this tabular data to use in the app, rather than search the database every time. He would store this information in which of the following?",
+    "text": "Shaun built a canvas app and wants to pull data from a SQL database and hold onto that tabular data locally for use in the app, instead of querying the database every time. Where would he store it?",
     "options": [
       {
         "id": "a",
@@ -911,7 +911,7 @@
     "id": "q36",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Majid has created a Power Automate flow which he would like to give you access in order for you to be able to edit the flow. He shares the flow with you, but you don‘t see it on the ‘Cloud Flows‘ area. Where should you look for it.",
+    "text": "Majid built a Power Automate flow and shared it with you so you can edit it, but you don't see it under 'Cloud Flows.' Where should you actually look for it?",
     "options": [
       {
         "id": "a",
@@ -939,7 +939,7 @@
     "id": "q37",
     "type": "single",
     "section": "Power BI basics",
-    "text": "You are building a solution in the Microsoft Power Platform that integrates Power Apps, Power Automate, and Dataverse. The solution must meet the following requirements: Users can enter expense data through a mobile app. The data must be stored securely in a cloud database. Automated workflows should notify managers when expenses exceed a threshold. Rolebased privileges must ensure that only managers can approve expenses. Which combination of components correctly fulfills these requirements?",
+    "text": "You're building a Power Platform solution combining Power Apps, Power Automate, and Dataverse with these requirements: users enter expense data via a mobile app; the data must be stored securely in the cloud; automated workflows should alert managers when expenses go over a threshold; and role-based permissions must ensure only managers can approve expenses. Which combination of components satisfies all of this?",
     "options": [
       {
         "id": "a",
@@ -967,7 +967,7 @@
     "id": "q38",
     "type": "truefalse",
     "section": "Power Apps basics",
-    "text": "All licensed users will be automatically added to the Environment Maker role in default environment.",
+    "text": "True or false: every licensed user is automatically added to the Environment Maker role in the default environment.",
     "options": [
       {
         "id": "a",
@@ -987,7 +987,7 @@
     "id": "q39",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "Rosendo has created an app in the default environment and now wants to move it to a production environment. How would she accomplish this?",
+    "text": "Rosendo built an app in the default environment and now wants to move it into a production environment. How should she do that?",
     "options": [
       {
         "id": "a",
@@ -1015,7 +1015,7 @@
     "id": "q40",
     "type": "single",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "A retail company is building an agent in Copilot Studio. The agent must connect securely to external systems like ServiceNow and SAP without requiring custom coding. The project team is deciding which capability to use.",
+    "text": "A retail company is building an agent in Copilot Studio that needs to securely connect to external systems like ServiceNow and SAP without any custom coding. Which capability should the team use?",
     "options": [
       {
         "id": "a",
@@ -1043,7 +1043,7 @@
     "id": "q41",
     "type": "single",
     "section": "General Power Platform",
-    "text": "A business user wants to quickly create a prototype for a new website but his technical expertise is limited. Which approach should they use?",
+    "text": "A business user with limited technical skills wants to quickly put together a prototype for a new website. What approach should they take?",
     "options": [
       {
         "id": "a",
@@ -1067,7 +1067,7 @@
     "id": "q42",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "What is the default visibility setting for a Power Pages site?",
+    "text": "What's the default visibility setting when you create a new Power Pages site?",
     "options": [
       {
         "id": "a",
@@ -1091,7 +1091,7 @@
     "id": "q43",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "Match the following terms with their correct definitions: Table permissions Page permissions Web roles Local sign in External authentication Options: A. Define access to rows in Dataverse tables regardless of how and where they are accessed in Power Pages B. Used to grant or deny access to the individual pages on the website C. Link together users and permissions to define user access to Dataverse data and website content D. Forms-based authentication with the information stored securely in the Dataverse contact row E. Credentials and password management are handled by external identity providers such as Microsoft Entra External ID, Microsoft, Twitter, Facebook, and more",
+    "text": "Match each Power Pages security term to its correct definition. Terms: table permissions; page permissions; web roles; local sign-in; external authentication. Definitions: A. Controls access to rows in Dataverse tables no matter how or where they're accessed from Power Pages. B. Grants or denies access to individual pages on the site. C. Ties users and permissions together to define what data and content a user can access. D. Forms-based sign-in where credentials are stored securely in the Dataverse contact record. E. Sign-in and password handling delegated to an external identity provider such as Microsoft Entra External ID, Microsoft, Twitter, Facebook, etc.",
     "options": [
       {
         "id": "a",
@@ -1127,7 +1127,7 @@
     "id": "q44",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "You are creating a Power Automate environment for Proseware Ltd. and need to identify the correct action for array element renaming. Which of the following actions do developers use to rename an element in each object in an array when building a Power Automate flow?",
+    "text": "You're setting up a Power Automate environment for Proseware Ltd. and need to know: which action do developers use to rename a property inside every object of an array when building a flow?",
     "options": [
       {
         "id": "a",
@@ -1155,7 +1155,7 @@
     "id": "q45",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "You are creating a model-driven Power Apps app. You want to ensure that the app can be used by individuals who have vision impairments. For the following statements, select the correct combination of Yes and No‘s from the answers. Power apps can be built with hot key support and designed so they do not require a touch screen or mouse. Only Model-Driven power Apps have support for using a screen reader without the need for a connector. The accessibility checker can be run for your Power Apps app to provide notifications accessibility violations as well as tips for making it even more user friendly.",
+    "text": "You're building a model-driven Power Apps app and want it usable by people with vision impairments. For each statement, decide Yes or No: Power Apps can be built with hotkey support so they don't require a touchscreen or mouse; only model-driven apps support screen readers without needing a connector; you can run the accessibility checker on a Power Apps app to flag accessibility issues and get tips for improving usability.",
     "options": [
       {
         "id": "a",
@@ -1183,7 +1183,7 @@
     "id": "q46",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "A retail business wants to empower customers to track deliveries and manage returns through a secure portal. Which Power Pages use case best fits this scenario?",
+    "text": "A retail business wants customers to be able to track deliveries and manage returns through a secure portal. Which Power Pages use case fits this best?",
     "options": [
       {
         "id": "a",
@@ -1207,7 +1207,7 @@
     "id": "q47",
     "type": "multi",
     "section": "Dataverse & connectors",
-    "text": "A company is designing a customer support agent. The agent must: Answer policy questions. Create support tickets. Which TWO capabilities are required?",
+    "text": "A company is designing a customer support agent that needs to answer policy questions and create support tickets. Which TWO capabilities does it need?",
     "options": [
       {
         "id": "a",
@@ -1240,7 +1240,7 @@
     "id": "q48",
     "type": "multi",
     "section": "Power Apps basics",
-    "text": "The development team is building a canvas app with the following requirement: The app must be automatically available to all members of a specified Microsoft 365 group. Which of the following approaches meet this requirement? (Select all that apply)",
+    "text": "A team is building a canvas app that must automatically be available to every member of a specified Microsoft 365 group. Which approaches would satisfy this? (Select all that apply)",
     "options": [
       {
         "id": "a",
@@ -1269,7 +1269,7 @@
     "id": "q49",
     "type": "multi",
     "section": "Power Automate basics",
-    "text": "Priya: I heard Power Pages can be used for building business websites. Arjun: Which of the following are valid use cases for Power Pages?",
+    "text": "Priya mentions Power Pages can be used to build business websites. Arjun asks which of the following are actually valid Power Pages use cases.",
     "options": [
       {
         "id": "a",
@@ -1309,7 +1309,7 @@
     "id": "q50",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "You are creating a Power Automate environment for Proseware Ltd. and need to identify the correct action for handling data values. Which of the following actions do developers use to store and manipulate data values when building a Power Automate flow?",
+    "text": "Still working on the Proseware Ltd. Power Automate environment — which action do developers use to store and manipulate data values while building a flow?",
     "options": [
       {
         "id": "a",
@@ -1337,7 +1337,7 @@
     "id": "q51",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "A client of Adventure Works is building a Power Automate solution and wants to understand array processing. She asks: Which of the following actions do developers use to execute a block of actions for every item in the input array when building a Power Automate flow?",
+    "text": "A client at Adventure Works building a Power Automate solution wants to understand array processing, and asks: which action runs a block of steps once for every item in an input array?",
     "options": [
       {
         "id": "a",
@@ -1365,7 +1365,7 @@
     "id": "q52",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Fabrikam Inc. is preparing a Power Automate flow and wants to ensure makers understand how to repeat identical data. The automation team asks: Which of the following actions do developers use to enter identical data multiple times when building a Power Automate flow?",
+    "text": "Fabrikam Inc. is putting together a Power Automate flow and wants makers to understand how to repeat identical data. Which action lets you enter the same data multiple times within a flow?",
     "options": [
       {
         "id": "a",
@@ -1393,7 +1393,7 @@
     "id": "q53",
     "type": "multi",
     "section": "Power Apps basics",
-    "text": "You are working on a Canvas App project at Tailspin Toys and need to document media control usage. As part of the project, you need to answer: Which of the following media controls are available for you when building a canvas app? Please select all that apply",
+    "text": "Working on a canvas app project at Tailspin Toys, you need to document which media controls are available. Which of these media controls can you use when building a canvas app? (Select all that apply)",
     "options": [
       {
         "id": "a",
@@ -1423,7 +1423,7 @@
     "id": "q54",
     "type": "multi",
     "section": "Power Automate basics",
-    "text": "You need to implement Microsoft Business Applications along with the Microsoft Power platform. Which Microsoft products are part of the Power platform?",
+    "text": "You're implementing Microsoft Business Applications alongside the Power Platform. Which of these Microsoft products are actually part of the Power Platform?",
     "options": [
       {
         "id": "a",
@@ -1452,7 +1452,7 @@
     "id": "q55",
     "type": "multi",
     "section": "Power Apps basics",
-    "text": "Your manager has asked you to update the current canvas apps by changing their data source connectors. This requires removing existing connections and adding new ones. However, you’ve discovered that you’re unable to see the target environment where the connection needs to be added. Which security roles do you need to perform this task? Please select all that apply.",
+    "text": "Your manager wants you to update existing canvas apps by swapping out their data-source connectors — removing the old connections and adding new ones. You find you can't even see the target environment where the connection needs to go. Which security role(s) would let you do this? (Select all that apply)",
     "options": [
       {
         "id": "a",
@@ -1477,7 +1477,7 @@
     "id": "q56",
     "type": "multi",
     "section": "Power Automate basics",
-    "text": "You create an automatic flow. What are the two types of connector triggers you can use?",
+    "text": "You're creating an automatic flow. What are the two types of connector triggers available to you?",
     "options": [
       {
         "id": "a",
@@ -1510,8 +1510,8 @@
     "id": "q57",
     "type": "fillblank",
     "section": "Dataverse & connectors",
-    "text": "Microsoft Dataverse is a __ based platform for securely storing and managing data.",
-    "clue": "It runs online on Microsoft servers, not just on your computer, allowing access from anywhere securely.",
+    "text": "Complete the sentence: Microsoft Dataverse is a __-based platform for securely storing and managing data.",
+    "clue": "It lives online on Microsoft's servers rather than just your own machine, so it can be reached securely from anywhere.",
     "correct": [
       "cloud"
     ],
@@ -1521,7 +1521,7 @@
     "id": "q58",
     "type": "multi",
     "section": "Power Pages basics",
-    "text": "Priya: I heard Power Pages lets you build and customize websites in different ways. Arjun: Which of the following methods are available in Power Pages for building and customizing websites?",
+    "text": "Priya mentions Power Pages offers different ways to build and customize a website. Arjun asks which of these methods are actually available in Power Pages.",
     "options": [
       {
         "id": "a",
@@ -1555,7 +1555,7 @@
     "id": "q59",
     "type": "multi",
     "section": "Power Pages basics",
-    "text": "Joseph: I heard Power Pages can present data from different sources. James: Please select all data sources that the Power Pages can present data.",
+    "text": "Joseph mentions Power Pages can pull in data from different sources. James asks: which of these are valid data sources Power Pages can present data from?",
     "options": [
       {
         "id": "a",
@@ -1585,8 +1585,8 @@
     "id": "q60",
     "type": "fillblank",
     "section": "Power Pages basics",
-    "text": "Power Pages allow external users to interact with__ data through a website interface.",
-    "clue": "What is the major data source for Power Pages since Power Pages site are prone access to external users.",
+    "text": "Complete the sentence: Power Pages let external users interact with __ data through a website interface.",
+    "clue": "Think about the main data source behind Power Pages, given that Power Pages sites are typically opened up to external users.",
     "correct": [
       "Dataverse"
     ],
@@ -1596,7 +1596,7 @@
     "id": "q61",
     "type": "multi",
     "section": "Power Pages basics",
-    "text": "Fabrikam Inc. is preparing an HR solution and wants to ensure employees understand the platform’s applications. The HR team asks: Which of the following are valid use cases for employee self-service platforms?",
+    "text": "Fabrikam Inc.'s HR team is rolling out a self-service platform and wants staff to understand its uses. Which of these are valid use cases for an employee self-service platform?",
     "options": [
       {
         "id": "a",
@@ -1636,7 +1636,7 @@
     "id": "q62",
     "type": "multi",
     "section": "Power Apps basics",
-    "text": "You create a canvas app. Please select all the formula elements that you can use for your app.",
+    "text": "You're building a canvas app. Which of these are actually formula elements you can use in it? (Select all that apply)",
     "options": [
       {
         "id": "a",
@@ -1671,7 +1671,7 @@
     "id": "q63",
     "type": "multi",
     "section": "Power Apps basics",
-    "text": "You create a canvas app from a tabular data source. Power Apps generates three screens. Please select the three generated screens for your app.",
+    "text": "You build a canvas app starting from a tabular data source, and Power Apps automatically generates three screens for you. Which three screens are they?",
     "options": [
       {
         "id": "a",
@@ -1709,7 +1709,7 @@
     "id": "q64",
     "type": "multi",
     "section": "Power Apps basics",
-    "text": "You are working on a model-driven app project at Tailspin Toys and need to document the design stages. As part of the project, you need to answer: Which of the following are the design stages for model-driven apps?",
+    "text": "Working on a model-driven app project at Tailspin Toys, you need to document the design stages. Which of these are actual design stages for building a model-driven app?",
     "options": [
       {
         "id": "a",
@@ -1744,8 +1744,8 @@
     "id": "q65",
     "type": "fillblank",
     "section": "Power Automate basics",
-    "text": "Power Automate can integrate with __ to automate tasks across Microsoft services.",
-    "clue": "It is host to Outlook, Teams, Sharepoint apps.",
+    "text": "Complete the sentence: Power Automate can integrate with __ to automate tasks across Microsoft services.",
+    "clue": "Think of the suite that includes Outlook, Teams, and SharePoint.",
     "correct": [
       "Microsoft 365"
     ],
@@ -1755,7 +1755,7 @@
     "id": "q66",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Alex works in a company where he frequently needs to check data on a website and manually enter it into an on-premises database. This process is time-consuming and prone to errors. Which application will help in automating the repetitive tasks.",
+    "text": "Alex's job involves regularly checking data on a website and manually typing it into an on-premises database — slow and error-prone. Which application would help automate this repetitive task?",
     "options": [
       {
         "id": "a",
@@ -1783,7 +1783,7 @@
     "id": "q67",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "Matt is sending approvals through Power Automate and a Model Driven App. He is letting the team members know what will happen. What can he tell them as to where the approvals will appear?",
+    "text": "Matt is setting up approvals through Power Automate tied to a model-driven app, and wants to tell his team where those approval requests will actually show up.",
     "options": [
       {
         "id": "a",
@@ -1811,7 +1811,7 @@
     "id": "q68",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "In Power Automate, which connector type is the most cost-effective to use when building flows?",
+    "text": "In Power Automate, which type of connector is the most cost-effective option when building flows?",
     "options": [
       {
         "id": "a",
@@ -1835,7 +1835,7 @@
     "id": "q69",
     "type": "single",
     "section": "Power BI basics",
-    "text": "A sales manager wants to receive a daily email summary of new leads added to the company’s CRM system. What is the best way to automate this process using Power Platform?",
+    "text": "A sales manager wants a daily email summarizing new leads added to the CRM. What's the best way to automate this in Power Platform?",
     "options": [
       {
         "id": "a",
@@ -1859,7 +1859,7 @@
     "id": "q70",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "A user wants to create an app that allows employees to submit expense reports and attach receipts. The app should be mobile-friendly and allow custom layout design. Which type of Power App should they build?",
+    "text": "Someone wants an app that lets employees submit expense reports with attached receipts — it needs to be mobile-friendly with a custom layout. Which type of Power App should they build?",
     "options": [
       {
         "id": "a",
@@ -1887,7 +1887,7 @@
     "id": "q71",
     "type": "single",
     "section": "General Power Platform",
-    "text": "A client of Adventure Works is building a Power Platform solution and wants to understand licensing implications. She asks: Which of the following scenarios requires a premium license in Power Platform?",
+    "text": "A client at Adventure Works building a Power Platform solution wants to understand licensing, and asks: which of these scenarios actually requires a premium license?",
     "options": [
       {
         "id": "a",
@@ -1915,7 +1915,7 @@
     "id": "q72",
     "type": "single",
     "section": "Dataverse & connectors",
-    "text": "A company uses SQL Server to store customer data and wants to build a Power App that connects to this data source. What type of connector is required?",
+    "text": "A company stores customer data in SQL Server and wants a Power App that connects to it. What type of connector does that require?",
     "options": [
       {
         "id": "a",
@@ -1943,7 +1943,7 @@
     "id": "q73",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "Which data source is recommended for a small-scale Power Apps solution that does not require complex relationships and is cost-effective?",
+    "text": "Which data source is best for a small, cost-effective Power Apps solution that doesn't need complex relationships between data?",
     "options": [
       {
         "id": "a",
@@ -1967,7 +1967,7 @@
     "id": "q74",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "In Power Apps, what is the main advantage of using flexible height containers in a responsive layout?",
+    "text": "In Power Apps, what's the main benefit of using flexible-height containers in a responsive layout?",
     "options": [
       {
         "id": "a",
@@ -1991,7 +1991,7 @@
     "id": "q75",
     "type": "single",
     "section": "Power BI basics",
-    "text": "An organization wants to build a secure, externally facing website using Microsoft Power Pages. The requirements are: External users must be able to register and log in securely. The site must display and update data stored in Dataverse. Rolebased permissions should restrict access to sensitive data. The solution must integrate with Microsoft Entra ID (Azure AD) for authentication. Executives want analytics on site usage and data submissions. Which combination of Power Platform features best satisfies all requirements?",
+    "text": "An organization wants to build a secure, externally-facing website with Power Pages that meets these needs: external users can register and log in securely; the site reads and updates data stored in Dataverse; role-based permissions restrict sensitive data; it integrates with Microsoft Entra ID for authentication; and leadership wants analytics on site usage and submissions. Which combination of Power Platform features covers all of this?",
     "options": [
       {
         "id": "a",
@@ -2019,7 +2019,7 @@
     "id": "q76",
     "type": "single",
     "section": "General Power Platform",
-    "text": "A company wants an agent to create a vacation request in an HR application after collecting employee information. Which capability should be used?",
+    "text": "A company wants an agent to file a vacation request in an HR system after gathering the employee's details. Which capability should be used for that?",
     "options": [
       {
         "id": "a",
@@ -2047,7 +2047,7 @@
     "id": "q77",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "An organization requires a platform where employees can independently access HR documents, submit leave requests, and complete training modules. Which Power Pages implementation is most appropriate?",
+    "text": "An organization needs a platform where employees can independently pull up HR documents, submit leave requests, and finish training modules on their own. Which Power Pages setup fits best?",
     "options": [
       {
         "id": "a",
@@ -2071,7 +2071,7 @@
     "id": "q78",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "In the Power Pages design studio, which workspace is used to manage Dataverse tables and forms for a website?",
+    "text": "Inside the Power Pages design studio, which workspace do you use to manage the Dataverse tables and forms behind a website?",
     "options": [
       {
         "id": "a",
@@ -2095,7 +2095,7 @@
     "id": "q79",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "Within Power Pages security, which component is responsible for handling user authentication?",
+    "text": "In Power Pages security, which component is actually responsible for authenticating users?",
     "options": [
       {
         "id": "a",
@@ -2119,7 +2119,7 @@
     "id": "q80",
     "type": "single",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "A retail company wants customers to chat with an order-status agent directly from its public website. Which channel should be configured?",
+    "text": "A retail company wants customers to be able to chat with an order-status agent right from its public website. Which channel should be set up for that?",
     "options": [
       {
         "id": "a",
@@ -2147,7 +2147,7 @@
     "id": "q81",
     "type": "single",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "A company plans to deploy its Copilot Studio agent to three different audiences: Employees inside Microsoft Teams Customers via a public website Users through a custom mobile application The project manager is asked how many channels must be configured to support these deployments. Question: What is the minimum number of channels that must be configured?",
+    "text": "A company wants its Copilot Studio agent available to three different audiences: employees in Microsoft Teams, customers via a public website, and users through a custom mobile app. How many channels, at minimum, need to be configured to support all three?",
     "options": [
       {
         "id": "a",
@@ -2175,7 +2175,7 @@
     "id": "q82",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "An organization seeks to automate workflow processes while maintaining data consistency across platforms. Which Power Pages feature should be leveraged?",
+    "text": "An organization wants to automate workflow processes while keeping data consistent across platforms. Which Power Pages feature should they lean on?",
     "options": [
       {
         "id": "a",
@@ -2199,7 +2199,7 @@
     "id": "q83",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "At “Skyline Enterprises,” the web development team is configuring security for their Power Pages site. Which workspace in the design studio should they use?",
+    "text": "The web development team at Skyline Enterprises is configuring security for their Power Pages site. Which design-studio workspace should they use?",
     "options": [
       {
         "id": "a",
@@ -2223,7 +2223,7 @@
     "id": "q84",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "An app maker is assigned the Environment Maker role in a Power Platform environment. What can they do?",
+    "text": "An app maker has been given the Environment Maker role in a Power Platform environment. What does that actually let them do?",
     "options": [
       {
         "id": "a",
@@ -2251,7 +2251,7 @@
     "id": "q85",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "At “HealthFirst Clinic,” administrators want to assign different levels of access to authenticated patients and anonymous visitors on their Power Pages site. Which feature should they configure?",
+    "text": "HealthFirst Clinic's admins want to give authenticated patients and anonymous visitors different levels of access on their Power Pages site. Which feature should they configure for that?",
     "options": [
       {
         "id": "a",
@@ -2279,7 +2279,7 @@
     "id": "q86",
     "type": "multi",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "Which TWO prerequisites are required to create an app by using Copilot in Power Apps?",
+    "text": "To build an app using Copilot in Power Apps, which TWO prerequisites need to be in place first?",
     "options": [
       {
         "id": "a",
@@ -2308,7 +2308,7 @@
     "id": "q87",
     "type": "single",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "A company needs to quickly launch a customer self-service portal with minimal coding expertise. Which Power Pages feature should be used for fast and intuitive site setup?",
+    "text": "A company needs to get a customer self-service portal up quickly without much coding know-how. Which Power Pages feature supports fast, intuitive site setup?",
     "options": [
       {
         "id": "a",
@@ -2332,7 +2332,7 @@
     "id": "q88",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "A company wants to ensure that only users in the finance department can access a specific table in Dataverse. What should the admin configure?",
+    "text": "A company wants to make sure only the finance department can access a specific Dataverse table. What should the admin set up to enforce that?",
     "options": [
       {
         "id": "a",
@@ -2360,7 +2360,7 @@
     "id": "q89",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "The design team at “UrbanStyle Clothing” is customizing their Power Pages site. What is the role of a theme in this process?",
+    "text": "UrbanStyle Clothing's design team is customizing their Power Pages site. What role does a theme actually play in that process?",
     "options": [
       {
         "id": "a",
@@ -2384,7 +2384,7 @@
     "id": "q90",
     "type": "multi",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "The marketing team at Sunrise Travel Agency is redesigning their Power Pages site with the help of Copilot. Which actions can Copilot in Power Pages assist them with? (Select all that apply)",
+    "text": "Sunrise Travel Agency's marketing team is redesigning their Power Pages site with Copilot's help. Which of these can Copilot in Power Pages actually assist with? (Select all that apply)",
     "options": [
       {
         "id": "a",
@@ -2423,7 +2423,7 @@
     "id": "q91",
     "type": "single",
     "section": "Power BI basics",
-    "text": "A company wants to provide external users such as customers and partners with a secure digital experience where they can submit support requests, track order status, and register for services. The solution must securely connect to Microsoft Dataverse. Which Microsoft Power Platform capabilities can be used to achieve this requirement?",
+    "text": "A company wants to give external users — customers and partners — a secure digital experience where they can submit support requests, track order status, and register for services, all securely connected to Dataverse. Which Power Platform capability supports this?",
     "options": [
       {
         "id": "a",
@@ -2455,7 +2455,7 @@
     "id": "q92",
     "type": "single",
     "section": "Power Apps basics",
-    "text": "What is the significance of using the Preview feature in Power Apps Studio before publishing an app?",
+    "text": "Why does it matter to use the Preview feature in Power Apps Studio before you publish an app?",
     "options": [
       {
         "id": "a",
@@ -2479,7 +2479,7 @@
     "id": "q93",
     "type": "single",
     "section": "Power Pages basics",
-    "text": "A company named ABC Corporation uses Power Pages for customer self-service portals. If external identity providers are not configured, what security risk may arise?",
+    "text": "ABC Corporation uses Power Pages for customer self-service portals. If they don't configure external identity providers, what security risk does that create?",
     "options": [
       {
         "id": "a",
@@ -2503,7 +2503,7 @@
     "id": "q94",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "A developer, Ramkumar is building a proof-of-concept app using premium connectors and Dataverse. What license should he use for testing?",
+    "text": "Ramkumar, a developer, is building a proof-of-concept app that uses premium connectors and Dataverse. Which license should he use for this testing?",
     "options": [
       {
         "id": "a",
@@ -2531,7 +2531,7 @@
     "id": "q95",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "The IT team at “BrightTech Solutions” wants to ensure that only verified employees can log in to their new Power Pages site. Which authentication method should they configure?",
+    "text": "BrightTech Solutions' IT team wants only verified employees to be able to log into their new Power Pages site. Which authentication method should they set up?",
     "options": [
       {
         "id": "a",
@@ -2555,7 +2555,7 @@
     "id": "q96",
     "type": "multi",
     "section": "Power Apps basics",
-    "text": "A company is building a Power App that must work seamlessly across mobile phones, tablets, and desktops. Which of the following are valid benefits of applying responsive design principles in Power Apps? (Select all that apply)",
+    "text": "A company is building a Power App that has to work well on phones, tablets, and desktops alike. Which of these are genuine benefits of applying responsive design in Power Apps? (Select all that apply)",
     "options": [
       {
         "id": "a",
@@ -2589,7 +2589,7 @@
     "id": "q97",
     "type": "single",
     "section": "Power BI basics",
-    "text": "A company created an agent and configured Topics, Knowledge Sources, and Tools. Employees still cannot use the agent. What is the most likely reason?",
+    "text": "A company set up Topics, Knowledge Sources, and Tools for their agent, but employees still can't use it. What's the most likely reason?",
     "options": [
       {
         "id": "a",
@@ -2621,7 +2621,7 @@
     "id": "q98",
     "type": "single",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "A healthcare company is designing a support agent in Copilot Studio. The agent must: Greet employees and identify their intent. Answer policy-related questions about medical leave. Trigger a workflow that creates a leave request in the HR system and sends an approval email. Store the leave request data for reporting. Be accessible directly inside Microsoft Teams. Which sequence of capabilities is required to meet all these requirements?",
+    "text": "A healthcare company is building a support agent in Copilot Studio that needs to: greet employees and figure out their intent; answer policy questions about medical leave; kick off a workflow that files a leave request in the HR system and sends an approval email; store the leave request data for reporting; and be reachable directly inside Microsoft Teams. Which sequence of capabilities covers all of that?",
     "options": [
       {
         "id": "a",
@@ -2649,7 +2649,7 @@
     "id": "q99",
     "type": "multi",
     "section": "Power Automate basics",
-    "text": "A government services agent must: Answer policy questions about tax filing. Trigger workflows to submit tax forms. Store citizen data securely. Be accessible via the official website. Which FOUR capabilities are required?",
+    "text": "A government services agent needs to: answer questions about tax-filing policy; trigger workflows to submit tax forms; store citizen data securely; and be reachable through the official website. Which FOUR capabilities does it need?",
     "options": [
       {
         "id": "a",
@@ -2684,7 +2684,7 @@
     "id": "q100",
     "type": "single",
     "section": "Power Virtual Agents & Copilot Studio",
-    "text": "When creating a Power App using Copilot, what happens after you enter a natural language prompt?",
+    "text": "When you're using Copilot to build a Power App, what actually happens right after you type in your natural-language description?",
     "options": [
       {
         "id": "a",
