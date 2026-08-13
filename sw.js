@@ -1,0 +1,53 @@
+// Minimal service worker: caches the app shell so the site is installable
+// and works offline for a repeat visitor. Bump CACHE_NAME when app files change
+// to force clients to pick up the new version.
+const CACHE_NAME = "pl900-shell-v1";
+const APP_SHELL = [
+  "./",
+  "./index.html",
+  "./style.css",
+  "./app.js",
+  "./questions.json",
+  "./manifest.json",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+];
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)).then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
+  );
+});
+
+// Network-first for questions.json (so new questions show up promptly),
+// cache-first for everything else in the app shell.
+self.addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
+  if (url.origin !== location.origin) return;
+
+  if (url.pathname.endsWith("questions.json")) {
+    event.respondWith(
+      fetch(event.request)
+        .then((res) => {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          return res;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(event.request).then((cached) => cached || fetch(event.request))
+  );
+});

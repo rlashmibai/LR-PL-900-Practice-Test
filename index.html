@@ -7,6 +7,11 @@
   <meta name="description" content="Free PL-900 (Microsoft Power Platform Fundamentals) practice test with instant explanations and score history." />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#0078d4" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="PL-900" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -117,5 +122,12 @@
   </div>
 
   <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js").catch((err) => console.warn("SW registration failed:", err));
+      });
+    }
+  </script>
 </body>
 </html>
