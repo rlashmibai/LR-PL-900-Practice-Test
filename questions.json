@@ -3,7 +3,7 @@
     "id": "q1",
     "type": "single",
     "section": "Power Automate basics",
-    "text": "A company uses Power Automate to manage work orders. When a new work order is created, a service manager must review and approve the request before a field technician can be assigned. Which type of flow should you use to automate this process?",
+    "text": "A field-services company manages its work orders through Power Automate. Every time a new work order comes in, it needs to be reviewed and formally signed off by a service manager before a technician can be sent out. Which type of flow is the right choice to automate this approval step?",
     "options": [
       { "id": "a", "text": "Accept flow" },
       { "id": "b", "text": "Approval flow" },
@@ -11,6 +11,6 @@
       { "id": "d", "text": "Instant flow" }
     ],
     "correct": ["b"],
-    "explanation": "An approval flow is specifically designed to handle scenarios where something needs to be reviewed and approved before the next step can happen. In your case, when a work order is created, the flow can automatically send an approval request to the service manager. Once the manager approves it, the flow can proceed to dispatch the worker."
+    "explanation": "Approval flow is the right fit here because it's purpose-built for exactly this kind of stop-and-wait scenario — where a process needs a person's sign-off before moving forward. Picture it working like this: the moment a new work order lands, the flow automatically pings the service manager with a request to approve it. The flow pauses right there and won't continue until that approval comes back. Once the manager gives the green light, the flow picks back up and hands the job off to a technician.<br><br>None of the other choices fit the requirement. \"Accept flow\" isn't an actual flow type in Power Automate — it doesn't exist. A business rule flow operates at the level of enforcing logic on a form (think showing/hiding fields or validating data), not routing something through a human review step. And an instant flow is fired off manually by a person clicking a button — it has no built-in way to pause and wait for someone's approval, which is the whole point of this scenario.<br><br>The core idea to remember: whenever a process needs to pause for someone to review and sign off before the next step happens, an approval flow is the tool built for that job — it automatically routes the request to the approver and only continues once a decision has been made."
   }
 ]
