@@ -162,5 +162,19 @@
     ],
     "correct": ["a"],
     "explanation": "Data loss prevention (DLP) policies classify connectors into groups (e.g., business vs. non-business) and control which can be combined, to prevent unsafe data mixing."
+  },
+  {
+    "id": "q13",
+    "type": "single",
+    "section": "Power Automate basics",
+    "text": "A company uses Power Automate to manage work orders. When a new work order is created, a service manager must review and approve the request before a field technician can be assigned. Which type of flow should you use to automate this process?",
+    "options": [
+      { "id": "a", "text": "Accept flow" },
+      { "id": "b", "text": "Approval flow" },
+      { "id": "c", "text": "Business rule flow" },
+      { "id": "d", "text": "Instant flow" }
+    ],
+    "correct": ["b"],
+    "explanation": "An approval flow routes a request to a chosen approver and only continues once it's approved — exactly what's needed: the flow starts when the work order is created, waits for the service manager's decision, then proceeds to assign a technician. 'Accept flow' isn't a real flow type; business rules apply logic at the form level rather than running approval workflows; and instant flows are triggered manually by a user, not automatically by an event like a new record being created."
   }
 ]
