@@ -149,6 +149,8 @@ th { color: var(--text-muted); font-weight: 600; }
 }
 .nav-grid button.current { border: 2px solid var(--accent); color: var(--accent); }
 .nav-grid button.answered { background: #e5f1fb; color: var(--accent-dark); }
+.nav-grid button.correct { background: #dff6dd; color: var(--green); border-color: var(--green); }
+.nav-grid button.incorrect { background: #fde7e9; color: var(--red); border-color: var(--red); }
 .nav-grid button.flagged { box-shadow: inset 0 -3px 0 var(--amber); }
 
 .question-meta {
@@ -156,6 +158,16 @@ th { color: var(--text-muted); font-weight: 600; }
   margin-bottom: 6px;
 }
 .question-text { font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; line-height: 1.4; }
+.question-text img,
+.explanation img,
+.review-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 10px 0;
+  display: block;
+}
 
 .option {
   display: flex; align-items: center; gap: 10px;
@@ -165,6 +177,9 @@ th { color: var(--text-muted); font-weight: 600; }
 .option:hover { border-color: var(--accent); }
 .option.selected { border-color: var(--accent); background: #eef6fc; }
 .option input { pointer-events: none; }
+.option.locked { cursor: default; }
+.option.locked.correct { border-color: var(--green); background: #dff6dd; }
+.option.locked.incorrect { border-color: var(--red); background: #fde7e9; }
 
 .order-list { list-style: none; padding: 0; margin: 0; }
 .order-list li {
@@ -176,6 +191,11 @@ th { color: var(--text-muted); font-weight: 600; }
   border: 1px solid var(--border); background: #fff; border-radius: 6px;
   width: 28px; height: 28px; cursor: pointer; font-size: 0.9rem;
 }
+.order-list li.correct { border-color: var(--green); background: #dff6dd; }
+.order-list li.incorrect { border-color: var(--red); background: #fde7e9; }
+
+#checkAnswerArea { margin: 4px 0 10px; }
+#checkAnswerArea .btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
 .flag-toggle { font-size: 0.85rem; cursor: pointer; user-select: none; color: var(--text-muted); }
 .flag-toggle.active { color: var(--amber); font-weight: 600; }

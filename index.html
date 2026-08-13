@@ -38,9 +38,12 @@
     <section id="view-dashboard" class="view">
       <div class="card">
         <h2 id="dashGreeting">Welcome!</h2>
-        <p>Take the full timed exam, or practice one topic at a time.</p>
+        <p>Choose how you want to practice — just like on Udemy: a timed exam simulation, or a practice test that shows the answer and explanation right after each question.</p>
         <div class="btn-row">
-          <button id="startFullBtn" class="btn">Start Full Practice Test (60 min)</button>
+          <button id="startTimedBtn" class="btn">⏱️ Timed Test (60 min · results at the end)</button>
+          <button id="startPracticeBtn" class="btn secondary">📖 Practice Test (instant answers + explanations)</button>
+        </div>
+        <div class="btn-row">
           <button id="logoutBtn" class="btn ghost">Switch user</button>
         </div>
       </div>
@@ -72,6 +75,7 @@
       <div class="card">
         <div class="question-text" id="questionText"></div>
         <div id="questionBody"></div>
+        <div id="checkAnswerArea"></div>
         <div class="btn-row" style="justify-content:space-between; align-items:center;">
           <span class="flag-toggle" id="flagToggle">🚩 Flag for review</span>
         </div>

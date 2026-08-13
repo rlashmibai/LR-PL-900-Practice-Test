@@ -11,6 +11,6 @@
       { "id": "d", "text": "Instant flow" }
     ],
     "correct": ["b"],
-    "explanation": "An approval flow routes a request to a chosen approver and only continues once it's approved — exactly what's needed: the flow starts when the work order is created, waits for the service manager's decision, then proceeds to assign a technician. 'Accept flow' isn't a real flow type; business rules apply logic at the form level rather than running approval workflows; and instant flows are triggered manually by a user, not automatically by an event like a new record being created."
+    "explanation": "An approval flow is specifically designed to handle scenarios where something needs to be reviewed and approved before the next step can happen. In your case, when a work order is created, the flow can automatically send an approval request to the service manager. Once the manager approves it, the flow can proceed to dispatch the worker."
   }
 ]
