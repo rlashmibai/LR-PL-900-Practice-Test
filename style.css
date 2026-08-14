@@ -118,6 +118,9 @@ input[type="text"], input[type="email"] {
   border: 1px solid var(--border);
 }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn.small { padding: 7px 12px; font-size: 0.82rem; }
+.btn.submit-btn { background: var(--green); }
+.btn.submit-btn:hover { background: #0b5c0b; }
 
 .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
 
@@ -141,12 +144,25 @@ th { color: var(--text-muted); font-weight: 600; }
   display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 14px; flex-wrap: wrap; gap: 10px;
 }
+.test-toolbar-left { display: flex; gap: 8px; }
+.test-toolbar-right {
+  display: flex; align-items: center; gap: 12px; margin-left: auto;
+  text-align: right;
+}
+.test-toolbar-right .question-meta { margin-bottom: 0; text-align: right; }
 .timer {
   font-variant-numeric: tabular-nums;
   font-weight: 700; font-size: 1.05rem;
   background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 6px 14px;
+  flex-shrink: 0;
 }
 .timer.low { color: var(--red); border-color: var(--red); }
+
+.question-num-badge {
+  display: inline-block; background: var(--accent); color: #fff;
+  font-size: 0.78rem; font-weight: 700; padding: 4px 12px; border-radius: 999px;
+  margin-bottom: 10px;
+}
 
 .nav-grid {
   display: grid;
@@ -220,16 +236,59 @@ th { color: var(--text-muted); font-weight: 600; }
 .flag-toggle { font-size: 0.85rem; cursor: pointer; user-select: none; color: var(--text-muted); }
 .flag-toggle.active { color: var(--amber); font-weight: 600; }
 
+/* 12-test grids (Choose Test page + Dashboard) */
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.test-tile {
+  border: 1px solid var(--border); border-radius: 10px; background: #fff;
+  padding: 14px 10px; cursor: pointer; text-align: center;
+}
+.test-tile:hover { border-color: var(--accent); background: #eef6fc; }
+.test-tile-num { font-weight: 700; color: var(--accent-dark); }
+.test-tile-sub { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+/* Verdict banner (Correct/Incorrect), shown above the explanation */
+.verdict-banner {
+  border-radius: 8px; padding: 12px 14px; margin: 10px 0 4px;
+}
+.verdict-banner.correct { background: #dff6dd; }
+.verdict-banner.incorrect { background: #fde7e9; }
+.verdict-title { font-weight: 700; font-size: 1rem; }
+.verdict-banner.correct .verdict-title { color: var(--green); }
+.verdict-banner.incorrect .verdict-title { color: var(--red); }
+.verdict-answer { font-size: 0.9rem; margin-top: 4px; color: var(--text); }
+
+/* Explanation card: title bar + formatted body (headings/lists/links) */
+.explanation-card {
+  background: #f8f9fb; border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden; margin-top: 8px;
+}
+.explanation-title {
+  background: #eef1f5; font-weight: 700; font-size: 0.82rem; text-transform: uppercase;
+  letter-spacing: 0.03em; color: var(--text-muted); padding: 8px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.explanation-body { padding: 12px 14px; font-size: 0.92rem; color: var(--text); line-height: 1.6; }
+.explanation-body p { margin: 0 0 10px; }
+.explanation-body p:last-child { margin-bottom: 0; }
+.explanation-body ul, .explanation-body ol { margin: 6px 0 12px; padding-left: 22px; }
+.explanation-body li { margin-bottom: 5px; }
+.explanation-body .expl-heading {
+  font-size: 0.85rem; font-weight: 700; color: var(--accent-dark);
+  text-transform: uppercase; letter-spacing: 0.02em; margin: 14px 0 6px;
+}
+.explanation-body .expl-heading:first-child { margin-top: 0; }
+.explanation-body a { color: var(--accent-dark); word-break: break-word; }
+
 /* Results */
 .score-hero { text-align: center; padding: 10px 0 20px; }
 .score-hero .pct { font-size: 2.6rem; font-weight: 800; color: var(--accent); }
 .review-item { border-bottom: 1px solid var(--border); padding: 14px 0; }
 .review-item:last-child { border-bottom: none; }
-.review-item .your-answer { font-size: 0.9rem; margin: 6px 0; }
-.review-item .explanation {
-  background: #f8f9fb; border-radius: 8px; padding: 10px 12px;
-  font-size: 0.88rem; color: var(--text-muted); margin-top: 8px;
-}
 .icon-correct { color: var(--green); font-weight: 700; }
 .icon-incorrect { color: var(--red); font-weight: 700; }
 

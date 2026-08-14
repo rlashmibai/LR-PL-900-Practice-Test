@@ -27,12 +27,9 @@
 
       <div class="card hero-card">
         <div class="eyebrow">Microsoft Power Platform PL-900 Exam: Full Explanations, Real-World Scenarios, Exam Tips, and Study Resources</div>
-        <h2>Master the PL-900 Microsoft Power Platform Fundamentals Exam with Confidence</h2>
-        <p class="hero-sub">Prepare smarter, not harder.</p>
         <p>Ready to clear PL-900 on your first try? Passing this exam comes down to really understanding the terminology, concepts, and features across every Power Platform application, not just memorizing answers. That's why every question here comes with a full explanation, and the difficulty ranges from beginner through intermediate, so you build real confidence and cover every topic thoroughly.</p>
         <div class="btn-row">
-          <button id="homeStartTimedBtn" class="btn">⏱️ Start Timed Test (no sign-in needed)</button>
-          <button id="homeStartPracticeBtn" class="btn secondary">📖 Start Practice Test (no sign-in needed)</button>
+          <button id="homeReadyBtn" class="btn">Ready to start? →</button>
         </div>
         <div class="btn-row">
           <button id="homeGoToLoginBtn" class="btn ghost">Sign in to save your progress instead →</button>
@@ -43,10 +40,10 @@
         <h2>Key features</h2>
         <ul class="feature-list">
           <li>600 practice questions covering all 5 official PL-900 exam domains</li>
+          <li>12 ready-made practice tests of 50 questions each, plus practice by topic</li>
           <li>Two ways to study: a Timed Test that simulates the real exam, or a Practice Test that shows the answer and a full explanation right after each question</li>
           <li>Every question includes a complete, plain-English explanation, not just the correct answer</li>
           <li>Multiple question formats: single-choice, multi-select, true/false, fill-in-the-blank, and ordering</li>
-          <li>Practice by topic so you can drill your weakest areas directly</li>
           <li>Score breakdown by exam domain after every attempt, weighted to match the real exam's percentages</li>
           <li>100% free, with no account required to start practicing right now</li>
           <li>Works on mobile and desktop, and can be installed as an app on your phone</li>
@@ -162,12 +159,38 @@
       <div class="card hero-card">
         <h2>Ready to start?</h2>
         <div class="btn-row">
-          <button id="homeStartTimedBtn2" class="btn">⏱️ Start Timed Test (no sign-in needed)</button>
-          <button id="homeStartPracticeBtn2" class="btn secondary">📖 Start Practice Test (no sign-in needed)</button>
+          <button id="homeReadyBtn2" class="btn">Ready to start? →</button>
         </div>
         <div class="btn-row">
           <button id="homeGoToLoginBtn2" class="btn ghost">Sign in to save your progress instead →</button>
         </div>
+      </div>
+    </section>
+
+    <!-- Choose Test: hero + 12 test-set buttons, no sign-in required -->
+    <section id="view-choose-test" class="view">
+      <div class="card hero-card">
+        <div class="eyebrow">Microsoft Power Platform PL-900 Exam</div>
+        <h2>Master the PL-900 Microsoft Power Platform Fundamentals Exam with Confidence</h2>
+        <p class="hero-sub">Prepare smarter, not harder.</p>
+        <p>Pick any test below to jump straight in, no sign-in required. Each one has 50 questions pulled proportionally from all 5 exam domains, so every test feels like a realistic mini-exam.</p>
+      </div>
+
+      <div class="card">
+        <h2>⏱️ Timed Tests</h2>
+        <p>Simulates real exam conditions: 50 minutes, answers and explanations shown only after you submit.</p>
+        <div class="test-grid" id="chooseTimedGrid"></div>
+      </div>
+
+      <div class="card">
+        <h2>📖 Practice Tests</h2>
+        <p>Same 12 question sets, but see the correct answer and full explanation right after each question, at your own pace.</p>
+        <div class="test-grid" id="choosePracticeGrid"></div>
+      </div>
+
+      <div class="btn-row">
+        <button id="chooseTestGoHomeBtn" class="btn ghost">← Back to home</button>
+        <button id="chooseTestLoginBtn" class="btn ghost">Sign in to save your progress →</button>
       </div>
     </section>
 
@@ -192,14 +215,21 @@
     <section id="view-dashboard" class="view">
       <div class="card">
         <h2 id="dashGreeting">Welcome!</h2>
-        <p>Choose how you want to practice — just like on Udemy: a timed exam simulation, or a practice test that shows the answer and explanation right after each question.</p>
-        <div class="btn-row">
-          <button id="startTimedBtn" class="btn">⏱️ Timed Test (60 min · results at the end)</button>
-          <button id="startPracticeBtn" class="btn secondary">📖 Practice Test (instant answers + explanations)</button>
-        </div>
         <div class="btn-row">
           <button id="logoutBtn" class="btn ghost">Switch user</button>
         </div>
+      </div>
+
+      <div class="card">
+        <h2>⏱️ Timed Tests</h2>
+        <p>50 questions, 50 minutes, answers shown at the end.</p>
+        <div class="test-grid" id="dashTimedGrid"></div>
+      </div>
+
+      <div class="card">
+        <h2>📖 Practice Tests</h2>
+        <p>Same 12 sets, instant answer and explanation after each question.</p>
+        <div class="test-grid" id="dashPracticeGrid"></div>
       </div>
 
       <div class="card">
@@ -220,13 +250,20 @@
     <!-- Test taking -->
     <section id="view-test" class="view">
       <div class="test-toolbar">
-        <div id="questionMeta" class="question-meta"></div>
-        <div class="timer" id="timerDisplay">00:00</div>
+        <div class="test-toolbar-left">
+          <button id="testHomeBtn" class="btn ghost small">🏠 Home</button>
+          <button id="testCancelBtn" class="btn ghost small">✕ Cancel</button>
+        </div>
+        <div class="test-toolbar-right">
+          <div id="questionMeta" class="question-meta"></div>
+          <div class="timer" id="timerDisplay">00:00</div>
+        </div>
       </div>
 
       <div class="nav-grid" id="navGrid"></div>
 
       <div class="card">
+        <div class="question-num-badge" id="questionNumBadge">Question 1</div>
         <div class="question-text" id="questionText"></div>
         <div id="questionBody"></div>
         <div id="checkAnswerArea"></div>
@@ -238,7 +275,7 @@
       <div class="btn-row">
         <button id="prevQBtn" class="btn secondary">← Previous</button>
         <button id="nextQBtn" class="btn">Next →</button>
-        <button id="submitTestBtn" class="btn" style="display:none; background:var(--green);">Submit Test</button>
+        <button id="submitTestBtn" class="btn submit-btn">✓ Submit Test</button>
       </div>
     </section>
 
