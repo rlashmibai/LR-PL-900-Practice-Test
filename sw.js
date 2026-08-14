@@ -1,7 +1,7 @@
 // Minimal service worker: caches the app shell so the site is installable
 // and works offline for a repeat visitor. Bump CACHE_NAME when app files change
 // to force clients to pick up the new version.
-const CACHE_NAME = "pl900-shell-v2";
+const CACHE_NAME = "pl900-shell-v3";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -9,6 +9,7 @@ const APP_SHELL = [
   "./app.js",
   "./questions.json",
   "./manifest.json",
+  "./get-certified-banner.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
 ];

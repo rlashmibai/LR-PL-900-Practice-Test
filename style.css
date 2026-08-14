@@ -21,6 +21,15 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Still allow selecting/typing inside actual form fields */
+input, textarea {
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .app-header {
@@ -29,6 +38,9 @@ body {
   padding: 16px 20px;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   justify-content: space-between;
 }
 
@@ -42,8 +54,8 @@ body {
 .app-brand:hover { opacity: 0.9; }
 
 .app-header-title {
-  font-size: 0.92rem; font-weight: 600; opacity: 0.9; text-align: center;
-  flex: 1; padding: 0 16px;
+  font-size: 1.25rem; font-weight: 800; opacity: 0.95; text-align: center;
+  flex: 1; padding: 0 16px; letter-spacing: -0.01em;
 }
 @media (max-width: 700px) {
   .app-header-title { display: none; }
@@ -85,7 +97,7 @@ h3 { margin: 18px 0 8px; font-size: 1rem; }
 
 .hero-card { background: linear-gradient(135deg, var(--accent-light), #ffffff); border-color: var(--accent); }
 
-/* Soft per-section background tints on the home page */
+/* Soft per-section background tints (still used on Choose Test / Dashboard) */
 .tint-blue   { background: #eef6fb; border-color: #d6e9f4; }
 .tint-mint   { background: #f0f7f4; border-color: #d9ecE3; }
 .tint-amber  { background: #fff8ed; border-color: #f3e6c8; }
@@ -94,6 +106,45 @@ h3 { margin: 18px 0 8px; font-size: 1rem; }
 .tint-teal   { background: #eefaf8; border-color: #cdeee8; }
 .tint-peach  { background: #fef2ea; border-color: #f6ddc9; }
 .tint-warm   { background: #f7f3ed; border-color: #ece3d4; }
+
+/* Home page: two alternating color pairs, dark heading bar (centered) + light content body */
+.split-card { border-radius: var(--radius); overflow: hidden; margin-bottom: 16px; border: 1px solid var(--border); }
+.split-head {
+  padding: 18px 24px; text-align: center; color: #fff; font-weight: 800; font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center; gap: 10px; letter-spacing: -0.01em;
+}
+.split-icon { font-size: 1.35rem; }
+.split-body { padding: 24px; }
+.split-body h2, .split-body h3 { color: var(--text); }
+.pair-a .split-head { background: var(--accent); }
+.pair-a .split-body { background: var(--accent-light); }
+.pair-b .split-head { background: #1b8f96; }
+.pair-b .split-body { background: #e6f6f4; }
+
+/* Key Features: icon-card grid inside the split-card body */
+.feature-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 4px;
+}
+.feature-card-item {
+  background: #fff; border: 1px solid var(--border); border-radius: 10px;
+  padding: 18px 14px; text-align: center;
+}
+.fci-icon { font-size: 1.8rem; margin-bottom: 8px; }
+.fci-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+.fci-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+@media (max-width: 900px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .feature-grid { grid-template-columns: 1fr; } }
+
+.who-tagline { font-weight: 700; font-size: 1.02rem; color: var(--accent-dark); }
+
+.copyright-note { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin: 8px 0 0; }
+
+/* "Get certified" banner graphic */
+.cert-banner {
+  border-radius: var(--radius); overflow: hidden; margin-bottom: 16px; text-align: center;
+  border: 1px solid var(--border);
+}
+.cert-banner img { width: 100%; height: auto; display: block; }
 .eyebrow {
   font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
   color: var(--accent-dark); margin-bottom: 8px;

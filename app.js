@@ -156,6 +156,18 @@ function formatExplanation(raw) {
 }
 
 // ---------- Boot ----------
+// Deter casual copying of question content: block the context menu, text
+// selection, and copy/cut/paste. Not a real security boundary (view-source
+// still works), just friction against right-click-and-copy.
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("selectstart", (e) => {
+  if (e.target.closest && e.target.closest("input, textarea")) return;
+  e.preventDefault();
+});
+document.addEventListener("copy", (e) => e.preventDefault());
+document.addEventListener("cut", (e) => e.preventDefault());
+document.addEventListener("paste", (e) => e.preventDefault());
+
 async function boot() {
   const res = await fetch("questions.json");
   ALL_QUESTIONS = await res.json();
