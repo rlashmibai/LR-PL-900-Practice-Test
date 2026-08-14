@@ -339,13 +339,19 @@
         </aside>
 
         <div class="test-main">
-          <div class="card">
-            <div class="question-num-badge" id="questionNumBadge">Question 1</div>
-            <div class="question-text" id="questionText"></div>
-            <div id="questionBody"></div>
-            <div id="checkAnswerArea"></div>
-            <div class="btn-row" style="justify-content:space-between; align-items:center;">
-              <span class="flag-toggle" id="flagToggle">🚩 Flag for review</span>
+          <div class="card no-pad">
+            <div class="q-topic-bar" id="qTopicBar"></div>
+            <div class="q-number-bar">
+              <span id="qNumberLabel"></span>
+              <span class="q-number-topic" id="qNumberTopic"></span>
+            </div>
+            <div class="q-body-pad">
+              <div class="question-text" id="questionText"></div>
+              <div id="questionBody"></div>
+              <div id="checkAnswerArea"></div>
+              <div class="btn-row" style="justify-content:space-between; align-items:center;">
+                <span class="flag-toggle" id="flagToggle">🚩 Flag for review</span>
+              </div>
             </div>
           </div>
 

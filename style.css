@@ -241,11 +241,18 @@ th { color: var(--text-muted); font-weight: 600; }
 
 .test-main { flex: 1 1 auto; min-width: 0; }
 
-.question-num-badge {
-  display: inline-block; background: var(--accent); color: #fff;
-  font-size: 0.78rem; font-weight: 700; padding: 4px 12px; border-radius: 999px;
-  margin-bottom: 10px;
+.card.no-pad { padding: 0; overflow: hidden; }
+.q-body-pad { padding: 20px 24px; }
+
+.q-topic-bar {
+  background: #1b8f96; color: #fff; font-weight: 700; font-size: 0.92rem;
+  padding: 12px 20px;
 }
+.q-number-bar {
+  background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem;
+  padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;
+}
+.q-number-topic { font-style: italic; font-weight: 500; opacity: 0.9; font-size: 0.82rem; }
 
 .question-meta {
   font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em;
