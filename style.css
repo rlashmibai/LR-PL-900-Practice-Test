@@ -229,6 +229,13 @@ h3 { margin: 18px 0 8px; font-size: 1rem; }
   color: var(--accent-dark); margin-bottom: 8px;
 }
 .hero-sub { font-weight: 600; color: var(--text-muted); margin-top: -8px; }
+.hero-badges { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0 4px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent); color: #fff; font-weight: 800; font-size: 0.92rem;
+  padding: 7px 16px; border-radius: 999px;
+}
+.hero-badge:nth-child(2) { background: #1b8f96; }
 .feature-list {
   list-style: none; padding-left: 0; margin: 8px 0 0;
   display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px;
@@ -253,11 +260,11 @@ h3 { margin: 18px 0 8px; font-size: 1rem; }
 @media (max-width: 620px) {
   .stats-row { grid-template-columns: 1fr; gap: 16px; }
 }
-.stat-ring { width: 56px; height: 56px; flex-shrink: 0; transform: rotate(-90deg); }
+.stat-ring { width: 76px; height: 76px; flex-shrink: 0; transform: rotate(-90deg); }
 .stat-ring-track { fill: none; stroke: var(--accent-light); stroke-width: 5; }
 .stat-ring-fill { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linecap: round; }
-.stat-pct-wrap { position: relative; margin-left: -68px; width: 56px; text-align: center; pointer-events: none; }
-.stat-pct { font-weight: 800; font-size: 1.05rem; color: var(--text); }
+.stat-pct-wrap { position: relative; margin-left: -88px; width: 76px; text-align: center; pointer-events: none; }
+.stat-pct { font-weight: 800; font-size: 1.35rem; color: #000; }
 .stat-label { font-size: 0.85rem; color: var(--text-muted); line-height: 1.35; }
 
 label {
@@ -556,6 +563,7 @@ th { color: var(--text-muted); font-weight: 600; }
   margin-top: 10px;
 }
 .testimonial-card {
+  display: flex; flex-direction: column;
   text-align: center; padding: 0 12px;
   border-left: 1px solid var(--border);
 }
@@ -564,7 +572,10 @@ th { color: var(--text-muted); font-weight: 600; }
   font-size: 2.4rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 4px;
   font-family: Georgia, serif;
 }
-.testimonial-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 16px; }
+/* flex: 1 makes each card's quote fill however much space it needs to, so the
+   avatar/name/role below it always lands on the same line across all cards,
+   regardless of how long any individual quote is. */
+.testimonial-text { flex: 1; font-size: 0.92rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 16px; }
 .testimonial-avatar {
   width: 48px; height: 48px; border-radius: 50%; background: var(--accent-light);
   color: var(--accent); display: flex; align-items: center; justify-content: center;
@@ -596,5 +607,4 @@ th { color: var(--text-muted); font-weight: 600; }
 @media (max-width: 480px) {
   .container { padding: 14px 10px 50px; }
   .card { padding: 16px; }
-  .stat-pct-wrap { margin-left: -60px; }
 }
