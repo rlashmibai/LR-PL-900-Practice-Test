@@ -116,6 +116,20 @@ h3 { margin: 18px 0 8px; font-size: 1rem; }
 .card ul, .card ol { margin: 8px 0; padding-left: 22px; line-height: 1.55; }
 .card li { margin-bottom: 4px; }
 
+/* Justified body text throughout — even left/right edges on every paragraph.
+   Headings, buttons, badges, and short list bullets are left as-is: justify
+   only helps multi-line prose, and can leave ugly gaps in short wrapped
+   bullet items, so it's scoped to actual paragraph text. */
+.card p,
+.split-body p,
+.explanation-body p,
+.option-expl-text,
+.testimonial-text {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
 .hero-card { background: linear-gradient(135deg, var(--accent-light), #ffffff); border-color: var(--accent); }
 .hero-grid { display: grid; grid-template-columns: minmax(240px, 360px) 1fr; gap: 28px; align-items: center; }
 .hero-image { width: 100%; height: auto; object-fit: contain; border-radius: 10px; border: 1px solid var(--border); display: block; }
