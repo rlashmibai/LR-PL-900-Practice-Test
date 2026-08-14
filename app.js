@@ -82,18 +82,27 @@ const EXPL_HEADERS = [
 ];
 
 function linkify(text) {
-  // Some explanations now already contain real <a href="..."> links (recovered
-  // straight from the source docs' hyperlinks). Without the negative lookbehind,
-  // this regex would also match the URL sitting inside that href attribute and
-  // wrap IT in a second, broken, nested <a> tag. [^\s<"] plus (?<!href=") keeps
-  // this a no-op on anything already linked, so it's safe to run on any text.
-  return text.replace(/(?<!href=")(https?:\/\/[^\s<"]+)/g, (url) => {
+  // Some explanations already contain real <a href="..."> links (recovered
+  // straight from the source docs), and some of THOSE have the raw URL itself
+  // as the visible label rather than a nice title. A lookbehind on href="
+  // alone only protects the attribute value — it does nothing for a bare URL
+  // sitting as an anchor's own inner text, which this regex would happily
+  // wrap in a second, nested <a>. So pull out every existing <a>...</a> tag
+  // first (protecting both its href AND its label) and only linkify what's
+  // left, regardless of what shape the pre-existing links take.
+  const anchors = [];
+  const withoutLinks = text.replace(/<a\s[^>]*>.*?<\/a>/g, (m) => {
+    anchors.push(m);
+    return `\x00LINK${anchors.length - 1}\x00`;
+  });
+  const linked = withoutLinks.replace(/(https?:\/\/[^\s<"]+)/g, (url) => {
     const clean = url.replace(/[.,;:)]+$/, "");
     const trailing = url.slice(clean.length);
     let label = clean.replace(/^https?:\/\//, "");
     if (label.length > 55) label = label.slice(0, 52) + "...";
     return `<a href="${clean}" target="_blank" rel="noopener noreferrer">${label}</a>${trailing}`;
   });
+  return linked.replace(/\x00LINK(\d+)\x00/g, (_, i) => anchors[Number(i)]);
 }
 
 // Detects " * item * item * item" style bullets within a block of text.
@@ -105,10 +114,14 @@ function formatBullets(text) {
 }
 
 // Detects "1. foo 2. bar 3. baz" style numbered lists within a block of text.
+// The source data sometimes loses the leading "1." (it got consumed elsewhere
+// during import), leaving a list that reads "2. ... 3. ... 4. ..." — still a
+// real list, just missing its first marker — so this only requires 3+ RUNS of
+// consecutive integers, not that the run starts at 1.
 function formatNumbered(text) {
   const matches = [...text.matchAll(/(?:^|\s)(\d{1,2})\.\s/g)];
   const nums = matches.map((m) => parseInt(m[1], 10));
-  const sequential = nums.length >= 3 && nums[0] === 1 && nums.every((n, i) => i === 0 || n === nums[i - 1] + 1);
+  const sequential = nums.length >= 3 && nums.every((n, i) => i === 0 || n === nums[i - 1] + 1);
   if (!sequential) return null;
 
   const before = text.slice(0, matches[0].index).trim();
@@ -123,7 +136,10 @@ function formatNumbered(text) {
   const html = items
     .map((it) => (it.startsWith("<ul>") || it.startsWith("<p>") ? `<li>${it}</li>` : it))
     .join("");
-  return (before ? `<p>${linkify(before)}</p>` : "") + `<ol>${html}</ol>`;
+  // Recursively format the lead-in text too (it's often itself a run of short
+  // "Term - definition." clauses that read much better one per line) instead
+  // of dumping it into one dense paragraph.
+  return (before ? formatSentences(before) : "") + `<ol>${html}</ol>`;
 }
 
 // Detects "A. foo B. bar D. baz" style lettered lists within a block of text
@@ -146,7 +162,7 @@ function formatLettered(text) {
     const itemText = text.slice(start, end).trim();
     return `<li><strong>${m[1]}.</strong> ${linkify(itemText)}</li>`;
   });
-  return (before ? `<p>${linkify(before)}</p>` : "") + `<ul class="lettered-list">${items.join("")}</ul>`;
+  return (before ? formatSentences(before) : "") + `<ul class="lettered-list">${items.join("")}</ul>`;
 }
 
 // Splits a run of prose into one <p> per sentence, so a long explanation reads
@@ -173,8 +189,36 @@ function formatBlock(p) {
   return formatNumbered(p) || formatLettered(p) || formatBullets(p) || formatSentences(p);
 }
 
+// "Match each X to Y" question stems arrive as one dense run-on paragraph
+// ("Apps: Power Apps, Power Automate. Scenarios: A. ... B. ... C. ...") —
+// this breaks each label ("Apps:"), lettered choice, and semicolon-separated
+// item onto its own line so the two things being matched are actually
+// readable, without needing to correctly identify which side is which for
+// every phrasing variant (they vary too much for that to be reliable).
+// Only ever called for question text starting with "Match each"/"Match the
+// following", and falls back to the untouched original if it can't find
+// real list structure to split on, so it can never make an ordinary
+// question worse.
+function formatMatchingQuestionText(text) {
+  if (!/^match (each|the following)/i.test(text.trim())) return text;
+  let working = text;
+  working = working.replace(/\s*\b([A-Z][a-zA-Z]*(?:\s[a-zA-Z]+){0,2}):\s/g, "\n$1: ");
+  working = working.replace(/\s([A-H])\.\s(?=[A-Z])/g, "\n$1. ");
+  working = working.replace(/;\s*/g, "\n");
+  const lines = working
+    .split("\n")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (lines.length < 3) return text;
+  return lines.map((l) => `<div class="match-line">${l}</div>`).join("");
+}
+
 function formatExplanation(raw) {
   if (!raw) return "";
+
+  // Arrow characters (from source docx bullets like "Manager -> Approves") render
+  // inconsistently across fonts/platforms; a plain ASCII arrow is more reliable.
+  raw = raw.replace(/→|➔|➡/g, "->");
 
   // Pull out any embedded <img> tags so they don't get mangled, restore them after.
   // The placeholder uses \x00 (a character .trim()/whitespace regexes never touch)
@@ -204,6 +248,13 @@ function formatExplanation(raw) {
     .join("");
 
   html = html.replace(/\x00IMG(\d+)\x00/g, (_, i) => imgTags[Number(i)]);
+
+  // Consecutive reference links separated by only a space (common in
+  // "References"/"Recommended Video" sections with several links in a row)
+  // have touching underlines with no visible gap, reading as one merged link.
+  // Break each back-to-back link onto its own line.
+  html = html.replace(/<\/a>\s+(?=<a )/g, "</a><br>");
+
   return html;
 }
 
@@ -236,7 +287,7 @@ function renderExplanationBreakdown(q, given) {
               <div class="option-expl-label">${mark ? `<span class="option-expl-mark">${mark}</span> ` : ""}${opt.text}${
                 tag ? `<span class="option-expl-tag">${tag}</span>` : ""
               }</div>
-              ${opt.explanation ? `<div class="option-expl-text">${opt.explanation}</div>` : ""}
+              ${opt.explanation ? `<div class="option-expl-text">${opt.explanation.replace(/→|➔|➡/g, "->")}</div>` : ""}
             </div>`;
         })
         .join("") +
@@ -696,7 +747,7 @@ function renderQuestion() {
   document.getElementById("qTopicBar").textContent = q.section;
   document.getElementById("qNumberLabel").textContent = `Question #${session.index + 1}`;
   // innerHTML (not textContent) so a question can include an <img> if needed
-  document.getElementById("questionText").innerHTML = q.text;
+  document.getElementById("questionText").innerHTML = formatMatchingQuestionText(q.text);
 
   const body = document.getElementById("questionBody");
   body.innerHTML = "";
@@ -975,7 +1026,7 @@ function renderResults(reviewItems, attempt) {
       q.options.some((o) => o.explanation);
     div.innerHTML = `
       <div class="question-meta">Question ${i + 1} · ${q.section}</div>
-      <div class="question-text" style="font-size:0.98rem;">${q.text}</div>
+      <div class="question-text" style="font-size:0.98rem;">${formatMatchingQuestionText(q.text)}</div>
       <div class="verdict-banner ${r.isCorrect ? "correct" : "incorrect"}">
         <div class="verdict-title">${r.isCorrect ? "✓ Correct" : "✗ Incorrect"}</div>
         <div class="verdict-answer">Your answer: ${givenText}</div>
