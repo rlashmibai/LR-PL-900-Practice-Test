@@ -6,6 +6,15 @@ const FULL_TEST_MINUTES = 60;
 const SECTION_TEST_MINUTES = 15;
 const PASS_PERCENT = 70;
 
+// Official PL-900 exam skill weights, shown next to each topic on the dashboard
+const EXAM_WEIGHTS = {
+  "Describe the business value of Microsoft Power Platform": "5–10%",
+  "Manage the Microsoft Power Platform environment": "20–25%",
+  "Demonstrate the capabilities of Power Apps": "20–25%",
+  "Demonstrate the capabilities of Power Automate": "20–25%",
+  "Describe features and capabilities of agents in Microsoft Copilot Studio": "20–25%",
+};
+
 // ---------- Data layer (localStorage today, Firestore later) ----------
 const DB = {
   getUser() {
@@ -111,9 +120,10 @@ function renderDashboard() {
     const count = ALL_QUESTIONS.filter((q) => q.section === sec).length;
     const row = document.createElement("div");
     row.className = "section-item";
+    const weight = EXAM_WEIGHTS[sec] ? ` (${EXAM_WEIGHTS[sec]})` : "";
     row.innerHTML = `
       <div>
-        <div>${sec}</div>
+        <div>${sec}${weight}</div>
         <div class="count">${count} question${count === 1 ? "" : "s"}</div>
       </div>
       <button class="btn secondary" data-section="${sec}">Practice this topic</button>
@@ -527,8 +537,9 @@ function renderResults(reviewItems, attempt) {
   const secBody = document.getElementById("sectionBreakdownBody");
   secBody.innerHTML = "";
   Object.entries(bySection).forEach(([sec, s]) => {
+    const weight = EXAM_WEIGHTS[sec] ? ` (${EXAM_WEIGHTS[sec]})` : "";
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${sec}</td><td>${s.correct}/${s.total}</td>`;
+    tr.innerHTML = `<td>${sec}${weight}</td><td>${s.correct}/${s.total}</td>`;
     secBody.appendChild(tr);
   });
 
