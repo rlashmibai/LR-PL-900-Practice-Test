@@ -164,6 +164,15 @@ h3 { margin: 18px 0 8px; font-size: 1rem; }
 
 .who-tagline { font-weight: 700; font-size: 1.02rem; color: var(--accent-dark); }
 
+/* With sign-in / without sign-in comparison */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.compare-col { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+.compare-col-title { font-weight: 800; margin-bottom: 10px; color: var(--accent-dark); }
+.compare-list { list-style: none; padding-left: 0; margin: 0; }
+.compare-list li { padding-left: 24px; position: relative; margin-bottom: 8px; font-size: 0.9rem; line-height: 1.4; }
+.compare-list li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+@media (max-width: 640px) { .compare-grid { grid-template-columns: 1fr; } }
+
 .copyright-note { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin: 8px 0 0; }
 
 /* Site footer bar, visible on every page */
@@ -374,6 +383,7 @@ th { color: var(--text-muted); font-weight: 600; }
 .sidebar-q-row.answered:not(.current) { background: var(--accent-light); }
 .sidebar-q-row.correct:not(.current) { background: #dff6dd; }
 .sidebar-q-row.incorrect:not(.current) { background: #fde7e9; }
+.sidebar-q-row.skipped:not(.current) { background: #e9e4d8; }
 .sidebar-q-flag { opacity: 0.35; flex-shrink: 0; margin-top: 1px; }
 .sidebar-q-row.flagged .sidebar-q-flag { opacity: 1; }
 .sidebar-q-num { font-weight: 700; margin-bottom: 2px; }
@@ -393,7 +403,7 @@ th { color: var(--text-muted); font-weight: 600; }
 .nav-grid-legend span { display: flex; align-items: center; gap: 6px; }
 .legend-dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
 .legend-dot.complete { background: #dff6dd; border: 1px solid var(--green); }
-.legend-dot.skipped { background: #fff; border: 1px solid var(--border); }
+.legend-dot.skipped { background: #e9e4d8; border: 1px solid #b8ae94; }
 .legend-dot.flagged { background: #fff; border: 1px solid var(--amber); box-shadow: inset 0 -3px 0 var(--amber); }
 
 .nav-grid {
@@ -406,6 +416,7 @@ th { color: var(--text-muted); font-weight: 600; }
 }
 .nav-grid button.current { border: 2px solid var(--accent); color: var(--accent); }
 .nav-grid button.complete { background: #dff6dd; color: var(--green); border-color: var(--green); }
+.nav-grid button.skipped { background: #e9e4d8; color: #7a7259; border-color: #b8ae94; }
 .nav-grid button.flagged { box-shadow: inset 0 -3px 0 var(--amber); }
 
 .card.no-pad { padding: 0; overflow: hidden; }

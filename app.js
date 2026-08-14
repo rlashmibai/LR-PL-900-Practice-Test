@@ -126,8 +126,51 @@ function formatNumbered(text) {
   return (before ? `<p>${linkify(before)}</p>` : "") + `<ol>${html}</ol>`;
 }
 
+// Detects "A. foo B. bar D. baz" style lettered lists within a block of text
+// (common where an explanation discusses several answer options by letter).
+// Letters don't need to be perfectly consecutive — a discussion might skip a
+// letter whose option didn't need explaining — just increasing, and each
+// marker must be followed by a capitalized word so a stray "A." mid-sentence
+// can't false-trigger this.
+function formatLettered(text) {
+  const matches = [...text.matchAll(/(?:^|\s)([A-H])\.\s(?=[A-Z])/g)];
+  if (matches.length < 2) return null;
+  const codes = matches.map((m) => m[1].charCodeAt(0));
+  const increasing = codes.every((c, i) => i === 0 || c > codes[i - 1]);
+  if (!increasing) return null;
+
+  const before = text.slice(0, matches[0].index).trim();
+  const items = matches.map((m, i) => {
+    const start = m.index + m[0].length;
+    const end = i + 1 < matches.length ? matches[i + 1].index : text.length;
+    const itemText = text.slice(start, end).trim();
+    return `<li><strong>${m[1]}.</strong> ${linkify(itemText)}</li>`;
+  });
+  return (before ? `<p>${linkify(before)}</p>` : "") + `<ul class="lettered-list">${items.join("")}</ul>`;
+}
+
+// Splits a run of prose into one <p> per sentence, so a long explanation reads
+// as short, scannable lines instead of one dense paragraph. Existing <a> tags
+// are pulled out first so a period inside a link's own visible text (rare,
+// but possible) can never split the tag itself in half.
+function formatSentences(text) {
+  const anchors = [];
+  const safe = text.replace(/<a [^>]*>.*?<\/a>/g, (m) => {
+    anchors.push(m);
+    return `\x00A${anchors.length - 1}\x00`;
+  });
+  const sentences = safe
+    .split(/(?<=[a-z0-9\)"']\.)\s+(?=[A-Z])/g)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  if (sentences.length < 2) return `<p>${linkify(text)}</p>`;
+  return sentences
+    .map((s) => `<p>${linkify(s.replace(/\x00A(\d+)\x00/g, (_, i) => anchors[Number(i)]))}</p>`)
+    .join("");
+}
+
 function formatBlock(p) {
-  return formatNumbered(p) || formatBullets(p) || `<p>${linkify(p)}</p>`;
+  return formatNumbered(p) || formatLettered(p) || formatBullets(p) || formatSentences(p);
 }
 
 function formatExplanation(raw) {
@@ -514,6 +557,7 @@ function startTest(mode, param, feedbackMode) {
     answers: {}, // qid -> array of selected option ids (order matters for "ordering" type)
     checked: {}, // qid -> true once "Check Answer" has been clicked (immediate mode only)
     flagged: new Set(),
+    visited: new Set(), // qid -> seen at least once; visited-but-unanswered = "skipped", never-visited = blank
     startedAt: Date.now(),
     timerMode: feedbackMode === "immediate" ? "countup" : "countdown",
     durationSec: minutes * 60,
@@ -600,6 +644,8 @@ function updateQuestionSidebar() {
       row.classList.add(isAnswerCorrect(q, given) ? "correct" : "incorrect");
     } else if (answered) {
       row.classList.add("answered");
+    } else if (session.visited.has(q.id) && i !== session.index) {
+      row.classList.add("skipped");
     }
     if (session.flagged.has(q.id)) row.classList.add("flagged");
   });
@@ -633,6 +679,7 @@ function updateNavGrid() {
     btn.className = "";
     if (i === session.index) btn.classList.add("current");
     if (answered) btn.classList.add("complete");
+    else if (session.visited.has(q.id) && i !== session.index) btn.classList.add("skipped");
     if (session.flagged.has(q.id)) btn.classList.add("flagged");
   });
 }
@@ -645,6 +692,7 @@ function gotoQuestion(i) {
 
 function renderQuestion() {
   const q = session.questions[session.index];
+  session.visited.add(q.id);
   document.getElementById("qTopicBar").textContent = q.section;
   document.getElementById("qNumberLabel").textContent = `Question #${session.index + 1}`;
   // innerHTML (not textContent) so a question can include an <img> if needed
