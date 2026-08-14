@@ -330,6 +330,8 @@ input[type="text"], input[type="email"], textarea {
 .btn.brand-a:hover { background: var(--accent-dark); }
 .btn.brand-b { background: #1b8f96; color: #fff; }
 .btn.brand-b:hover { background: #156d73; }
+.btn.linkedin-btn { background: #0a66c2; color: #fff; text-decoration: none; display: inline-block; }
+.btn.linkedin-btn:hover { background: #084e96; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 .btn.small { padding: 7px 12px; font-size: 0.82rem; }
 .btn.submit-btn { background: var(--green); }
