@@ -464,7 +464,6 @@ function renderQuestion() {
   const q = session.questions[session.index];
   document.getElementById("qTopicBar").textContent = q.section;
   document.getElementById("qNumberLabel").textContent = `Question #${session.index + 1}`;
-  document.getElementById("qNumberTopic").textContent = q.section;
   // innerHTML (not textContent) so a question can include an <img> if needed
   document.getElementById("questionText").innerHTML = q.text;
 
