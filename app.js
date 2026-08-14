@@ -68,10 +68,17 @@ function stripHtml(html) {
 // (anything we authored ourselves), others got flattened into one run-on string during
 // doc import (no newlines at all). This does its best to rebuild headings, numbered
 // lists, and bullet lists from whatever structure survived, and auto-links bare URLs.
+// IMPORTANT: never list both a word and its own prefix here (e.g. "Reference" AND
+// "References") — the shorter one will re-match *inside* text the longer one already
+// produced, orphaning the remainder (this caused the "R" / "eferences ..." bug).
+// Colon-suffixed singular forms are safe to keep alongside colon-less plurals since
+// the colon makes them distinct substrings that can't collide.
 const EXPL_HEADERS = [
-  "Overall explanation", "References:", "Reference:", "Exam Tips:", "Exam Tip:",
-  "Recommended Youtube Video:", "Recommended YouTube video:", "Keep in Mind:",
-  "Study Links:", "Study links:", "Remember,", "Remember:",
+  "Overall explanation", "References:", "Reference:", "References",
+  "Exam Tips:", "Exam Tip:", "Exam Tips",
+  "Recommended Youtube Video:", "Recommended YouTube video:", "Recommended Youtube Video", "Recommended YouTube video",
+  "Keep in Mind:", "Keep in Mind", "Study Links:", "Study links:", "Study Links", "Study links",
+  "Remember,", "Remember:",
 ];
 
 function linkify(text) {
@@ -128,22 +135,20 @@ function formatExplanation(raw) {
     return ` IMG${imgTags.length - 1} `;
   });
 
-  // Break known section headers onto their own paragraph so they render as sub-headings
+  // Break known section headers onto their OWN isolated paragraph (blank line on both
+  // sides) so they render as sub-headings rather than getting merged into body text.
+  const headerNames = new Set(EXPL_HEADERS.map((h) => h.replace(/:$/, "")));
   EXPL_HEADERS.forEach((h) => {
-    text = text.split(h).join(`\n\n${h.replace(/:$/, "")}\n`);
+    text = text.split(h).join(`\n\n${h.replace(/:$/, "")}\n\n`);
   });
 
   const paragraphs = text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
 
+  // A paragraph becomes a heading ONLY if its entire (trimmed) content is exactly one
+  // of the known header names — never just "the first character of any paragraph"
+  // (that was the earlier bug: every paragraph got its first letter sliced off).
   let html = paragraphs
-    .map((p) => {
-      const headingMatch = p.match(/^(.+?)\n?([\s\S]*)$/);
-      if (headingMatch) {
-        const [, heading, rest] = headingMatch;
-        return `<h4 class="expl-heading">${heading}</h4>` + (rest.trim() ? formatBlock(rest.trim()) : "");
-      }
-      return formatBlock(p);
-    })
+    .map((p) => (headerNames.has(p) ? `<h4 class="expl-heading">${p}</h4>` : formatBlock(p)))
     .join("");
 
   html = html.replace(/ IMG(\d+) /g, (_, i) => imgTags[Number(i)]);
