@@ -187,10 +187,8 @@ async function boot() {
     renderTestGrid("choosePracticeGrid", "immediate");
     show("view-choose-test");
   };
-  ["homeReadyBtn", "homeReadyBtn2"].forEach((id) => document.getElementById(id).addEventListener("click", goToChooseTest));
-  ["homeGoToLoginBtn", "homeGoToLoginBtn2"].forEach((id) =>
-    document.getElementById(id).addEventListener("click", () => show("view-welcome"))
-  );
+  document.getElementById("homeReadyBtn").addEventListener("click", goToChooseTest);
+  document.getElementById("homeGoToLoginBtn").addEventListener("click", () => show("view-welcome"));
   document.getElementById("chooseTestGoHomeBtn").addEventListener("click", () => show("view-home"));
   document.getElementById("chooseTestLoginBtn").addEventListener("click", () => show("view-welcome"));
 

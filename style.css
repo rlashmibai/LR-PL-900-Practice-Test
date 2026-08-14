@@ -41,6 +41,14 @@ body {
 }
 .app-brand:hover { opacity: 0.9; }
 
+.app-header-title {
+  font-size: 0.92rem; font-weight: 600; opacity: 0.9; text-align: center;
+  flex: 1; padding: 0 16px;
+}
+@media (max-width: 700px) {
+  .app-header-title { display: none; }
+}
+
 .app-header .user-chip {
   font-size: 0.85rem;
   opacity: 0.9;
@@ -85,20 +93,29 @@ h3 { margin: 18px 0 8px; font-size: 1rem; }
   color: var(--accent-dark); margin-bottom: 8px;
 }
 .hero-sub { font-weight: 600; color: var(--text-muted); margin-top: -8px; }
-.feature-list { list-style: none; padding-left: 0; }
+.feature-list {
+  list-style: none; padding-left: 0; margin: 8px 0 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px;
+}
 .feature-list li {
   padding-left: 26px; position: relative; margin-bottom: 8px;
 }
 .feature-list li::before {
   content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700;
 }
+@media (max-width: 640px) {
+  .feature-list { grid-template-columns: 1fr; }
+}
 
 /* Trust stats row */
 .stats-row {
-  display: flex; gap: 24px; flex-wrap: wrap; justify-content: center;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
 }
 .stat-item {
-  display: flex; align-items: center; gap: 12px; flex: 1 1 220px; max-width: 300px;
+  display: flex; align-items: center; gap: 12px;
+}
+@media (max-width: 620px) {
+  .stats-row { grid-template-columns: 1fr; gap: 16px; }
 }
 .stat-ring { width: 56px; height: 56px; flex-shrink: 0; transform: rotate(-90deg); }
 .stat-ring-track { fill: none; stroke: var(--accent-light); stroke-width: 5; }
