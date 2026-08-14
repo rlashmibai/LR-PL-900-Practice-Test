@@ -82,7 +82,12 @@ const EXPL_HEADERS = [
 ];
 
 function linkify(text) {
-  return text.replace(/(https?:\/\/[^\s<]+)/g, (url) => {
+  // Some explanations now already contain real <a href="..."> links (recovered
+  // straight from the source docs' hyperlinks). Without the negative lookbehind,
+  // this regex would also match the URL sitting inside that href attribute and
+  // wrap IT in a second, broken, nested <a> tag. [^\s<"] plus (?<!href=") keeps
+  // this a no-op on anything already linked, so it's safe to run on any text.
+  return text.replace(/(?<!href=")(https?:\/\/[^\s<"]+)/g, (url) => {
     const clean = url.replace(/[.,;:)]+$/, "");
     const trailing = url.slice(clean.length);
     let label = clean.replace(/^https?:\/\//, "");
@@ -128,11 +133,15 @@ function formatBlock(p) {
 function formatExplanation(raw) {
   if (!raw) return "";
 
-  // Pull out any embedded <img> tags so they don't get mangled, restore them after
+  // Pull out any embedded <img> tags so they don't get mangled, restore them after.
+  // The placeholder uses \x00 (a character .trim()/whitespace regexes never touch)
+  // rather than plain spaces — an image sitting at the very end of a paragraph would
+  // otherwise have its trailing space stripped by the .trim() below, leaving the
+  // restore regex with nothing to match and a literal " IMG0" leaking into the output.
   const imgTags = [];
   let text = raw.replace(/<img[^>]*>/g, (m) => {
     imgTags.push(m);
-    return ` IMG${imgTags.length - 1} `;
+    return `\x00IMG${imgTags.length - 1}\x00`;
   });
 
   // Break known section headers onto their OWN isolated paragraph (blank line on both
@@ -151,8 +160,53 @@ function formatExplanation(raw) {
     .map((p) => (headerNames.has(p) ? `<h4 class="expl-heading">${p}</h4>` : formatBlock(p)))
     .join("");
 
-  html = html.replace(/ IMG(\d+) /g, (_, i) => imgTags[Number(i)]);
+  html = html.replace(/\x00IMG(\d+)\x00/g, (_, i) => imgTags[Number(i)]);
   return html;
+}
+
+// Builds "why each option is right/wrong" + the Overall Explanation card,
+// shared by Practice mode's post-check reveal and the Results review list.
+// Per-option explanations only exist for single/multi/truefalse questions
+// re-matched back to their source doc; anything else (or a question with no
+// recovered per-option text) just falls back to the Overall Explanation alone.
+function renderExplanationBreakdown(q, given) {
+  const hasOptionExpl =
+    (q.type === "single" || q.type === "multi" || q.type === "truefalse") &&
+    Array.isArray(q.options) &&
+    q.options.some((o) => o.explanation);
+
+  let optionsHtml = "";
+  if (hasOptionExpl) {
+    optionsHtml =
+      `<div class="option-breakdown">` +
+      q.options
+        .map((opt) => {
+          const isCorrect = q.correct.includes(opt.id);
+          const wasGiven = given.includes(opt.id);
+          let cls = "option-expl-item";
+          if (isCorrect) cls += " correct";
+          else if (wasGiven) cls += " incorrect";
+          const tag = isCorrect ? "Correct answer" : wasGiven ? "Your answer" : "";
+          const mark = isCorrect ? "✓" : wasGiven ? "✗" : "";
+          return `
+            <div class="${cls}">
+              <div class="option-expl-label">${mark ? `<span class="option-expl-mark">${mark}</span> ` : ""}${opt.text}${
+                tag ? `<span class="option-expl-tag">${tag}</span>` : ""
+              }</div>
+              ${opt.explanation ? `<div class="option-expl-text">${opt.explanation}</div>` : ""}
+            </div>`;
+        })
+        .join("") +
+      `</div>`;
+  }
+
+  return `
+    ${optionsHtml}
+    <div class="explanation-card">
+      <div class="explanation-title">${hasOptionExpl ? "Overall Explanation" : "Explanation"}</div>
+      <div class="explanation-body">${formatExplanation(q.explanation)}</div>
+    </div>
+  `;
 }
 
 // ---------- Boot ----------
@@ -247,6 +301,13 @@ async function boot() {
     document.querySelector(".container").prepend(banner);
     document.getElementById("reloadQuestionsBtn").addEventListener("click", () => location.reload());
   }
+
+  // Floating back-to-top button — shows once you've scrolled, works on every page
+  const backToTopBtn = document.getElementById("backToTopBtn");
+  window.addEventListener("scroll", () => {
+    backToTopBtn.classList.toggle("visible", window.scrollY > 400);
+  });
+  backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 }
 
 function goHomeFromTest() {
@@ -722,21 +783,23 @@ function renderQuestion() {
       });
       checkArea.appendChild(btn);
     } else {
-      const correct = isAnswerCorrect(q, session.answers[q.id]);
+      const given = session.answers[q.id] || [];
+      const correct = isAnswerCorrect(q, given);
       const correctText =
         q.type === "fillblank"
           ? q.correct[0]
           : q.options.filter((o) => q.correct.includes(o.id)).map((o) => o.text).join(", ");
+      const hasOptionExpl =
+        (q.type === "single" || q.type === "multi" || q.type === "truefalse") &&
+        Array.isArray(q.options) &&
+        q.options.some((o) => o.explanation);
       const wrap = document.createElement("div");
       wrap.innerHTML = `
         <div class="verdict-banner ${correct ? "correct" : "incorrect"}">
           <div class="verdict-title">${correct ? "✓ Correct" : "✗ Incorrect"}</div>
-          ${!correct && q.type !== "ordering" ? `<div class="verdict-answer">Correct answer: ${correctText}</div>` : ""}
+          ${!correct && q.type !== "ordering" && !hasOptionExpl ? `<div class="verdict-answer">Correct answer: ${correctText}</div>` : ""}
         </div>
-        <div class="explanation-card">
-          <div class="explanation-title">Explanation</div>
-          <div class="explanation-body">${formatExplanation(q.explanation)}</div>
-        </div>
+        ${renderExplanationBreakdown(q, given)}
       `;
       checkArea.appendChild(wrap);
     }
@@ -850,18 +913,19 @@ function renderResults(reviewItems, attempt) {
       q.type === "fillblank"
         ? q.correct[0]
         : q.options.filter((o) => q.correct.includes(o.id)).map((o) => o.text).join(", ");
+    const hasOptionExpl =
+      (q.type === "single" || q.type === "multi" || q.type === "truefalse") &&
+      Array.isArray(q.options) &&
+      q.options.some((o) => o.explanation);
     div.innerHTML = `
       <div class="question-meta">Question ${i + 1} · ${q.section}</div>
       <div class="question-text" style="font-size:0.98rem;">${q.text}</div>
       <div class="verdict-banner ${r.isCorrect ? "correct" : "incorrect"}">
         <div class="verdict-title">${r.isCorrect ? "✓ Correct" : "✗ Incorrect"}</div>
         <div class="verdict-answer">Your answer: ${givenText}</div>
-        ${!r.isCorrect ? `<div class="verdict-answer">Correct answer: ${correctText}</div>` : ""}
+        ${!r.isCorrect && !hasOptionExpl ? `<div class="verdict-answer">Correct answer: ${correctText}</div>` : ""}
       </div>
-      <div class="explanation-card">
-        <div class="explanation-title">Explanation</div>
-        <div class="explanation-body">${formatExplanation(q.explanation)}</div>
-      </div>
+      ${renderExplanationBreakdown(q, r.given || [])}
     `;
     reviewList.appendChild(div);
   });
