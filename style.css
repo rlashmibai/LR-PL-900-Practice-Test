@@ -70,6 +70,16 @@ h3 { margin: 18px 0 8px; font-size: 1rem; }
 .card li { margin-bottom: 4px; }
 
 .hero-card { background: linear-gradient(135deg, var(--accent-light), #ffffff); border-color: var(--accent); }
+
+/* Soft per-section background tints on the home page */
+.tint-blue   { background: #eef6fb; border-color: #d6e9f4; }
+.tint-mint   { background: #f0f7f4; border-color: #d9ecE3; }
+.tint-amber  { background: #fff8ed; border-color: #f3e6c8; }
+.tint-rose   { background: #fdf2f2; border-color: #f5dcdc; }
+.tint-indigo { background: #f3f2fb; border-color: #ddd9f2; }
+.tint-teal   { background: #eefaf8; border-color: #cdeee8; }
+.tint-peach  { background: #fef2ea; border-color: #f6ddc9; }
+.tint-warm   { background: #f7f3ed; border-color: #ece3d4; }
 .eyebrow {
   font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
   color: var(--accent-dark); margin-bottom: 8px;
