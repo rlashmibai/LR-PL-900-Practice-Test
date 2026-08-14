@@ -68,23 +68,40 @@ async function boot() {
     renderDashboard();
     show("view-dashboard");
   } else {
-    show("view-welcome");
+    show("view-home");
   }
 
   document.getElementById("welcomeForm").addEventListener("submit", onWelcomeSubmit);
   document.getElementById("logoutBtn").addEventListener("click", () => {
     DB.clearUser();
     setUserChip();
-    show("view-welcome");
+    show("view-home");
   });
   document.getElementById("startTimedBtn").addEventListener("click", () => startTest("full", null, "deferred"));
   document.getElementById("startPracticeBtn").addEventListener("click", () => startTest("full", null, "immediate"));
+
+  // Home page: jump straight into a test with no sign-in required. History
+  // just won't be saved for this attempt unless the visitor signs in first.
+  ["homeStartTimedBtn", "homeStartTimedBtn2"].forEach((id) =>
+    document.getElementById(id).addEventListener("click", () => startTest("full", null, "deferred"))
+  );
+  ["homeStartPracticeBtn", "homeStartPracticeBtn2"].forEach((id) =>
+    document.getElementById(id).addEventListener("click", () => startTest("full", null, "immediate"))
+  );
+  ["homeGoToLoginBtn", "homeGoToLoginBtn2"].forEach((id) =>
+    document.getElementById(id).addEventListener("click", () => show("view-welcome"))
+  );
+
   document.getElementById("submitTestBtn").addEventListener("click", onSubmitTest);
   document.getElementById("prevQBtn").addEventListener("click", () => gotoQuestion(session.index - 1));
   document.getElementById("nextQBtn").addEventListener("click", () => gotoQuestion(session.index + 1));
   document.getElementById("backToDashBtn").addEventListener("click", () => {
-    renderDashboard();
-    show("view-dashboard");
+    if (DB.getUser()) {
+      renderDashboard();
+      show("view-dashboard");
+    } else {
+      show("view-home");
+    }
   });
 }
 
@@ -511,7 +528,9 @@ function finishTest() {
   };
 
   const user = DB.getUser();
-  DB.saveAttempt(user.email, attempt);
+  if (user) {
+    DB.saveAttempt(user.email, attempt);
+  } // else: guest session (started from the home page with no sign-in) — score still shows, just isn't saved
 
   renderResults(reviewItems, attempt);
   show("view-results");
@@ -525,6 +544,10 @@ function renderResults(reviewItems, attempt) {
   const badge = document.getElementById("passBadge");
   badge.textContent = pct >= PASS_PERCENT ? "Pass" : "Below passing (70%)";
   badge.className = "badge " + (pct >= PASS_PERCENT ? "pass" : "fail");
+
+  document.getElementById("backToDashBtn").textContent = DB.getUser()
+    ? "Back to dashboard"
+    : "Done (sign in above to save results like this)";
 
   // Section breakdown
   const bySection = {};

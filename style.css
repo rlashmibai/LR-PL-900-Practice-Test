@@ -60,6 +60,23 @@ body {
 }
 
 h2 { margin-top: 0; }
+h3 { margin: 18px 0 8px; font-size: 1rem; }
+.card ul, .card ol { margin: 8px 0; padding-left: 22px; line-height: 1.55; }
+.card li { margin-bottom: 4px; }
+
+.hero-card { background: linear-gradient(135deg, #eef6fc, #ffffff); border-color: var(--accent); }
+.eyebrow {
+  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--accent-dark); margin-bottom: 8px;
+}
+.hero-sub { font-weight: 600; color: var(--text-muted); margin-top: -8px; }
+.feature-list { list-style: none; padding-left: 0; }
+.feature-list li {
+  padding-left: 26px; position: relative; margin-bottom: 8px;
+}
+.feature-list li::before {
+  content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700;
+}
 
 label {
   display: block;
