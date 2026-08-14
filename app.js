@@ -160,17 +160,27 @@ function formatExplanation(raw) {
 // selection, and copy/cut/paste. Not a real security boundary (view-source
 // still works), just friction against right-click-and-copy.
 document.addEventListener("contextmenu", (e) => e.preventDefault());
-document.addEventListener("selectstart", (e) => {
-  if (e.target.closest && e.target.closest("input, textarea")) return;
-  e.preventDefault();
-});
-document.addEventListener("copy", (e) => e.preventDefault());
-document.addEventListener("cut", (e) => e.preventDefault());
-document.addEventListener("paste", (e) => e.preventDefault());
+const inField = (e) => e.target.closest && e.target.closest("input, textarea");
+document.addEventListener("selectstart", (e) => { if (!inField(e)) e.preventDefault(); });
+document.addEventListener("copy", (e) => { if (!inField(e)) e.preventDefault(); });
+document.addEventListener("cut", (e) => { if (!inField(e)) e.preventDefault(); });
+document.addEventListener("paste", (e) => { if (!inField(e)) e.preventDefault(); });
 
 async function boot() {
-  const res = await fetch("questions.json");
-  ALL_QUESTIONS = await res.json();
+  // Load the question bank defensively: if this fetch fails or the response is
+  // malformed (flaky connection, offline, etc.), fall back to an empty array
+  // instead of throwing — an uncaught rejection here would abort boot() before
+  // ANY event listener below got wired up, silently breaking every button on
+  // the site (not just test-taking), including nav that doesn't even need
+  // question data. A visible banner tells the visitor to refresh instead.
+  try {
+    const res = await fetch("questions.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    ALL_QUESTIONS = await res.json();
+  } catch (err) {
+    console.error("Failed to load questions.json:", err);
+    ALL_QUESTIONS = [];
+  }
 
   const user = DB.getUser();
   if (user) {
@@ -182,14 +192,22 @@ async function boot() {
   }
 
   // Header brand name doubles as a home link from anywhere in the app
-  document.getElementById("appHomeLink").addEventListener("click", () => {
+  const goHome = () => {
     if (session && document.getElementById("view-test").classList.contains("active")) {
       goHomeFromTest();
     } else {
       show(DB.getUser() ? "view-dashboard" : "view-home");
       if (DB.getUser()) renderDashboard();
     }
-  });
+  };
+  document.getElementById("appHomeLink").addEventListener("click", goHome);
+
+  // Header About / Contact links, available from anywhere in the app
+  document.getElementById("headerAboutBtn").addEventListener("click", () => show("view-about"));
+  document.getElementById("headerContactBtn").addEventListener("click", () => show("view-contact"));
+  document.getElementById("aboutGoHomeBtn").addEventListener("click", goHome);
+  document.getElementById("contactGoHomeBtn").addEventListener("click", goHome);
+  document.getElementById("contactForm").addEventListener("submit", onContactSubmit);
 
   document.getElementById("welcomeForm").addEventListener("submit", onWelcomeSubmit);
   document.getElementById("logoutBtn").addEventListener("click", () => {
@@ -221,6 +239,14 @@ async function boot() {
       show("view-home");
     }
   });
+
+  if (ALL_QUESTIONS.length === 0) {
+    const banner = document.createElement("div");
+    banner.className = "card load-error-banner";
+    banner.innerHTML = `⚠️ The question bank didn't load (connection hiccup). <button id="reloadQuestionsBtn" class="btn small">Refresh</button>`;
+    document.querySelector(".container").prepend(banner);
+    document.getElementById("reloadQuestionsBtn").addEventListener("click", () => location.reload());
+  }
 }
 
 function goHomeFromTest() {
@@ -254,6 +280,48 @@ function onWelcomeSubmit(e) {
   setUserChip();
   renderDashboard();
   show("view-dashboard");
+}
+
+// ---------- Contact form (delivered via FormSubmit.co — free, no backend needed) ----------
+async function onContactSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById("contactName").value.trim();
+  const email = document.getElementById("contactEmail").value.trim();
+  const message = document.getElementById("contactMessage").value.trim();
+  const status = document.getElementById("contactStatus");
+  const btn = document.getElementById("contactSubmitBtn");
+
+  if (!name || !/^\S+@\S+\.\S+$/.test(email) || !message) {
+    status.textContent = "Please fill in your name, a valid email, and a message.";
+    status.className = "contact-status error";
+    return;
+  }
+
+  btn.disabled = true;
+  status.textContent = "Sending...";
+  status.className = "contact-status sending";
+
+  try {
+    const res = await fetch("https://formsubmit.co/ajax/rlashmibai@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+        _subject: `LR PL900 Practice Test — feedback from ${name}`,
+      }),
+    });
+    if (!res.ok) throw new Error("Request failed");
+    status.textContent = "Thanks! Your message has been sent.";
+    status.className = "contact-status ok";
+    document.getElementById("contactForm").reset();
+  } catch (err) {
+    status.textContent = "Something went wrong sending that. Please try again in a moment.";
+    status.className = "contact-status error";
+  } finally {
+    btn.disabled = false;
+  }
 }
 
 // ---------- Dashboard ----------
@@ -674,12 +742,12 @@ function renderQuestion() {
     }
   }
 
-  // Prev/Next/Submit — Submit is always available so you can end the test at any time.
+  // Prev/Next/Submit — always available. You can skip a question (answered, flagged,
+  // or blank) and come back to it later via the sidebar, same as the real exam.
   const isLast = session.index === session.questions.length - 1;
-  const canAdvance = session.feedbackMode !== "immediate" || locked;
   document.getElementById("prevQBtn").disabled = session.index === 0;
   document.getElementById("nextQBtn").textContent = isLast ? "Submit Test →" : "Skip / Next →";
-  document.getElementById("nextQBtn").disabled = !canAdvance;
+  document.getElementById("nextQBtn").disabled = false;
 
   updateQuestionSidebar();
 }

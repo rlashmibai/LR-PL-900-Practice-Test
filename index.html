@@ -21,7 +21,11 @@
   <header class="app-header">
     <div class="app-brand" id="appHomeLink" role="button" tabindex="0">🏠 LR PL900 Practice Test</div>
     <div class="app-header-title">Microsoft Power Platform PL-900 Practice Test</div>
-    <div class="user-chip" id="userChip"></div>
+    <div class="app-header-right">
+      <button class="header-nav-btn" id="headerAboutBtn" type="button">About Me</button>
+      <button class="header-nav-btn" id="headerContactBtn" type="button">Contact</button>
+      <div class="user-chip" id="userChip"></div>
+    </div>
   </header>
 
   <div class="container">
@@ -30,16 +34,19 @@
     <section id="view-home" class="view active">
 
       <div class="card hero-card">
-        <div class="eyebrow">Microsoft Power Platform PL-900 Exam: Full Explanations, Real-World Scenarios, Exam Tips, and Study Resources</div>
-        <h2>Welcome to LR PL900 Practice Test</h2>
-        <p class="hero-sub">Your One-Stop Destination to Microsoft PL-900 Power Platform Fundamentals Exam</p>
-        <p>Ready to clear PL-900 on your first try? Passing this exam comes down to really understanding the terminology, concepts, and features across every Power Platform application, not just memorizing answers. That's why every question here comes with a full explanation, and the difficulty ranges from beginner through intermediate, so you build real confidence and cover every topic thoroughly.</p>
-        <p>This practice test is aligned to the official Microsoft <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-900" target="_blank" rel="noopener">PL-900 study guide</a>, reflecting its emphasis on AI capabilities, Copilot Studio, and Power Platform administration and governance.</p>
-        <div class="btn-row">
-          <button id="homeReadyBtn" class="btn">Ready to start? →</button>
-        </div>
-        <div class="btn-row">
-          <button id="homeGoToLoginBtn" class="btn ghost">Sign in to save your progress instead →</button>
+        <div class="hero-grid">
+          <img class="hero-image" src="get-certified-banner.png" alt="Get Certified PL-900 at First Attempt" />
+          <div class="hero-text">
+            <div class="eyebrow">Microsoft Power Platform PL-900 Exam: Full Explanations, Real-World Scenarios, Exam Tips, and Study Resources</div>
+            <h2>Welcome to LR PL900 Practice Test</h2>
+            <p class="hero-sub">Your One-Stop Destination to Microsoft PL-900 Power Platform Fundamentals Exam</p>
+            <p>Ready to clear PL-900 on your first try? Passing this exam comes down to really understanding the terminology, concepts, and features across every Power Platform application, not just memorizing answers. That's why every question here comes with a full explanation, and the difficulty ranges from beginner through intermediate, so you build real confidence and cover every topic thoroughly.</p>
+            <p>This practice test is aligned to the official Microsoft <a href="https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/pl-900" target="_blank" rel="noopener">PL-900 study guide</a>, reflecting its emphasis on AI capabilities, Copilot Studio, and Power Platform administration and governance.</p>
+            <div class="btn-row">
+              <button id="homeReadyBtn" class="btn brand-a">Ready to start? →</button>
+              <button id="homeGoToLoginBtn" class="btn brand-b">Sign in to save your progress instead →</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -209,10 +216,6 @@
           <p><strong>Aspiring Power Platform Professionals:</strong> Individuals who are new to the Power Platform and want to gain a foundational understanding of its components, capabilities, and use cases via practice test.</p>
           <p>Those who have completed the Microsoft <a href="https://learn.microsoft.com/en-us/training/paths/pl-900-power-platform-fundamentals/" target="_blank" rel="noopener">Learning Path</a> and wish to self-assess before the official exam can utilize this practice test.</p>
         </div>
-      </div>
-
-      <div class="cert-banner">
-        <img src="get-certified-banner.png" alt="Get Certified PL-900 at First Attempt" />
       </div>
 
       <div class="split-card pair-b">
@@ -443,6 +446,67 @@
 
       <div class="btn-row">
         <button id="backToDashBtn" class="btn">Back to dashboard</button>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="view-about" class="view">
+      <div class="card hero-card">
+        <div class="eyebrow">About This Practice Test</div>
+        <h2>About Me</h2>
+      </div>
+
+      <div class="split-card pair-a">
+        <div class="split-head"><span class="split-icon">👋</span> Hi, I'm Lashmi</div>
+        <div class="split-body">
+          <p>I run LR Virtual Classroom, and this practice test is dedicated to every aspiring Power Platform professional working toward passing the PL-900 exam on their first attempt. I built the whole thing myself: writing and reviewing the question bank, structuring it around the official exam domains, and putting together the site you're using right now.</p>
+        </div>
+      </div>
+
+      <div class="split-card pair-b">
+        <div class="split-head"><span class="split-icon">🎯</span> Who This Is For</div>
+        <div class="split-body">
+          <p>If you're new to the Power Platform and want a solid, practical foundation before your exam, or you've already worked through the Microsoft Learning Path and want to stress-test what you know, this is built for you. No prior certification, no paid course, and no login are required to start practicing.</p>
+        </div>
+      </div>
+
+      <div class="split-card pair-a">
+        <div class="split-head"><span class="split-icon">🆓</span> Why This Is Free</div>
+        <div class="split-body">
+          <p>I remember what it's like preparing for a Microsoft certification on your own time, without a training budget behind you. Good practice material is often locked behind subscriptions or per-test paywalls, which puts it out of reach for a lot of learners. This site has no ads, no account requirement, and no hidden paywall, because a practice test built to help you pass shouldn't be the thing standing between you and passing. Sign-in is entirely optional and only exists so you can save your score history across visits.</p>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button id="aboutGoHomeBtn" class="btn ghost">← Back to home</button>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="view-contact" class="view">
+      <div class="card hero-card">
+        <div class="eyebrow">Get In Touch</div>
+        <h2>Contact &amp; Feedback</h2>
+        <p>Spotted a wrong answer, a broken link, or just want to say hello? Send a message below and it goes straight to my inbox.</p>
+      </div>
+
+      <div class="card">
+        <form id="contactForm">
+          <label for="contactName">Name</label>
+          <input type="text" id="contactName" name="name" placeholder="Your name" required />
+          <label for="contactEmail">Your email</label>
+          <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required />
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" rows="5" placeholder="Let me know what's on your mind..." required></textarea>
+          <div class="btn-row">
+            <button type="submit" class="btn" id="contactSubmitBtn">Send feedback</button>
+          </div>
+          <p class="contact-status" id="contactStatus"></p>
+        </form>
+      </div>
+
+      <div class="btn-row">
+        <button id="contactGoHomeBtn" class="btn ghost">← Back to home</button>
       </div>
     </section>
 
