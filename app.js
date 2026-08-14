@@ -263,6 +263,14 @@ async function boot() {
   document.getElementById("contactGoHomeBtn").addEventListener("click", goHome);
   document.getElementById("contactForm").addEventListener("submit", onContactSubmit);
 
+  // Footer legal pages, available from anywhere in the app
+  document.getElementById("footerDisclaimerBtn").addEventListener("click", () => show("view-disclaimer"));
+  document.getElementById("footerPrivacyBtn").addEventListener("click", () => show("view-privacy"));
+  document.getElementById("footerCookieBtn").addEventListener("click", () => show("view-cookies"));
+  document.getElementById("disclaimerGoHomeBtn").addEventListener("click", goHome);
+  document.getElementById("privacyGoHomeBtn").addEventListener("click", goHome);
+  document.getElementById("cookiesGoHomeBtn").addEventListener("click", goHome);
+
   document.getElementById("welcomeForm").addEventListener("submit", onWelcomeSubmit);
   document.getElementById("logoutBtn").addEventListener("click", () => {
     DB.clearUser();
