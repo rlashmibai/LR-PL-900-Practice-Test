@@ -372,6 +372,7 @@ function startTest(mode, param, feedbackMode) {
   document.getElementById("modeBadge").className = "mode-badge " + (feedbackMode === "immediate" ? "practice" : "timed");
 
   renderQuestionSidebar();
+  renderNavGrid();
   renderQuestion();
   startTimer();
   show("view-test");
@@ -452,6 +453,34 @@ function updateQuestionSidebar() {
   const total = session.questions.length;
   document.getElementById("progressCount").textContent = `${session.index + 1}/${total}`;
   document.getElementById("progressBarFill").style.width = `${Math.round(((session.index + 1) / total) * 100)}%`;
+
+  updateNavGrid();
+}
+
+// ---------- Compact overview grid (right side): complete / skipped / flagged ----------
+function renderNavGrid() {
+  const grid = document.getElementById("navGrid");
+  grid.innerHTML = "";
+  session.questions.forEach((q, i) => {
+    const btn = document.createElement("button");
+    btn.textContent = i + 1;
+    btn.addEventListener("click", () => gotoQuestion(i));
+    grid.appendChild(btn);
+  });
+  updateNavGrid();
+}
+
+function updateNavGrid() {
+  const grid = document.getElementById("navGrid");
+  [...grid.children].forEach((btn, i) => {
+    const q = session.questions[i];
+    const given = session.answers[q.id];
+    const answered = given && given.length > 0;
+    btn.className = "";
+    if (i === session.index) btn.classList.add("current");
+    if (answered) btn.classList.add("complete");
+    if (session.flagged.has(q.id)) btn.classList.add("flagged");
+  });
 }
 
 function gotoQuestion(i) {
