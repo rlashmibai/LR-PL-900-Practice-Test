@@ -189,18 +189,88 @@ function formatBlock(p) {
   return formatNumbered(p) || formatLettered(p) || formatBullets(p) || formatSentences(p);
 }
 
+// Splits one side of a matching question ("A. Item, B. Item" or "item; item; item")
+// into individual {marker, text} entries, preferring explicit letter/number
+// markers when present and falling back to semicolon- or comma-separated items.
+function splitMatchItems(raw) {
+  const letterMatches = [...raw.matchAll(/(?:^|\s)([A-H])[.)]\s(?=[A-Za-z])/g)];
+  if (letterMatches.length >= 2) {
+    return letterMatches.map((m, i) => {
+      const start = m.index + m[0].length;
+      const end = i + 1 < letterMatches.length ? letterMatches[i + 1].index : raw.length;
+      return { marker: m[1], text: raw.slice(start, end).replace(/[,.]\s*$/, "").trim() };
+    });
+  }
+  const numMatches = [...raw.matchAll(/(?:^|\s)(\d)[.)]\s(?=[A-Za-z])/g)];
+  if (numMatches.length >= 2) {
+    return numMatches.map((m, i) => {
+      const start = m.index + m[0].length;
+      const end = i + 1 < numMatches.length ? numMatches[i + 1].index : raw.length;
+      return { marker: m[1], text: raw.slice(start, end).replace(/[,.]\s*$/, "").trim() };
+    });
+  }
+  const parts = raw.includes(";") ? raw.split(";") : raw.split(",");
+  return parts
+    .map((s) => s.replace(/\.\s*$/, "").trim())
+    .filter(Boolean)
+    .map((t) => ({ marker: null, text: t }));
+}
+
+// "Match each X to Y" stems name exactly two lists ("Types: A. ... B. ..." /
+// "Descriptions: ... ; ...") — this pulls those two lists apart and lays them
+// out as a real two-column table, one row per item, IN THE ORDER GIVEN (never
+// cross-matched to the correct answer — that would hand out the answer before
+// you've attempted the question). Only fires when there are exactly two
+// "Label:" sections and both sides have the same, matchable item count;
+// anything messier falls back to the simple line-per-item layout below, which
+// is always safe.
+function formatMatchingTable(text) {
+  const labelMatches = [...text.matchAll(/\b([A-Z][a-zA-Z]*(?:\s[a-zA-Z]+){0,2}):\s/g)];
+  if (labelMatches.length !== 2) return null;
+
+  const introText = text.slice(0, labelMatches[0].index).trim();
+  const leftLabel = labelMatches[0][1];
+  const leftRaw = text.slice(labelMatches[0].index + labelMatches[0][0].length, labelMatches[1].index).trim();
+  const rightLabel = labelMatches[1][1];
+  const rightRaw = text.slice(labelMatches[1].index + labelMatches[1][0].length).trim();
+
+  const leftItems = splitMatchItems(leftRaw);
+  const rightItems = splitMatchItems(rightRaw);
+  if (leftItems.length < 2 || rightItems.length < 2 || leftItems.length !== rightItems.length) return null;
+
+  const rows = leftItems
+    .map((l, i) => {
+      const r = rightItems[i];
+      const leftMark = l.marker || String.fromCharCode(65 + i);
+      const rightMark = r.marker || String(i + 1);
+      return `<tr><td><strong>${leftMark}.</strong> ${l.text}</td><td><strong>${rightMark}.</strong> ${r.text}</td></tr>`;
+    })
+    .join("");
+
+  return `
+    ${introText ? `<p class="match-intro">${introText}</p>` : ""}
+    <table class="match-table">
+      <thead><tr><th>Left: ${leftLabel}</th><th>Right: ${rightLabel}</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  `;
+}
+
 // "Match each X to Y" question stems arrive as one dense run-on paragraph
-// ("Apps: Power Apps, Power Automate. Scenarios: A. ... B. ... C. ...") —
-// this breaks each label ("Apps:"), lettered choice, and semicolon-separated
-// item onto its own line so the two things being matched are actually
-// readable, without needing to correctly identify which side is which for
-// every phrasing variant (they vary too much for that to be reliable).
+// ("Apps: Power Apps, Power Automate. Scenarios: A. ... B. ... C. ...").
+// Tries the real two-column table first; if the text doesn't cleanly split
+// into two equal-length lists, falls back to one line per label/item instead
+// — still far more readable than the original run-on, just not a table.
 // Only ever called for question text starting with "Match each"/"Match the
-// following", and falls back to the untouched original if it can't find
-// real list structure to split on, so it can never make an ordinary
+// following", and always falls back to the untouched original if neither
+// approach finds real list structure, so it can never make an ordinary
 // question worse.
 function formatMatchingQuestionText(text) {
   if (!/^match (each|the following)/i.test(text.trim())) return text;
+
+  const table = formatMatchingTable(text);
+  if (table) return table;
+
   let working = text;
   working = working.replace(/\s*\b([A-Z][a-zA-Z]*(?:\s[a-zA-Z]+){0,2}):\s/g, "\n$1: ");
   working = working.replace(/\s([A-H])\.\s(?=[A-Z])/g, "\n$1. ");

@@ -478,6 +478,16 @@ th { color: var(--text-muted); font-weight: 600; }
 .question-text { font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; line-height: 1.4; }
 .question-text .match-line { margin-bottom: 6px; }
 .question-text .match-line:last-child { margin-bottom: 0; }
+
+.question-text .match-intro { font-weight: 600; margin: 0 0 12px; }
+.match-table { width: 100%; border-collapse: collapse; font-weight: 500; font-size: 0.95rem; }
+.match-table th {
+  text-align: left; font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.03em; color: var(--text-muted); padding: 6px 10px 8px; border-bottom: 2px solid var(--border);
+}
+.match-table td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.match-table tr:last-child td { border-bottom: none; }
+.match-table td:first-child { padding-left: 0; }
 .question-text img,
 .explanation-body img,
 .review-item img {

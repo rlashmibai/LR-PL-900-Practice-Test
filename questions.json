@@ -8245,19 +8245,23 @@
     "id": "q264",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Automate",
-    "text": "Match each Power Automate flow type to the use case it's correctly suited for.",
+    "text": "Match each Power Automate flow type to the use case it's correctly suited for. Types: A. Automated cloud flow, B. Instant cloud flow, C. Scheduled cloud flow, D. Desktop flow. Use cases: 1. Starts automatically when a specified event or trigger occurs. 2. Runs when a user manually starts the flow. 3. Runs automatically at a defined time or recurring schedule. 4. Automates tasks performed on a desktop or within desktop applications.",
     "options": [
       {
         "id": "a",
-        "text": "A - 1, B - 3, C - 4, D - 2"
+        "text": "A - 1, B - 2, C - 3, D - 4"
       },
       {
         "id": "b",
-        "text": "D - 4"
+        "text": "A - 2, B - 1, C - 4, D - 3"
       },
       {
         "id": "c",
-        "text": "D - 4"
+        "text": "A - 3, B - 4, C - 1, D - 2"
+      },
+      {
+        "id": "d",
+        "text": "A - 1, B - 3, C - 2, D - 4"
       }
     ],
     "correct": [
