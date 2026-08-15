@@ -73,6 +73,15 @@ function renderSearchList() {
   if (term) {
     results = results.filter((x) => x.id.toLowerCase().includes(term) || x.text.toLowerCase().includes(term));
   }
+  // Sort by test set, then by id numerically (q2 before q10, not after) —
+  // otherwise results just show in raw file order, which doesn't group by test at all.
+  results = [...results].sort((a, b) => {
+    const bySet = (a.testSet || 0) - (b.testSet || 0);
+    if (bySet !== 0) return bySet;
+    const aNum = parseInt((a.id.match(/\d+/) || [0])[0], 10);
+    const bNum = parseInt((b.id.match(/\d+/) || [0])[0], 10);
+    return aNum - bNum || a.id.localeCompare(b.id);
+  });
   const capped = results.slice(0, 100);
   document.getElementById("resultCount").textContent =
     `${results.length} match${results.length === 1 ? "" : "es"}` + (results.length > 100 ? " — showing first 100, refine your search" : "");
