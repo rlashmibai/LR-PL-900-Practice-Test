@@ -659,14 +659,17 @@ function startTest(mode, param, feedbackMode) {
   let questions;
   let minutes;
   let modeLabel;
+  let testName;
 
   if (mode === "testset") {
     questions = shuffle(ALL_QUESTIONS.filter((q) => q.testSet === param));
     minutes = TEST_SET_MINUTES;
-    modeLabel = `PL900 Practice Test ${param} (${feedbackMode === "immediate" ? "Practice" : "Timed"})`;
+    testName = `PL900 Practice Test ${param}`;
+    modeLabel = `${testName} (${feedbackMode === "immediate" ? "Practice" : "Timed"})`;
   } else {
     questions = shuffle(ALL_QUESTIONS.filter((q) => q.section === param));
     minutes = SECTION_TEST_MINUTES;
+    testName = param;
     modeLabel = param;
   }
 
@@ -689,6 +692,7 @@ function startTest(mode, param, feedbackMode) {
 
   document.getElementById("modeBadge").textContent = feedbackMode === "immediate" ? "Practice mode" : "Timed exam mode";
   document.getElementById("modeBadge").className = "mode-badge " + (feedbackMode === "immediate" ? "practice" : "timed");
+  document.getElementById("testNameLabel").textContent = testName;
 
   renderQuestionSidebar();
   renderNavGrid();
