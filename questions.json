@@ -8710,19 +8710,23 @@
     "id": "q277",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Automate",
-    "text": "Match each Power Automate app to its correct definition.",
+    "text": "Match each Power Automate app to its correct definition. Apps: 1. Power Automate, 2. Power Automate for desktop, 3. Power Automate mobile app. Definitions: A. Used to create and run desktop flows that automate tasks on a computer. B. Used to create, manage, and monitor cloud flows. C. Used to monitor and manage flows from a mobile device.",
     "options": [
       {
         "id": "a",
-        "text": "1 - C;, 2 - A;, 3 - B"
+        "text": "1 - B, 2 - A, 3 - C"
       },
       {
         "id": "b",
-        "text": "3 - C"
+        "text": "1 - A, 2 - C, 3 - B"
       },
       {
         "id": "c",
-        "text": "3 - A"
+        "text": "1 - C, 2 - B, 3 - A"
+      },
+      {
+        "id": "d",
+        "text": "1 - B, 2 - C, 3 - A"
       }
     ],
     "correct": [
