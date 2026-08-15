@@ -662,7 +662,10 @@ function startTest(mode, param, feedbackMode) {
   let testName;
 
   if (mode === "testset") {
-    questions = shuffle(ALL_QUESTIONS.filter((q) => q.testSet === param));
+    // Fixed order (sorted by id, same numeric sort the admin panel uses) rather
+    // than shuffled, so "Question #N" always refers to the same question every
+    // attempt and matches the same question's position in the admin panel.
+    questions = sortById(ALL_QUESTIONS.filter((q) => q.testSet === param));
     minutes = TEST_SET_MINUTES;
     testName = `PL900 Practice Test ${param}`;
     modeLabel = `${testName} (${feedbackMode === "immediate" ? "Practice" : "Timed"})`;
@@ -699,6 +702,16 @@ function startTest(mode, param, feedbackMode) {
   renderQuestion();
   startTimer();
   show("view-test");
+}
+
+// Numeric-aware sort by id (q2 before q10, not after) — mirrors the same sort
+// admin.js uses for its question list, so position numbers line up exactly.
+function sortById(arr) {
+  return [...arr].sort((a, b) => {
+    const aNum = parseInt((a.id.match(/\d+/) || [0])[0], 10);
+    const bNum = parseInt((b.id.match(/\d+/) || [0])[0], 10);
+    return aNum - bNum || a.id.localeCompare(b.id);
+  });
 }
 
 function shuffle(arr) {

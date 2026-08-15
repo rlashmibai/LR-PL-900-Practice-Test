@@ -92,7 +92,9 @@ function renderSearchList() {
     const row = document.createElement("div");
     row.className = "admin-q-row" + (currentQuestion && !isNewQuestion && currentQuestion.id === qq.id ? " active" : "");
     const preview = stripHtml(qq.text).slice(0, 70);
-    row.innerHTML = `<strong>${escapeHtml(qq.id)}</strong> · Test ${qq.testSet || "—"} · ${escapeHtml(qq.type)}<br>${escapeHtml(preview)}${qq.text.length > 70 ? "…" : ""}`;
+    const pos = positionInTestSet(qq);
+    const posLabel = pos ? `Q${pos} · ` : "";
+    row.innerHTML = `<strong>Test ${qq.testSet || "—"} · ${posLabel}${escapeHtml(qq.id)}</strong> · ${escapeHtml(qq.type)}<br>${escapeHtml(preview)}${qq.text.length > 70 ? "…" : ""}`;
     row.addEventListener("click", () => selectQuestion(qq.id));
     list.appendChild(row);
   });
@@ -100,6 +102,20 @@ function renderSearchList() {
 
 function stripHtml(html) {
   return (html || "").replace(/<[^>]+>/g, "");
+}
+
+// 1-based position of q within its own test set, sorted the same numeric-id
+// way the live test view now uses (fixed order, no shuffle) — so "Q23" here
+// is exactly "Question #23" a test-taker sees in that test.
+function positionInTestSet(q) {
+  if (!q.testSet) return null;
+  const sameSet = ALL_QUESTIONS.filter((x) => x.testSet === q.testSet).sort((a, b) => {
+    const aNum = parseInt((a.id.match(/\d+/) || [0])[0], 10);
+    const bNum = parseInt((b.id.match(/\d+/) || [0])[0], 10);
+    return aNum - bNum || a.id.localeCompare(b.id);
+  });
+  const idx = sameSet.findIndex((x) => x.id === q.id);
+  return idx === -1 ? null : idx + 1;
 }
 
 // ---------- Select / new ----------
@@ -158,7 +174,11 @@ function renderForm() {
   }
 
   card.innerHTML = `
-    <h2>${isNewQuestion ? "New Question" : "Editing " + escapeHtml(q.id)}</h2>
+    <h2>${
+      isNewQuestion
+        ? "New Question"
+        : `Editing ${escapeHtml(q.id)}` + (positionInTestSet(q) ? ` (Test ${q.testSet} · Question #${positionInTestSet(q)})` : "")
+    }</h2>
     <label for="fieldId">ID</label>
     <input type="text" id="fieldId" value="${escapeAttr(q.id)}" ${isNewQuestion ? "" : "disabled"} />
     <label for="fieldType">Type</label>
