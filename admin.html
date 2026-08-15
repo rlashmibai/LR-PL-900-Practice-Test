@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LR PL900 — Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Admin needs normal text selection/copy — override the public site's block */
+    body { user-select: text; -webkit-user-select: text; }
+    .container.admin-wide { width: 96%; max-width: 1500px; }
+    .admin-layout { display: grid; grid-template-columns: 340px 1fr; gap: 20px; align-items: start; }
+    @media (max-width: 900px) { .admin-layout { grid-template-columns: 1fr; } }
+    .admin-search-panel { padding: 0; overflow: hidden; }
+    .admin-search-head { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+    .admin-search-head input, .admin-search-head select { margin-bottom: 8px; }
+    .admin-result-count { font-size: 0.78rem; color: var(--text-muted); }
+    .admin-search-list { max-height: 75vh; overflow-y: auto; }
+    .admin-q-row { padding: 10px 14px; border-bottom: 1px solid var(--border); cursor: pointer; font-size: 0.83rem; line-height: 1.4; }
+    .admin-q-row:hover { background: var(--accent-light); }
+    .admin-q-row.active { background: var(--accent); color: #fff; }
+    .option-edit-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; }
+    .option-edit-row textarea { width: 100%; margin-bottom: 6px; }
+    .correct-marker { padding-top: 10px; }
+    .opt-id-input { width: 70px; margin-bottom: 6px; }
+    .admin-status { padding: 10px 14px; border-radius: 8px; font-size: 0.88rem; margin-top: 10px; }
+    .admin-status.info { background: var(--accent-light); color: var(--accent-dark); }
+    .admin-status.ok { background: #dff6dd; color: var(--green); }
+    .admin-status.error { background: #fde7e9; color: var(--red); }
+    textarea { font-family: inherit; width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.95rem; resize: vertical; }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-brand">🔒 LR PL900 — Admin</div>
+    <div class="app-header-title">Question Bank Editor</div>
+    <div></div>
+  </header>
+
+  <div class="container admin-wide">
+
+    <div class="card" id="tokenCard">
+      <h2>GitHub Access</h2>
+      <p>Paste a GitHub personal access token with write access to this repo (Settings → Developer settings → Personal access tokens → generate one scoped to just this repo, "Contents: read and write"). It's stored only in this browser and used only to talk directly to GitHub's API — it never passes through me or any server.</p>
+      <label for="tokenInput">Personal access token</label>
+      <input type="password" id="tokenInput" placeholder="github_pat_..." />
+      <div class="btn-row">
+        <button id="saveTokenBtn" class="btn">Save token</button>
+        <button id="clearTokenBtn" class="btn ghost">Clear token</button>
+      </div>
+      <p id="tokenStatus" class="admin-status" style="display:none;"></p>
+    </div>
+
+    <div class="card" id="loadCard" style="display:none;">
+      <div class="btn-row" style="margin-top:0;">
+        <button id="loadBtn" class="btn">Load questions from GitHub</button>
+        <button id="newQuestionBtn" class="btn secondary">+ New question</button>
+        <span id="loadStatus" class="admin-status" style="display:none;"></span>
+      </div>
+    </div>
+
+    <div id="editorArea" style="display:none;">
+      <div class="admin-layout">
+        <div class="card admin-search-panel">
+          <div class="admin-search-head">
+            <input type="text" id="searchInput" placeholder="Search by id or text..." />
+            <select id="sectionFilter"><option value="">All domains</option></select>
+            <div class="admin-result-count" id="resultCount"></div>
+          </div>
+          <div class="admin-search-list" id="searchList"></div>
+        </div>
+
+        <div class="card" id="formCard" style="display:none;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
