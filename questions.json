@@ -518,7 +518,7 @@
       },
       {
         "id": "b",
-        "text": "Monitoring Power Platform usage and analytics - A. Microsoft Power Platform admin center",
+        "text": "Configuring data loss prevention policies - B. Microsoft 365 admin center",
         "explanation": "This choice correctly matches the administrative tasks with the appropriate locations. Managing user licenses and subscriptions are done in the Microsoft 365 admin center, while configuring data loss prevention policies, creating and managing custom connectors, and monitoring Power Platform usage and analytics are tasks that are performed in the Microsoft Power Platform admin center."
       },
       {
@@ -535,7 +535,7 @@
       },
       {
         "id": "f",
-        "text": "Monitoring Power Platform usage and analytics - A. Microsoft Power Platform admin center",
+        "text": "Creating and managing custom connectors - B. Microsoft 365 admin center",
         "explanation": "This choice correctly matches the administrative tasks with the appropriate locations. Managing user licenses and subscriptions are done in the Microsoft 365 admin center, while configuring data loss prevention policies, creating and managing custom connectors, and monitoring Power Platform usage and analytics are tasks that are performed in the Microsoft Power Platform admin center."
       }
     ],
@@ -666,7 +666,7 @@
       },
       {
         "id": "e",
-        "text": "Twitter - C. Social media data, real-time tweets, and engagement analytics.",
+        "text": "SharePoint - A. Customer Relationship Management (CRM) data and sales management.",
         "explanation": "This is incorrect option."
       }
     ],
@@ -9038,7 +9038,7 @@
       },
       {
         "id": "f",
-        "text": "Dataverse - A. Create custom user interfaces and apps.",
+        "text": "Canvas Apps - C. Provide structured data storage and modeling.",
         "explanation": "This choice also incorrectly matches the components with their primary functions. Canvas Apps are not primarily used to define and automate workflows and processes; that is the function of Power Automate. Model-Driven Apps are focused on providing a guided data-driven interface, while Dataverse is used for structured data storage and modeling."
       }
     ],
@@ -15800,7 +15800,7 @@
       },
       {
         "id": "f",
-        "text": "e) 1",
+        "text": "e) 3",
         "explanation": "This choice does not align with the correct sequence of ALM stages and their descriptions. The deployment stage (Column A - d) should come after the testing stage (Column A - c) in the ALM process. Therefore, the match provided in this choice is incorrect."
       }
     ],
