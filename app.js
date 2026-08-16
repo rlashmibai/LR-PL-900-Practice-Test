@@ -96,7 +96,7 @@ const EXPL_HEADER_PATTERNS = [
   // References/Reference earlier this project). The colon-suffixed forms
   // above stay in EXPL_HEADERS since the colon makes them distinct strings.
   /\bExam Tips?\b/g,
-  /Why Other[s]?(?: Answers?| Options?)?\s*(?:Are|Is)\s*(?:Correct|Incorrect|Wrong|Right)\b/gi,
+  /Why (?:the )?Other[s]?(?: Answers?| Options?)?\s*(?:Are|Is)\s*(?:Correct|Incorrect|Wrong|Right)\b/gi,
   /Advantages of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z])/g,
   /Benefits of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z])/g,
   /Challenges (?:in|of|with) (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)){0,4}(?=\s[A-Z][a-z])/g,
@@ -279,6 +279,26 @@ function splitGluedTitle(sentence) {
 // as short, scannable lines instead of one dense paragraph. Existing <a> tags
 // are pulled out first so a period inside a link's own visible text (rare,
 // but possible) can never split the tag itself in half.
+// Detects "Lead-in clause: Item one. Item two. Item three." — a short
+// bulleted list flattened into plain sentences on import, with the items
+// only separated from their intro by a colon (no period, so the normal
+// sentence splitter leaves the intro and first item glued together). Only
+// trusted when the colon clause is followed by 3+ more short sentences
+// running to the end of the block — a single short "Note: one thing." aside
+// isn't a list and is left as plain prose.
+function extractColonList(sentences) {
+  for (let i = 0; i < sentences.length; i++) {
+    const m = sentences[i].match(/^(.*?:)\s+(\S.*)$/);
+    if (!m) continue;
+    const items = [m[2], ...sentences.slice(i + 1)];
+    const isShort = (s) => s.split(/\s+/).length <= 12;
+    if (items.length >= 3 && items.every(isShort)) {
+      return { before: sentences.slice(0, i), intro: m[1], items };
+    }
+  }
+  return null;
+}
+
 function formatSentences(text) {
   const anchors = [];
   const safe = text.replace(/<a [^>]*>.*?<\/a>/g, (m) => {
@@ -291,6 +311,16 @@ function formatSentences(text) {
     .filter(Boolean);
   if (sentences.length < 2) return `<p>${linkify(text)}</p>`;
 
+  const restore = (s) => linkify(s.replace(/\x00A(\d+)\x00/g, (_, i2) => anchors[Number(i2)]));
+
+  const colonList = extractColonList(sentences);
+  if (colonList) {
+    const beforeHtml = colonList.before.map((s) => `<p>${restore(s)}</p>`).join("");
+    const introHtml = `<p>${restore(colonList.intro)}</p>`;
+    const itemsHtml = `<ul>${colonList.items.map((it) => `<li>${restore(it)}</li>`).join("")}</ul>`;
+    return beforeHtml + introHtml + itemsHtml;
+  }
+
   // Named-list detection: if the same "Title glued to Sentence" shape (with
   // or without \xa0 between them) shows up 3+ times in this one explanation,
   // it's a deliberate list of named items (e.g. "10 Use Cases..." or
@@ -300,8 +330,6 @@ function formatSentences(text) {
   // it's far more likely an incidental product name than a real heading.
   const splits = sentences.map((s) => splitEmbeddedTitle(s) || splitGluedTitle(s));
   const titleCount = splits.filter(Boolean).length;
-
-  const restore = (s) => linkify(s.replace(/\x00A(\d+)\x00/g, (_, i2) => anchors[Number(i2)]));
 
   return sentences
     .map((s, i) => {
@@ -313,8 +341,50 @@ function formatSentences(text) {
     .join("");
 }
 
+// Detects a run of 3+ "Term: Description" items marked by a colon right after
+// a short (1-4 word) Title Case term — either a plain colon or one preceded
+// by \xa0 (e.g. "Polling Trigger\xa0: ...", "Customizable Layout: ...") — and
+// renders them as a real bulleted list, one <li> per term. Common for
+// definition-style content that got flattened into one dense paragraph on
+// import, especially where several items in a row have no period separating
+// them at all. Only trusted at 3+ matches so an incidental single "Note: ..."
+// aside is left as plain prose.
+function formatTermList(text) {
+  // Protect any existing <a> tags first — the term regex below scans for
+  // "Word: " boundaries anywhere in the text, and without this a link's own
+  // visible label (e.g. "...Power Platform DLP Policy: Everything...") could
+  // get sliced in half right through the tag.
+  const anchors = [];
+  const safe = text.replace(/<a [^>]*>.*?<\/a>/g, (m) => {
+    anchors.push(m);
+    return `\x00A${anchors.length - 1}\x00`;
+  });
+  // Reinsert the real anchor tags (no re-linkifying — formatSentences/linkify
+  // downstream already handle that on their own inputs).
+  const reinsertAnchors = (s) => s.replace(/\x00A(\d+)\x00/g, (_, i2) => anchors[Number(i2)]);
+  const restore = (s) => linkify(reinsertAnchors(s));
+
+  const termRe =
+    /(?:^|(?<=[.\s]))([A-Z][a-zA-Z]*(?:-[a-zA-Z]+)*(?:[\s\xa0](?:[A-Z][a-zA-Z]*(?:-[a-zA-Z]+)*|and|of|for|the|in|to|on|or)){0,4})\xa0?:\s(?=[A-Z0-9])/g;
+  const matches = [...safe.matchAll(termRe)];
+  if (matches.length < 3) return null;
+
+  const before = safe.slice(0, matches[0].index).trim();
+  const items = matches.map((m, i) => {
+    const start = m.index + m[0].length;
+    const end = i + 1 < matches.length ? matches[i + 1].index : safe.length;
+    const term = m[1].replace(/\xa0/g, " ").trim();
+    const body = safe.slice(start, end).trim();
+    return { term, body };
+  });
+
+  const beforeHtml = before ? formatSentences(reinsertAnchors(before)) : "";
+  const itemsHtml = `<ul>${items.map((it) => `<li><strong>${restore(it.term)}</strong>: ${restore(it.body)}</li>`).join("")}</ul>`;
+  return beforeHtml + itemsHtml;
+}
+
 function formatBlock(p) {
-  return formatNumbered(p) || formatLettered(p) || formatBullets(p) || formatSentences(p);
+  return formatNumbered(p) || formatLettered(p) || formatBullets(p) || formatTermList(p) || formatSentences(p);
 }
 
 // Splits one side of a matching question ("A. Item, B. Item" or "item; item; item")
@@ -402,6 +472,7 @@ function formatMatchingQuestionText(text) {
   let working = text;
   working = working.replace(/\s*\b([A-Z][a-zA-Z]*(?:\s[a-zA-Z]+){0,2}):\s/g, "\n$1: ");
   working = working.replace(/\s([A-H])\.\s(?=[A-Z])/g, "\n$1. ");
+  working = working.replace(/\s(\d{1,2})\.\s(?=[A-Z])/g, "\n$1. ");
   working = working.replace(/;\s*/g, "\n");
   const lines = working
     .split("\n")
@@ -411,12 +482,40 @@ function formatMatchingQuestionText(text) {
   return lines.map((l) => `<div class="match-line">${l}</div>`).join("");
 }
 
+// "For each statement, decide Yes or No: A; B; C." question stems run every
+// statement together in one dense sentence, which is hard to scan against a
+// "Yes / No / Yes" style answer option. Numbers each statement onto its own
+// line so it's obvious which answer slot maps to which claim.
+function formatYesNoQuestionText(text) {
+  const m = text.match(/^([\s\S]*?for each statement,?\s*decide\s+yes\s+or\s+no\s*:\s*)([\s\S]+)$/i);
+  if (!m) return null;
+  const intro = m[1].trim();
+  const items = m[2]
+    .split(/(?:\d+\)\s*|;\s*)/)
+    .map((s) => s.replace(/^[;\s]+|[;\s]+$/g, "").replace(/\.\s*$/, "").trim())
+    .filter(Boolean);
+  if (items.length < 2) return null;
+  const itemsHtml = items.map((it, i) => `<div class="match-line"><strong>${i + 1}.</strong> ${it}.</div>`).join("");
+  return `<p class="match-intro">${intro}</p>${itemsHtml}`;
+}
+
+function formatQuestionText(text) {
+  if (/^match (each|the following)/i.test(text.trim())) return formatMatchingQuestionText(text);
+  return formatYesNoQuestionText(text) || text;
+}
+
 function formatExplanation(raw) {
   if (!raw) return "";
 
   // Arrow characters (from source docx bullets like "Manager -> Approves") render
   // inconsistently across fonts/platforms; a plain ASCII arrow is more reliable.
   raw = raw.replace(/→|➔|➡/g, "->");
+
+  // A handful of explanations start with a stray literal "Explanation" word
+  // before the actual content (e.g. "Explanation Everyone must approve: ...")
+  // — pure noise, since this text already renders under its own "EXPLANATION"
+  // heading in the UI.
+  raw = raw.replace(/^Explanation\s+(?=[A-Z])/, "");
 
   // Pull out any embedded <img> tags so they don't get mangled, restore them after.
   // The placeholder uses \x00 (a character .trim()/whitespace regexes never touch)
@@ -443,6 +542,12 @@ function formatExplanation(raw) {
   EXPL_HEADER_PATTERNS.forEach((re) => {
     text = text.replace(re, (m) => `\n\n\x02${m.trim()}\x02\n\n`);
   });
+
+  // A source header like "Why the other options are incorrect:" has its
+  // trailing colon fall just outside the pattern match above (only the
+  // heading phrase itself is captured) — strip that dangling colon so it
+  // doesn't become its own orphaned ":" paragraph.
+  text = text.replace(/(\x02\n\n)\s*:\s*/g, "$1");
 
   const paragraphs = text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
 
@@ -976,7 +1081,7 @@ function renderQuestion() {
   document.getElementById("qTopicBar").textContent = q.section;
   document.getElementById("qNumberLabel").textContent = `Question #${session.index + 1}`;
   // innerHTML (not textContent) so a question can include an <img> if needed
-  document.getElementById("questionText").innerHTML = formatMatchingQuestionText(q.text);
+  document.getElementById("questionText").innerHTML = formatQuestionText(q.text);
 
   const body = document.getElementById("questionBody");
   body.innerHTML = "";
@@ -1255,7 +1360,7 @@ function renderResults(reviewItems, attempt) {
       q.options.some((o) => o.explanation);
     div.innerHTML = `
       <div class="question-meta">Question ${i + 1} · ${q.section}</div>
-      <div class="question-text" style="font-size:0.98rem;">${formatMatchingQuestionText(q.text)}</div>
+      <div class="question-text" style="font-size:0.98rem;">${formatQuestionText(q.text)}</div>
       <div class="verdict-banner ${r.isCorrect ? "correct" : "incorrect"}">
         <div class="verdict-title">${r.isCorrect ? "✓ Correct" : "✗ Incorrect"}</div>
         <div class="verdict-answer">Your answer: ${givenText}</div>
