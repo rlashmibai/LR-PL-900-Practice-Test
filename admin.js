@@ -244,10 +244,10 @@ function renderForm() {
       <button type="button" id="saveBtn" class="btn">Save to GitHub</button>
       ${isNewQuestion ? "" : '<button type="button" id="deleteBtn" class="btn ghost" style="color:var(--red);">Delete question</button>'}
       <button type="button" id="cancelBtn" class="btn ghost">Close</button>
-      <button type="button" id="previewBtn" class="btn ghost">👁 Preview formatted</button>
     </div>
-    <div id="previewPanel" class="card" style="display:none; margin-top:12px; background:#fff;"></div>
     <p id="formStatus" class="admin-status" style="display:none;"></p>
+    <div style="font-size:0.78rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin:16px 0 6px; border-top:1px solid var(--border); padding-top:14px;">Live preview — updates as you type, exactly how this renders on the site</div>
+    <div id="previewPanel" style="border:1px solid var(--border); border-radius:var(--radius); background:#fff; min-height:60px;"></div>
   `;
 
   if (q.type !== "fillblank") {
@@ -275,31 +275,30 @@ function renderForm() {
     isNewQuestion = false;
     renderSearchList();
   });
-  document.getElementById("previewBtn").addEventListener("click", showFormattedPreview);
   if (!isNewQuestion) {
     document.getElementById("deleteBtn").addEventListener("click", deleteQuestion);
   }
+
+  // Live preview: one delegated listener on the whole form catches typing in
+  // fieldText/fieldExplanation and any option textarea (including ones added
+  // later via "+ Add option", since delegation doesn't need per-input
+  // rewiring) and re-renders the preview, debounced so it isn't re-running
+  // the formatter on every single keystroke.
+  card.addEventListener("input", scheduleLivePreview);
+  loadFormatters().then(renderLivePreview);
 }
 
 // Renders the CURRENT (unsaved) values of the question text, each option's
 // explanation, and the overall explanation through the exact same
-// formatQuestionText()/formatExplanation() the live site uses — so you can
-// check a change looks right before saving, without needing to open the
-// live site separately.
-async function showFormattedPreview() {
+// formatQuestionText()/formatExplanation() the live site uses. Always
+// visible and kept in sync via scheduleLivePreview() below, so editing feels
+// like one continuous surface instead of raw-text-then-click-to-check.
+function renderLivePreview() {
   const panel = document.getElementById("previewPanel");
-  const btn = document.getElementById("previewBtn");
-  if (panel.style.display === "block") {
-    panel.style.display = "none";
-    return;
-  }
-  btn.disabled = true;
-  await loadFormatters();
-  btn.disabled = false;
+  if (!panel) return; // form was closed before this fired
 
   if (!formattersReady || typeof formatQuestionText !== "function" || typeof formatExplanation !== "function") {
-    panel.innerHTML = `<p style="padding:14px; color:var(--red);">Couldn't load the live formatter (app.js) — check your connection and try again.</p>`;
-    panel.style.display = "block";
+    panel.innerHTML = `<p style="padding:14px; color:var(--red);">Couldn't load the live formatter (app.js) — check your connection and reopen this question.</p>`;
     return;
   }
 
@@ -326,8 +325,7 @@ async function showFormattedPreview() {
 
   panel.innerHTML = `
     <div style="padding:14px;">
-      <div style="font-size:0.78rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px;">Live preview — exactly how this will render on the site</div>
-      <div class="question-text" style="font-weight:700;">${formatQuestionText(text)}</div>
+      <div class="question-text" style="font-weight:700;">${text ? formatQuestionText(text) : "<em>(no question text yet)</em>"}</div>
       ${optionsHtml}
       ${
         explanation
@@ -339,8 +337,12 @@ async function showFormattedPreview() {
       }
     </div>
   `;
-  panel.style.display = "block";
-  panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+let livePreviewTimer = null;
+function scheduleLivePreview() {
+  clearTimeout(livePreviewTimer);
+  livePreviewTimer = setTimeout(renderLivePreview, 300);
 }
 
 function nextOptionId(existing) {
@@ -401,6 +403,10 @@ function renderOptionsEditor() {
       }
     })
   );
+
+  // Adding/removing an option rebuilds this whole block rather than firing a
+  // bubbling "input" event, so the live preview needs its own nudge here.
+  scheduleLivePreview();
 }
 
 function collectFormIntoQuestion() {
@@ -582,6 +588,7 @@ function setStatus(el, kind, msg) {
 
 // ---------- Boot ----------
 function boot() {
+  loadFormatters(); // fire-and-forget, so it's already cached by the time a question is opened
   const existing = getToken();
   if (existing) {
     document.getElementById("tokenInput").value = existing;
