@@ -75,10 +75,12 @@ function stripHtml(html) {
 // the colon makes them distinct substrings that can't collide.
 const EXPL_HEADERS = [
   "Overall explanation", "References:", "Reference:", "References",
+  "Explanation:",
   "Exam Tips:", "Exam Tip:",
   "Recommended Youtube Video:", "Recommended YouTube video:", "Recommended Youtube Video", "Recommended YouTube video",
   "Keep in Mind:", "Keep in Mind", "Study Links:", "Study links:", "Study Links", "Study links",
-  "Remember,", "Remember:",
+  "Remember,", "Remember:", "FAQ:",
+  "Features of Gallery Control.", "Use Cases of Gallery Control.",
 ];
 
 // Recurring section-header phrases that have variable trailing content (so they
@@ -265,7 +267,14 @@ const GLUED_TITLE_SAFE_WORDS = [
 // alongside the same 3+ occurrence check, and skips any match that falls
 // inside a known safe word rather than a real word boundary.
 function splitGluedTitle(sentence) {
-  const m = sentence.match(/(?:^|[:.]\s)((?:[A-Z][a-zA-Z]*)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)|\s\([A-Z]{2,6}\)){0,4})(?=[A-Z][a-z])/);
+  // The body normally starts with an ordinary Title-Case word ([A-Z][a-z]),
+  // but sometimes it's an acronym instead ("...Policies" glued directly onto
+  // "DLP policies control...") — [A-Z]{2,} catches that case too.
+  // Lazy (*?) on each word so it stops at the first valid boundary — a real
+  // space between title words, or the lookahead below — instead of greedily
+  // swallowing straight through a glued word into the acronym that follows
+  // it (turning "Policies" + "DLP" into the single garbled word "PoliciesD").
+  const m = sentence.match(/(?:^|[:.]\s)((?:[A-Z][a-zA-Z]*?)(?:\s(?:[A-Z][a-zA-Z]*?|and|of|for|the|in|to|on|or)|\s\([A-Z]{2,6}\)){0,4})(?=[A-Z][a-z]|[A-Z]{2,})/);
   if (!m) return null;
   const title = m[1].trim();
   const words = title.split(/\s+/);
@@ -313,9 +322,11 @@ function formatSentences(text) {
   // ending in an acronym ("...Knowledge Sources = Q&A.") still splits before
   // the next one — by this point formatLettered has already claimed any
   // genuine "A. ... B. ..." list (2+ increasing letters), so a lone
-  // "X." here is essentially never a real list marker.
+  // "X." here is essentially never a real list marker. "vs." is excluded
+  // outright — it's an abbreviation, not a sentence end ("Standard vs.
+  // Custom Tables" must stay one phrase).
   const sentences = safe
-    .split(/(?<=[a-zA-Z0-9\)"']\.)\s+(?=[A-Z])/g)
+    .split(/(?<!\bvs\.)(?<=[a-zA-Z0-9\)"']\.)\s+(?=[A-Z])/g)
     .map((s) => s.trim())
     .filter(Boolean);
   if (sentences.length < 2) return `<p>${linkify(text)}</p>`;
@@ -378,8 +389,11 @@ function formatTermList(text) {
   // conventions show up in the source. The 3+ match requirement below is what
   // keeps this safe: a single lowercase-tailed clause before a colon is far
   // too common in ordinary prose to trust on its own.
+  // "Example:" is excluded from matching as its own term — it always reads
+  // better folded into the item it illustrates than broken out as its own
+  // bullet.
   const termRe =
-    /(?:^|(?<=[.\s]))([A-Z][a-zA-Z]*(?:-[a-zA-Z]+)*(?:[\s\xa0][a-zA-Z][a-zA-Z]*(?:-[a-zA-Z]+)*){0,3})\xa0?:\s(?=[A-Z0-9])/g;
+    /(?:^|(?<=[.\s]))(?!Example\b)([A-Z][a-zA-Z]*(?:-[a-zA-Z]+)*(?:[\s\xa0][a-zA-Z][a-zA-Z]*(?:-[a-zA-Z]+)*){0,3}(?:\s\([A-Za-z][A-Za-z ]*\))?)\xa0?:\s(?=[A-Z0-9])/g;
   const matches = [...safe.matchAll(termRe)];
   if (matches.length < 3) return null;
 
@@ -415,10 +429,13 @@ function formatTermList(text) {
   }
   if (group.length) segments.push({ type: "ul", items: group });
 
+  // A lead-in label kept its colon (not forced into a period) and is bolded —
+  // it's introducing the group that follows, not ending a sentence, so "Owner:"
+  // stays "Owner:" rather than becoming the confusing "Owner."
   const segmentsHtml = segments
     .map((seg) =>
       seg.type === "p"
-        ? `<p>${restore(seg.text)}.</p>`
+        ? `<p><strong>${restore(seg.text)}:</strong></p>`
         : `<ul>${seg.items.map((it) => `<li><strong>${restore(it.term)}</strong>: ${restore(it.body)}</li>`).join("")}</ul>`
     )
     .join("");
