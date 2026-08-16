@@ -350,7 +350,7 @@
     "id": "q12",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Automate",
-    "text": "Match each Power Platform role to the capability it's responsible for. Roles: 1. Power Platform Admin, 2. Environment Admin, 3. Power Apps Maker, 4. Power Automate Maker. Capabilities: A. create and manage environments, B. configure security roles and permissions, C. create and publish apps, D. create and run flows, E. configure integration with Azure services.",
+    "text": "Match each Power Platform role to the capability it's responsible for. Roles: 1. Power Platform Admin, 2. Environment Admin, 3. Power Apps Maker, 4. Power Automate Maker. Capabilities: A. Create and manage environments, B. Configure security roles and permissions, C. Create and publish apps, D. Create and run flows, E. Configure integration with Azure services.",
     "options": [
       {
         "id": "a",
@@ -504,7 +504,7 @@
     "id": "q17",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "Match each admin task to the correct place to perform it. Tasks: 1. managing user licenses and subscriptions, 2. configuring data loss prevention policies, 3. creating and managing custom connectors, 4. monitoring Power Platform usage and analytics. Places: A. Power Platform admin center, B. Microsoft 365 admin center.",
+    "text": "Match each admin task to the correct place to perform it. Tasks: 1. Managing user licenses and subscriptions, 2. Configuring data loss prevention policies, 3. Creating and managing custom connectors, 4. Monitoring Power Platform usage and analytics. Places: A. Power Platform admin center, B. Microsoft 365 admin center.",
     "options": [
       {
         "id": "a",
@@ -533,7 +533,7 @@
     "id": "q18",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "Match each policy type to its description. Types: 1. Environment-level policies, 2. Tenant-level policies. Descriptions: A. policies applied at the organization level, affecting every user and device in the tenant, B. policies that can be configured for individual environments within an organization.",
+    "text": "Match each policy type to its description. Types: 1. Environment-level policies, 2. Tenant-level policies. Descriptions: A. Policies applied at the organization level, affecting every user and device in the tenant, B. Policies that can be configured for individual environments within an organization.",
     "options": [
       {
         "id": "a",
@@ -685,7 +685,7 @@
     "id": "q23",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "Match each Power Platform environment type to its description. Types: 1. Production, 2. Default, 3. Sandbox, 4. Trial, 5. Developer, 6. Microsoft Dataverse for Teams. Descriptions: A. the main environment for live, production-ready solutions with stronger SLAs, B. the environment every tenant gets automatically for ad-hoc work, C. a safe space for developing and testing without touching production, D. a time-limited environment for trying Power Platform for free, E. a dedicated environment for individual development, F. an environment tied to Microsoft Teams for building apps and automation there.",
+    "text": "Match each Power Platform environment type to its description. Types: 1. Production, 2. Default, 3. Sandbox, 4. Trial, 5. Developer, 6. Microsoft Dataverse for Teams. Descriptions: A. The main environment for live, production-ready solutions with stronger SLAs, B. The environment every tenant gets automatically for ad-hoc work, C. A safe space for developing and testing without touching production, D. A time-limited environment for trying Power Platform for free, E. A dedicated environment for individual development, F. An environment tied to Microsoft Teams for building apps and automation there.",
     "options": [
       {
         "id": "a",
@@ -1244,7 +1244,7 @@
     "id": "q43",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Apps",
-    "text": "Match each Power Pages security term to its correct definition. Terms: 1. table permissions, 2. page permissions, 3. web roles, 4. local sign-in, 5. external authentication. Definitions: A. Controls access to rows in Dataverse tables no matter how or where they're accessed from Power Pages, B. Grants or denies access to individual pages on the site, C. Ties users and permissions together to define what data and content a user can access, D. Forms-based sign-in where credentials are stored securely in the Dataverse contact record, E. Sign-in and password handling delegated to an external identity provider such as Microsoft Entra External ID, Microsoft, Twitter, Facebook, etc..",
+    "text": "Match each Power Pages security term to its correct definition. Terms: 1. Table permissions, 2. Page permissions, 3. Web roles, 4. Local sign-in, 5. External authentication. Definitions: A. Controls access to rows in Dataverse tables no matter how or where they're accessed from Power Pages, B. Grants or denies access to individual pages on the site, C. Ties users and permissions together to define what data and content a user can access, D. Forms-based sign-in where credentials are stored securely in the Dataverse contact record, E. Sign-in and password handling delegated to an external identity provider such as Microsoft Entra External ID, Microsoft, Twitter, Facebook, etc..",
     "options": [
       {
         "id": "a",
@@ -3173,7 +3173,7 @@
     "id": "q103",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Apps",
-    "text": "Match each Power Apps tool to its correct definition. Tools: 1. App Checker, 2. Accessibility Checker. Definitions: A. one focuses on debugging and optimizing app functionality for smooth performance, B. the other ensures the app meets accessibility standards for all users.",
+    "text": "Match each Power Apps tool to its correct definition. Tools: 1. App Checker, 2. Accessibility Checker. Definitions: A. One focuses on debugging and optimizing app functionality for smooth performance, B. The other ensures the app meets accessibility standards for all users.",
     "options": [
       {
         "id": "a",
@@ -5350,7 +5350,7 @@
     "id": "q174",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Automate",
-    "text": "Match each workflow requirement to the right Power Automate approval action. Requirements: 1. needing unanimous agreement, 2. time-sensitive decisions, 3. needing detailed feedback, 4. gathering input from everyone. Actions: A. First to respond, B. Custom responses, C. Wait for all responses, D. Everyone must approve.",
+    "text": "Match each workflow requirement to the right Power Automate approval action. Requirements: 1. Needing unanimous agreement, 2. Time-sensitive decisions, 3. Needing detailed feedback, 4. Gathering input from everyone. Actions: A. First to respond, B. Custom responses, C. Wait for all responses, D. Everyone must approve.",
     "options": [
       {
         "id": "a",
@@ -6446,7 +6446,7 @@
     "id": "q206",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Apps",
-    "text": "Match each step in the app lifecycle to its correct definition. Steps: 1. Preview your app, 2. Save your app, 3. Publish your app, 4. Use Copilot. Definitions: A. making your app available for others to use, B. generating a functional app quickly from natural language, C. preserving your progress locally or in the cloud for later editing, D. testing the app's functionality by interacting with it as an end-user would.",
+    "text": "Match each step in the app lifecycle to its correct definition. Steps: 1. Preview your app, 2. Save your app, 3. Publish your app, 4. Use Copilot. Definitions: A. Making your app available for others to use, B. Generating a functional app quickly from natural language, C. Preserving your progress locally or in the cloud for later editing, D. Testing the app's functionality by interacting with it as an end-user would.",
     "options": [
       {
         "id": "a",
@@ -13326,7 +13326,7 @@
     "id": "q426",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "Match each environment type to its description. Types: 1. Production, 2. Default, 3. Sandbox, 4. Trial, 5. Developer, 6. Microsoft Dataverse for Teams. Descriptions: A. automatically created for Teams when apps are built or installed, B. temporary, for short-term testing, expiring after 30 days, C. created by users with the Developer Plan license, for personal use, D. used for permanent work in an organization, E. requires 1 GB of available database capacity, F. non-production, for development and testing, G. automatically created for each tenant and shared by all users.",
+    "text": "Match each environment type to its description. Types: 1. Production, 2. Default, 3. Sandbox, 4. Trial, 5. Developer, 6. Microsoft Dataverse for Teams. Descriptions: A. Automatically created for Teams when apps are built or installed, B. Temporary, for short-term testing, expiring after 30 days, C. Created by users with the Developer Plan license, for personal use, D. Used for permanent work in an organization, E. Requires 1 GB of available database capacity, F. Non-production, for development and testing, G. Automatically created for each tenant and shared by all users.",
     "options": [
       {
         "id": "a",
@@ -13355,7 +13355,7 @@
     "id": "q427",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "Match each environment type to its security characteristics. Types: 1. Production, 2. Default, 3. Sandbox, 4. Trial, 5. Developer, 6. Microsoft Dataverse for Teams. Characteristics: A. limited control, security groups can't be assigned, B. full control, C. developers need Environment Maker access, D. limited control, Teams members are mapped by their membership type, E. full control, F. limited control, all licensed users get the Environment Maker role, G. full control.",
+    "text": "Match each environment type to its security characteristics. Types: 1. Production, 2. Default, 3. Sandbox, 4. Trial, 5. Developer, 6. Microsoft Dataverse for Teams. Characteristics: A. Limited control, security groups can't be assigned, B. Full control, C. Developers need Environment Maker access, D. Limited control, Teams members are mapped by their membership type, E. Full control, F. Limited control, all licensed users get the Environment Maker role, G. Full control.",
     "options": [
       {
         "id": "a",
@@ -15418,7 +15418,7 @@
     "id": "q492",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "Match each Dataverse feature to its function. Features: 1. Tables, 2. Relationships, 3. Views, 4. Fields. Functions: A. store structured data, B. define connections between tables, C. display filtered data, D. represent individual data points.",
+    "text": "Match each Dataverse feature to its function. Features: 1. Tables, 2. Relationships, 3. Views, 4. Fields. Functions: A. Store structured data, B. Define connections between tables, C. Display filtered data, D. Represent individual data points.",
     "options": [
       {
         "id": "a",
@@ -15712,7 +15712,7 @@
     "id": "q500",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "Match each environment type to its use case. Types: 1. Production, 2. Sandbox, 3. Default, 4. Trial. Use cases: A. hosting live applications, B. testing new features, C. general use, D. temporary testing.",
+    "text": "Match each environment type to its use case. Types: 1. Production, 2. Sandbox, 3. Default, 4. Trial. Use cases: A. Hosting live applications, B. Testing new features, C. General use, D. Temporary testing.",
     "options": [
       {
         "id": "a",
@@ -15782,7 +15782,7 @@
     "id": "q502",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Apps",
-    "text": "Match each ALM stage to its description. Stages: 1. Planning, 2. Development, 3. Testing, 4. Deployment, 5. Maintenance. Descriptions: A. monitor and update the application over time, B. define business requirements, goals, and scope, C. build the application using tools like Power Apps, D. validate the application in a testing environment, E. move the application to a production environment.",
+    "text": "Match each ALM stage to its description. Stages: 1. Planning, 2. Development, 3. Testing, 4. Deployment, 5. Maintenance. Descriptions: A. Monitor and update the application over time, B. Define business requirements, goals, and scope, C. Build the application using tools like Power Apps, D. Validate the application in a testing environment, E. Move the application to a production environment.",
     "options": [
       {
         "id": "a",
@@ -15928,7 +15928,7 @@
     "id": "q507",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "Match each Common Data Model (CDM) feature to its purpose. Features: 1. Standard schema, 2. Data integration, 3. Relational data storage, 4. Metadata management. Purposes: A. Provides consistency across apps, B. Enables data sharing, C. Stores structured data, D. Manages data definitions.",
+    "text": "Match each Common Data Model (CDM) Feature to its purpose. Features: 1. Standard schema, 2. Data integration, 3. Relational data storage, 4. Metadata management. Purposes: A. Provides consistency across apps, B. Enables data sharing, C. Stores structured data, D. Manages data definitions.",
     "options": [
       {
         "id": "a",
@@ -16008,7 +16008,7 @@
     "id": "q510",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "Match each licensing model to its feature. Models: 1. Per-user plan, 2. Per-app plan, 3. Pay-as-you-go, 4. Free plan. Features: A. unlimited app creation, B. access to specific apps, C. charges based on usage, D. no premium connectors.",
+    "text": "Match each licensing model to its feature. Models: 1. Per-user plan, 2. Per-app plan, 3. Pay-as-you-go, 4. Free plan. Features: A. Unlimited app creation, B. Access to specific apps, C. Charges based on usage, D. No premium connectors.",
     "options": [
       {
         "id": "a",
