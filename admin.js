@@ -51,6 +51,7 @@ async function loadQuestions() {
     ALL_QUESTIONS = await res.json();
     setStatus(document.getElementById("loadStatus"), "ok", `Loaded ${ALL_QUESTIONS.length} questions.`);
     populateSectionFilter();
+    populateTestFilter();
     renderSearchList();
     document.getElementById("editorArea").style.display = "block";
   } catch (err) {
@@ -64,11 +65,23 @@ function populateSectionFilter() {
   sel.innerHTML = `<option value="">All domains</option>` + sections.map((s) => `<option value="${escapeAttr(s)}">${escapeHtml(s)}</option>`).join("");
 }
 
+// Lets you jump straight to "Practice Test N" and see just its ~50
+// questions, instead of hunting through all 600 in one flat list.
+function populateTestFilter() {
+  const sel = document.getElementById("testFilter");
+  const tests = [...new Set(ALL_QUESTIONS.map((q) => q.testSet).filter((t) => t != null))].sort((a, b) => a - b);
+  sel.innerHTML =
+    `<option value="">All practice tests</option>` +
+    tests.map((t) => `<option value="${t}">Practice Test ${t}</option>`).join("");
+}
+
 // ---------- Search list ----------
 function renderSearchList() {
   const term = document.getElementById("searchInput").value.trim().toLowerCase();
+  const testSet = document.getElementById("testFilter").value;
   const section = document.getElementById("sectionFilter").value;
   let results = ALL_QUESTIONS;
+  if (testSet) results = results.filter((x) => String(x.testSet) === testSet);
   if (section) results = results.filter((x) => x.section === section);
   if (term) {
     results = results.filter((x) => x.id.toLowerCase().includes(term) || x.text.toLowerCase().includes(term));
@@ -82,9 +95,10 @@ function renderSearchList() {
     const bNum = parseInt((b.id.match(/\d+/) || [0])[0], 10);
     return aNum - bNum || a.id.localeCompare(b.id);
   });
-  const capped = results.slice(0, 100);
-  document.getElementById("resultCount").textContent =
-    `${results.length} match${results.length === 1 ? "" : "es"}` + (results.length > 100 ? " — showing first 100, refine your search" : "");
+  // No display cap — 600 simple rows renders fine, and capping it here was
+  // what made it look like not all questions had loaded.
+  const capped = results;
+  document.getElementById("resultCount").textContent = `${results.length} match${results.length === 1 ? "" : "es"}`;
 
   const list = document.getElementById("searchList");
   list.innerHTML = "";
@@ -496,6 +510,7 @@ function boot() {
   document.getElementById("loadBtn").addEventListener("click", loadQuestions);
   document.getElementById("newQuestionBtn").addEventListener("click", newQuestion);
   document.getElementById("searchInput").addEventListener("input", renderSearchList);
+  document.getElementById("testFilter").addEventListener("change", renderSearchList);
   document.getElementById("sectionFilter").addEventListener("change", renderSearchList);
 }
 boot();

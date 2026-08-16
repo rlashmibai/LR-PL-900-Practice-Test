@@ -97,10 +97,14 @@ const EXPL_HEADER_PATTERNS = [
   // above stay in EXPL_HEADERS since the colon makes them distinct strings.
   /\bExam Tips?\b/g,
   /Why (?:the )?Other[s]?(?: Answers?| Options?)?\s*(?:Are|Is)\s*(?:Correct|Incorrect|Wrong|Right)\b/gi,
-  /Advantages of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z])/g,
-  /Benefits of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z])/g,
-  /Challenges (?:in|of|with) (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)){0,4}(?=\s[A-Z][a-z])/g,
-  /Potential Downsides(?: to (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|all)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|all)){0,6})?(?=\s[A-Z][a-z])/g,
+  // Same idea, but naming specific option letters instead of saying "other"
+  // ("Why D and E are incorrect", "Why C is correct") — common when this
+  // aside sits mid-list, between one lettered item's body and the next.
+  /Why [A-H](?:\s*(?:and|,)\s*[A-H])*\s+(?:is|are)\s+(?:correct|incorrect|wrong|right)\b/gi,
+  /Advantages of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z]|:|\.)/g,
+  /Benefits of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z]|:|\.)/g,
+  /Challenges (?:in|of|with) (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)){0,4}(?=\s[A-Z][a-z]|:|\.)/g,
+  /Potential Downsides(?: to (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|all)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|all)){0,12})?(?=\s[A-Z][a-z]|:|\.)/g,
   /Key Focus Area\b/g,
   /Common Confusion(?: to Avoid)?\b/g,
   /Why (?:It|This) Matters\b/g,
@@ -305,8 +309,13 @@ function formatSentences(text) {
     anchors.push(m);
     return `\x00A${anchors.length - 1}\x00`;
   });
+  // Uppercase is included alongside lowercase/digit here so a sentence
+  // ending in an acronym ("...Knowledge Sources = Q&A.") still splits before
+  // the next one — by this point formatLettered has already claimed any
+  // genuine "A. ... B. ..." list (2+ increasing letters), so a lone
+  // "X." here is essentially never a real list marker.
   const sentences = safe
-    .split(/(?<=[a-z0-9\)"']\.)\s+(?=[A-Z])/g)
+    .split(/(?<=[a-zA-Z0-9\)"']\.)\s+(?=[A-Z])/g)
     .map((s) => s.trim())
     .filter(Boolean);
   if (sentences.length < 2) return `<p>${linkify(text)}</p>`;
@@ -364,8 +373,13 @@ function formatTermList(text) {
   const reinsertAnchors = (s) => s.replace(/\x00A(\d+)\x00/g, (_, i2) => anchors[Number(i2)]);
   const restore = (s) => linkify(reinsertAnchors(s));
 
+  // The first word must be capitalized; later words may be Title-Case too
+  // ("Polling Trigger:") or plain lowercase ("Task management:") — both
+  // conventions show up in the source. The 3+ match requirement below is what
+  // keeps this safe: a single lowercase-tailed clause before a colon is far
+  // too common in ordinary prose to trust on its own.
   const termRe =
-    /(?:^|(?<=[.\s]))([A-Z][a-zA-Z]*(?:-[a-zA-Z]+)*(?:[\s\xa0](?:[A-Z][a-zA-Z]*(?:-[a-zA-Z]+)*|and|of|for|the|in|to|on|or)){0,4})\xa0?:\s(?=[A-Z0-9])/g;
+    /(?:^|(?<=[.\s]))([A-Z][a-zA-Z]*(?:-[a-zA-Z]+)*(?:[\s\xa0][a-zA-Z][a-zA-Z]*(?:-[a-zA-Z]+)*){0,3})\xa0?:\s(?=[A-Z0-9])/g;
   const matches = [...safe.matchAll(termRe)];
   if (matches.length < 3) return null;
 
@@ -379,8 +393,37 @@ function formatTermList(text) {
   });
 
   const beforeHtml = before ? formatSentences(reinsertAnchors(before)) : "";
-  const itemsHtml = `<ul>${items.map((it) => `<li><strong>${restore(it.term)}</strong>: ${restore(it.body)}</li>`).join("")}</ul>`;
-  return beforeHtml + itemsHtml;
+
+  // An item whose body comes up empty (its colon was immediately followed by
+  // the NEXT item's term, with nothing of its own in between — e.g. "Key
+  // Points: Power Automate for Desktop: ...") is actually a plain lead-in
+  // label for the items that follow, not a real bullet. Render it as its own
+  // paragraph instead of an empty <li>, splitting the list at that point —
+  // this can happen more than once, and not only at the very start.
+  const segments = [];
+  let group = [];
+  for (const it of items) {
+    if (!it.body) {
+      if (group.length) {
+        segments.push({ type: "ul", items: group });
+        group = [];
+      }
+      segments.push({ type: "p", text: it.term });
+    } else {
+      group.push(it);
+    }
+  }
+  if (group.length) segments.push({ type: "ul", items: group });
+
+  const segmentsHtml = segments
+    .map((seg) =>
+      seg.type === "p"
+        ? `<p>${restore(seg.text)}.</p>`
+        : `<ul>${seg.items.map((it) => `<li><strong>${restore(it.term)}</strong>: ${restore(it.body)}</li>`).join("")}</ul>`
+    )
+    .join("");
+
+  return beforeHtml + segmentsHtml;
 }
 
 function formatBlock(p) {
@@ -544,10 +587,11 @@ function formatExplanation(raw) {
   });
 
   // A source header like "Why the other options are incorrect:" has its
-  // trailing colon fall just outside the pattern match above (only the
-  // heading phrase itself is captured) — strip that dangling colon so it
-  // doesn't become its own orphaned ":" paragraph.
-  text = text.replace(/(\x02\n\n)\s*:\s*/g, "$1");
+  // trailing colon (or, for the variable-content patterns, a trailing period)
+  // fall just outside the pattern match above (only the heading phrase
+  // itself is captured) — strip that dangling punctuation so it doesn't
+  // become its own orphaned ":" or "." paragraph.
+  text = text.replace(/(\x02\n\n)\s*[:.]\s*/g, "$1");
 
   const paragraphs = text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
 
@@ -703,6 +747,20 @@ async function boot() {
   document.getElementById("submitTestBtn").addEventListener("click", onSubmitTest);
   document.getElementById("prevQBtn").addEventListener("click", () => gotoQuestion(session.index - 1));
   document.getElementById("nextQBtn").addEventListener("click", () => gotoQuestion(session.index + 1));
+
+  // Up/Down arrows move between questions during a test, so you don't have
+  // to reach for the mouse every single question. Ignored while typing in a
+  // fill-in-the-blank field (or any other input) so arrow keys still work
+  // normally there, and only active while the test view is actually showing.
+  document.addEventListener("keydown", (e) => {
+    if (!session || !document.getElementById("view-test").classList.contains("active")) return;
+    if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
+    const tag = document.activeElement && document.activeElement.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+    e.preventDefault();
+    if (e.key === "ArrowDown") gotoQuestion(session.index + 1);
+    else gotoQuestion(session.index - 1);
+  });
   document.getElementById("testCancelBtn").addEventListener("click", () => cancelTest());
   document.getElementById("backToDashBtn").addEventListener("click", () => {
     if (DB.getUser()) {
@@ -1073,6 +1131,11 @@ function gotoQuestion(i) {
   if (i < 0 || i >= session.questions.length) return;
   session.index = i;
   renderQuestion();
+  // Next/Skip/Prev can be pressed after scrolling down to read the previous
+  // question's explanation — without this, the new question renders off the
+  // top of the viewport and the page just looks blank until the user scrolls
+  // back up themselves.
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function renderQuestion() {
