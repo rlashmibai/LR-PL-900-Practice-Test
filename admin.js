@@ -23,6 +23,34 @@ let ALL_QUESTIONS = [];
 let currentQuestion = null;
 let isNewQuestion = false;
 
+// ---------- Live formatting preview ----------
+// Loads app.js's own formatQuestionText()/formatExplanation() (and everything
+// they depend on) so the edit form can show exactly what a change will look
+// like on the live site — the same rendering pipeline, not a re-implementation
+// that could drift out of sync. Only the pure formatting functions are
+// loaded: app.js's DOM-wiring code (starting at boot()) is sliced off first
+// so nothing here tries to attach to elements that only exist on index.html.
+let formattersReady = false;
+async function loadFormatters() {
+  if (formattersReady) return;
+  try {
+    const res = await fetch(`app.js?bust=${Date.now()}`);
+    const src = await res.text();
+    let bootIdx = src.indexOf("function boot(");
+    const asyncIdx = src.lastIndexOf("async ", bootIdx);
+    if (asyncIdx !== -1 && bootIdx - asyncIdx < 10) bootIdx = asyncIdx;
+    const code = src.slice(0, bootIdx);
+    // Indirect eval (the "(0, eval)" trick) runs in global scope, so the
+    // function declarations inside become real globals callable from
+    // anywhere in this file — a direct eval() here would scope them to just
+    // this function.
+    (0, eval)(code);
+    formattersReady = true;
+  } catch (err) {
+    console.warn("Could not load live formatters for preview:", err);
+  }
+}
+
 // ---------- Token ----------
 function getToken() {
   return localStorage.getItem(TOKEN_KEY) || "";
@@ -216,7 +244,9 @@ function renderForm() {
       <button type="button" id="saveBtn" class="btn">Save to GitHub</button>
       ${isNewQuestion ? "" : '<button type="button" id="deleteBtn" class="btn ghost" style="color:var(--red);">Delete question</button>'}
       <button type="button" id="cancelBtn" class="btn ghost">Close</button>
+      <button type="button" id="previewBtn" class="btn ghost">👁 Preview formatted</button>
     </div>
+    <div id="previewPanel" class="card" style="display:none; margin-top:12px; background:#fff;"></div>
     <p id="formStatus" class="admin-status" style="display:none;"></p>
   `;
 
@@ -245,9 +275,72 @@ function renderForm() {
     isNewQuestion = false;
     renderSearchList();
   });
+  document.getElementById("previewBtn").addEventListener("click", showFormattedPreview);
   if (!isNewQuestion) {
     document.getElementById("deleteBtn").addEventListener("click", deleteQuestion);
   }
+}
+
+// Renders the CURRENT (unsaved) values of the question text, each option's
+// explanation, and the overall explanation through the exact same
+// formatQuestionText()/formatExplanation() the live site uses — so you can
+// check a change looks right before saving, without needing to open the
+// live site separately.
+async function showFormattedPreview() {
+  const panel = document.getElementById("previewPanel");
+  const btn = document.getElementById("previewBtn");
+  if (panel.style.display === "block") {
+    panel.style.display = "none";
+    return;
+  }
+  btn.disabled = true;
+  await loadFormatters();
+  btn.disabled = false;
+
+  if (!formattersReady || typeof formatQuestionText !== "function" || typeof formatExplanation !== "function") {
+    panel.innerHTML = `<p style="padding:14px; color:var(--red);">Couldn't load the live formatter (app.js) — check your connection and try again.</p>`;
+    panel.style.display = "block";
+    return;
+  }
+
+  const text = document.getElementById("fieldText").value.trim();
+  const explanation = document.getElementById("fieldExplanation").value.trim();
+
+  let optionsHtml = "";
+  const optTextInputs = document.querySelectorAll(".opt-text-input");
+  if (optTextInputs.length) {
+    optionsHtml = [...optTextInputs]
+      .map((input) => {
+        const idx = input.dataset.idx;
+        const optText = input.value.trim();
+        const exprInput = document.querySelector(`.opt-expl-input[data-idx="${idx}"]`);
+        const optExpl = exprInput ? exprInput.value.trim() : "";
+        return `
+          <div style="padding:10px 0; border-top:1px solid var(--border);">
+            <div style="font-weight:700;">${escapeHtml(optText)}</div>
+            ${optExpl ? `<div class="option-expl-text">${formatExplanation(optExpl)}</div>` : ""}
+          </div>`;
+      })
+      .join("");
+  }
+
+  panel.innerHTML = `
+    <div style="padding:14px;">
+      <div style="font-size:0.78rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px;">Live preview — exactly how this will render on the site</div>
+      <div class="question-text" style="font-weight:700;">${formatQuestionText(text)}</div>
+      ${optionsHtml}
+      ${
+        explanation
+          ? `<div class="explanation-card" style="margin-top:14px;">
+               <div class="explanation-title">${optTextInputs.length ? "Overall Explanation" : "Explanation"}</div>
+               <div class="explanation-body">${formatExplanation(explanation)}</div>
+             </div>`
+          : ""
+      }
+    </div>
+  `;
+  panel.style.display = "block";
+  panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 function nextOptionId(existing) {
