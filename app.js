@@ -151,10 +151,25 @@ function formatNumbered(text) {
   if (!sequential) return null;
 
   const before = text.slice(0, matches[0].index).trim();
-  const items = matches.map((m, i) => {
+  const itemTexts = matches.map((m, i) => {
     const start = m.index + m[0].length;
     const end = i + 1 < matches.length ? matches[i + 1].index : text.length;
-    const itemText = text.slice(start, end).trim();
+    return text.slice(start, end).trim();
+  });
+
+  // Each numbered item's own text can start with a title glued onto its
+  // description (see splitEmbeddedTitle/splitGluedTitle) — an already-grouped
+  // list like this is a much stronger signal than free prose, so even two
+  // items sharing the shape is enough to trust it.
+  const itemSplits = itemTexts.map((t) => splitEmbeddedTitle(t) || splitGluedTitle(t));
+  const useSplits = itemSplits.filter(Boolean).length >= 2;
+
+  const items = itemTexts.map((itemText, i) => {
+    const split = useSplits ? itemSplits[i] : null;
+    if (split) {
+      const prefixPart = split.prefix ? `${linkify(split.prefix)}<br>` : "";
+      return `<li>${prefixPart}<strong>${linkify(split.title)}</strong><br>${linkify(split.rest.trim())}</li>`;
+    }
     return formatBullets(itemText) || `<li>${linkify(itemText)}</li>`;
   });
   // formatBullets() already returns full <ul> markup for items that contain sub-bullets;
@@ -182,11 +197,24 @@ function formatLettered(text) {
   if (!increasing) return null;
 
   const before = text.slice(0, matches[0].index).trim();
-  const items = matches.map((m, i) => {
+  const itemTexts = matches.map((m, i) => {
     const start = m.index + m[0].length;
     const end = i + 1 < matches.length ? matches[i + 1].index : text.length;
-    const itemText = text.slice(start, end).trim();
-    return `<li><strong>${m[1]}.</strong> ${linkify(itemText)}</li>`;
+    return text.slice(start, end).trim();
+  });
+
+  // Same glued-title check as formatNumbered — a lettered list is just as
+  // tightly grouped, so the same "2+ items share the shape" threshold applies.
+  const itemSplits = itemTexts.map((t) => splitEmbeddedTitle(t) || splitGluedTitle(t));
+  const useSplits = itemSplits.filter(Boolean).length >= 2;
+
+  const items = matches.map((m, i) => {
+    const split = useSplits ? itemSplits[i] : null;
+    if (split) {
+      const prefixPart = split.prefix ? `${linkify(split.prefix)}<br>` : "";
+      return `<li><strong>${m[1]}.</strong> ${prefixPart}<strong>${linkify(split.title)}</strong><br>${linkify(split.rest.trim())}</li>`;
+    }
+    return `<li><strong>${m[1]}.</strong> ${linkify(itemTexts[i])}</li>`;
   });
   return (before ? formatSentences(before) : "") + `<ul class="lettered-list">${items.join("")}</ul>`;
 }
@@ -202,13 +230,49 @@ function splitEmbeddedTitle(sentence) {
   // clause (e.g. "10 Use Cases for X: Troubleshooting Assistance The chatbot...")
   // doesn't hide the first item's title from matching — only what comes after
   // that point needs to look like a title, not the whole sentence.
-  const m = sentence.match(/(?:^|[:.]\s)((?:[A-Z][a-zA-Z]*)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)){0,3})\xa0(?=[A-Z][a-z])([\s\S]*)$/);
+  const m = sentence.match(/(?:^|[:.]\s)((?:[A-Z][a-zA-Z]*)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)|\s\([A-Z]{2,6}\)){0,4})\xa0(?=[A-Z][a-z])([\s\S]*)$/);
   if (!m) return null;
   const title = m[1].trim();
   const words = title.split(/\s+/);
   if (words.length === 1 && ["A", "An", "The", "I", "It", "This", "That"].includes(words[0])) return null;
   const titleStart = sentence.indexOf(title, m.index);
   return { prefix: sentence.slice(0, titleStart).trim(), title, rest: m[2] };
+}
+
+// Known camelCase brand/product/property names that must never be treated as
+// a lost line break (e.g. "SharePoint", "PowerShell", "TabIndex") — without
+// this list, a generic "lowercase immediately followed by uppercase" search
+// mostly just matches these instead of real glued-together text, since a
+// letter case change inside a single stylized word is far more common in
+// this content than an actual missing space.
+const GLUED_TITLE_SAFE_WORDS = [
+  "SharePoint", "OneDrive", "ServiceNow", "PowerApps", "PowerAutomate", "PowerBI", "PowerPoint",
+  "YouTube", "LinkedIn", "GitHub", "WordPress", "DevOps", "OneNote", "PayPal", "WebAPI", "iPhone",
+  "iPad", "eBay", "MacBook", "LogicApps", "WebApp", "GraphQL", "OAuth", "JavaScript",
+  "TypeScript", "NodeJS", "FedEx", "DocuSign", "QuickBooks",
+  "AppSource", "TabIndex", "PowerFx", "DataSource", "OnSelect", "OnStart", "OnChange", "OnVisible",
+  "PowerShell", "MySql", "MySQL", "iFrames", "iFrame", "OpenWeather", "AccessibleLabel", "ContextAware",
+  "CrossPlatform", "OnClick", "OnHover",
+];
+
+// Same idea as splitEmbeddedTitle, but for the more common case where the
+// title and body are glued with NO separator at all (not even \xa0) —
+// e.g. "Business RulesBusiness Rules allow you to enforce...". Only trusted
+// alongside the same 3+ occurrence check, and skips any match that falls
+// inside a known safe word rather than a real word boundary.
+function splitGluedTitle(sentence) {
+  const m = sentence.match(/(?:^|[:.]\s)((?:[A-Z][a-zA-Z]*)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)|\s\([A-Z]{2,6}\)){0,4})(?=[A-Z][a-z])/);
+  if (!m) return null;
+  const title = m[1].trim();
+  const words = title.split(/\s+/);
+  if (words.length === 1 && ["A", "An", "The", "I", "It", "This", "That"].includes(words[0])) return null;
+
+  const bodyStart = m.index + m[0].length;
+  const window = sentence.slice(Math.max(0, bodyStart - 15), bodyStart + 15);
+  if (GLUED_TITLE_SAFE_WORDS.some((w) => window.includes(w))) return null;
+
+  const titleStart = sentence.indexOf(title, m.index);
+  return { prefix: sentence.slice(0, titleStart).trim(), title, rest: sentence.slice(bodyStart) };
 }
 
 // Splits a run of prose into one <p> per sentence, so a long explanation reads
@@ -227,20 +291,24 @@ function formatSentences(text) {
     .filter(Boolean);
   if (sentences.length < 2) return `<p>${linkify(text)}</p>`;
 
-  // Named-list detection: if the same "Title\xa0Sentence" shape shows up 3+
-  // times in this one explanation, it's a deliberate list of named items
-  // (e.g. "10 Use Cases..." each with its own label) whose structure got
-  // flattened on import — bold each title in place. A single match elsewhere
-  // is left untouched, since on its own it's far more likely an incidental
-  // product name than a real heading.
-  const splits = sentences.map(splitEmbeddedTitle);
+  // Named-list detection: if the same "Title glued to Sentence" shape (with
+  // or without \xa0 between them) shows up 3+ times in this one explanation,
+  // it's a deliberate list of named items (e.g. "10 Use Cases..." or
+  // "Business Rules...") whose structure got flattened on import — put each
+  // title on its own bold line, with the description starting fresh on the
+  // next line. A single match elsewhere is left untouched, since on its own
+  // it's far more likely an incidental product name than a real heading.
+  const splits = sentences.map((s) => splitEmbeddedTitle(s) || splitGluedTitle(s));
   const titleCount = splits.filter(Boolean).length;
+
+  const restore = (s) => linkify(s.replace(/\x00A(\d+)\x00/g, (_, i2) => anchors[Number(i2)]));
 
   return sentences
     .map((s, i) => {
       const split = titleCount >= 3 ? splits[i] : null;
-      const body = split ? `${split.prefix ? split.prefix + " " : ""}<strong>${split.title}</strong> ${split.rest.trim()}` : s;
-      return `<p>${linkify(body.replace(/\x00A(\d+)\x00/g, (_, i2) => anchors[Number(i2)]))}</p>`;
+      if (!split) return `<p>${restore(s)}</p>`;
+      const prefixPart = split.prefix ? `<p>${restore(split.prefix)}</p>` : "";
+      return `${prefixPart}<p><strong>${restore(split.title)}</strong></p><p>${restore(split.rest.trim())}</p>`;
     })
     .join("");
 }
