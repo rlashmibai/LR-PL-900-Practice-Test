@@ -75,10 +75,36 @@ function stripHtml(html) {
 // the colon makes them distinct substrings that can't collide.
 const EXPL_HEADERS = [
   "Overall explanation", "References:", "Reference:", "References",
-  "Exam Tips:", "Exam Tip:", "Exam Tips",
+  "Exam Tips:", "Exam Tip:",
   "Recommended Youtube Video:", "Recommended YouTube video:", "Recommended Youtube Video", "Recommended YouTube video",
   "Keep in Mind:", "Keep in Mind", "Study Links:", "Study links:", "Study Links", "Study links",
   "Remember,", "Remember:",
+];
+
+// Recurring section-header phrases that have variable trailing content (so they
+// can't just be exact strings in EXPL_HEADERS), confirmed by scanning the whole
+// question bank for genuinely repeated patterns — not a generic "any Title Case
+// phrase" rule, which mostly false-positives on product names like "Power
+// Automate" mid-sentence. Each captures its own variable suffix (e.g. "Advantages
+// of Using TLS") so the real heading text is preserved, just isolated onto its
+// own line and bolded like the fixed EXPL_HEADERS.
+const EXPL_HEADER_PATTERNS = [
+  // Bare "Exam Tip" / "Exam Tips" (no colon) as one atomic pattern — listing
+  // both forms separately in EXPL_HEADERS would have the shorter one
+  // ("Exam Tip") re-match *inside* text the longer one ("Exam Tips") already
+  // isolated, orphaning the trailing "s" (the exact bug that hit
+  // References/Reference earlier this project). The colon-suffixed forms
+  // above stay in EXPL_HEADERS since the colon makes them distinct strings.
+  /\bExam Tips?\b/g,
+  /Why Other[s]?(?: Answers?| Options?)?\s*(?:Are|Is)\s*(?:Correct|Incorrect|Wrong|Right)\b/gi,
+  /Advantages of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z])/g,
+  /Benefits of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z])/g,
+  /Challenges (?:in|of|with) (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)){0,4}(?=\s[A-Z][a-z])/g,
+  /Potential Downsides(?: to (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|all)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|all)){0,6})?(?=\s[A-Z][a-z])/g,
+  /Key Focus Area\b/g,
+  /Common Confusion(?: to Avoid)?\b/g,
+  /Why (?:It|This) Matters\b/g,
+  /Simple Example\b/g,
 ];
 
 function linkify(text) {
@@ -119,7 +145,7 @@ function formatBullets(text) {
 // real list, just missing its first marker — so this only requires 3+ RUNS of
 // consecutive integers, not that the run starts at 1.
 function formatNumbered(text) {
-  const matches = [...text.matchAll(/(?:^|\s)(\d{1,2})\.\s/g)];
+  const matches = [...text.matchAll(/(?:^|\s)(\d{1,2})[.)]\s/g)];
   const nums = matches.map((m) => parseInt(m[1], 10));
   const sequential = nums.length >= 3 && nums.every((n, i) => i === 0 || n === nums[i - 1] + 1);
   if (!sequential) return null;
@@ -149,7 +175,7 @@ function formatNumbered(text) {
 // marker must be followed by a capitalized word so a stray "A." mid-sentence
 // can't false-trigger this.
 function formatLettered(text) {
-  const matches = [...text.matchAll(/(?:^|\s)([A-H])\.\s(?=[A-Z])/g)];
+  const matches = [...text.matchAll(/(?:^|\s)([A-H])[.)]\s(?=[A-Z])/g)];
   if (matches.length < 2) return null;
   const codes = matches.map((m) => m[1].charCodeAt(0));
   const increasing = codes.every((c, i) => i === 0 || c > codes[i - 1]);
@@ -163,6 +189,26 @@ function formatLettered(text) {
     return `<li><strong>${m[1]}.</strong> ${linkify(itemText)}</li>`;
   });
   return (before ? formatSentences(before) : "") + `<ul class="lettered-list">${items.join("")}</ul>`;
+}
+
+// Detects a short (1-4 word) Title Case phrase glued directly onto the
+// sentence that follows it by \xa0 (non-breaking space) instead of a real
+// line break — a real, if easy to miss, structural signal preserved from the
+// source docs. \xa0 also shows up throughout this content for perfectly
+// ordinary spacing though, so this alone isn't trusted as proof of a heading;
+// see the 3+ occurrence check in formatSentences below.
+function splitEmbeddedTitle(sentence) {
+  // Anchored at start-of-string OR right after ": "/". " so a leading intro
+  // clause (e.g. "10 Use Cases for X: Troubleshooting Assistance The chatbot...")
+  // doesn't hide the first item's title from matching — only what comes after
+  // that point needs to look like a title, not the whole sentence.
+  const m = sentence.match(/(?:^|[:.]\s)((?:[A-Z][a-zA-Z]*)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)){0,3})\xa0(?=[A-Z][a-z])([\s\S]*)$/);
+  if (!m) return null;
+  const title = m[1].trim();
+  const words = title.split(/\s+/);
+  if (words.length === 1 && ["A", "An", "The", "I", "It", "This", "That"].includes(words[0])) return null;
+  const titleStart = sentence.indexOf(title, m.index);
+  return { prefix: sentence.slice(0, titleStart).trim(), title, rest: m[2] };
 }
 
 // Splits a run of prose into one <p> per sentence, so a long explanation reads
@@ -180,8 +226,22 @@ function formatSentences(text) {
     .map((s) => s.trim())
     .filter(Boolean);
   if (sentences.length < 2) return `<p>${linkify(text)}</p>`;
+
+  // Named-list detection: if the same "Title\xa0Sentence" shape shows up 3+
+  // times in this one explanation, it's a deliberate list of named items
+  // (e.g. "10 Use Cases..." each with its own label) whose structure got
+  // flattened on import — bold each title in place. A single match elsewhere
+  // is left untouched, since on its own it's far more likely an incidental
+  // product name than a real heading.
+  const splits = sentences.map(splitEmbeddedTitle);
+  const titleCount = splits.filter(Boolean).length;
+
   return sentences
-    .map((s) => `<p>${linkify(s.replace(/\x00A(\d+)\x00/g, (_, i) => anchors[Number(i)]))}</p>`)
+    .map((s, i) => {
+      const split = titleCount >= 3 ? splits[i] : null;
+      const body = split ? `${split.prefix ? split.prefix + " " : ""}<strong>${split.title}</strong> ${split.rest.trim()}` : s;
+      return `<p>${linkify(body.replace(/\x00A(\d+)\x00/g, (_, i2) => anchors[Number(i2)]))}</p>`;
+    })
     .join("");
 }
 
@@ -308,13 +368,27 @@ function formatExplanation(raw) {
     text = text.split(h).join(`\n\n${h.replace(/:$/, "")}\n\n`);
   });
 
+  // Same idea for headers with variable trailing content ("Advantages of Using
+  // TLS", "Why Other Options Are Incorrect") — isolate onto their own paragraph,
+  // wrapped in a \x02...\x02 sentinel since the captured text varies per match
+  // and can't be looked up in the fixed headerNames set below.
+  EXPL_HEADER_PATTERNS.forEach((re) => {
+    text = text.replace(re, (m) => `\n\n\x02${m.trim()}\x02\n\n`);
+  });
+
   const paragraphs = text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
 
-  // A paragraph becomes a heading ONLY if its entire (trimmed) content is exactly one
-  // of the known header names — never just "the first character of any paragraph"
-  // (that was the earlier bug: every paragraph got its first letter sliced off).
+  // A paragraph becomes a heading if its entire (trimmed) content is exactly one
+  // of the known header names, or the whole thing is a \x02-wrapped dynamic
+  // header — never just "the first character of any paragraph" (that was the
+  // earlier bug: every paragraph got its first letter sliced off).
   let html = paragraphs
-    .map((p) => (headerNames.has(p) ? `<h4 class="expl-heading">${p}</h4>` : formatBlock(p)))
+    .map((p) => {
+      if (headerNames.has(p)) return `<h4 class="expl-heading">${p}</h4>`;
+      const dynamicHeading = p.match(/^\x02(.+)\x02$/);
+      if (dynamicHeading) return `<h4 class="expl-heading">${dynamicHeading[1]}</h4>`;
+      return formatBlock(p);
+    })
     .join("");
 
   html = html.replace(/\x00IMG(\d+)\x00/g, (_, i) => imgTags[Number(i)]);
@@ -357,7 +431,7 @@ function renderExplanationBreakdown(q, given) {
               <div class="option-expl-label">${mark ? `<span class="option-expl-mark">${mark}</span> ` : ""}${opt.text}${
                 tag ? `<span class="option-expl-tag">${tag}</span>` : ""
               }</div>
-              ${opt.explanation ? `<div class="option-expl-text">${opt.explanation.replace(/→|➔|➡/g, "->")}</div>` : ""}
+              ${opt.explanation ? `<div class="option-expl-text">${formatExplanation(opt.explanation)}</div>` : ""}
             </div>`;
         })
         .join("") +

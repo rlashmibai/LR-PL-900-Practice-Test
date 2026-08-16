@@ -568,6 +568,15 @@ th { color: var(--text-muted); font-weight: 600; }
 }
 .option-expl-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-top: 4px; }
 .option-expl-text a { color: var(--accent-dark); word-break: break-word; }
+.option-expl-text p { margin: 0 0 8px; }
+.option-expl-text p:last-child { margin-bottom: 0; }
+.option-expl-text ul, .option-expl-text ol { margin: 4px 0 10px; padding-left: 20px; }
+.option-expl-text li { margin-bottom: 4px; }
+.option-expl-text .expl-heading {
+  font-size: 0.78rem; font-weight: 700; color: var(--accent-dark);
+  text-transform: uppercase; letter-spacing: 0.02em; margin: 10px 0 4px;
+}
+.option-expl-text .expl-heading:first-child { margin-top: 0; }
 
 /* Explanation card: title bar + formatted body (headings/lists/links) */
 .explanation-card {
