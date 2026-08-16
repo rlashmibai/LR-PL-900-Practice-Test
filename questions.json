@@ -353,25 +353,19 @@
     "options": [
       {
         "id": "a",
-        "text": "A - 1"
+        "text": "A - 1, B - 2, C - 3, D - 4"
       },
       {
         "id": "b",
-        "text": "B - 2"
+        "text": "A - 2, B - 1, C - 4, D - 3"
       },
       {
         "id": "c",
-        "text": "C - 3"
+        "text": "A - 3, B - 4, C - 1, D - 2"
       },
       {
         "id": "d",
-        "text": "D - 4",
-        "explanation": "This is correct option. A. Power Platform Admin - Create and manage environments B. Environment Admin - Configure security roles and permissions C. Power Apps Maker - Create and publish apps D. Power Automate Maker - Create and run flows A - 4 B - 3 C - 2"
-      },
-      {
-        "id": "e",
-        "text": "D - 1",
-        "explanation": "This choice is incorrect because it does not correctly match the Power Platform roles with their corresponding capabilities."
+        "text": "A - 5, B - 3, C - 2, D - 1"
       }
     ],
     "correct": [
@@ -513,34 +507,23 @@
     "options": [
       {
         "id": "a",
-        "text": "Monitoring Power Platform usage and analytics - A. Microsoft Power Platform admin center",
-        "explanation": "This choice correctly matches the administrative tasks with the appropriate locations. Managing user licenses and subscriptions are done in the Microsoft 365 admin center, while configuring data loss prevention policies, creating and managing custom connectors, and monitoring Power Platform usage and analytics are tasks that are performed in the Microsoft Power Platform admin center."
+        "text": "1 - B, 2 - A, 3 - A, 4 - A"
       },
       {
         "id": "b",
-        "text": "Configuring data loss prevention policies - B. Microsoft 365 admin center",
-        "explanation": "This choice correctly matches the administrative tasks with the appropriate locations. Managing user licenses and subscriptions are done in the Microsoft 365 admin center, while configuring data loss prevention policies, creating and managing custom connectors, and monitoring Power Platform usage and analytics are tasks that are performed in the Microsoft Power Platform admin center."
+        "text": "1 - A, 2 - B, 3 - B, 4 - B"
       },
       {
         "id": "c",
-        "text": "Managing user licenses and subscriptions - B. Microsoft 365 admin center"
+        "text": "1 - B, 2 - B, 3 - A, 4 - A"
       },
       {
         "id": "d",
-        "text": "Configuring data loss prevention policies - A. Microsoft Power Platform admin center"
-      },
-      {
-        "id": "e",
-        "text": "Creating and managing custom connectors - A. Microsoft Power Platform admin center"
-      },
-      {
-        "id": "f",
-        "text": "Creating and managing custom connectors - B. Microsoft 365 admin center",
-        "explanation": "This choice correctly matches the administrative tasks with the appropriate locations. Managing user licenses and subscriptions are done in the Microsoft 365 admin center, while configuring data loss prevention policies, creating and managing custom connectors, and monitoring Power Platform usage and analytics are tasks that are performed in the Microsoft Power Platform admin center."
+        "text": "1 - A, 2 - A, 3 - B, 4 - A"
       }
     ],
     "correct": [
-      "c"
+      "a"
     ],
     "explanation": "The correct answer is Managing user licenses and subscriptions - B. Microsoft 365 admin centre Configuring data loss prevention policies - A. Microsoft Power Platform admin center Creating and managing custom connectors - A. Microsoft Power Platform admin center Monitoring Power Platform usage and analytics - A. Microsoft Power Platform admin center Use the Microsoft 365 Admin Center for:User and license managementBilling and subscription control Use the <a href=\"https://www.youtube.com/watch?v=OAoY4NwEqvQ\" target=\"_blank\" rel=\"noopener noreferrer\">Power Platform Admin Center</a> for:Environment setupDLP policy configurationMonitoring Power Platform usage and connectors Exam Tips:   References: <a href=\"https://learn.microsoft.com/en-us/microsoft-365/admin/manage/assign-licenses-to-users?view=o365-worldwide\" target=\"_blank\" rel=\"noopener noreferrer\">Assign licenses to users in the Microsoft 365 admin center - Microsoft 365 admin | Microsoft Learn</a> <a href=\"https://learn.microsoft.com/en-us/microsoft-365/admin/manage/remove-licenses-from-users?view=o365-worldwide\" target=\"_blank\" rel=\"noopener noreferrer\">Unassign licenses from users - Microsoft 365 admin | Microsoft Learn</a> <a href=\"https://learn.microsoft.com/en-us/power-platform/admin/create-dlp-policy\" target=\"_blank\" rel=\"noopener noreferrer\">Create a data loss prevention (DLP) policy - Power Platform | Microsoft Learn</a> <a href=\"https://powerapps.microsoft.com/en-us/blog/powerapps-admin-analytics-get-an-enterprise-wide-view-2/\" target=\"_blank\" rel=\"noopener noreferrer\">PowerApps Admin Analytics | Microsoft Power Apps</a> <a href=\"https://learn.microsoft.com/en-us/power-platform/admin/overview-role-powerapps-admin\" target=\"_blank\" rel=\"noopener noreferrer\">Overview of the role of a Power Platform administrator - Power Platform | Microsoft Learn</a> Recommended Youtube Video: <a href=\"https://www.youtube.com/watch?v=TQepkapBq3Q\" target=\"_blank\" rel=\"noopener noreferrer\">Overview of the Microsoft 365 admin center</a> Power Platform Admin Center <a href=\"https://www.youtube.com/watch?v=lsQEDNj7-60\" target=\"_blank\" rel=\"noopener noreferrer\">Power Platform Admin Center Enhancements</a><img src=\"images/image7.png\" alt=\"Reference diagram\">",
     "testSet": 2
@@ -553,17 +536,11 @@
     "options": [
       {
         "id": "a",
-        "text": "A-2"
+        "text": "A - 2, B - 1"
       },
       {
         "id": "b",
-        "text": "B-1",
-        "explanation": "Environment-level policies are policies that can be configured for specific environments within an organization, affecting only the users and devices within that particular environment. This matches the description provided for option A in the question. A-1"
-      },
-      {
-        "id": "c",
-        "text": "B-2",
-        "explanation": "This is incorrect match."
+        "text": "A - 1, B - 2"
       }
     ],
     "correct": [
@@ -649,25 +626,19 @@
     "options": [
       {
         "id": "a",
-        "text": "SharePoint - B. Document storage, collaboration, and management."
+        "text": "1 - B, 2 - A, 3 - D, 4 - C"
       },
       {
         "id": "b",
-        "text": "Salesforce - A. Customer Relationship Management (CRM) data and sales management."
+        "text": "1 - A, 2 - B, 3 - C, 4 - D"
       },
       {
         "id": "c",
-        "text": "SQL Server - D. Relational database management system for structured data."
+        "text": "1 - C, 2 - D, 3 - A, 4 - B"
       },
       {
         "id": "d",
-        "text": "Twitter - C. Social media data, real-time tweets, and engagement analytics.",
-        "explanation": "This is incorrect option."
-      },
-      {
-        "id": "e",
-        "text": "SharePoint - A. Customer Relationship Management (CRM) data and sales management.",
-        "explanation": "This is incorrect option."
+        "text": "1 - D, 2 - C, 3 - B, 4 - A"
       }
     ],
     "correct": [
@@ -1270,29 +1241,19 @@
     "options": [
       {
         "id": "a",
-        "text": "1 → A"
+        "text": "1 - A, 2 - B, 3 - C, 4 - D, 5 - E"
       },
       {
         "id": "b",
-        "text": "2 → B"
+        "text": "1 - B, 2 - A, 3 - D, 4 - C, 5 - E"
       },
       {
         "id": "c",
-        "text": "3 → C"
+        "text": "1 - C, 2 - D, 3 - E, 4 - A, 5 - B"
       },
       {
         "id": "d",
-        "text": "4 → D"
-      },
-      {
-        "id": "e",
-        "text": "5 → E",
-        "explanation": "This is correct math. Check explanation for details. This is the basic understanding of the Power Platform Terminology. 1 → A 2 → D 3 → C 4 → C"
-      },
-      {
-        "id": "f",
-        "text": "5 → A",
-        "explanation": "This is in-correct option."
+        "text": "1 - E, 2 - C, 3 - B, 4 - A, 5 - D"
       }
     ],
     "correct": [
@@ -3209,21 +3170,15 @@
     "options": [
       {
         "id": "a",
-        "text": "2 - A",
-        "explanation": "This is incorrect."
+        "text": "1 - A, 2 - B"
       },
       {
         "id": "b",
-        "text": "1 - A"
-      },
-      {
-        "id": "c",
-        "text": "2 - B",
-        "explanation": "App Checker is used to identify issues that affect app performance or functionality. It highlights formula errors, delegation warnings, and optimization opportunities so your app runs smoothly. Accessibility Checker ensures your app can be used by everyone, including people with disabilities. It flags issues like missing alt text or poor color contrast, helping you meet accessibility standards. Why This Question Is Relevant for PL-900 Understanding tools available to debug and optimize apps in Power Apps Ensures awareness of accessibility standards and creating inclusive apps Helps in maintaining app performance and usability Shows knowledge of built-in Power Platform quality and compliance features"
+        "text": "1 - B, 2 - A"
       }
     ],
     "correct": [
-      "b"
+      "a"
     ],
     "explanation": "App Checker Overview App Checker is a tool in Power Apps that helps debug and optimize app functionality. It ensures smooth performance by identifying errors and providing recommendations. It focuses mainly on two areas: formula errors and performance issues. Formula Errors Detects mistakes in formulas that can break app functionality. Highlights the exact part of the formula causing the issue. Suggests corrections to fix syntax problems. Example: If a formula like Filter(Orders, Status = \"Open\") is missing a parenthesis, App Checker will flag it and recommend adding the missing character. Performance Recommendations Identifies formulas or queries that may slow down the app. Provides suggestions to make them more efficient. Example: If a formula retrieves large datasets without delegation, App Checker will recommend using a delegable query to improve performance with data sources like SharePoint or Dataverse. Benefits Helps developers quickly debug issues. Improves app speed and reliability. Ensures a better user experience by optimizing functionality. Exam Tips Know that App Checker is used for debugging and performance optimization. Understand the difference between formula errors and performance recommendations. Remember that delegation is important for handling large datasets efficiently.   Accessibility Checker Overview The Accessibility Checker in Power Apps helps identify and fix issues that make apps difficult to use for people with disabilities. It ensures apps meet accessibility standards and are inclusive for all users. The tool checks for problems with screen readers, keyboard navigation, and color contrast. Missing Screen Reader Support Screen readers need descriptive labels to explain the purpose of buttons or controls. If a button lacks a proper label, the Accessibility Checker flags it. Example: A button labeled \"Submit\" should have an AccessibleLabel property like \"Submit form data\" so screen readers can give users more context. Keyboard Navigation Issues Some app controls may not be accessible using only a keyboard. The Accessibility Checker highlights these controls and suggests enabling keyboard focus. Example: A dropdown menu may need its TabIndex property adjusted so users can navigate it with keyboard shortcuts. Color Contrast Compliance Text and UI elements must meet recommended color contrast ratios for visibility. The Accessibility Checker flags items that don’t meet these standards. Example: Light gray text on a white background may need to be changed to a darker shade to improve readability. Benefits Ensures apps are inclusive and usable by everyone. Helps meet accessibility standards and compliance requirements. Improves overall user experience by making apps easier to navigate and understand. Exam Tips Know that Accessibility Checker focuses on inclusivity and compliance. Understand the three main areas it checks: screen reader support, keyboard navigation, and color contrast. Remember that accessibility is part of building user-friendly and compliant apps in Power Platform. References: <a href=\"https://learn.microsoft.com/en-us/training/modules/build-canvas-app/10-preview-test-publish-canvas-app\" target=\"_blank\" rel=\"noopener noreferrer\">Preview, test, and publish an app - Training | Microsoft Learn</a><img src=\"images/b2-image2.png\" alt=\"Reference diagram\"><img src=\"images/b2-image3.png\" alt=\"Reference diagram\"><img src=\"images/b2-image4.png\" alt=\"Reference diagram\">",
     "testSet": 10
@@ -5392,25 +5347,19 @@
     "options": [
       {
         "id": "a",
-        "text": "1 → D (Everyone must approve)"
+        "text": "1 - D, 2 - A, 3 - B, 4 - C"
       },
       {
         "id": "b",
-        "text": "2 → A (First to respond)"
+        "text": "1 - A, 2 - B, 3 - C, 4 - D"
       },
       {
         "id": "c",
-        "text": "3 → B (Custom responses)"
+        "text": "1 - B, 2 - C, 3 - D, 4 - A"
       },
       {
         "id": "d",
-        "text": "4 → C (Wait for all responses)",
-        "explanation": "For the workflow requirement of needing unanimous agreement, the correct approval action in Power Automate is 'Everyone must approve' (Choice A). This ensures that all participants in the approval process must give their approval before the workflow can proceed. For time-sensitive decisions, the appropriate approval action is 'First to respond' (Choice B), as it allows the workflow to move forward as soon as the first participant responds. When detailed feedback is required, 'Custom responses' (Choice C) is the suitable approval action, as it allows participants to provide specific and detailed feedback. Lastly, for gathering collective input, the correct approval action is 'Wait for all responses' (Choice D), which ensures that all participants have provided their input before the workflow progresses. 1 → D (Everyone must approve) 2 → C (Wait for all responses) 3 → B (Custom responses)"
-      },
-      {
-        "id": "e",
-        "text": "4 → A (First to respond)",
-        "explanation": "In this scenario, the mapping of workflow requirements to approval actions is incorrect. For the workflow requirement of needing unanimous agreement, the correct approval action in Power Automate is 'Everyone must approve' (Choice A), not 'Wait for all responses' (Choice C). For time-sensitive decisions, the appropriate approval action is 'First to respond' (Choice B), not 'Wait for all responses' (Choice C). When detailed feedback is required, 'Custom responses' (Choice C) is the suitable approval action, not 'First to respond' (Choice A). Lastly, for gathering collective input, the correct approval action is 'Wait for all responses' (Choice D), not 'First to respond' (Choice A)."
+        "text": "1 - C, 2 - D, 3 - A, 4 - B"
       }
     ],
     "correct": [
@@ -6494,11 +6443,19 @@
     "options": [
       {
         "id": "a",
-        "text": "a → 4, b → 3, c → 1, d → 2"
+        "text": "a - 4, b - 3, c - 1, d - 2"
       },
       {
         "id": "b",
-        "text": "d → 3"
+        "text": "a - 1, b - 2, c - 3, d - 4"
+      },
+      {
+        "id": "c",
+        "text": "a - 2, b - 4, c - 3, d - 1"
+      },
+      {
+        "id": "d",
+        "text": "a - 3, b - 1, c - 4, d - 2"
       }
     ],
     "correct": [
@@ -9020,30 +8977,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Canvas Apps - A. Create custom user interfaces and apps."
+        "text": "1 - A, 2 - D, 3 - B, 4 - C"
       },
       {
         "id": "b",
-        "text": "Model-Driven Apps - D. Design apps with a guided data-driven interface."
+        "text": "1 - D, 2 - A, 3 - C, 4 - B"
       },
       {
         "id": "c",
-        "text": "Power Automate - B. Define and automate workflows and processes."
+        "text": "1 - B, 2 - C, 3 - D, 4 - A"
       },
       {
         "id": "d",
-        "text": "Dataverse - C. Provide structured data storage and modelling.",
-        "explanation": "Canvas Apps - A. Create custom user interfaces and apps.Canvas Apps allow users to create highly customizable user interfaces and apps using a drag-and-drop design. They provide full flexibility for the user interface. Model-Driven Apps - D. Design apps with a guided data-driven interface.Model-Driven Apps are built on a data model, and their design is guided by the structure and relationships of the data, making them suitable for apps that require complex data management and a structured user interface. Power Automate - B. Define and automate workflows and processes.Power Automate is used to create workflows and automations to connect different systems, trigger actions, and automate repetitive tasks or processes. Dataverse - C. Provide structured data storage and modelling.The Common Data Service (now called Dataverse) is used to store and manage data in a structured manner, providing a secure and standardized data storage environment with built-in data models. Canvas Apps - D. Design apps with a guided data-driven interface. Model-Driven Apps - B. Define and automate workflows and processes. Power Automate - C. Provide structured data storage and modelling."
-      },
-      {
-        "id": "e",
-        "text": "Dataverse - A. Create custom user interfaces and apps.",
-        "explanation": "This choice also incorrectly matches the components with their primary functions. Canvas Apps are not primarily used to define and automate workflows and processes; that is the function of Power Automate. Model-Driven Apps are focused on providing a guided data-driven interface, while Dataverse is used for structured data storage and modeling."
-      },
-      {
-        "id": "f",
-        "text": "Canvas Apps - C. Provide structured data storage and modeling.",
-        "explanation": "This choice also incorrectly matches the components with their primary functions. Canvas Apps are not primarily used to define and automate workflows and processes; that is the function of Power Automate. Model-Driven Apps are focused on providing a guided data-driven interface, while Dataverse is used for structured data storage and modeling."
+        "text": "1 - C, 2 - B, 3 - A, 4 - D"
       }
     ],
     "correct": [
@@ -11099,25 +11045,19 @@
     "options": [
       {
         "id": "a",
-        "text": "Power Apps maker portal (A) matches description 3: Create a canvas app"
+        "text": "A - 3, B - 2, C - 1, D - 4"
       },
       {
         "id": "b",
-        "text": "Microsoft 365 admin centre (B) matches description 2: Assign Power Apps licenses to users."
+        "text": "A - 1, B - 3, C - 4, D - 2"
       },
       {
         "id": "c",
-        "text": "Microsoft Power Platform admin centre (C) matches description 1: Configure data policies."
+        "text": "A - 4, B - 1, C - 2, D - 3"
       },
       {
         "id": "d",
-        "text": "Trust centre (D) matches description 4: Provides security, privacy, and compliance-related resources",
-        "explanation": "Power Apps maker portal → Used for building and managing apps, including canvas and model-driven apps. Microsoft 365 admin centre → Used for managing licenses, users, and subscriptions for Microsoft services. Microsoft Power Platform admin centre → Allows admins to configure environments, data policies, and security settings for Power Platform solutions. Trust centre → Provides security, compliance, and privacy documentation for Microsoft services. Power Apps maker portal (A) matches description 4: Create a canvas app Microsoft 365 admin centre (B) matches description 1: Configure data policies. Microsoft Power Platform admin centre (C) matches the description 2: Assign Power Apps licenses to users."
-      },
-      {
-        "id": "e",
-        "text": "Trust centre (D) matches description 3: Find resources to manage compliance with data privacy regulations.",
-        "explanation": "This option is incorrect."
+        "text": "A - 2, B - 4, C - 3, D - 1"
       }
     ],
     "correct": [
@@ -11780,11 +11720,11 @@
       },
       {
         "id": "b",
-        "text": "5 - E"
+        "text": "1 - A, 2 - B, 3 - C, 4 - D, 5 - E"
       },
       {
         "id": "c",
-        "text": "5 - B"
+        "text": "1 - B, 2 - C, 3 - D, 4 - E, 5 - A"
       }
     ],
     "correct": [
@@ -11801,15 +11741,15 @@
     "options": [
       {
         "id": "a",
-        "text": "1- A, 2- B, 3- C, 4- D"
+        "text": "1 - A, 2 - B, 3 - C, 4 - D"
       },
       {
         "id": "b",
-        "text": "4 - B"
+        "text": "1 - B, 2 - A, 3 - D, 4 - C"
       },
       {
         "id": "c",
-        "text": "4 - D"
+        "text": "1 - D, 2 - C, 3 - B, 4 - A"
       }
     ],
     "correct": [
@@ -13375,7 +13315,7 @@
     "options": [
       {
         "id": "a",
-        "text": "F → 1"
+        "text": "A → 1, B → 2, C → 3, D → 4, E → 5, F → 6"
       },
       {
         "id": "b",
@@ -13400,7 +13340,7 @@
       },
       {
         "id": "b",
-        "text": "F → 2"
+        "text": "A → 1, B → 2, C → 3, D → 4, E → 5, F → 6"
       }
     ],
     "correct": [
@@ -14240,7 +14180,7 @@
       },
       {
         "id": "b",
-        "text": "3 → A"
+        "text": "1 → A, 2 → B, 3 → C"
       }
     ],
     "correct": [
@@ -14389,7 +14329,7 @@
       },
       {
         "id": "b",
-        "text": "6 - B"
+        "text": "1 - B, 2 - B, 3 - B, 4 - A, 5 - A, 6 - B"
       }
     ],
     "correct": [
@@ -14685,7 +14625,7 @@
       },
       {
         "id": "b",
-        "text": "2 - B"
+        "text": "1 - A, 2 - B"
       }
     ],
     "correct": [
@@ -15725,7 +15665,7 @@
       },
       {
         "id": "b",
-        "text": "D - 2"
+        "text": "A - 2, B - 1, C - 4, D - 3"
       }
     ],
     "correct": [
@@ -15783,29 +15723,15 @@
     "options": [
       {
         "id": "a",
-        "text": "a) 2"
+        "text": "a) 2, b) 3, c) 4, d) 5, e) 1"
       },
       {
         "id": "b",
-        "text": "b) 3"
+        "text": "a) 1, b) 2, c) 3, d) 4, e) 5"
       },
       {
         "id": "c",
-        "text": "c) 4"
-      },
-      {
-        "id": "d",
-        "text": "d) 5"
-      },
-      {
-        "id": "e",
-        "text": "e) 1",
-        "explanation": "This choice does not align with the correct sequence of ALM stages and their descriptions. The deployment stage (Column A - d) should come after the testing stage (Column A - c) in the ALM process. Therefore, the match provided in this choice is incorrect."
-      },
-      {
-        "id": "f",
-        "text": "e) 3",
-        "explanation": "This choice does not align with the correct sequence of ALM stages and their descriptions. The deployment stage (Column A - d) should come after the testing stage (Column A - c) in the ALM process. Therefore, the match provided in this choice is incorrect."
+        "text": "a) 3, b) 4, c) 5, d) 1, e) 2"
       }
     ],
     "correct": [
@@ -15943,7 +15869,7 @@
       },
       {
         "id": "b",
-        "text": "D - 2"
+        "text": "A - 2, B - 1, C - 4, D - 3"
       }
     ],
     "correct": [
@@ -16011,25 +15937,19 @@
     "options": [
       {
         "id": "a",
-        "text": "A - 1 (Per user plan allows unlimited app creation)"
+        "text": "A - 1, B - 2, C - 3, D - 4"
       },
       {
         "id": "b",
-        "text": "B - 2 (Per app plan provides access to specific apps)"
+        "text": "A - 2, B - 1, C - 4, D - 3"
       },
       {
         "id": "c",
-        "text": "C - 3 (Pay-as-you-go charges based on usage)"
+        "text": "A - 3, B - 4, C - 1, D - 2"
       },
       {
         "id": "d",
-        "text": "D - 4 (Free plan does not include premium connectors)",
-        "explanation": "Q: What does the Per user plan in Power Platform offer? A: It allows users to create and use an unlimited number of apps without restrictions. Q: Who is the Per user plan best suited for? A: Organizations or individuals who need flexibility to build multiple apps tailored to their needs. Q: What is the Per app plan designed for? A: It provides access to specific apps, limiting users to only designated applications. Q: When is the Per app plan ideal? A: For users who need access to a limited set of apps based on their roles or responsibilities. Q: How does the Pay-as-you-go model work? A: It charges users based on actual usage, making it cost-effective for organizations with variable demand. Q: What are the limitations of the Free plan? A: It does not include premium connectors, restricting access to advanced integration features. Q: Is understanding licensing models important for the PL-900 exam? A: Yes, licensing options are a key part of Power Platform Fundamentals and commonly appear in exam scenarios. A - 1 (Per user plan allows unlimited app creation) B - 4 (Free plan does not include premium connectors) C - 3 (Pay-as-you-go charges based on usage)"
-      },
-      {
-        "id": "e",
-        "text": "D - 2 (Per app plan provides access to specific apps)",
-        "explanation": "This is incorrect option."
+        "text": "A - 4, B - 3, C - 2, D - 1"
       }
     ],
     "correct": [
