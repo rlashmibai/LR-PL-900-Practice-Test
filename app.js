@@ -1009,8 +1009,9 @@ function startTest(mode, param, feedbackMode) {
   show("view-test");
 }
 
-// Numeric-aware sort by id (q2 before q10, not after) — mirrors the same sort
-// admin.js uses for its question list, so position numbers line up exactly.
+// Numeric-aware sort by id (q2 before q10, not after) — this is the fixed
+// order each of the 12 numbered tests uses, so "Question #N" stays stable
+// across attempts.
 function sortById(arr) {
   return [...arr].sort((a, b) => {
     const aNum = parseInt((a.id.match(/\d+/) || [0])[0], 10);
