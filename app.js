@@ -109,7 +109,7 @@ const EXPL_HEADER_PATTERNS = [
   // trailing "s" (e.g. "Recommended Youtube Videos:" -> heading "Recommended
   // Youtube Video" + a stray "s" paragraph). One atomic pattern covering
   // both cases (colon optional, singular/plural, Youtube/YouTube) avoids it.
-  /Recommended [Yy]ou[Tt]ube [Vv]ideos?\b/g,
+  /Recommended [Yy]ou[Tt]ube (?:[Vv]ideos?|[Ll]inks?)\b/g,
   // Bare "References" (no colon) — but ONLY right after a sentence/clause
   // boundary (". "/": "/string start), never mid-phrase. Without this
   // restriction it also matches inside compound terms like "Connection
@@ -804,6 +804,11 @@ async function boot() {
   };
   document.getElementById("homeReadyBtn").addEventListener("click", goToChooseTest);
   document.getElementById("homeGoToLoginBtn").addEventListener("click", () => show("view-welcome"));
+  // Same two buttons repeated at the bottom of the home page (after the
+  // screenshots, above the copyright note) so a visitor who scrolls all the
+  // way down doesn't have to scroll back up to start.
+  document.getElementById("homeReadyBtnBottom").addEventListener("click", goToChooseTest);
+  document.getElementById("homeGoToLoginBtnBottom").addEventListener("click", () => show("view-welcome"));
   document.getElementById("chooseTestGoHomeBtn").addEventListener("click", () => show("view-home"));
   document.getElementById("chooseTestLoginBtn").addEventListener("click", () => show("view-welcome"));
 
