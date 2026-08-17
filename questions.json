@@ -7633,27 +7633,33 @@
     "id": "q244",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Apps",
-    "text": "A company uses Power Apps and you need to perform some admin tasks. Which admin center handles each: 1) creating user accounts for Power Apps; 2) assigning the Environment Maker role to a user?",
+    "text": "A company uses Power Apps and requires an administrator to perform the following tasks: 1) create user accounts for Power Apps; 2) assign the Environment Maker role to a user. Which admin center is used to handle each task?",
     "options": [
       {
         "id": "a",
-        "text": "1. Azure Active Directory"
+        "text": "1 - Microsoft Entra ID (Azure Active Directory), 2 - Power Platform Admin Center",
+        "explanation": "Correct. Microsoft Entra ID (Azure Active Directory) manages user identities and accounts, so it is used to create user accounts for Power Apps. The Power Platform Admin Center manages environments and environment-level permissions, so it is used to assign the Environment Maker role."
+      },
+      {
+        "id": "b",
+        "text": "1 - Power Platform Admin Center, 2 - Microsoft Entra ID (Azure Active Directory)",
+        "explanation": "This is reversed. User accounts are created in Microsoft Entra ID, not the Power Platform Admin Center, and the Environment Maker role is assigned from the Power Platform Admin Center, not Microsoft Entra ID."
       },
       {
         "id": "c",
-        "text": "2. Power Apps admin center",
-        "explanation": "Azure Active Directory is the correct choice for creating user accounts for Power Apps as it is responsible for managing user identities and access to various Microsoft services, including Power Apps. The Power Apps admin center is the correct choice for assigning the Environment Maker role to a user, as it is the central hub for managing and configuring Power Apps environments and settings. 1. Power Apps admin center"
+        "text": "1 - Microsoft Entra ID (Azure Active Directory), 2 - Microsoft Entra ID (Azure Active Directory)",
+        "explanation": "Microsoft Entra ID is correct for creating user accounts, but the Environment Maker role is a Power Platform environment-level permission, assigned from the Power Platform Admin Center, not Microsoft Entra ID."
       },
       {
         "id": "d",
-        "text": "2. Azure Active Directory",
-        "explanation": "The Power Apps admin center is the correct choice for creating user accounts for Power Apps, not Azure Active Directory. However, Azure Active Directory is not the correct choice for assigning the Environment Maker role to a user. The correct choice for assigning roles within Power Apps is the Power Apps admin center."
+        "text": "1 - Power Platform Admin Center, 2 - Power Platform Admin Center",
+        "explanation": "The Power Platform Admin Center manages environments and roles, but user accounts themselves are created in Microsoft Entra ID (Azure Active Directory), not the Power Platform Admin Center."
       }
     ],
     "correct": [
       "a"
     ],
-    "explanation": "From the admin center, you can perform these administrative actions: Create environments. Rename environments. Add or remove a user or group from either the Environment Admin or Environment Maker role. Etc. Check this Video: <a href=\"https://www.youtube.com/watch?v=Af-bqmThgiY\" target=\"_blank\" rel=\"noopener noreferrer\">5. Power Platform Admin Center Demo | Full Walkthrough for Beginners</a>",
+    "explanation": "<strong>1. Create User Accounts:</strong> Microsoft Entra ID (formerly Azure Active Directory) is used to manage user identities and accounts. It is responsible for: * Creating user accounts. * Managing users and groups. * Managing identities and authentication. * Providing users with access to Microsoft services, including Power Apps.\n\n<strong>2. Assign Environment Maker Role:</strong> The Power Platform Admin Center is used to manage Power Platform environments and environment-level permissions. The Environment Maker role allows a user to: * Create apps. * Create flows. * Build solutions and other resources within an environment.\n\n<strong>PL-900 Exam Focus:</strong> * User accounts → Microsoft Entra ID * Environment roles → Power Platform Admin Center\n\n<strong>Easy Memory Trick:</strong> * Entra ID = Who is the user? * Power Platform Admin Center = What can the user do in the environment?",
     "testSet": 10
   },
   {
@@ -15227,27 +15233,33 @@
     "id": "q486",
     "type": "single",
     "section": "Describe features and capabilities of agents in Microsoft Copilot Studio",
-    "text": "Review these two scenarios and answer Yes or No for each: 1) Users report the bot can't properly recognize their responses to a question, and your manager suggests adding extra keywords via Synonyms in the Question node to improve recognition, do you follow this advice? 2) Your manager wants to measure customer satisfaction for the newly launched Copilot Studio bot, and suggests adding an action at the end of the conversation to run a short survey asking if the user's question was answered, do you follow this advice?",
+    "text": "Review the following two scenarios and answer Yes or No for each. Scenario 1: Users report that the bot cannot properly recognize their responses to a question. Your manager suggests adding extra keywords by using Synonyms in the Question node to improve recognition. Should you follow this advice? Scenario 2: Your organization wants to measure customer satisfaction for a newly launched Copilot Studio bot. Your manager suggests adding an action at the end of the conversation to run a short survey asking whether the user's question was answered. Should you follow this advice?",
     "options": [
       {
         "id": "a",
-        "text": "2. No",
-        "explanation": "This is incorrect option."
+        "text": "A. Scenario 1: Yes; Scenario 2: Yes",
+        "explanation": "Correct. Adding synonyms helps the bot recognize different words or phrases that users may use when responding, improving understanding and response accuracy. Adding a customer satisfaction survey at the end of a conversation lets the organization collect feedback and measure whether users' questions were successfully answered."
       },
       {
         "id": "b",
-        "text": "1. Yes"
+        "text": "B. Scenario 1: Yes; Scenario 2: No",
+        "explanation": "This gets Scenario 2 wrong. Adding a customer satisfaction survey at the end of a conversation is a good way to collect feedback and measure whether users' questions were answered, so the answer should be Yes, not No."
       },
       {
         "id": "c",
-        "text": "2. Yes",
-        "explanation": "For the first scenario, adding additional keywords by selecting Synonyms in the Question node can help improve the bot's ability to understand user input and provide more accurate responses. This action can enhance the user experience by increasing the bot's comprehension of different variations of user queries. In the second scenario, adding an action to end the conversation with a customer satisfaction survey can be beneficial for analyzing and improving customer satisfaction with the Microsoft Copilot Studio bot. By asking users if their questions were answered correctly, the department can gather valuable feedback to enhance the bot's performance and user satisfaction."
+        "text": "C. Scenario 1: No; Scenario 2: Yes",
+        "explanation": "This gets Scenario 1 wrong. Adding synonyms helps the bot recognize different words or phrases users may use, which improves understanding and response accuracy, so the answer should be Yes, not No."
+      },
+      {
+        "id": "d",
+        "text": "D. Scenario 1: No; Scenario 2: No",
+        "explanation": "This gets both scenarios wrong. Synonyms improve the bot's ability to recognize varied user input, and a post-conversation survey is a valid way to measure customer satisfaction - both should be Yes."
       }
     ],
     "correct": [
-      "b"
+      "a"
     ],
-    "explanation": "Scenario 1: Selecting synonyms in the question node is a useful technique to improve the user experience by enabling the bot to recognize alternative terms that may be used by the user. This can help to reduce confusion and improve the accuracy of the bot‘s responses. The answer “no“ is incorrect because if the bot is not able to determine the user‘s options, then adding additional keywords by selecting synonyms in the question node is a reasonable approach to address this issue. Reference <a href=\"https://learn.microsoft.com/en-us/power-virtual-agents/authoring-create-edit-topics\" target=\"_blank\" rel=\"noopener noreferrer\">https://learn.microsoft.com/en-us/power-virtual-agents/authoring-create-edit-topics</a> Scenario 2: Adding a customer satisfaction survey can help gather feedback and improve the bot‘s performance, as well as provide valuable insights into the user experience. This can ultimately lead to higher customer satisfaction and help the department meet its goals. The incorrect answer of “no“ would miss out on this opportunity for feedback and improvement. Reference https://learn.microsoft.com/en-us/power-virtual-agents/authoring-create-edit-topics <a href=\"https://learn.microsoft.com/en-us/power-virtual-agents/analytics-csat\" target=\"_blank\" rel=\"noopener noreferrer\">https://learn.microsoft.com/en-us/power-virtual-agents/analytics-csat</a>",
+    "explanation": "<strong>Scenario 1 - Yes:</strong> Adding synonyms helps the bot recognize different words or phrases that users may use when responding. This can improve the bot's understanding and response accuracy.\n\n<strong>Scenario 2 - Yes:</strong> Adding a customer satisfaction survey at the end of a conversation allows the organization to collect feedback and measure whether users' questions were successfully answered.\n\n<strong>PL-900 Exam Focus:</strong> * Synonyms -> Improve recognition * Survey -> Collect user feedback\n\nReferences: <a href=\"https://learn.microsoft.com/en-us/power-virtual-agents/authoring-create-edit-topics\" target=\"_blank\" rel=\"noopener noreferrer\">Create and edit topics - Power Virtual Agents | Microsoft Learn</a> <a href=\"https://learn.microsoft.com/en-us/power-virtual-agents/analytics-csat\" target=\"_blank\" rel=\"noopener noreferrer\">Customer satisfaction analytics - Power Virtual Agents | Microsoft Learn</a>",
     "testSet": 11
   },
   {
