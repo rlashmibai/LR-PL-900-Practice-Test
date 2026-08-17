@@ -53,6 +53,40 @@ function show(viewId) {
   document.querySelector(".container").classList.toggle("wide", viewId === "view-test");
 }
 
+// In-app replacement for the native window.confirm() dialog, which renders
+// as an unstyled, browser-chrome popup that feels jarring and inconsistent
+// with the rest of the app (especially on mobile, where it can be slow to
+// register taps). Returns a Promise<boolean> — resolves true on OK, false on
+// Cancel, clicking the overlay, or pressing Escape.
+function showConfirm(message) {
+  return new Promise((resolve) => {
+    const overlay = document.getElementById("confirmModalOverlay");
+    document.getElementById("confirmModalMessage").textContent = message;
+    overlay.classList.remove("hidden");
+
+    const okBtn = document.getElementById("confirmModalOkBtn");
+    const cancelBtn = document.getElementById("confirmModalCancelBtn");
+
+    const cleanup = (result) => {
+      overlay.classList.add("hidden");
+      okBtn.removeEventListener("click", onOk);
+      cancelBtn.removeEventListener("click", onCancel);
+      overlay.removeEventListener("click", onOverlayClick);
+      document.removeEventListener("keydown", onKeydown);
+      resolve(result);
+    };
+    const onOk = () => cleanup(true);
+    const onCancel = () => cleanup(false);
+    const onOverlayClick = (e) => { if (e.target === overlay) cleanup(false); };
+    const onKeydown = (e) => { if (e.key === "Escape") cleanup(false); };
+
+    okBtn.addEventListener("click", onOk);
+    cancelBtn.addEventListener("click", onCancel);
+    overlay.addEventListener("click", onOverlayClick);
+    document.addEventListener("keydown", onKeydown);
+  });
+}
+
 function setUserChip() {
   const user = DB.getUser();
   const chip = document.getElementById("userChip");
@@ -872,15 +906,15 @@ async function boot() {
   backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 }
 
-function goHomeFromTest() {
-  if (!confirm("Leave this test? Your progress on this attempt will be lost.")) return;
+async function goHomeFromTest() {
+  if (!(await showConfirm("Leave this test? Your progress on this attempt will be lost."))) return;
   clearInterval(session && session.timerHandle);
   show(DB.getUser() ? "view-dashboard" : "view-home");
   if (DB.getUser()) renderDashboard();
 }
 
-function cancelTest() {
-  if (!confirm("Cancel this test? Your progress on this attempt will be lost.")) return;
+async function cancelTest() {
+  if (!(await showConfirm("Cancel this test? Your progress on this attempt will be lost."))) return;
   clearInterval(session && session.timerHandle);
   if (DB.getUser()) {
     renderDashboard();
@@ -1413,12 +1447,12 @@ function moveOrderItem(q, idx, delta) {
   renderQuestion();
 }
 
-function onSubmitTest() {
+async function onSubmitTest() {
   const unanswered = session.questions.filter((q) => !session.answers[q.id] || session.answers[q.id].length === 0).length;
   const msg = unanswered > 0
     ? `You have ${unanswered} unanswered question(s). Submit anyway?`
     : "Submit this test now?";
-  if (!confirm(msg)) return;
+  if (!(await showConfirm(msg))) return;
   finishTest();
 }
 

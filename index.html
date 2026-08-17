@@ -689,6 +689,19 @@
     </div>
   </footer>
 
+  <!-- Custom confirm dialog — replaces the native browser confirm() for
+       leave/cancel/submit-test prompts, which felt jarring and inconsistent
+       with the rest of the app (especially on mobile). -->
+  <div id="confirmModalOverlay" class="modal-overlay hidden">
+    <div class="modal-card">
+      <p class="modal-message" id="confirmModalMessage"></p>
+      <div class="btn-row modal-actions">
+        <button id="confirmModalCancelBtn" class="btn secondary">Cancel</button>
+        <button id="confirmModalOkBtn" class="btn">OK</button>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
   <script>
     if ("serviceWorker" in navigator) {

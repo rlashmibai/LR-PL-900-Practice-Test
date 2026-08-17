@@ -355,6 +355,34 @@ input[type="text"], input[type="email"], textarea {
 .btn.submit-btn { background: var(--green); }
 .btn.submit-btn:hover { background: #0b5c0b; }
 
+/* Custom confirm dialog (replaces native confirm()) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 18, 30, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+.modal-overlay.hidden { display: none; }
+.modal-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.3);
+  animation: modal-pop 0.15s ease-out;
+}
+@keyframes modal-pop {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.modal-message { margin: 0 0 20px; font-size: 1rem; line-height: 1.45; color: var(--text); }
+.modal-actions { justify-content: flex-end; margin-top: 0; }
+
 .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
 
 /* Bottom-of-home-page repeat of the hero CTA buttons: centered (unlike the
