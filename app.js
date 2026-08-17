@@ -77,7 +77,6 @@ const EXPL_HEADERS = [
   "Overall explanation", "References:", "Reference:",
   "Explanation:",
   "Exam Tips:", "Exam Tip:",
-  "Recommended Youtube Video:", "Recommended YouTube video:", "Recommended Youtube Video", "Recommended YouTube video",
   "Keep in Mind:", "Keep in Mind", "Study Links:", "Study links:", "Study Links", "Study links",
   "Remember,", "Remember:", "FAQ:", "Key Takeaways.", "Key Takeaway:",
   "Other Roles (Incorrect Options):", "Important Limitations to Consider:",
@@ -102,6 +101,15 @@ const EXPL_HEADER_PATTERNS = [
   // References/Reference earlier this project). The colon-suffixed forms
   // above stay in EXPL_HEADERS since the colon makes them distinct strings.
   /\bExam Tips?\b/g,
+  // Same "singular vs plural" collision as Exam Tip(s) above — "Recommended
+  // Youtube Video" (no colon, bare) used to sit in EXPL_HEADERS right next to
+  // the plural "Recommended Youtube Videos:", and since EXPL_HEADERS applies
+  // every entry in sequence to the same text, the bare singular form would
+  // re-match *inside* the plural heading after it was isolated, orphaning the
+  // trailing "s" (e.g. "Recommended Youtube Videos:" -> heading "Recommended
+  // Youtube Video" + a stray "s" paragraph). One atomic pattern covering
+  // both cases (colon optional, singular/plural, Youtube/YouTube) avoids it.
+  /Recommended [Yy]ou[Tt]ube [Vv]ideos?\b/g,
   // Bare "References" (no colon) — but ONLY right after a sentence/clause
   // boundary (". "/": "/string start), never mid-phrase. Without this
   // restriction it also matches inside compound terms like "Connection
@@ -115,8 +123,8 @@ const EXPL_HEADER_PATTERNS = [
   // ("Why D and E are incorrect", "Why C is correct") — common when this
   // aside sits mid-list, between one lettered item's body and the next.
   /Why [A-H](?:\s*(?:and|,)\s*[A-H])*\s+(?:is|are)\s+(?:correct|incorrect|wrong|right)\b/gi,
-  /Advantages of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z]|:|\.)/g,
-  /Benefits of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|using)){0,4}(?=\s[A-Z][a-z]|:|\.)/g,
+  /Advantages of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|with|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|with|using)){0,6}(?=\s[A-Z][a-z]|:|\.)/g,
+  /Benefits of (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|with|using)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|with|using)){0,6}(?=\s[A-Z][a-z]|:|\.)/g,
   /Challenges (?:in|of|with) (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or)){0,4}(?=\s[A-Z][a-z]|:|\.)/g,
   /Potential Downsides(?: to (?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|all)(?:\s(?:[A-Z][a-zA-Z]*|and|of|for|the|in|to|on|or|all)){0,12})?(?=\s[A-Z][a-z]|:|\.)/g,
   /Key Focus Area\b/g,
@@ -151,7 +159,12 @@ function linkify(text) {
 
 // Detects " * item * item * item" style bullets within a block of text.
 function formatBullets(text) {
-  const parts = text.split(/\s\*\s(?=\S)/);
+  // Allow the very first "*" marker to sit at the start of the string (no
+  // leading intro text) too — not just after a preceding space — since a
+  // heading that gets isolated onto its own paragraph upstream (EXPL_HEADERS/
+  // EXPL_HEADER_PATTERNS) can leave the bullet text starting right at "* Item"
+  // with nothing before it to anchor the original \s requirement to.
+  const parts = text.split(/(?:^|\s)\*\s(?=\S)/);
   if (parts.length < 3) return null; // need at least 2 real bullet items
   const before = parts.shift().trim();
   return (before ? `<p>${linkify(before)}</p>` : "") + `<ul>${parts.map((p) => `<li>${linkify(p.trim())}</li>`).join("")}</ul>`;
@@ -634,11 +647,14 @@ function formatExplanation(raw) {
   });
 
   // A source header like "Why the other options are incorrect:" has its
-  // trailing colon (or, for the variable-content patterns, a trailing period)
-  // fall just outside the pattern match above (only the heading phrase
-  // itself is captured) — strip that dangling punctuation so it doesn't
-  // become its own orphaned ":" or "." paragraph.
-  text = text.replace(/(\x02\n\n)\s*[:.]\s*/g, "$1");
+  // trailing colon (or, for the variable-content patterns, a trailing period
+  // or — when the source phrased the heading as a question, "Why others are
+  // wrong?" — a question mark) fall just outside the pattern match above
+  // (only the heading phrase itself is captured) — strip that dangling
+  // punctuation so it doesn't become its own orphaned ":", ".", or "?"
+  // paragraph (a lone "?" starting the very next sentence, exactly this
+  // spot, is always this leftover — never a real mid-sentence "?").
+  text = text.replace(/(\x02\n\n)\s*[:.?]\s*/g, "$1");
 
   const paragraphs = text.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean);
 
@@ -793,7 +809,17 @@ async function boot() {
 
   document.getElementById("submitTestBtn").addEventListener("click", onSubmitTest);
   document.getElementById("prevQBtn").addEventListener("click", () => gotoQuestion(session.index - 1));
-  document.getElementById("nextQBtn").addEventListener("click", () => gotoQuestion(session.index + 1));
+  // On the last question this button's label switches to "Submit Test →" (see
+  // renderQuestion), but it was still wired to gotoQuestion(index + 1) — an
+  // out-of-bounds index gotoQuestion silently ignores, so the click did
+  // nothing at all. Route to onSubmitTest() whenever there's no next question.
+  document.getElementById("nextQBtn").addEventListener("click", () => {
+    if (session.index >= session.questions.length - 1) {
+      onSubmitTest();
+    } else {
+      gotoQuestion(session.index + 1);
+    }
+  });
 
   // Up/Down arrows move between questions during a test, so you don't have
   // to reach for the mouse every single question. Ignored while typing in a
