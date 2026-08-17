@@ -479,7 +479,7 @@
       "a",
       "b"
     ],
-    "explanation": "Correct Answers: A. Approvals and B. Microsoft Teams Connector Explanation The company needs to: Collect expense requests through Microsoft Forms. Send the request to managers for approval. Post the approval or rejection status in a Microsoft Teams channel. A. Approvals Creates approval workflows in Power Automate. Sends approval requests to managers. Records whether the request is approved or rejected. Requirement covered: Manager approval or rejection. B. Microsoft Teams Connector Connects Power Automate with Microsoft Teams. Can post messages automatically to a Teams channel. Notifies employees about the approval status. Requirement covered: Automatic status update in Teams. Why the others are incorrect C. Dataverse Forms Used for working with Dataverse data. Not required for approvals or Teams notifications. D. Desktop Flow Used for automating legacy desktop applications using RPA. No desktop application automation is needed here. E. Power Pages Used to build external business websites. Not needed because employees are already submitting requests through Microsoft Forms.",
+    "explanation": "<strong>Power Automate Approvals and Microsoft Teams Connector</strong>\n\nCorrect Answers: Approvals and Microsoft Teams Connector.\n\nRequirement: The company needs to: * Collect expense requests through Microsoft Forms. * Send each request to managers for approval or rejection. * Automatically post the approval or rejection status in a Microsoft Teams channel.\n\n<strong>A. Approvals:</strong> The Approvals capability in Power Automate is used to create approval workflows. It can: * Send approval requests to managers. * Allow managers to approve or reject requests. * Record the approval outcome. * Continue the workflow based on the manager's response. Requirement covered: Manager approval or rejection.\n\n<strong>B. Microsoft Teams Connector:</strong> The Microsoft Teams connector connects Power Automate with Microsoft Teams. It can: * Automatically post messages to a Teams channel. * Notify employees about the approval status. * Keep the team updated when a request is approved or rejected. Requirement covered: Automatic status updates in Teams.\n\nWhy the Others Are Incorrect:\n\n<strong>C. Dataverse Forms:</strong> Dataverse is used for storing and managing structured business data. It is not required for creating the approval process or posting approval notifications to Teams.\n\n<strong>D. Desktop Flow:</strong> Desktop flows are mainly used for automating desktop applications and legacy systems through RPA. There is no requirement for desktop application automation in this scenario.\n\n<strong>E. Power Pages:</strong> Power Pages is used to create external-facing business websites and portals. It is not needed because employees are already submitting expense requests through Microsoft Forms.\n\nPL-900 Exam Focus: * Approvals - Manager approval/rejection * Microsoft Teams Connector - Send updates to Teams * Dataverse - Store business data * Desktop Flow - Automate desktop applications * Power Pages - Build external-facing websites",
     "testSet": 10
   },
   {
@@ -4542,7 +4542,7 @@
     "correct": [
       "a"
     ],
-    "explanation": "The correct answer is Co-Owner. Snippets of Security Roles in Power Apps: By default, the user receives the User permission. <a href=\"https://learn.microsoft.com/en-us/power-platform/admin/database-security\" target=\"_blank\" rel=\"noopener noreferrer\">These roles are different from those assigned at the environmental levels.</a> (Environment Admin & Environment Maker role). Capabilities and use cases of the Owner, Co-owner, and User roles in the Power Platform: Owner: Capabilities: Owners have full control over the resources within an environment, including apps, data, solutions, and settings. They can create, modify, and delete apps, data tables, connectors, and solutions. Owners can manage user access, sharing, and permissions for all resources. They have the authority to manage and configure environment settings, including security and data sources. Use Case: Owners are typically administrators or technical leads responsible for the overall management of projects or teams within an environment. They create and oversee the setup of environments, manage permissions, and ensure the proper functioning of apps and data. Co-owner: Capabilities: Co-owners share many of the same capabilities as Owners, such as creating, editing, and sharing apps and solutions. However, they cannot delete the environment itself or change its owner. Use Case: Co-owners are individuals who collaborate closely with Owners, assisting in the development and management of apps, solutions, and data tables. They play a key role in app development and maintenance without having the authority to make environment-level changes. User: Capabilities: Users with the User role can view and use the apps that are shared with them. They can interact with the app's functionality, enter data, and access information, but they cannot modify the app itself. Users can't manage apps, solutions, or environments. Use Case: Users include employees, customers, partners, or stakeholders who need to access and utilize apps for specific tasks or information retrieval. This role ensures that those who require access to apps can use them without the risk of unintended changes. Summary: Owner: Full control over all resources, including creation, modification, and settings. Responsible for environment management. Co-owner: Similar capabilities to Owners, except cannot delete the environment or change its owner. Collaborates in app development and management. User: Limited to using shared apps, interacting with functionality, and accessing information without altering the app's design. FAQ:",
+    "explanation": "The correct answer is Co-Owner. Snippets of Security Roles in Power Apps: By default, the user receives the User permission. <a href=\"https://learn.microsoft.com/en-us/power-platform/admin/database-security\" target=\"_blank\" rel=\"noopener noreferrer\">These roles are different from those assigned at the environmental levels.</a> (Environment Admin & Environment Maker role). Capabilities and use cases of the Owner, Co-owner, and User roles in the Power Platform: Owner: Capabilities: Owners have full control over the resources within an environment, including apps, data, solutions, and settings. They can create, modify, and delete apps, data tables, connectors, and solutions. Owners can manage user access, sharing, and permissions for all resources. They have the authority to manage and configure environment settings, including security and data sources. Use Case: Owners are typically administrators or technical leads responsible for the overall management of projects or teams within an environment. They create and oversee the setup of environments, manage permissions, and ensure the proper functioning of apps and data. Co-owner: Capabilities: Co-owners share many of the same capabilities as Owners, such as creating, editing, and sharing apps and solutions. However, they cannot delete the environment itself or change its owner. Use Case: Co-owners are individuals who collaborate closely with Owners, assisting in the development and management of apps, solutions, and data tables. They play a key role in app development and maintenance without having the authority to make environment-level changes. User: Capabilities: Users with the User role can view and use the apps that are shared with them. They can interact with the app's functionality, enter data, and access information, but they cannot modify the app itself. Users can't manage apps, solutions, or environments. Use Case: Users include employees, customers, partners, or stakeholders who need to access and utilize apps for specific tasks or information retrieval. This role ensures that those who require access to apps can use them without the risk of unintended changes. Summary: Owner: Full control over all resources, including creation, modification, and settings. Responsible for environment management. Co-owner: Similar capabilities to Owners, except cannot delete the environment or change its owner. Collaborates in app development and management. User: Limited to using shared apps, interacting with functionality, and accessing information without altering the app's design.",
     "testSet": 12
   },
   {
@@ -7128,7 +7128,7 @@
       "a",
       "b"
     ],
-    "explanation": "FILTER is a common formula used in canvas apps to restrict the rows from a data source or collection. The OnSelect property for a button contains the actions to perform. Formulas such as SubmitForm and Patch are used to save data to a data source. Formulas are not used to share a canvas app. Formulas can only be used when building a canvas app. There is no equivalent formula for the WEBSERVICE Excel function that retrieves XML data from an internet URL. Exam Tips:   References: <a href=\"https://learn.microsoft.com/training/modules/build-app-solution/4-get-started-functions-power-apps\" target=\"_blank\" rel=\"noopener noreferrer\">Get started with functions in Power Apps - Training | Microsoft Learn</a> <a href=\"https://learn.microsoft.com/power-apps/maker/canvas-apps/working-with-formulas\" target=\"_blank\" rel=\"noopener noreferrer\">Get started with formulas in canvas apps - Power Apps | Microsoft Learn</a> <a href=\"https://support.microsoft.com/office/webservice-function-0546a35a-ecc6-4739-aed7-c0b7ce1562c4\" target=\"_blank\" rel=\"noopener noreferrer\">WEBSERVICE function - Microsoft Support</a><img src=\"images/b3-image10.png\" alt=\"Reference diagram\">",
+    "explanation": "FILTER is a common formula used in canvas apps to restrict the rows from a data source or collection. The OnSelect property for a button contains the actions to perform. Formulas such as SubmitForm and Patch are used to save data to a data source. Formulas are not used to share a canvas app. Formulas can only be used when building a canvas app. There is no equivalent formula for the WEBSERVICE Excel function that retrieves XML data from an internet URL. References: <a href=\"https://learn.microsoft.com/training/modules/build-app-solution/4-get-started-functions-power-apps\" target=\"_blank\" rel=\"noopener noreferrer\">Get started with functions in Power Apps - Training | Microsoft Learn</a> <a href=\"https://learn.microsoft.com/power-apps/maker/canvas-apps/working-with-formulas\" target=\"_blank\" rel=\"noopener noreferrer\">Get started with formulas in canvas apps - Power Apps | Microsoft Learn</a> <a href=\"https://support.microsoft.com/office/webservice-function-0546a35a-ecc6-4739-aed7-c0b7ce1562c4\" target=\"_blank\" rel=\"noopener noreferrer\">WEBSERVICE function - Microsoft Support</a><img src=\"images/b3-image10.png\" alt=\"Reference diagram\">",
     "testSet": 11
   },
   {
@@ -7351,7 +7351,7 @@
     "correct": [
       "b"
     ],
-    "explanation": "This item tests the candidate’s knowledge of Power Automate components such as triggers, actions, conditions, and apply to each loop. Action: Actions in Power Automate are the steps that perform specific tasks, like sending an email. In this case, after the trigger (new item added to a SharePoint list), the action you need is to send an email to notify the user. This is an essential part of the flow. Triggers: Triggers are used to start the flow, such as when a new item is added to a SharePoint list. However, triggers do not send email notifications; they only initiate the flow. Condition: A condition would be used if you needed to check whether certain criteria are met before performing a specific task. However, in this scenario, you simply need to notify the user every time a new item is added, so no condition is necessary. Apply to each loop: This loop is used to iterate through a collection of items. Since the task is about notifying the user for each new item (and there is no collection involved), you don't need an \"Apply to each\" loop in this case. Exam Tips:   References: <a href=\"https://learn.microsoft.com/training/modules/get-started-flows/2-create-first-flow\" target=\"_blank\" rel=\"noopener noreferrer\">Exercise - Create your first flow - Training | Microsoft Learn</a> <a href=\"https://learn.microsoft.com/power-automate/get-started-logic-flow\" target=\"_blank\" rel=\"noopener noreferrer\">Automate tasks by creating a cloud flow - Power Automate | Microsoft Learn</a><img src=\"images/b3-image12.png\" alt=\"Reference diagram\">",
+    "explanation": "This item tests the candidate’s knowledge of Power Automate components such as triggers, actions, conditions, and apply to each loop. Action: Actions in Power Automate are the steps that perform specific tasks, like sending an email. In this case, after the trigger (new item added to a SharePoint list), the action you need is to send an email to notify the user. This is an essential part of the flow. Triggers: Triggers are used to start the flow, such as when a new item is added to a SharePoint list. However, triggers do not send email notifications; they only initiate the flow. Condition: A condition would be used if you needed to check whether certain criteria are met before performing a specific task. However, in this scenario, you simply need to notify the user every time a new item is added, so no condition is necessary. Apply to each loop: This loop is used to iterate through a collection of items. Since the task is about notifying the user for each new item (and there is no collection involved), you don't need an \"Apply to each\" loop in this case. References: <a href=\"https://learn.microsoft.com/training/modules/get-started-flows/2-create-first-flow\" target=\"_blank\" rel=\"noopener noreferrer\">Exercise - Create your first flow - Training | Microsoft Learn</a> <a href=\"https://learn.microsoft.com/power-automate/get-started-logic-flow\" target=\"_blank\" rel=\"noopener noreferrer\">Automate tasks by creating a cloud flow - Power Automate | Microsoft Learn</a><img src=\"images/b3-image12.png\" alt=\"Reference diagram\">",
     "testSet": 12
   },
   {
@@ -7993,7 +7993,7 @@
       {
         "id": "a",
         "text": "Conditional access policies",
-        "explanation": "Conditional access policies are used to control access to resources based on specific conditions, such as user location, device compliance, or risk level. While they are important for overall security, they do not specifically address the segregation of sensitive data from other data within Power Platform environments It can allow or block access based on things like: User location (e.g., only from office/country) Device compliance (e.g., company-managed laptop only) Risk level (e.g., suspicious login blocked) App or sign-in conditions So it is about access control at login time What it does NOT do It does NOT separate sensitive and non-sensitive data inside Power Platform It does NOT control how data is stored across environments It does NOT enforce data segregation between systems"
+        "explanation": "Conditional access policies are used to control access to resources based on specific conditions, such as user location, device compliance, or risk level. While they are important for overall security, they do not specifically address the segregation of sensitive data from other data within Power Platform environments.\n\nIt can allow or block access based on things like: * User location (e.g., only from office/country) * Device compliance (e.g., company-managed laptop only) * Risk level (e.g., suspicious login blocked) * App or sign-in conditions. So it is about access control at login time.\n\nWhat it does NOT do: * It does NOT separate sensitive and non-sensitive data inside Power Platform * It does NOT control how data is stored across environments * It does NOT enforce data segregation between systems"
       },
       {
         "id": "b",
@@ -8541,7 +8541,7 @@
       "d",
       "e"
     ],
-    "explanation": "Model-driven apps excel when your solution needs: Complex data modeling Role-based security Scalability and standardization across teams Whereas canvas apps shine when you need: Creative and tailored user experiences Pixel-perfect UI design Integration of multiple data sources with logic crafted via Power Fx   Exam Tips:<img src=\"images/b4-image5.png\" alt=\"Reference diagram\">",
+    "explanation": "Model-driven apps excel when your solution needs: * Complex data modeling * Role-based security * Scalability and standardization across teams\n\nWhereas canvas apps shine when you need: * Creative and tailored user experiences * Pixel-perfect UI design * Integration of multiple data sources with logic crafted via Power Fx\n\n<img src=\"images/b4-image5.png\" alt=\"Reference diagram\">",
     "testSet": 12
   },
   {
@@ -8765,7 +8765,7 @@
     "correct": [
       "c"
     ],
-    "explanation": "Power Automate allows you to automate business processes where your data lives. List of popular prebuilt connectors available in Power Automate, these allow you to integrate and automate tasks across many platforms without writing custom code. Microsoft Services Office 365 Outlook - Automate emails, calendar events, and tasks. SharePoint - Manage documents, lists, and workflows. OneDrive & OneDrive for Business - Trigger flows based on file changes. Teams - Send messages, create teams or channels. Excel Online (Business) - Read/write data to Excel files stored in OneDrive/SharePoint. Azure DevOps - Track work items and build releases. Non-Microsoft Services Google Drive  Upload/download files, manage folders. Gmail Automate sending and receiving emails. Dropbox  Automate file and folder operations. Slack  Post messages, respond to triggers. Twitter  Monitor tweets or post updates. Salesforce  Automate CRM data updates. Trello  Manage boards, cards, and lists. Asana  Automate task management. Zendesk  Manage tickets and customer support flows.",
+    "explanation": "Power Automate allows you to automate business processes where your data lives. List of popular prebuilt connectors available in Power Automate, these allow you to integrate and automate tasks across many platforms without writing custom code.\n\n<strong>Microsoft Services:</strong> * Office 365 Outlook - Automate emails, calendar events, and tasks. * SharePoint - Manage documents, lists, and workflows. * OneDrive & OneDrive for Business - Trigger flows based on file changes. * Teams - Send messages, create teams or channels. * Excel Online (Business) - Read/write data to Excel files stored in OneDrive/SharePoint. * Azure DevOps - Track work items and build releases.\n\n<strong>Non-Microsoft Services:</strong> * Google Drive - Upload/download files, manage folders. * Gmail - Automate sending and receiving emails. * Dropbox - Automate file and folder operations. * Slack - Post messages, respond to triggers. * Twitter - Monitor tweets or post updates. * Salesforce - Automate CRM data updates. * Trello - Manage boards, cards, and lists. * Asana - Automate task management. * Zendesk - Manage tickets and customer support flows.",
     "testSet": 12
   },
   {
@@ -13881,7 +13881,7 @@
     "correct": [
       "c"
     ],
-    "explanation": "What Is the Power Platform Admin Center? The Power Platform Admin Center (PPAC) is the centralized governance and management hub for the entire Microsoft Power Platform suite and a core component of power platform governance, which includes: Power Apps – Build low-code/no-code business applications Power Automate – Automate workflows and business processes Power BI – Data analytics and reporting (shared governance with the Fabric Admin Portal) Power Pages – Build external-facing websites Copilot Studio – Create AI-powered chatbots and agents Dataverse – The underlying data platform<img src=\"images/b5-image33.png\" alt=\"Reference diagram\">",
+    "explanation": "What Is the Power Platform Admin Center? The Power Platform Admin Center (PPAC) is the centralized governance and management hub for the entire Microsoft Power Platform suite and a core component of power platform governance, which includes: * Power Apps – Build low-code/no-code business applications * Power Automate – Automate workflows and business processes * Power BI – Data analytics and reporting (shared governance with the Fabric Admin Portal) * Power Pages – Build external-facing websites * Copilot Studio – Create AI-powered chatbots and agents * Dataverse – The underlying data platform<img src=\"images/b5-image33.png\" alt=\"Reference diagram\">",
     "testSet": 10
   },
   {
@@ -13942,7 +13942,7 @@
     "correct": [
       "b"
     ],
-    "explanation": "A business user wants to create a flow quickly without manually adding every trigger, action, and condition. In this situation, Copilot in Power Automate is the best solution because it allows users to describe the automation process using natural language. The AI-powered Copilot understands the description and automatically generates the flow structure. The user simply types a request such as: “When a new file is added to SharePoint, send an approval email to the manager and notify the team in Teams.” Copilot then: Interprets the request Identifies the trigger Adds the required actions Creates the flow automatically This reduces the need for manual configuration.",
+    "explanation": "A business user wants to create a flow quickly without manually adding every trigger, action, and condition. In this situation, Copilot in Power Automate is the best solution because it allows users to describe the automation process using natural language. The AI-powered Copilot understands the description and automatically generates the flow structure. The user simply types a request such as: “When a new file is added to SharePoint, send an approval email to the manager and notify the team in Teams.”\n\nCopilot then: * Interprets the request * Identifies the trigger * Adds the required actions * Creates the flow automatically\n\nThis reduces the need for manual configuration.",
     "testSet": 11
   },
   {
@@ -15881,26 +15881,26 @@
     "id": "q505",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Automate",
-    "text": "Which of these correctly pairs a Power Automate flow type with its description? A. Instant flow, runs on a schedule. B. Scheduled flow, runs manually. C. Desktop flow, automates tasks on a computer. D. Business process flow, automates repetitive tasks.",
+    "text": "Which of these correctly pairs a Power Automate flow type with its description?",
     "options": [
       {
         "id": "a",
-        "text": "A",
+        "text": "A. Instant flow, runs on a schedule.",
         "explanation": "Instant flow in Power Automate is designed to run manually, triggered by a specific event or action, such as a button click or a new email arrival. It does not run on a schedule like a scheduled flow."
       },
       {
         "id": "b",
-        "text": "B",
+        "text": "B. Scheduled flow, runs manually.",
         "explanation": "Scheduled flow in Power Automate is set to run on a specific schedule, such as daily, weekly, or monthly. It does not require manual triggering and is automated based on the defined schedule."
       },
       {
         "id": "c",
-        "text": "C",
+        "text": "C. Desktop flow, automates tasks on a computer.",
         "explanation": "Desktop flow in Power Automate is used to automate tasks on a computer, such as opening applications, entering data, and interacting with user interfaces. It is particularly useful for streamlining repetitive desktop-based tasks."
       },
       {
         "id": "d",
-        "text": "D",
+        "text": "D. Business process flow, automates repetitive tasks.",
         "explanation": "Business process flow in Power Automate is a type of flow that guides users through a specific business process, ensuring that tasks are completed in a specific order and with the required information. It is not designed to automate repetitive tasks but rather to streamline and standardize business processes."
       }
     ],
@@ -16914,7 +16914,7 @@
     "id": "q537",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "A sales rep should only be able to see the customer records assigned to them, not records assigned to other reps. Which feature best addresses this? A. Business Rules. B. Row-level security. C. Dataflows. D. Choice columns.",
+    "text": "A sales rep should only be able to see the customer records assigned to them, not records assigned to other reps. Which feature best addresses this?",
     "options": [
       {
         "id": "a",
@@ -16947,7 +16947,7 @@
     "id": "q538",
     "type": "single",
     "section": "Demonstrate the capabilities of Power Automate",
-    "text": "An organization wants suppliers to submit information through a website and check the status of their submissions, without ever touching internal systems. Which Power Platform product fits best? A. Power BI. B. Power Pages. C. Power Automate. D. Dataverse.",
+    "text": "An organization wants suppliers to submit information through a website and check the status of their submissions, without ever touching internal systems. Which Power Platform product fits best?",
     "options": [
       {
         "id": "a",
@@ -17046,7 +17046,7 @@
     "id": "q541",
     "type": "single",
     "section": "Manage the Microsoft Power Platform environment",
-    "text": "A maker updates an application and confirms the latest version has been saved, but users say they can't see the new functionality. What's the most likely reason? A. The environment hasn't been refreshed. B. The application hasn't been published. C. The connector has expired. D. The solution hasn't been exported.",
+    "text": "A maker updates an application and confirms the latest version has been saved, but users say they can't see the new functionality. What's the most likely reason?",
     "options": [
       {
         "id": "a",
