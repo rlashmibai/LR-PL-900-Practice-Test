@@ -357,6 +357,11 @@ input[type="text"], input[type="email"], textarea {
 
 .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
 
+/* Bottom-of-home-page repeat of the hero CTA buttons: centered (unlike the
+   left-aligned .btn-row default used elsewhere) with extra bottom margin so
+   it doesn't crowd the copyright note directly below it. */
+.home-bottom-cta { justify-content: center; margin-top: 24px; margin-bottom: 24px; }
+
 .section-list { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
 .section-item {
   display: flex; justify-content: space-between; align-items: center;
