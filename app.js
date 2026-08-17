@@ -81,6 +81,7 @@ const EXPL_HEADERS = [
   "Keep in Mind:", "Keep in Mind", "Study Links:", "Study links:", "Study Links", "Study links",
   "Remember,", "Remember:", "FAQ:", "Key Takeaways.", "Key Takeaway:",
   "Other Roles (Incorrect Options):", "Important Limitations to Consider:",
+  "Reference Links:", "Recommended Videos:", "What Environment Maker Can Do:",
   "Features of Gallery Control.", "Use Cases of Gallery Control.",
 ];
 
@@ -278,12 +279,16 @@ const GLUED_TITLE_SAFE_WORDS = [
 function splitGluedTitle(sentence) {
   // The body normally starts with an ordinary Title-Case word ([A-Z][a-z]),
   // but sometimes it's an acronym instead ("...Policies" glued directly onto
-  // "DLP policies control...") — [A-Z]{2,} catches that case too.
+  // "DLP policies control...") — [A-Z]{2,} catches that case too, but only
+  // when a lowercase letter comes right before it (a genuine word boundary):
+  // without that guard, the lazy word-match below stops after a single
+  // letter anywhere INSIDE an existing acronym like "SQL" (matching "S" as a
+  // "title" and misreading "QL" as the start of a new acronym).
   // Lazy (*?) on each word so it stops at the first valid boundary — a real
   // space between title words, or the lookahead below — instead of greedily
   // swallowing straight through a glued word into the acronym that follows
   // it (turning "Policies" + "DLP" into the single garbled word "PoliciesD").
-  const m = sentence.match(/(?:^|[:.]\s)((?:[A-Z][a-zA-Z]*?)(?:\s(?:[A-Z][a-zA-Z]*?|and|of|for|the|in|to|on|or)|\s\([A-Z]{2,6}\)){0,4})(?=[A-Z][a-z]|[A-Z]{2,})/);
+  const m = sentence.match(/(?:^|[:.]\s)((?:[A-Z][a-zA-Z]*?)(?:\s(?:[A-Z][a-zA-Z]*?|and|of|for|the|in|to|on|or)|\s\([A-Z]{2,6}\)){0,4})(?=[A-Z][a-z]|(?<=[a-z])[A-Z]{2,})/);
   if (!m) return null;
   const title = m[1].trim();
   const words = title.split(/\s+/);
@@ -570,7 +575,7 @@ function formatMatchingQuestionText(text) {
 // "Yes / No / Yes" style answer option. Numbers each statement onto its own
 // line so it's obvious which answer slot maps to which claim.
 function formatYesNoQuestionText(text) {
-  const m = text.match(/^([\s\S]*?for each statement,?\s*decide\s+yes\s+or\s+no\s*:\s*)([\s\S]+)$/i);
+  const m = text.match(/^([\s\S]*?for each statement\b[^:]*?decide\s+yes\s+or\s+no\s*:\s*)([\s\S]+)$/i);
   if (!m) return null;
   const intro = m[1].trim();
   const items = m[2]
