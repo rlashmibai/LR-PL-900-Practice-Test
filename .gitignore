@@ -7,4 +7,4 @@ firebase-config.local.js
 # Raw source material (Word docs, etc.) — never publish these, only the
 # converted questions.json should be committed
 Questions bank/
-PT * ERRORS.docx
+PT* ERRORS.docx

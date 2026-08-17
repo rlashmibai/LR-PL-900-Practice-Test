@@ -84,6 +84,7 @@ const EXPL_HEADERS = [
   "Reference Links:", "Recommended Videos:", "What Environment Maker Can Do:",
   "Environments Overview:", "Roles and Security:",
   "Features of Gallery Control.", "Use Cases of Gallery Control.",
+  "PL900 Tips:",
 ];
 
 // Recurring section-header phrases that have variable trailing content (so they
@@ -815,6 +816,10 @@ async function boot() {
     } else {
       show("view-home");
     }
+    // The results page can be scrolled well down (full question review);
+    // switching views doesn't reset scroll position on its own, so without
+    // this the destination view renders starting mid-page instead of at top.
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
   if (ALL_QUESTIONS.length === 0) {
