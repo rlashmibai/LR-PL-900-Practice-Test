@@ -8,3 +8,5 @@ firebase-config.local.js
 # converted questions.json should be committed
 Questions bank/
 PT* ERRORS.docx
+PT*.docx
+~$*.docx

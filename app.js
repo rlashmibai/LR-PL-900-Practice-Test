@@ -577,7 +577,10 @@ function formatMatchingQuestionText(text) {
   return lines
     .map((l) => {
       const bareLabel = l.match(/^([A-Za-z][A-Za-z ]*:)$/);
-      if (bareLabel) return `<div class="match-line"><strong>${bareLabel[1]}</strong></div>`;
+      // Extra top margin (via match-section) so the left-column list and the
+      // right-column list read as two visually distinct groups, not one
+      // continuous run of lines — matters most on longer 5-6 item matches.
+      if (bareLabel) return `<div class="match-line match-section"><strong>${bareLabel[1]}</strong></div>`;
       const marker = l.match(/^((?:[A-H]|\d{1,2})\.)\s(.*)$/);
       if (marker) return `<div class="match-line"><strong>${marker[1]}</strong> ${marker[2]}</div>`;
       return `<div class="match-line">${l}</div>`;

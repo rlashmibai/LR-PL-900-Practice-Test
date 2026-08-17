@@ -506,6 +506,8 @@ th { color: var(--text-muted); font-weight: 600; }
    the whole line — override the .question-text default here. */
 .question-text .match-line { margin-bottom: 6px; font-weight: 400; }
 .question-text .match-line:last-child { margin-bottom: 0; }
+.question-text .match-line.match-section { margin-top: 14px; }
+.question-text .match-line.match-section:first-of-type { margin-top: 0; }
 
 .question-text .match-intro { font-weight: 600; margin: 0 0 12px; }
 .match-table { width: 100%; border-collapse: collapse; font-weight: 500; font-size: 0.95rem; }
