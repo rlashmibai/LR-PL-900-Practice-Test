@@ -51,6 +51,11 @@ function show(viewId) {
   document.querySelectorAll(".view").forEach((v) => v.classList.remove("active"));
   document.getElementById(viewId).classList.add("active");
   document.querySelector(".container").classList.toggle("wide", viewId === "view-test");
+  // Switching views doesn't reset scroll position on its own — without this,
+  // starting a test (or any other view switch) from partway down a long page
+  // (e.g. the Choose Test grid) leaves the new view rendering mid-page instead
+  // of at the top.
+  window.scrollTo(0, 0);
 }
 
 // In-app replacement for the native window.confirm() dialog, which renders
@@ -640,6 +645,7 @@ function formatYesNoQuestionText(text) {
 }
 
 function formatQuestionText(text) {
+  text = text.replace(/→|➔|➡/g, "-");
   if (/^match (each|the following)/i.test(text.trim())) return formatMatchingQuestionText(text);
   return formatYesNoQuestionText(text) || text;
 }
@@ -649,7 +655,7 @@ function formatExplanation(raw) {
 
   // Arrow characters (from source docx bullets like "Manager -> Approves") render
   // inconsistently across fonts/platforms; a plain ASCII arrow is more reliable.
-  raw = raw.replace(/→|➔|➡/g, "->");
+  raw = raw.replace(/→|➔|➡/g, "-");
 
   // A handful of explanations start with a stray literal "Explanation" word
   // before the actual content (e.g. "Explanation Everyone must approve: ...")
@@ -966,7 +972,7 @@ async function onContactSubmit(e) {
         name,
         email,
         message,
-        _subject: `LR PL900 Practice Test — feedback from ${name}`,
+        _subject: `LR PL900 Practice Test: feedback from ${name}`,
       }),
     });
     if (!res.ok) throw new Error("Request failed");

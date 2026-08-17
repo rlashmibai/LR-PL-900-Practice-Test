@@ -1,65 +1,80 @@
-# PL-900 Practice Test
+# PL-900 Microsoft Power Platform Fundamentals Practice Test
 
-PL-900 | 6 Practice Tests | 600 Q's - July 2026 Updated
+A free online PL-900 practice test created by Lashmi Bai Ravindrapandian to help learners prepare for the Microsoft Power Platform Fundamentals (PL-900) certification exam.
 
-A free, public PL-900 (Microsoft Power Platform Fundamentals) practice test — no account
-password required, just a name + email to save your progress. Built as a static web app so it
-can be hosted for free and reached by anyone.
+**Practice Online:** [PL-900 Practice Test](https://rlashmibai.github.io/LR-PL-900-Practice-Test/)
 
-## Live features
+The practice application is designed to help you test your Power Platform knowledge, identify areas that need more attention, and build confidence before taking the actual exam.
 
-- Guest login (name + email, no password) — saves score history on this device
-- Full timed practice exam, or practice one topic at a time
-- Question formats: single-choice, multi-select, true/false, ordering
-- Instant explanation shown after each attempt, plus a full review screen
-- Score breakdown by PL-900 exam domain
-- Works on mobile and desktop (responsive, installable as a home-screen app)
+## What This Practice Test Covers
 
-## Project structure
+The practice questions are designed around the key areas of the PL-900 certification, including:
 
-```
-index.html      Page structure / all views (welcome, dashboard, test, results)
-style.css       Styling (mobile-first, responsive)
-app.js          App logic: guest login, quiz engine, scoring, results rendering
-questions.json  The question bank (see format below)
-manifest.json   PWA manifest (enables "Add to Home Screen")
-```
+- Describe the business value of Microsoft Power Platform
+- Manage the Microsoft Power Platform environment
+- Demonstrate the capabilities of Power Apps
+- Demonstrate the capabilities of Power Automate
+- Describe the capabilities of Microsoft Copilot Studio
+- Microsoft Dataverse
+- Power Platform connectors
+- Environments, security, governance, and administration
+- AI capabilities across Power Platform
 
-## Question format
+The questions are intended to reinforce your understanding rather than simply encourage memorization.
 
-Each question in `questions.json` looks like this:
+## Why I Created This
 
-```json
-{
-  "id": "q1",
-  "type": "single",
-  "section": "Business value of Power Platform",
-  "text": "Question text goes here?",
-  "options": [
-    { "id": "a", "text": "Option A" },
-    { "id": "b", "text": "Option B" }
-  ],
-  "correct": ["b"],
-  "explanation": "Why b is correct, shown after the visitor answers."
-}
-```
+As I became more involved with Microsoft Power Platform and its potential to improve how businesses work, I wanted to understand the fundamentals more deeply and prepare for the PL-900 certification.
 
-- `type`: `single` (one correct answer), `multi` (select all that apply), `truefalse`, or
-  `ordering` (put items in the correct sequence — `correct` is the array of option ids in order).
-- `section`: groups questions into topic-wise practice tests and the results breakdown.
+While studying, I realized that learning the material was only one part of the preparation. The real challenge was applying that knowledge to questions and recognizing where there were still gaps.
 
-## Running locally
+That is why I created this practice test.
 
-Any static file server works, e.g.:
+I wanted a simple, practical place where learners could test themselves, revisit topics they found difficult, and build confidence before sitting for the actual exam.
 
-```
-python -m http.server 8080
-```
+## How I Built It
 
-Then open `http://localhost:8080`.
+I wanted to turn the idea into a working application of my own.
 
-## Deployment
+I created the practice questions, explanations, test structure, and overall learning experience. I then used GitHub and Claude Code to build and develop the application.
 
-Currently a client-only static app (data is saved to the browser's `localStorage`, per device).
-A Firebase backend (Firestore) is planned so guest history syncs across devices — see project
-notes for status.
+Claude Code helped with the development and implementation, while I shaped the requirements, content, functionality, and user experience.
+
+For me, this project became both a PL-900 preparation tool and an opportunity to explore how AI-assisted development can help turn an idea into a practical learning application.
+
+## About the Creator
+
+Lashmi Bai Ravindrapandian is a Strategic PMO and Digital Transformation Leader with 14+ years of experience helping organizations deliver large transformation programs.
+
+Over the years, I have partnered closely with business and technology leaders to drive delivery excellence, strengthen governance, lead product management initiatives, and simplify operations.
+
+I am passionate about developing future-ready organizations where People, Process, Technology and AI work together to accelerate innovation and transformation.
+
+I also created [LR Virtual Classroom](https://lrvirtualclassroom.co.in/), where I share practical learning resources and tools for professionals building new skills and preparing for certifications.
+
+## Disclaimer
+
+This is an independent practice resource created for PL-900 exam preparation.
+
+The questions are original practice questions and are not real Microsoft exam questions.
+
+This project is not affiliated with, sponsored by, or endorsed by Microsoft.
+
+For the most current exam objectives and certification information, always refer to the official Microsoft resources.
+
+## Useful Links
+
+- [PL-900 Practice Test](https://rlashmibai.github.io/LR-PL-900-Practice-Test/)
+- [LR Virtual Classroom](https://lrvirtualclassroom.co.in/)
+- [Lashmi Bai Ravindrapandian on GitHub](https://github.com/rlashmibai)
+- [Connect with me on LinkedIn](https://www.linkedin.com/in/lashmibairavindrapandian)
+
+## Free Learning Resource
+
+This practice test is provided as a free learning resource for anyone preparing for the PL-900 Microsoft Power Platform Fundamentals certification.
+
+No subscription is required to use the practice resource.
+
+Learn → Practice → Review → Improve
+
+Good luck with your PL-900 preparation!
