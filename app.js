@@ -82,6 +82,7 @@ const EXPL_HEADERS = [
   "Remember,", "Remember:", "FAQ:", "Key Takeaways.", "Key Takeaway:",
   "Other Roles (Incorrect Options):", "Important Limitations to Consider:",
   "Reference Links:", "Recommended Videos:", "What Environment Maker Can Do:",
+  "Environments Overview:", "Roles and Security:",
   "Features of Gallery Control.", "Use Cases of Gallery Control.",
 ];
 
