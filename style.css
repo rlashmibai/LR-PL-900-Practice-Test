@@ -496,7 +496,10 @@ th { color: var(--text-muted); font-weight: 600; }
   margin-bottom: 6px;
 }
 .question-text { font-size: 1.05rem; font-weight: 600; margin-bottom: 16px; line-height: 1.4; }
-.question-text .match-line { margin-bottom: 6px; }
+/* Matching-question line-per-item layout: only the "Tasks:"/"Places:" label
+   or "1."/"A." marker should be bold (handled via an inline <strong>), not
+   the whole line — override the .question-text default here. */
+.question-text .match-line { margin-bottom: 6px; font-weight: 400; }
 .question-text .match-line:last-child { margin-bottom: 0; }
 
 .question-text .match-intro { font-weight: 600; margin: 0 0 12px; }

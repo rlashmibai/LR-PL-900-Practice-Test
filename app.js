@@ -74,12 +74,13 @@ function stripHtml(html) {
 // Colon-suffixed singular forms are safe to keep alongside colon-less plurals since
 // the colon makes them distinct substrings that can't collide.
 const EXPL_HEADERS = [
-  "Overall explanation", "References:", "Reference:", "References",
+  "Overall explanation", "References:", "Reference:",
   "Explanation:",
   "Exam Tips:", "Exam Tip:",
   "Recommended Youtube Video:", "Recommended YouTube video:", "Recommended Youtube Video", "Recommended YouTube video",
   "Keep in Mind:", "Keep in Mind", "Study Links:", "Study links:", "Study Links", "Study links",
-  "Remember,", "Remember:", "FAQ:",
+  "Remember,", "Remember:", "FAQ:", "Key Takeaways.", "Key Takeaway:",
+  "Other Roles (Incorrect Options):", "Important Limitations to Consider:",
   "Features of Gallery Control.", "Use Cases of Gallery Control.",
 ];
 
@@ -98,6 +99,14 @@ const EXPL_HEADER_PATTERNS = [
   // References/Reference earlier this project). The colon-suffixed forms
   // above stay in EXPL_HEADERS since the colon makes them distinct strings.
   /\bExam Tips?\b/g,
+  // Bare "References" (no colon) — but ONLY right after a sentence/clause
+  // boundary (". "/": "/string start), never mid-phrase. Without this
+  // restriction it also matches inside compound terms like "Connection
+  // References", tearing that phrase in half every time it appears.
+  // The "\n\n" alternative catches "References" landing right after a
+  // heading EXPL_HEADERS already isolated above (e.g. "Exam Tips:" leaves
+  // "\n\nExam Tips\n\n   References ..." — the colon itself is gone by now).
+  /(?:^|(?<=[.:]\s+)|(?<=\n\n\s*))References\b/g,
   /Why (?:the )?Other[s]?(?: Answers?| Options?)?\s*(?:Are|Is)\s*(?:Correct|Incorrect|Wrong|Right)\b/gi,
   // Same idea, but naming specific option letters instead of saying "other"
   // ("Why D and E are incorrect", "Why C is correct") — common when this
@@ -304,7 +313,7 @@ function extractColonList(sentences) {
     const m = sentences[i].match(/^(.*?:)\s+(\S.*)$/);
     if (!m) continue;
     const items = [m[2], ...sentences.slice(i + 1)];
-    const isShort = (s) => s.split(/\s+/).length <= 12;
+    const isShort = (s) => s.split(/\s+/).length <= 18;
     if (items.length >= 3 && items.every(isShort)) {
       return { before: sentences.slice(0, i), intro: m[1], items };
     }
@@ -322,11 +331,13 @@ function formatSentences(text) {
   // ending in an acronym ("...Knowledge Sources = Q&A.") still splits before
   // the next one — by this point formatLettered has already claimed any
   // genuine "A. ... B. ..." list (2+ increasing letters), so a lone
-  // "X." here is essentially never a real list marker. "vs." is excluded
-  // outright — it's an abbreviation, not a sentence end ("Standard vs.
-  // Custom Tables" must stay one phrase).
+  // "X." here is essentially never a real list marker. Two abbreviation
+  // shapes are excluded outright: "vs." (never a sentence end — "Standard
+  // vs. Custom Tables" must stay one phrase), and a single capital letter
+  // followed by a period used as an inline answer reference ("...B.
+  // Microsoft 365 admin centre" must stay one phrase, not split after "B.").
   const sentences = safe
-    .split(/(?<!\bvs\.)(?<=[a-zA-Z0-9\)"']\.)\s+(?=[A-Z])/g)
+    .split(/(?<!\bvs\.)(?<!\b[A-Z]\.)(?<=[a-zA-Z0-9\)"']\.)\s+(?=[A-Z])/g)
     .map((s) => s.trim())
     .filter(Boolean);
   if (sentences.length < 2) return `<p>${linkify(text)}</p>`;
@@ -336,7 +347,7 @@ function formatSentences(text) {
   const colonList = extractColonList(sentences);
   if (colonList) {
     const beforeHtml = colonList.before.map((s) => `<p>${restore(s)}</p>`).join("");
-    const introHtml = `<p>${restore(colonList.intro)}</p>`;
+    const introHtml = `<p><strong>${restore(colonList.intro)}</strong></p>`;
     const itemsHtml = `<ul>${colonList.items.map((it) => `<li>${restore(it)}</li>`).join("")}</ul>`;
     return beforeHtml + introHtml + itemsHtml;
   }
@@ -539,7 +550,19 @@ function formatMatchingQuestionText(text) {
     .map((s) => s.trim())
     .filter(Boolean);
   if (lines.length < 3) return text;
-  return lines.map((l) => `<div class="match-line">${l}</div>`).join("");
+  // Bold just the label — a bare "Tasks:"/"Places:" line in full, or the
+  // "1."/"A." marker at the start of an item line — not the whole line
+  // (the surrounding .question-text is already bold by default; without
+  // this every line would render fully bold, including the descriptions).
+  return lines
+    .map((l) => {
+      const bareLabel = l.match(/^([A-Za-z][A-Za-z ]*:)$/);
+      if (bareLabel) return `<div class="match-line"><strong>${bareLabel[1]}</strong></div>`;
+      const marker = l.match(/^((?:[A-H]|\d{1,2})\.)\s(.*)$/);
+      if (marker) return `<div class="match-line"><strong>${marker[1]}</strong> ${marker[2]}</div>`;
+      return `<div class="match-line">${l}</div>`;
+    })
+    .join("");
 }
 
 // "For each statement, decide Yes or No: A; B; C." question stems run every
