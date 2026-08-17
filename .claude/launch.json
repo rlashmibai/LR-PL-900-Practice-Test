@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8080"],
       "port": 8080
+    },
+    {
+      "name": "pl300-local",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8091", "--directory", "C:/Users/lashm/PL300"],
+      "port": 8091
     }
   ]
 }

@@ -5,7 +5,7 @@
 const SECTION_TEST_MINUTES = 15;
 const PASS_PERCENT = 70;
 const TEST_SET_COUNT = 12;
-const TEST_SET_MINUTES = 50; // ~1 min/question, matching real PL-900 exam pacing
+const TEST_SET_MINUTES = 60; // Timed Tests duration; Practice mode uses a count-up timer with no enforced limit
 
 // Official PL-900 exam skill weights, shown next to each topic on the dashboard
 const EXAM_WEIGHTS = {
