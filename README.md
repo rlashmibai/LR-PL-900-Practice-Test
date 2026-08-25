@@ -50,8 +50,6 @@ Over the years, I have partnered closely with business and technology leaders to
 
 I am passionate about developing future-ready organizations where People, Process, Technology and AI work together to accelerate innovation and transformation.
 
-I also created [LR Virtual Classroom](https://lrvirtualclassroom.co.in/), where I share practical learning resources and tools for professionals building new skills and preparing for certifications.
-
 ## Disclaimer
 
 This is an independent practice resource created for PL-900 exam preparation.
@@ -73,7 +71,6 @@ If this project inspires you to build something similar, that's great, just writ
 ## Useful Links
 
 - [PL-900 Practice Test](https://rlashmibai.github.io/LR-PL-900-Practice-Test/)
-- [LR Virtual Classroom](https://lrvirtualclassroom.co.in/)
 - [Lashmi Bai Ravindrapandian on GitHub](https://github.com/rlashmibai)
 - [Connect with me on LinkedIn](https://www.linkedin.com/in/lashmibairavindrapandian)
 
