@@ -16,3 +16,6 @@ NEW UPDATES.docx
 # PL-300 sister project's raw source docs and images, staged here temporarily
 # during content conversion — belongs in the PL300 repo, never this one.
 PL300/
+
+# Claude Code session working data (scratch scripts, dumps) — not project content
+_claude-working-data/
