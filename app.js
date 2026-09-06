@@ -1691,7 +1691,7 @@ function renderResults(reviewItems, attempt) {
       q.options.some((o) => o.explanation);
     div.innerHTML = `
       <div class="question-meta">Question ${i + 1} · ${q.section}</div>
-      <div class="question-text" style="font-size:0.98rem;">${formatQuestionText(q.text)}</div>
+      <div class="question-text" style="font-size:1.05rem; font-weight:400;">${formatQuestionText(q.text)}</div>
       <div class="verdict-banner ${r.isCorrect ? "correct" : "incorrect"}">
         <div class="verdict-title">${r.isCorrect ? "✓ Correct" : "✗ Incorrect"}</div>
         <div class="verdict-answer">Your answer: ${givenText}</div>
