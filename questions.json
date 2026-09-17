@@ -8920,8 +8920,8 @@
    },
    {
     "id": "c",
-    "text": "Entities",
-    "explanation": "Entities are a core component of Model-Driven Apps in the Power Platform. They define the data model for the application and represent the structure of the data being used. Entities also define the relationships between different sets of data and the business logic that governs them. These are essential for managing, storing, and organizing data in Model-Driven Apps."
+    "text": "Tables",
+    "explanation": "Tables are a core component of Model-Driven Apps in the Power Platform. They define the data model for the application and represent the structure of the data being used. Tables also define the relationships between different sets of data and the business logic that governs them. These are essential for managing, storing, and organizing data in Model-Driven Apps."
    },
    {
     "id": "d",
@@ -8932,7 +8932,7 @@
   "correct": [
    "c"
   ],
-  "explanation": "Understand: Flow Templates: These are pre-built templates in Power Automate that help automate business processes, such as sending emails or syncing data between systems. While useful for integrating and automating workflows, they are not the core component of Model-Driven Apps. Power Automate Flows: Power Automate can automate processes in both Canvas and Model-Driven Apps, but they are not a central component of the app structure itself. Be clear on the distinction: Power Automate enhances both types of apps but does not define their core structures like entities do in Model-Driven Apps. Know the Key Components of Model-Driven Apps: Entities (Now called Tables) Role: Core building blocks of the data model. Purpose: Represent business data (e.g., Contacts, Accounts, Cases). Functionality: Define fields (columns) to store structured data. Drive app logic, security, and automation. Support business rules, workflows, and calculated fields. Forms Role: Interface for users to view, create, and edit entity records. Types: Main forms: Full-featured forms for desktop and mobile. Quick create forms: Streamlined for fast data entry. Card forms: Compact views for dashboards or embedded experiences. Customization: Add sections, tabs, business rules, and embedded components. Control visibility and behavior based on user roles or data conditions. Views Role: Display lists of records in a grid format. Functionality: Define which columns are shown and in what order. Include filters and sorting to tailor data presentation. Used in dashboards, subgrids, and lookup fields. Types: Public views: Shared across users. Personal views: Created by individual users for their own use. Relationships Role: Link entities to reflect real-world connections. Types: One-to-many (1:N): One record in Entity A relates to many in Entity B (e.g., one Account has many Contacts). Many-to-one (N:1): Many records in Entity A relate to one in Entity B. Many-to-many (N:N): Records in Entity A can relate to multiple records in Entity B and vice versa. Impact: Enable navigation between related records. Power subgrids, roll-up fields, and related views. References: <a href=\"https://learn.microsoft.com/en-us/training/modules/introduction-power-apps/4-explore-model-driven-applications\" target=\"_blank\" rel=\"noopener noreferrer\">Explore model-driven applications - Training | Microsoft Learn</a>",
+  "explanation": "Understand: Flow Templates: These are pre-built templates in Power Automate that help automate business processes, such as sending emails or syncing data between systems. While useful for integrating and automating workflows, they are not the core component of Model-Driven Apps. Power Automate Flows: Power Automate can automate processes in both Canvas and Model-Driven Apps, but they are not a central component of the app structure itself. Be clear on the distinction: Power Automate enhances both types of apps but does not define their core structures like tables do in Model-Driven Apps. Know the Key Components of Model-Driven Apps: Tables Role: Core building blocks of the data model. Purpose: Represent business data (e.g., Contacts, Accounts, Cases). Functionality: Define fields (columns) to store structured data. Drive app logic, security, and automation. Support business rules, workflows, and calculated fields. Forms Role: Interface for users to view, create, and edit table records. Types: Main forms: Full-featured forms for desktop and mobile. Quick create forms: Streamlined for fast data entry. Card forms: Compact views for dashboards or embedded experiences. Customization: Add sections, tabs, business rules, and embedded components. Control visibility and behavior based on user roles or data conditions. Views Role: Display lists of records in a grid format. Functionality: Define which columns are shown and in what order. Include filters and sorting to tailor data presentation. Used in dashboards, subgrids, and lookup fields. Types: Public views: Shared across users. Personal views: Created by individual users for their own use. Relationships Role: Link tables to reflect real-world connections. Types: One-to-many (1:N): One record in Table A relates to many in Table B (e.g., one Account has many Contacts). Many-to-one (N:1): Many records in Table A relate to one in Table B. Many-to-many (N:N): Records in Table A can relate to multiple records in Table B and vice versa. Impact: Enable navigation between related records. Power subgrids, roll-up fields, and related views. References: <a href=\"https://learn.microsoft.com/en-us/training/modules/introduction-power-apps/4-explore-model-driven-applications\" target=\"_blank\" rel=\"noopener noreferrer\">Explore model-driven applications - Training | Microsoft Learn</a>",
   "testSet": 10
  },
  {
@@ -9368,7 +9368,7 @@
   "correct": [
    "a"
   ],
-  "explanation": "You can create a Common Data Service (Dataverse) environment in the Power Platform Admin center. Answer: Yes. Explanation: You can create and manage Dataverse environments through the Power Platform Admin Center. This platform allows admins to configure environments, assign security roles, and monitor resources for Power Apps, Power Automate, and Dataverse. You must enable data encryption after you create a Common Data Service environment. Answer: No Explanation: Data encryption is automatically enabled in Dataverse. Microsoft applies Azure-managed encryption for data stored within Dataverse, meaning users do not need to manually enable it after creating an environment. You can control security rules and privileges in a Common Data Service environment from the Power Apps admin center. Answer: No Explanation: Security rules and privileges for Dataverse are managed in the Power Platform Admin Center, not the Power Apps Admin Center. The Power Platform Admin Center allows administrators to configure role-based security, apply field-level security, and define record-level security. Exam Tips: All about Power Apps Admin Center: You can create a Dataverse environment using the Power Platform Admin Center. The Power Platform Admin Center allows you to manage environments, assign security roles, and monitor resources for Power Apps, Power Automate, and Dataverse. Data encryption in Dataverse is automatically enabled using Azure-managed encryption. Users do not need to manually enable encryption after creating a Dataverse environment. Security rules and privileges for Dataverse are not managed in the Power Apps Admin Center. The correct place to manage Dataverse security is the Power Platform Admin Center. The Power Platform Admin Center supports role-based security configuration. It also allows for field-level security settings to protect sensitive data. Record-level security can be defined to control access to individual records. The Power Platform Admin Center is the central hub for environment configuration and governance across Power Platform services.",
+  "explanation": "You can create a Dataverse environment in the Power Platform Admin center. Answer: Yes. Explanation: You can create and manage Dataverse environments through the Power Platform Admin Center. This platform allows admins to configure environments, assign security roles, and monitor resources for Power Apps, Power Automate, and Dataverse. You must enable data encryption after you create a Dataverse environment. Answer: No Explanation: Data encryption is automatically enabled in Dataverse. Microsoft applies Azure-managed encryption for data stored within Dataverse, meaning users do not need to manually enable it after creating an environment. You can control security rules and privileges in a Dataverse environment from the Power Apps admin center. Answer: No Explanation: Security rules and privileges for Dataverse are managed in the Power Platform Admin Center, not the Power Apps Admin Center. The Power Platform Admin Center allows administrators to configure role-based security, apply field-level security, and define record-level security. Exam Tips: All about Power Apps Admin Center: You can create a Dataverse environment using the Power Platform Admin Center. The Power Platform Admin Center allows you to manage environments, assign security roles, and monitor resources for Power Apps, Power Automate, and Dataverse. Data encryption in Dataverse is automatically enabled using Azure-managed encryption. Users do not need to manually enable encryption after creating a Dataverse environment. Security rules and privileges for Dataverse are not managed in the Power Apps Admin Center. The correct place to manage Dataverse security is the Power Platform Admin Center. The Power Platform Admin Center supports role-based security configuration. It also allows for field-level security settings to protect sensitive data. Record-level security can be defined to control access to individual records. The Power Platform Admin Center is the central hub for environment configuration and governance across Power Platform services.",
   "testSet": 8
  },
  {
@@ -9435,7 +9435,7 @@
   "correct": [
    "a"
   ],
-  "explanation": "Restore a canvas app to a previous version in PowerApps. Restore an app from your account 1. Open powerapps.com, and then click or tap Apps in the left navigation bar. 2. Near the right edge, click or tap the info icon for the app that you want to restore. 3. Click or tap the Versions tab, and then click or tap Restore for the version that you want to restore. 4. In the confirmation dialog box, click or tap Restore. A new version is added to your list.<img src=\"images/b4-image12.png\" alt=\"Reference diagram\">",
+  "explanation": "Restore a canvas app to a previous version in Power Apps. Restore an app from your account 1. Open powerapps.com, and then click or tap Apps in the left navigation bar. 2. Near the right edge, click or tap the info icon for the app that you want to restore. 3. Click or tap the Versions tab, and then click or tap Restore for the version that you want to restore. 4. In the confirmation dialog box, click or tap Restore. A new version is added to your list.<img src=\"images/b4-image12.png\" alt=\"Reference diagram\">",
   "testSet": 7
  },
  {
@@ -9719,7 +9719,7 @@
   "id": "q311",
   "type": "multi",
   "section": "Demonstrate the capabilities of Power Apps",
-  "text": "You're building a model-driven app.<br><br>Which of these entity assets can you actually use to build it? (Select all that apply)",
+  "text": "You're building a model-driven app.<br><br>Which of these table assets can you actually use to build it? (Select all that apply)",
   "options": [
    {
     "id": "a",
@@ -9729,17 +9729,17 @@
    {
     "id": "b",
     "text": "Dashboards",
-    "explanation": "Dashboards provide a visual representation of data from multiple entities in the model-driven app. They allow users to monitor key metrics and performance indicators at a glance."
+    "explanation": "Dashboards provide a visual representation of data from multiple tables in the model-driven app. They allow users to monitor key metrics and performance indicators at a glance."
    },
    {
     "id": "c",
-    "text": "Entities",
-    "explanation": "Entities are the core building blocks of a model-driven app, representing the data structure and relationships within the app. They define the different types of data that can be stored and manipulated."
+    "text": "Tables",
+    "explanation": "Tables are the core building blocks of a model-driven app, representing the data structure and relationships within the app. They define the different types of data that can be stored and manipulated."
    },
    {
     "id": "d",
     "text": "Views",
-    "explanation": "Views allow users to filter, sort, and group data from entities in the model-driven app. They provide different perspectives on the data and help users analyze information more effectively."
+    "explanation": "Views allow users to filter, sort, and group data from tables in the model-driven app. They provide different perspectives on the data and help users analyze information more effectively."
    },
    {
     "id": "e",
@@ -9749,7 +9749,7 @@
    {
     "id": "f",
     "text": "Charts",
-    "explanation": "Charts visually represent data from entities in the model-driven app, helping users identify trends, patterns, and insights. They enhance the app's usability and data visualization capabilities."
+    "explanation": "Charts visually represent data from tables in the model-driven app, helping users identify trends, patterns, and insights. They enhance the app's usability and data visualization capabilities."
    }
   ],
   "correct": [
@@ -9760,7 +9760,7 @@
    "e",
    "f"
   ],
-  "explanation": "Model-driven apps rely on Dataverse and structured data to provide a consistent user experience. The following assets play essential roles: Forms = Define the layout for viewing and entering data. Dashboards = Provide a visual overview of key data insights. Entities = The core data tables that store records in Dataverse. Views = Present filtered lists of records in the app. Business Process Flow = Guides users through structured business processes. Charts = Visualize data trends for better decision-making.",
+  "explanation": "Model-driven apps rely on Dataverse and structured data to provide a consistent user experience. The following assets play essential roles: Forms = Define the layout for viewing and entering data. Dashboards = Provide a visual overview of key data insights. Tables = The core data tables that store records in Dataverse. Views = Present filtered lists of records in the app. Business Process Flow = Guides users through structured business processes. Charts = Visualize data trends for better decision-making.",
   "testSet": 11
  },
  {
@@ -9800,7 +9800,7 @@
    "b",
    "d"
   ],
-  "explanation": "What are the main object types Power Platform connectors provide? Connectors in Power Platform typically expose the following object types: Tables: Represent structured data sets, similar to database tables. Actions: Perform operations like sending emails, creating records, or updating data. Triggers: Initiate flows or processes when specific events occur in the connected service. Functions: Execute logic or calculations, often used in custom connectors. Entities: Used in Dataverse-based connectors, similar to tables but with richer metadata. Parameters: Input values required to execute actions or functions. Outputs: Data returned after an action or function is executed.\n\nFAQ:\n\n2. What are triggers used for in connectors? Triggers start a flow when a defined event happens, such as receiving an email or a new record being created. 3. How do actions differ from triggers? Actions are tasks performed after a trigger fires like creating a record, sending a message, or updating a file. 4. Are these object types available in all connectors? Not necessarily. Some connectors may only offer actions and triggers, while others (like Dataverse) provide tables and entities. References <a href=\"https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/connections-list\" target=\"_blank\" rel=\"noopener noreferrer\">https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/connections-list</a> <a href=\"https://docs.microsoft.com/en-us/connectors/connectors\" target=\"_blank\" rel=\"noopener noreferrer\">https://docs.microsoft.com/en-us/connectors/connectors</a>",
+  "explanation": "What are the main object types Power Platform connectors provide? Connectors in Power Platform typically expose the following object types: Tables: Represent structured data sets, similar to database tables. Actions: Perform operations like sending emails, creating records, or updating data. Triggers: Initiate flows or processes when specific events occur in the connected service. Functions: Execute logic or calculations, often used in custom connectors. Parameters: Input values required to execute actions or functions. Outputs: Data returned after an action or function is executed.\n\nFAQ:\n\n2. What are triggers used for in connectors? Triggers start a flow when a defined event happens, such as receiving an email or a new record being created. 3. How do actions differ from triggers? Actions are tasks performed after a trigger fires like creating a record, sending a message, or updating a file. 4. Are these object types available in all connectors? Not necessarily. Some connectors may only offer actions and triggers, while others (like Dataverse) also provide tables. References <a href=\"https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/connections-list\" target=\"_blank\" rel=\"noopener noreferrer\">https://docs.microsoft.com/en-us/powerapps/maker/canvas-apps/connections-list</a> <a href=\"https://docs.microsoft.com/en-us/connectors/connectors\" target=\"_blank\" rel=\"noopener noreferrer\">https://docs.microsoft.com/en-us/connectors/connectors</a>",
   "testSet": 1
  },
  {
@@ -9995,7 +9995,7 @@
    {
     "id": "c",
     "text": "C. Dataverse tables and relationships",
-    "explanation": "Defining Dataverse tables and relationships is essential before building a model-driven app as it establishes the foundation for the data structure and how different entities are related to each other within the app."
+    "explanation": "Defining Dataverse tables and relationships is essential before building a model-driven app as it establishes the foundation for the data structure and how different tables are related to each other within the app."
    },
    {
     "id": "d",
@@ -10746,12 +10746,12 @@
    {
     "id": "d",
     "text": "d) Traditional databases are always easier to use than Dataverse for business users",
-    "explanation": "Dataverse is a managed platform, meaning that Microsoft handles the infrastructure management tasks such as maintenance, updates, and scalability. This reduces the burden on IT teams and allows organizations to focus more on building and optimizing their business applications rather than managing the underlying infrastructure."
+    "explanation": "Traditional databases may be familiar to some users, but Dataverse offers advantages such as integrated Power Platform services, built-in security features, and managed infrastructure that make it a compelling choice for building business applications. While there may be a learning curve for transitioning from traditional databases to Dataverse, the benefits it provides outweigh the perceived ease of use of traditional databases."
    },
    {
     "id": "e",
     "text": "e) Dataverse is a managed platform that reduces infrastructure management effort",
-    "explanation": "Traditional databases may be familiar to some users, but Dataverse offers advantages such as integrated Power Platform services, built-in security features, and managed infrastructure that make it a compelling choice for building business applications. While there may be a learning curve for transitioning from traditional databases to Dataverse, the benefits it provides outweigh the perceived ease of use of traditional databases."
+    "explanation": "Dataverse is a managed platform, meaning that Microsoft handles the infrastructure management tasks such as maintenance, updates, and scalability. This reduces the burden on IT teams and allows organizations to focus more on building and optimizing their business applications rather than managing the underlying infrastructure."
    }
   ],
   "correct": [
