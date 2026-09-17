@@ -14797,7 +14797,7 @@
    {
     "id": "a",
     "text": "A) The use of solutions",
-    "explanation": "The use of solutions is a key feature of Application Lifecycle Management (ALM) in Power Platform. Solutions allow developers to package and deploy components such as apps, flows, entities, and more across environments, enabling better management of changes and version control."
+    "explanation": "The use of solutions is a key feature of Application Lifecycle Management (ALM) in Power Platform. Solutions allow developers to package and deploy components such as apps, flows, tables, and more across environments, enabling better management of changes and version control."
    },
    {
     "id": "b",
@@ -15484,7 +15484,7 @@
    {
     "id": "b",
     "text": "B. It's a relational database for Power Platform.",
-    "explanation": "This choice is correct. Dataverse is a relational database for the Power Platform. It provides a secure and scalable data storage solution that allows users to create, read, update, and delete data entities to support various business applications."
+    "explanation": "This choice is correct. Dataverse is a relational database for the Power Platform. It provides a secure and scalable data storage solution that allows users to create, read, update, and delete data in tables to support various business applications."
    },
    {
     "id": "c",
@@ -15709,8 +15709,8 @@
   "options": [
    {
     "id": "a",
-    "text": "Add Common Data Service",
-    "explanation": "Adding Common Data Service is not necessary for sending an email when a new file is uploaded to OneDrive. Common Data Service is typically used for data storage and management, not for triggering actions based on file uploads."
+    "text": "Add Dataverse",
+    "explanation": "Adding Dataverse is not necessary for sending an email when a new file is uploaded to OneDrive. Dataverse is typically used for data storage and management, not for triggering actions based on file uploads."
    },
    {
     "id": "b",
@@ -15731,7 +15731,7 @@
   "correct": [
    "c"
   ],
-  "explanation": "Power Automate Flow Basics: Every flow begins with a trigger (e.g., receiving an email in your inbox). After the trigger, you define one or more actions (e.g., sending an approval request or email). In the example flow, the action is to send an email after the trigger occurs.\n\nImportant Limitations to Consider:\n\nAdding Common Data Service (Dataverse) to a flow may prevent sending emails or uploading files to OneDrive. Email triggers or conditions in a flow can also block email sending or file uploads. If you're using a Business Process Flow and a file is uploaded to the OneDrive Documents directory, no email will be sent automatically. These limitations can affect how your flow behaves and should be considered during design.\n\nChoose action: Once the trigger is activated, you need to define the action the flow should take, such as sending an email notification.\n\nWhy others are wrong:\n\nAdd Common Data Service: Not necessary for this scenario, as you are working with OneDrive and email notifications, not Dataverse. Add a condition: Adding conditions is optional and only needed if you want to filter based on specific criteria, such as file type or folder location. Create Business Process Flow: Business Process Flows are used for structured workflows in Dataverse applications and not required for a Power Automate flow triggered by OneDrive.",
+  "explanation": "Power Automate Flow Basics: Every flow begins with a trigger (e.g., receiving an email in your inbox). After the trigger, you define one or more actions (e.g., sending an approval request or email). In the example flow, the action is to send an email after the trigger occurs.\n\nImportant Limitations to Consider:\n\nAdding Dataverse to a flow may prevent sending emails or uploading files to OneDrive. Email triggers or conditions in a flow can also block email sending or file uploads. If you're using a Business Process Flow and a file is uploaded to the OneDrive Documents directory, no email will be sent automatically. These limitations can affect how your flow behaves and should be considered during design.\n\nChoose action: Once the trigger is activated, you need to define the action the flow should take, such as sending an email notification.\n\nWhy others are wrong:\n\nAdd Dataverse: Not necessary for this scenario, as you are working with OneDrive and email notifications, not Dataverse. Add a condition: Adding conditions is optional and only needed if you want to filter based on specific criteria, such as file type or folder location. Create Business Process Flow: Business Process Flows are used for structured workflows in Dataverse applications and not required for a Power Automate flow triggered by OneDrive.",
   "testSet": 2
  },
  {
@@ -16016,7 +16016,7 @@
    {
     "id": "b",
     "text": "B. Model-driven apps",
-    "explanation": "Model-driven apps in Power Apps are more focused on data-driven applications that are built on top of the Common Data Service. While they can also be accessed in a browser or on mobile devices, they are not specifically designed for creating apps that run on mobile devices."
+    "explanation": "Model-driven apps in Power Apps are more focused on data-driven applications that are built on top of Dataverse. While they can also be accessed in a browser or on mobile devices, they are not specifically designed for creating apps that run on mobile devices."
    },
    {
     "id": "c",
@@ -16691,7 +16691,7 @@
   "correct": [
    "b"
   ],
-  "explanation": "Correct Answer: It allows users to create automations by narrating and demonstrating tasks.\n\nWhy correct: Record with Copilot captures narration, mouse, and keyboard actions to generate desktop flows.\n\nWhy others are wrong: Automates cloud processes - that's cloud flows, not desktop flows. Requires scripting knowledge - Copilot reduces the need for scripting.\n\nReference: <a href=\"https://learn.microsoft.com/en-us/training/modules/build-microsoft-power-automate-flow/9-build-basic-desktop-flow-use-record-copilot\" target=\"_blank\" rel=\"noopener noreferrer\">Build a basic desktop flow by using Record with Copilot - Training | Microsoft Learn</a>",
+  "explanation": "Correct Answer: It allows users to create automations by narrating and demonstrating tasks.\n\nWhy correct: Record with Copilot captures narration, mouse, and keyboard actions to generate desktop flows.\n\nWhy others are wrong: Automates cloud processes - that's cloud flows, not desktop flows. Requires scripting knowledge - Copilot reduces the need for scripting.\n\nReference: <a href=\"https://learn.microsoft.com/en-us/training/modules/build-microsoft-power-automate-flow/9-build-basic-desktop-flow-use-record-copilot\" target=\"_blank\" rel=\"noopener noreferrer\">Build a basic desktop flow by using Record with Copilot - Training | Microsoft Learn</a>\n\nNote: Record with Copilot (the AI Recorder) has since been deprecated and removed by Microsoft. It was replaced by Copilot in Power Automate for desktop, which lets you describe an automation in natural language instead of recording your actions.",
   "testSet": 7
  },
  {
