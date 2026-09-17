@@ -17191,33 +17191,33 @@
   "id": "q545",
   "type": "single",
   "section": "Demonstrate the capabilities of Power Automate",
-  "text": "Which Power Automate for desktop capability lets you create a new desktop flow by simply describing what you want to automate in plain English, instead of manually recording each action?",
+  "text": "Which Power Automate flow type is used to automate tasks on a desktop application that doesn't have an API?",
   "options": [
    {
     "id": "a",
-    "text": "A. Record with Copilot (AI Recorder)",
-    "explanation": "This option is incorrect. Record with Copilot, also known as the AI Recorder, has been deprecated by Microsoft and is no longer available in Power Automate for desktop."
+    "text": "A. Desktop flow",
+    "explanation": "This is the correct choice. Desktop flows use Robotic Process Automation (RPA) to interact with an application's user interface directly - clicking, typing, reading screen elements - which lets them automate legacy or desktop apps that have no API to connect to."
    },
    {
     "id": "b",
-    "text": "B. Copilot in Power Automate for desktop",
-    "explanation": "Copilot in Power Automate for desktop is the correct choice. It lets you type a natural language prompt, such as opening an Excel file and emailing it to a colleague, and Copilot generates the matching flow actions for you to review and refine in the designer."
+    "text": "B. Instant flow",
+    "explanation": "This option is incorrect. Instant flows are triggered manually by a user, such as pressing a button, and are not designed for interacting with a desktop app's user interface."
    },
    {
     "id": "c",
-    "text": "C. Business Process Flow",
-    "explanation": "This option is incorrect. A Business Process Flow guides users step by step through a structured Dataverse process. It is not a tool for generating desktop flow actions from a description."
+    "text": "C. Scheduled flow",
+    "explanation": "This option is incorrect. Scheduled flows run at set times or intervals and are not designed for interacting with a desktop app's user interface."
    },
    {
     "id": "d",
-    "text": "D. Desktop flow Recorder (classic)",
-    "explanation": "This option is incorrect. The classic Recorder captures your manual UI actions step by step as you perform them. It does not accept a natural language description of what to automate."
+    "text": "D. Business process flow",
+    "explanation": "This option is incorrect. A business process flow guides a user step-by-step through a defined process in a model-driven app; it doesn't automate actions in another application's UI."
    }
   ],
   "correct": [
-   "b"
+   "a"
   ],
-  "explanation": "Copilot in Power Automate for desktop allows you to describe an automation in natural language, and it generates the matching flow actions for you to review in the designer. You can also use it to add steps to an existing flow or ask product related questions. This replaces the older Record with Copilot (AI Recorder) feature, which Microsoft has deprecated and removed.\n\nReference: <a href=\"https://learn.microsoft.com/en-us/power-automate/desktop-flows/copilot-in-power-automate-for-desktop\" target=\"_blank\" rel=\"noopener noreferrer\">Get started with Copilot in Power Automate for desktop - Power Automate | Microsoft Learn</a>",
+  "explanation": "Desktop flows use Robotic Process Automation (RPA) to interact with an application's user interface directly - clicking, typing, reading screen elements - which lets them automate legacy or desktop apps that have no API to connect to. Instant flows require manual user triggering, scheduled flows run on a timetable, and business process flows guide users through a structured process - none of them interact with a desktop app's UI the way desktop flows do.\n\nReference: <a href=\"https://learn.microsoft.com/en-us/power-automate/desktop-flows/introduction\" target=\"_blank\" rel=\"noopener noreferrer\">Introduction to desktop flows - Power Automate | Microsoft Learn</a>",
   "testSet": 2
  },
  {
