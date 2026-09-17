@@ -10872,23 +10872,23 @@
   "id": "q347",
   "type": "truefalse",
   "section": "Manage the Microsoft Power Platform environment",
-  "text": "During a training workshop at NovaTech, the facilitator poses this to participants, true or false: after creating a user-owned custom entity in Dataverse, you can change its ownership from user-owned to organization-owned.",
+  "text": "During a training workshop at NovaTech, the facilitator poses this to participants, true or false: after creating a user-owned custom table in Dataverse, you can change its ownership from user-owned to organization-owned.",
   "options": [
    {
     "id": "a",
     "text": "True",
-    "explanation": "This is incorrect option.  In Common Data Service (CDS), now part of Microsoft Dataverse, when you create a custom entity, you must specify its ownership type: User or Team-owned (also known as User-owned), or Organization-owned. Once the entity is created, this ownership setting cannot be changed. This is a design limitation due to how security and access control are enforced in CDS/Dataverse. Changing the ownership model would require structural changes to the underlying data and security roles."
+    "explanation": "This is incorrect option.  In Dataverse, when you create a custom table, you must specify its ownership type: User or Team-owned (also known as User-owned), or Organization-owned. Once the table is created, this ownership setting cannot be changed. This is a design limitation due to how security and access control are enforced in Dataverse. Changing the ownership model would require structural changes to the underlying data and security roles."
    },
    {
     "id": "b",
     "text": "False",
-    "explanation": "This statement is correct. Once you create a user-owned custom entity in Dataverse, you cannot change the entity ownership from user to organization-owned. User-owned entities are specific to the user who created them and cannot be modified to be organization-owned."
+    "explanation": "This statement is correct. Once you create a user-owned custom table in Dataverse, you cannot change the table's ownership from user to organization-owned. User-owned tables are specific to the user who created them and cannot be modified to be organization-owned."
    }
   ],
   "correct": [
    "b"
   ],
-  "explanation": "The correct answer is False. Once an entity is created as user-owned, its ownership type cannot be changed to organization-owned. The ownership type is determined at the time of entity creation and remains fixed. If you need an organization-owned version, you would need to create a new entity with the correct ownership type and migrate data accordingly.\n\nDataverse is an important topic in PL900 exam and below are important things to know about Dataverse. What Dataverse Is: Dataverse is a cloud-based data platform that allows you to securely store and manage data used by business applications. It provides a standardized and scalable data structure.\n\nStandard vs. Custom Tables: Standard tables (e.g., Contact, Account) come built-in. Custom tables can be created to match your specific business needs.\n\nTable Ownership Types.\n\nUse-Owned: Used when access control is based on who owns the data. Organization-Owned: Used for global data not tied to any individual user. Relationships Between TablesDataverse supports 1:N, N:1, and N:N relationships between tables to model business logic and data relationships. Business RulesBusiness Rules allow you to enforce logic and validation without writing code, right inside Dataverse. Security ModelDataverse uses a role-based security model with: Security Roles, Field-level security, Record-level security.\n\nDataverse and Power Apps: Power Apps integrates tightly with Dataverse, letting you easily build model-driven and canvas apps that interact with data. Dataverse and Power Automate: You can create flows in Power Automate that trigger from Dataverse data changes, such as when a record is created, updated, or deleted. Dataverse Connectors and Integration: Dataverse can integrate with other systems through: Standard connectors, Custom connectors, Azure integration.\n\nDataverse for Teams: A lite version of Dataverse included with Microsoft Teams. It allows you to build apps and flows directly in Teams without requiring a full Power Platform license. References: <a href=\"https://community.dynamics.com/forums/thread/details/?threadid=dc5d4942-5ba6-4d55-8b0e-a9a5060d7d87\" target=\"_blank\" rel=\"noopener noreferrer\">Change entity/table scope to user from organization</a>",
+  "explanation": "The correct answer is False. Once a table is created as user-owned, its ownership type cannot be changed to organization-owned. The ownership type is determined at the time of table creation and remains fixed. If you need an organization-owned version, you would need to create a new table with the correct ownership type and migrate data accordingly.\n\nDataverse is an important topic in PL900 exam and below are important things to know about Dataverse. What Dataverse Is: Dataverse is a cloud-based data platform that allows you to securely store and manage data used by business applications. It provides a standardized and scalable data structure.\n\nStandard vs. Custom Tables: Standard tables (e.g., Contact, Account) come built-in. Custom tables can be created to match your specific business needs.\n\nTable Ownership Types.\n\nUse-Owned: Used when access control is based on who owns the data. Organization-Owned: Used for global data not tied to any individual user. Relationships Between TablesDataverse supports 1:N, N:1, and N:N relationships between tables to model business logic and data relationships. Business RulesBusiness Rules allow you to enforce logic and validation without writing code, right inside Dataverse. Security ModelDataverse uses a role-based security model with: Security Roles, Field-level security, Record-level security.\n\nDataverse and Power Apps: Power Apps integrates tightly with Dataverse, letting you easily build model-driven and canvas apps that interact with data. Dataverse and Power Automate: You can create flows in Power Automate that trigger from Dataverse data changes, such as when a record is created, updated, or deleted. Dataverse Connectors and Integration: Dataverse can integrate with other systems through: Standard connectors, Custom connectors, Azure integration.\n\nDataverse for Teams: A lite version of Dataverse included with Microsoft Teams. It allows you to build apps and flows directly in Teams without requiring a full Power Platform license. References: <a href=\"https://community.dynamics.com/forums/thread/details/?threadid=dc5d4942-5ba6-4d55-8b0e-a9a5060d7d87\" target=\"_blank\" rel=\"noopener noreferrer\">Change entity/table scope to user from organization</a>",
   "testSet": 1
  },
  {
@@ -11431,7 +11431,7 @@
    {
     "id": "b",
     "text": "Model Driven App",
-    "explanation": "Model Driven Apps are the best choice for creating apps quickly with complex business processes and relationships, especially when the data is stored in Dataverse. Model Driven Apps allow you to define data models, business logic, and relationships between entities, providing a structured and efficient way to build apps. Q​: What is a Model-driven app? A​: It’s a type of app in Power Apps that automatically generates a responsive UI based on your data model in Microsoft Dataverse ideal for complex business scenarios. Q​: What makes Model-driven apps different from Canvas apps? A​: Canvas apps prioritize custom layouts and design flexibility. Model-driven apps focus on structured data, relationships, and business logic, with the UI generated automatically. Q​: What kind of data do Model-driven apps work best with? A​: They’re perfect for relational data stored in Dataverse especially when you need to manage entities like accounts, contacts, cases, or custom tables with deep interconnections. Q​: Can I customize the UI in a Model-driven app? A​: To an extent. You can configure forms, views, dashboards, and business rules, but the layout is largely determined by the data model and metadata. Q​: What are common use cases for Model-driven apps? A​: Examples include CRM systems, case management, service desk apps, and any solution that requires guided workflows and secure data handling. Q​: How do Model-driven apps handle security? A​: They leverage Dataverse’s role-based security and business units, ensuring users only access data and functionality they’re authorized for. Q​: Are Model-driven apps mobile-friendly? A​: Yes, they’re responsive by default and work seamlessly across web and mobile devices without additional design effort."
+    "explanation": "Model Driven Apps are the best choice for creating apps quickly with complex business processes and relationships, especially when the data is stored in Dataverse. Model Driven Apps allow you to define data models, business logic, and relationships between tables, providing a structured and efficient way to build apps. Q​: What is a Model-driven app? A​: It’s a type of app in Power Apps that automatically generates a responsive UI based on your data model in Microsoft Dataverse ideal for complex business scenarios. Q​: What makes Model-driven apps different from Canvas apps? A​: Canvas apps prioritize custom layouts and design flexibility. Model-driven apps focus on structured data, relationships, and business logic, with the UI generated automatically. Q​: What kind of data do Model-driven apps work best with? A​: They’re perfect for relational data stored in Dataverse especially when you need to manage tables like accounts, contacts, cases, or custom tables with deep interconnections. Q​: Can I customize the UI in a Model-driven app? A​: To an extent. You can configure forms, views, dashboards, and business rules, but the layout is largely determined by the data model and metadata. Q​: What are common use cases for Model-driven apps? A​: Examples include CRM systems, case management, service desk apps, and any solution that requires guided workflows and secure data handling. Q​: How do Model-driven apps handle security? A​: They leverage Dataverse’s role-based security and business units, ensuring users only access data and functionality they’re authorized for. Q​: Are Model-driven apps mobile-friendly? A​: Yes, they’re responsive by default and work seamlessly across web and mobile devices without additional design effort."
    },
    {
     "id": "c",
@@ -12618,8 +12618,8 @@
   "options": [
    {
     "id": "a",
-    "text": "Create the necessary fields in a SharePoint list and then customize this with PowerApps",
-    "explanation": "While creating the necessary fields in a SharePoint list and customizing it with PowerApps is a valid approach, it may involve more time and effort than starting with a pre-built template or sample app. Checking for existing solutions can streamline the development process."
+    "text": "Create the necessary fields in a SharePoint list and then customize this with Power Apps",
+    "explanation": "While creating the necessary fields in a SharePoint list and customizing it with Power Apps is a valid approach, it may involve more time and effort than starting with a pre-built template or sample app. Checking for existing solutions can streamline the development process."
    },
    {
     "id": "b",
@@ -12830,7 +12830,7 @@
   "id": "q410",
   "type": "single",
   "section": "Demonstrate the capabilities of Power Apps",
-  "text": "Daniella built a model-driven app, but every form, view, and chart for an entity is showing up for users.<br><br>She wants to simplify things and only show specific ones.<br><br>How can she remove certain forms, views, or charts from appearing?",
+  "text": "Daniella built a model-driven app, but every form, view, and chart for a table is showing up for users.<br><br>She wants to simplify things and only show specific ones.<br><br>How can she remove certain forms, views, or charts from appearing?",
   "options": [
    {
     "id": "a",
@@ -12856,7 +12856,7 @@
   "correct": [
    "b"
   ],
-  "explanation": "Model-driven apps are built using the App Designer (also known as the Modern App Designer). Daniella can select which forms, views, and charts to include by configuring the site map and the associated entities/tables. This doesn’t remove them from the Dataverse or solution, it simply hides them from the user interface of that specific app.",
+  "explanation": "Model-driven apps are built using the App Designer (also known as the Modern App Designer). Daniella can select which forms, views, and charts to include by configuring the site map and the associated tables. This doesn’t remove them from the Dataverse or solution, it simply hides them from the user interface of that specific app.",
   "testSet": 10
  },
  {
@@ -12868,17 +12868,17 @@
    {
     "id": "a",
     "text": "The app can be wrapped and deployed to company phones using Intune or other MDM tool.",
-    "explanation": "Wrapping the app and deploying it to company phones using Intune or other Mobile Device Management (MDM) tools allows for the app to be distributed and accessed on iOS and Android devices without the need to install PowerApps. This method provides a seamless experience for users without requiring them to individually install the PowerApps application."
+    "explanation": "Wrapping the app and deploying it to company phones using Intune or other Mobile Device Management (MDM) tools allows for the app to be distributed and accessed on iOS and Android devices without the need to install Power Apps. This method provides a seamless experience for users without requiring them to individually install the Power Apps application."
    },
    {
     "id": "b",
     "text": "The app would need submitted to the iOS and Android stores",
-    "explanation": "Submitting the app to the iOS and Android stores would require users to download and install the PowerApps application on their devices to access the app. This method does not meet the CEO's requirement of having the app available on iOS and Android devices without the need to install PowerApps."
+    "explanation": "Submitting the app to the iOS and Android stores would require users to download and install the Power Apps application on their devices to access the app. This method does not meet the CEO's requirement of having the app available on iOS and Android devices without the need to install Power Apps."
    },
    {
     "id": "c",
     "text": "It is not possible to achieve this",
-    "explanation": "It is possible to achieve the CEO's requirement by wrapping the app and deploying it through Intune or other MDM tools. This method allows for the app to be accessed on iOS and Android devices without the need for individual installation of PowerApps, making it a feasible solution."
+    "explanation": "It is possible to achieve the CEO's requirement by wrapping the app and deploying it through Intune or other MDM tools. This method allows for the app to be accessed on iOS and Android devices without the need for individual installation of Power Apps, making it a feasible solution."
    },
    {
     "id": "d",
@@ -12934,7 +12934,7 @@
    {
     "id": "a",
     "text": "A. Power Pages and Power Automate",
-    "explanation": "Power Pages and Power Automate are not sufficient to build an app, validate entries, store data in Dataverse, and trigger a review workflow. Power Pages is not a tool in the Power Platform suite, and Power Automate alone cannot handle the app creation and data storage requirements."
+    "explanation": "Power Pages and Power Automate are not sufficient to build an app, validate entries, store data in Dataverse, and trigger a review workflow. Power Pages is a real Power Platform tool for building websites, but it isn't designed for internal data-entry apps like this, and Power Automate alone cannot handle the app creation and data storage requirements."
    },
    {
     "id": "b",
@@ -12944,7 +12944,7 @@
    {
     "id": "c",
     "text": "C. Power Automate and Power Pages",
-    "explanation": "Power Automate and Power Pages alone are not sufficient to build the app interface, validate entries, store data in Dataverse, and trigger a review workflow. Power Pages is not a tool in the Power Platform suite, and Power Automate alone cannot handle all the requirements mentioned in the question."
+    "explanation": "Power Automate and Power Pages alone are not sufficient to build the app interface, validate entries, store data in Dataverse, and trigger a review workflow. Power Pages is built for external-facing websites rather than internal data-entry apps, and Power Automate alone cannot handle all the requirements mentioned in the question."
    }
   ],
   "correct": [
@@ -13028,7 +13028,7 @@
    {
     "id": "b",
     "text": "B. Power Pages, Power Automate, and Outlook",
-    "explanation": "Power Pages is not a valid Microsoft Power Platform component. Power Automate and Outlook can handle the automation and notification aspects, but without Power Apps for the app creation and Dataverse for data storage, this solution lacks the necessary components for a complete and efficient solution."
+    "explanation": "Power Pages is a real Power Platform component, but it's built for external-facing websites rather than internal data-entry apps. Power Automate and Outlook can handle the automation and notification aspects, but without Power Apps for the app creation and Dataverse for data storage, this solution lacks the necessary components for a complete and efficient solution."
    },
    {
     "id": "c",
@@ -13287,7 +13287,7 @@
    {
     "id": "d",
     "text": "D. Microsoft Copilot Studio with Outlook connector",
-    "explanation": "Microsoft Copilot Studio with Outlook connector is not a relevant integration scenario for automating workflows triggered by events in Microsoft Lists and sending emails to managers. Microsoft Copilot Studio is a code completion tool, and it does not offer the workflow automation features required for this task."
+    "explanation": "Microsoft Copilot Studio with Outlook connector is not a relevant integration scenario for automating workflows triggered by events in Microsoft Lists and sending emails to managers. Microsoft Copilot Studio is a platform for building conversational AI agents and chatbots, and it does not offer the workflow automation features required for this task."
    }
   ],
   "correct": [
@@ -13443,7 +13443,7 @@
    {
     "id": "a",
     "text": "A. Data",
-    "explanation": "Data is a crucial component of model-driven apps in Microsoft Power Platform as it defines the structure and relationships of the data used within the application. It includes entities, fields, relationships, and data types that drive the functionality of the app."
+    "explanation": "Data is a crucial component of model-driven apps in Microsoft Power Platform as it defines the structure and relationships of the data used within the application. It includes tables, fields, relationships, and data types that drive the functionality of the app."
    },
    {
     "id": "b",
